@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AddressVC">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="address.png" translatesAutoresizingMaskIntoConstraints="NO" id="D4p-X6-duW">
+                        <rect key="frame" x="20" y="17" width="30" height="30"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15l-T1-fKq">
+                        <rect key="frame" x="0.0" y="64" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.89332423719999998" green="0.90486481870000002" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="I72-Us-aVi"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eT1-eO-Nbb">
+                        <rect key="frame" x="64" y="12" width="220" height="39"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eT1-eO-Nbb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="MV6-8R-sOC"/>
+                    <constraint firstItem="15l-T1-fKq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="UAH-4R-RWH"/>
+                    <constraint firstItem="D4p-X6-duW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="VsI-0s-Z3c"/>
+                    <constraint firstItem="15l-T1-fKq" firstAttribute="top" secondItem="eT1-eO-Nbb" secondAttribute="bottom" constant="13" id="Vvu-xt-8AK"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="eT1-eO-Nbb" secondAttribute="trailing" constant="28" id="lvL-ij-zX2"/>
+                    <constraint firstItem="D4p-X6-duW" firstAttribute="centerY" secondItem="eT1-eO-Nbb" secondAttribute="centerY" id="pvX-gJ-GTm"/>
+                    <constraint firstItem="eT1-eO-Nbb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sWT-Qd-OQY"/>
+                    <constraint firstAttribute="trailing" secondItem="15l-T1-fKq" secondAttribute="trailing" id="xLj-6A-nV3"/>
+                    <constraint firstItem="eT1-eO-Nbb" firstAttribute="leading" secondItem="D4p-X6-duW" secondAttribute="trailing" constant="14" id="zec-yA-x4l"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="addressTextView" destination="eT1-eO-Nbb" id="fJ2-8Y-WV9"/>
+            </connections>
+            <point key="canvasLocation" x="427" y="433.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="address.png" width="30" height="30"/>
+    </resources>
+</document>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalViewController">
+            <connections>
+                <outlet property="emailView" destination="uhX-on-BKb" id="76n-y0-szD"/>
+                <outlet property="nameView" destination="X5x-xj-uJD" id="cge-Js-Kyh"/>
+                <outlet property="numberView" destination="j2K-gv-xmE" id="0Ab-WH-fNV"/>
+                <outlet property="passView" destination="Ych-dU-Xfi" id="nJN-51-zbA"/>
+                <outlet property="photoView" destination="YBd-Ok-1e1" id="rJu-D2-uDg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YBd-Ok-1e1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X5x-xj-uJD">
+                    <rect key="frame" x="0.0" y="80" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2K-gv-xmE">
+                    <rect key="frame" x="0.0" y="130" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhX-on-BKb">
+                    <rect key="frame" x="0.0" y="180" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ych-dU-Xfi">
+                    <rect key="frame" x="0.0" y="230" width="320" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="X5x-xj-uJD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7fX-1w-caZ"/>
+                <constraint firstItem="j2K-gv-xmE" firstAttribute="leading" secondItem="X5x-xj-uJD" secondAttribute="leading" id="AYN-VZ-Vo4"/>
+                <constraint firstItem="YBd-Ok-1e1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DQP-Ur-PKd"/>
+                <constraint firstItem="uhX-on-BKb" firstAttribute="top" secondItem="j2K-gv-xmE" secondAttribute="bottom" id="FfN-cz-HgU"/>
+                <constraint firstAttribute="bottom" secondItem="Ych-dU-Xfi" secondAttribute="bottom" constant="288" id="GrF-Nh-c2B"/>
+                <constraint firstItem="Ych-dU-Xfi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="230" id="Mor-ik-IUG"/>
+                <constraint firstItem="X5x-xj-uJD" firstAttribute="trailing" secondItem="j2K-gv-xmE" secondAttribute="trailing" id="Oo3-JR-f5X"/>
+                <constraint firstItem="uhX-on-BKb" firstAttribute="leading" secondItem="Ych-dU-Xfi" secondAttribute="leading" id="RjP-PK-eAQ"/>
+                <constraint firstItem="Ych-dU-Xfi" firstAttribute="top" secondItem="uhX-on-BKb" secondAttribute="bottom" id="TVK-7Y-cnz"/>
+                <constraint firstItem="X5x-xj-uJD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="Tev-1L-C18"/>
+                <constraint firstItem="YBd-Ok-1e1" firstAttribute="leading" secondItem="X5x-xj-uJD" secondAttribute="leading" id="Tkl-fT-r8T"/>
+                <constraint firstItem="j2K-gv-xmE" firstAttribute="top" secondItem="X5x-xj-uJD" secondAttribute="bottom" id="atY-rP-TXY"/>
+                <constraint firstItem="uhX-on-BKb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="180" id="dcf-Gd-FcX"/>
+                <constraint firstItem="Ych-dU-Xfi" firstAttribute="trailing" secondItem="uhX-on-BKb" secondAttribute="trailing" id="koD-MD-J34"/>
+                <constraint firstItem="j2K-gv-xmE" firstAttribute="trailing" secondItem="uhX-on-BKb" secondAttribute="trailing" id="omv-DB-Xe3"/>
+                <constraint firstItem="uhX-on-BKb" firstAttribute="leading" secondItem="j2K-gv-xmE" secondAttribute="leading" id="t79-dg-2lD"/>
+                <constraint firstItem="YBd-Ok-1e1" firstAttribute="trailing" secondItem="X5x-xj-uJD" secondAttribute="trailing" id="vs9-tA-ySx"/>
+                <constraint firstAttribute="trailing" secondItem="j2K-gv-xmE" secondAttribute="trailing" id="wls-qf-rZ0"/>
+                <constraint firstItem="X5x-xj-uJD" firstAttribute="top" secondItem="YBd-Ok-1e1" secondAttribute="bottom" id="xyT-Ed-7gP"/>
+                <constraint firstItem="j2K-gv-xmE" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="130" id="zim-1j-Rb1"/>
+            </constraints>
+            <point key="canvasLocation" x="288" y="364"/>
+        </view>
+    </objects>
+</document>
