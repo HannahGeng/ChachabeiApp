@@ -1230,7 +1230,7 @@ static NSString * const cellIdentifier = @"attention";
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
      
-        //监控网络状态
+        //132132671监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {

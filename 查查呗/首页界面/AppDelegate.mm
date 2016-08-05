@@ -33,9 +33,6 @@
         NSLog(@"manager start failed!");
     }
     
-    //友盟分享
-    [UMSocialData setAppKey:@"567b956ae0f55a9148002011"];
-
     //设置窗口
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

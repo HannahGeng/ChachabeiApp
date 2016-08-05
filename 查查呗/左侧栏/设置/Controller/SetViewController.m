@@ -212,12 +212,19 @@
 //        [_contentView addSubview:_maxButton];
 //    }
     if (indexPath.row==0) {
-       [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"567b956ae0f55a9148002011"
-                                      shareText:@"查查呗是信用查询的最佳平台"
-                                     shareImage:[UIImage imageNamed:@"icon.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToEmail,nil]
-                                       delegate:nil];
+      
+        NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
+        NSArray *activityItem=@[shareUrl];
+        UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItem applicationActivities:nil];
+        //设置不出现的活动项目
+        activityController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToFacebook,UIActivityTypePostToTwitter
+                                                     ,UIActivityTypeMessage
+                                                     ,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,
+                                                     UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,
+                                                     UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks
+                                                     ];
+        
+        [self.navigationController presentViewController:activityController animated:YES completion:nil];
     }
     if (indexPath.row==1) {
         

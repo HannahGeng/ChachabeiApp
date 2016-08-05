@@ -64,16 +64,16 @@
 
     }else{
     
-    UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
-    view.backgroundColor=LIGHT_GREY_COLOR;
-    
-    self.branchTableView.dataSource=self;
-    self.branchTableView.delegate=self;
-    self.branchTableView.backgroundColor=[UIColor clearColor];
-    self.branchTableView.scrollEnabled =YES; //设置tableview滚动
-    self.branchTableView.tableHeaderView=view;
-    self.branchTableView.tableFooterView=[[UIView alloc]init];
-    self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
+        view.backgroundColor=LIGHT_GREY_COLOR;
+        
+        self.branchTableView.dataSource=self;
+        self.branchTableView.delegate=self;
+        self.branchTableView.backgroundColor=[UIColor clearColor];
+        self.branchTableView.scrollEnabled =YES; //设置tableview滚动
+        self.branchTableView.tableHeaderView=view;
+        self.branchTableView.tableFooterView=[[UIView alloc]init];
+        self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
     }
 
 }

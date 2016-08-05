@@ -77,6 +77,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
     //设置导航栏
@@ -96,7 +97,6 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-//    NSLog(@"%f",self.view.frame.origin.y);
 }
 
 #pragma mark - textField代理
@@ -107,7 +107,6 @@
 
 - (void)keyboardWillHide:(NSNotification *)notif {
     
-//    NSLog(@"键盘退出");
     self.view.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
     
 }
@@ -129,6 +128,7 @@
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
 }
+
 -(void)homeButton
 {
     //发送通知
@@ -156,6 +156,8 @@
     }
     [_photoView addSubview:_imageView];
     
+    NSLog(@"头像:%@",_imageView);
+    
     //发送通知
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"image" object:nil];
@@ -168,11 +170,7 @@
 
     UIButton *setButton=[UIButton buttonWithType:UIButtonTypeCustom];
     setButton.frame=CGRectMake([UIUtils getWindowWidth]-20-15, 20, 15, 10);
-//    [setButton setTitle:@"设置头像" forState:UIControlStateNormal];//设置button的title
-//    setButton.titleLabel.font = [UIFont systemFontOfSize:17];//title字体大小
-//    setButton.titleLabel.textAlignment = NSTextAlignmentRight;
-//    [setButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    setButton.titleEdgeInsets = UIEdgeInsetsMake(0, setButton.titleLabel.bounds.size.width+150, 0, 0);
+
     [setButton addTarget:self action:@selector(photoButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_photoView addSubview:setButton];
     
@@ -183,7 +181,6 @@
     _passButton1.backgroundColor=[UIColor clearColor];
     [_photoView addSubview:_passButton1];
 
-    
     UIImage *imageNoamal=[UIImage imageNamed:@"Disclosure Indicator2"];
     UIButton *photoButton=[UIButton buttonWithType:UIButtonTypeCustom];
     photoButton.frame=CGRectMake([UIUtils getWindowWidth]-20-15, 35, 15, 10);
@@ -202,8 +199,8 @@
     [_resigtButton addTarget:self action:@selector(resigtButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_resigtButton];
     
-
 }
+
 //添加昵称视图
 -(void)addPhotoView
 {
@@ -253,6 +250,7 @@
     [_nameView addSubview:label];
 
 }
+
 //添加手机号视图
 -(void)addNumberView
 {
@@ -296,6 +294,7 @@
     [_numberView addSubview:label];
 
 }
+
 //添加邮箱视图
 -(void)addEmailView
 {
@@ -341,6 +340,7 @@
     [_emailView addSubview:label];
 
 }
+
 //添加密码视图
 -(void)addPassView
 {
@@ -379,16 +379,14 @@
     [_passView addSubview:label];
 
 }
+
 -(void)passButtonClick
 {
     
-//    NSLog(@"%zd",_passButton1.selected);
-   
     if (_passContent) {
         [_passContent removeFromSuperview];
 
     }
-    
     
     if ([_passButton1 isSelected]) {
         _nameView.frame=CGRectMake(0, 80, [UIUtils getWindowWidth], 50);
@@ -464,6 +462,7 @@
 
     }
 }
+
 -(void)emailButtonClick
 {
     
@@ -643,7 +642,6 @@
     
 }
 
-
 -(void)nameButtonClick
 {
     if (_passContent) {
@@ -779,10 +777,6 @@
     app = [AppDelegate sharedAppDelegate];
     _request = app.request;
     
-//    NSLog(@"个人资料用到的request:%@",_request);
-    
-//    NSLog(@"keycode:%@",_keycode);
-    
     //加密昵称和邮箱
     _nickName = [AESCrypt encrypt:_nameTextField.text password:[AESCrypt decrypt:_keycode]];
     _email = [AESCrypt encrypt:_emilTextField.text password:[AESCrypt decrypt:_keycode]];
@@ -795,13 +789,9 @@
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
-//        NSLog(@"\n============网络状态：%zd",status);
-        
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:ChangeNickName_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                
-//                NSLog(@"修改资料结果:%@",responseObject);
                 
                 _hudStr = responseObject[@"result"];
                 
@@ -843,13 +833,10 @@
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
-//        NSLog(@"\n============网络状态：%zd",status);
-        
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:GetMessageCode_URL parameters:pdic result:^(id responseObject, NSError *error) {
                 
-//                NSLog(@"获取验证码结果:%@",responseObject);
                 app.request = responseObject[@"response"];
                 _hudStr = responseObject[@"result"];
 
@@ -866,7 +853,8 @@
            noWebhud;
         }
     }];
-    }
+   
+}
 
 #pragma mark - 短信验证码“确定“按钮
 - (void)sureClick
@@ -880,20 +868,16 @@
     _keycode = [AESCrypt decrypt:app.loginKeycode];
     
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",[AESCrypt encrypt:_photoTextField.text password:_keycode],@"telno",[AESCrypt encrypt:_namberTextField.text password:_keycode],@"msgcode", nil];
-//    NSLog(@"验证码:%@",_namberTextField.text);
  
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
-//        NSLog(@"\n============网络状态：%zd",status);
-        
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:InputMessage_URL parameters:pdic result:^(id responseObject, NSError *error) {
                 
-//                NSLog(@"获取验证码结果:%@",responseObject);
                 _hudStr = responseObject[@"result"];
                 MBhud(_hudStr);
                 
@@ -914,7 +898,6 @@
         }
     }];
     
-
 }
 
 #pragma mark - 重置密码“确认”按钮
@@ -926,7 +909,6 @@
     _keycode = [AESCrypt decrypt:app.loginKeycode];
     
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",[AESCrypt encrypt:_confirmPass.text password:_keycode],@"newpass",[AESCrypt encrypt:_passTextField.text password:_keycode],@"oldpass", nil];
-//    NSLog(@"验证码:%@",_passTextField.text);
     
     if (_passTextField.text.length == 0 || _newPass.text.length == 0 || _confirmPass.text.length == 0) {
         
@@ -949,7 +931,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:changePass_URL parameters:pdic result:^(id responseObject, NSError *error) {
                         
-//                        NSLog(@"修改密码结果:%@",responseObject);
                         app.request = responseObject[@"response"];
                         
                         _hudStr = responseObject[@"result"];
@@ -998,18 +979,16 @@
 
 -(void)photoButtonClick
 {
-    
     //创建对象
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:                               @"提示" delegate:self cancelButtonTitle:@"取消"                       destructiveButtonTitle:nil otherButtonTitles:@"从相册选择",@"拍照", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"从相册选择",@"拍照", nil];
+    
     //在视图上展示
     [actionSheet showInView:self.view];
-//
-//    NSData *data=[[NSUserDefaults standardUserDefaults]objectForKey:@"image"];
-//    _imageView.image=[UIImage imageWithData:data];
 
 }
+
 #pragma mark UIActionSheetDelegate
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:                                                       (NSInteger)buttonIndex {
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // 相册 0 拍照 1
     switch (buttonIndex) {
         case 0:
@@ -1024,21 +1003,23 @@
             break;
     }
 }
+
 //从相册中读取
 - (void)readImageFromAlbum {
     //创建对象
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     //（选择类型）表示仅仅从相册中选取照片
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //指定代理，因此我们要实现UIImagePickerControllerDelegate,                                                 UINavigationControllerDelegate协议
     imagePicker.delegate = self;
     //设置在相册选完照片后，是否跳到编辑模式进行图片剪裁。(允许用户编辑)
     imagePicker.allowsEditing = YES;
     //显示相册
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
+
 - (void)readImageFromCamera {
-    if ([UIImagePickerController isSourceTypeAvailable:                                           UIImagePickerControllerSourceTypeCamera]) {        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.delegate = self;
         imagePicker.allowsEditing = YES;
@@ -1056,10 +1037,11 @@
         }];
     }
 }
+
 //图片完成之后处理
-- (void)imagePickerController:(UIImagePickerController *)picker        didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo {
-    //image 就是修改后的照片
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
     
+    //image 就是修改后的照片
     //以下是保存文件到沙盒路径下
     //把图片转成NSData类型的数据来保存文件
     NSData *data;

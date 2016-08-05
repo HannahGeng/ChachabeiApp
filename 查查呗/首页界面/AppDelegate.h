@@ -20,11 +20,11 @@
 /** 上一次接口数据返回的request */
 @property (strong,nonatomic)NSString * request;
 /** 企业数组的行号 */
-@property (copy,nonatomic)NSString * companyIndex;
+@property (strong,nonatomic)NSString * companyIndex;
 /** 点击企业的ID */
-@property (copy,nonatomic)NSString * companyID;
+@property (strong,nonatomic)NSString * companyID;
 /** 企业数组 */
-@property (copy,nonatomic)NSArray * companyArray;
+@property (strong,nonatomic)NSArray * companyArray;
 
 /** 搜索数组 */
 @property (nonatomic,strong) NSArray * resultArray;
@@ -36,27 +36,27 @@
 @property (nonatomic,strong) NSMutableArray * attentionArray;
 
 /** 登陆成功时获取到的keycode */
-@property (copy,nonatomic)NSString * loginKeycode;
+@property (strong,nonatomic)NSString * loginKeycode;
 /** 登陆成功后返回的 */
-@property (copy,nonatomic)NSString * uid;
+@property (strong,nonatomic)NSString * uid;
 /** 版本keycode */
-@property (copy,nonatomic)NSString * keycode;
+@property (strong,nonatomic)NSString * keycode;
 /** 用户名 */
-@property (copy,nonatomic)NSString * username;
+@property (strong,nonatomic)NSString * username;
 /** 电话号码 */
-@property (copy,nonatomic)NSString * phonenum;
+@property (strong,nonatomic)NSString * phonenum;
 /** 密码 */
-@property (copy,nonatomic)NSString * password;
+@property (strong,nonatomic)NSString * password;
 /** 邮箱 */
-@property (copy,nonatomic)NSString * email;
+@property (strong,nonatomic)NSString * email;
 /** 未登录用户的keycode */
-@property (copy,nonatomic)NSString * noLoginKeycode;
+@property (strong,nonatomic)NSString * noLoginKeycode;
 /** 判断用户是否登陆 */
 @property (nonatomic,assign)BOOL isLogin;
 /** 企业详情 */
-@property (nonatomic,copy)NSDictionary * companyDetailContent;
+@property (nonatomic,strong)NSDictionary * companyDetailContent;
 /** 企业基本信息 */
-@property (nonatomic,copy)NSDictionary * basicInfo;
+@property (nonatomic,strong)NSDictionary * basicInfo;
 /** 是否有验证码 */
 @property (nonatomic,assign) BOOL isVertify;
 

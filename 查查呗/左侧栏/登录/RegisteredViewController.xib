@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app05.png" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-J5-AiQ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app05" translatesAutoresizingMaskIntoConstraints="NO" id="qmT-J5-AiQ">
                     <rect key="frame" x="25" y="35" width="20" height="20"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2cb-Px-IBX">
@@ -43,7 +43,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app06.png" translatesAutoresizingMaskIntoConstraints="NO" id="TcR-sl-xOZ">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app06" translatesAutoresizingMaskIntoConstraints="NO" id="TcR-sl-xOZ">
                     <rect key="frame" x="25" y="85" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="XtT-bi-Mps"/>
@@ -67,7 +67,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app07.png" translatesAutoresizingMaskIntoConstraints="NO" id="xtL-Ur-M6r">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app07" translatesAutoresizingMaskIntoConstraints="NO" id="xtL-Ur-M6r">
                     <rect key="frame" x="25" y="134" width="20" height="22"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="电子邮箱（选填）" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VTO-37-BLa">
@@ -85,7 +85,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app08.png" translatesAutoresizingMaskIntoConstraints="NO" id="l9M-ua-hWY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app08" translatesAutoresizingMaskIntoConstraints="NO" id="l9M-ua-hWY">
                     <rect key="frame" x="25" y="184" width="20" height="22"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="设置密码(6到16位的字母数字组合)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tep-vm-z0T">
@@ -103,7 +103,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app08.png" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-my-EQV">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app08" translatesAutoresizingMaskIntoConstraints="NO" id="V8a-my-EQV">
                     <rect key="frame" x="23" y="234" width="22" height="22"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wt9-gJ-HXP">
@@ -113,7 +113,7 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app09.png" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-u3-A4h">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app09" translatesAutoresizingMaskIntoConstraints="NO" id="AGv-u3-A4h">
                     <rect key="frame" x="23" y="284" width="22" height="22"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYt-xz-vjR">
@@ -140,7 +140,7 @@
                         <constraint firstAttribute="height" constant="46" id="4W7-qu-Nbj"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="wancheng.png">
+                    <state key="normal" image="wancheng">
                         <color key="titleColor" red="1" green="0.63049380880000006" blue="0.1124570976" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -222,11 +222,11 @@
         </view>
     </objects>
     <resources>
-        <image name="app05.png" width="22" height="22"/>
-        <image name="app06.png" width="22" height="22"/>
-        <image name="app07.png" width="22" height="22"/>
-        <image name="app08.png" width="22" height="22"/>
-        <image name="app09.png" width="22" height="22"/>
-        <image name="wancheng.png" width="321" height="46"/>
+        <image name="app05" width="22" height="22"/>
+        <image name="app06" width="22" height="22"/>
+        <image name="app07" width="22" height="22"/>
+        <image name="app08" width="22" height="22"/>
+        <image name="app09" width="22" height="22"/>
+        <image name="wancheng" width="321" height="46"/>
     </resources>
 </document>

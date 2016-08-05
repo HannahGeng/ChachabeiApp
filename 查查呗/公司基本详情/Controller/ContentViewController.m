@@ -8,7 +8,7 @@
 
 #import "ContentViewController.h"
 
-@interface ContentViewController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
+@interface ContentViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIView *_taberView;
     UIButton *_commentButton;
@@ -79,8 +79,6 @@
 - (void)loadCompanyArray
 {
     app = [AppDelegate sharedAppDelegate];
-
-    app = [AppDelegate sharedAppDelegate];
     
     //uid
     _uid = app.uid;
@@ -95,56 +93,56 @@
     
     if ([lastVc isKindOfClass:[result class]]) {//result界面push进来的
         
-            //省份
-            _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:app.loginKeycode]];
+        //省份
+        _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:app.loginKeycode]];
+        
+        //时间戳
+        NSDate *  senddate=[NSDate date];
+        
+        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+        
+        [dateformatter setDateFormat:@"YYYYMMddmmss"];
+        
+        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
+        
+        _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
+        
+        NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",_companyId,@"registNo",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
+        
+        //监控网络状态
+        mgr = [AFNetworkReachabilityManager sharedManager];
+        [mgr startMonitoring];
+        [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             
-            //时间戳
-            NSDate *  senddate=[NSDate date];
-            
-            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-            
-            [dateformatter setDateFormat:@"YYYYMMddmmss"];
-            
-            _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
-            
-            _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
-            
-            NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",_companyId,@"registNo",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
-            
-            //监控网络状态
-            mgr = [AFNetworkReachabilityManager sharedManager];
-            [mgr startMonitoring];
-            [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            if (status != 0) {
                 
-                if (status != 0) {
+                [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
                     
-                    [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
+                    if ([responseObject[@"status"] integerValue] == 1) {
+                    
+                        app.companyDetailContent = responseObject[@"result"];
+                        app.request = responseObject[@"response"];
+                        app.basicInfo = responseObject[@"result"][@"basicInfo"];
+                        app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                         
-                        if ([responseObject[@"status"] integerValue] == 1) {
-                        
-                            app.companyDetailContent = responseObject[@"result"];
-                            app.request = responseObject[@"response"];
-                            app.basicInfo = responseObject[@"result"][@"basicInfo"];
-                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
-                            
-                            [self.ContentTableView reloadData];
-                            hudHide;
+                        [self.ContentTableView reloadData];
+                        hudHide;
 
-                        }else{
-                            
-                            hudHide;
-                            MBhud(@"暂无结果")
-                            
-                        }
-                    }];
-                    
-                }else{
-                    
-                    hudHide;
-                    noWebhud;
-                    
-                }
-            }];
+                    }else{
+                        
+                        hudHide;
+                        MBhud(@"暂无结果")
+                        
+                    }
+                }];
+                
+            }else{
+                
+                hudHide;
+                noWebhud;
+                
+            }
+        }];
     
     }else{//首页push进来的
         
@@ -283,6 +281,7 @@
     
     //为导航栏添加左侧按钮
     Backbutton;
+    
     //为导航栏添加右侧按钮
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake([UIUtils getWindowWidth]-35, 0, 30, 30);
@@ -310,7 +309,7 @@
     UIViewController * lastVc = vcArray[vcCount - 2];
     
     if ([lastVc isKindOfClass:[vc class]]) {
-//    发送通知
+        //发送通知
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"homeView" object:nil];
         
@@ -330,6 +329,7 @@
     self.ContentTableView.separatorStyle = UITableViewCellSelectionStyleGray;
 
 }
+
 //添加底部试图
 -(void)addContentView
 {
@@ -425,20 +425,18 @@
     
     _taberView.hidden=YES;
     
-    [UMSocialSnsService presentSnsIconSheetView:self
-                                         appKey:@"567b956ae0f55a9148002011"
-                                      shareText:@"查查呗是信用查询的最佳平台"
-                                     shareImage:[UIImage imageNamed:@"icon.png"]
-                                shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToRenren,UMShareToEmail,nil]
-                                       delegate:self];
-}
-/**
- 关闭当前页面之后
- 
- @param fromViewControllerType 关闭的页面类型
- 
- */
--(void)didCloseUIViewController:(UMSViewControllerType)fromViewControllerType{
+    NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
+    NSArray *activityItem=@[shareUrl];
+    UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItem applicationActivities:nil];
+    //设置不出现的活动项目
+    activityController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToFacebook,UIActivityTypePostToTwitter
+                                                 ,UIActivityTypeMessage
+                                                 ,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,
+                                                 UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,
+                                                 UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks
+                                                 ];
+    
+    [self.navigationController presentViewController:activityController animated:YES completion:nil];
     
     _taberView.hidden=NO;
 
@@ -536,6 +534,7 @@
 -(void)sendClick
 {
     if (app.isLogin == YES) {
+        
         _shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
         UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
         [_shareView addGestureRecognizer:tapContentGesture];
@@ -589,8 +588,11 @@
         }]];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            
         }]];
+        
         [self presentViewController:alert animated:YES completion:^{
+            
         }];
 
     }
@@ -598,12 +600,15 @@
 }
 - (void)removeView
 {
-    [UIView animateWithDuration:0.3
-                     animations:^{
-                         [_shareView setFrame:CGRectMake(0, [UIUtils getWindowHeight], [UIUtils getWindowWidth], SHARE_CONTENT_HEIGHT)];
-                     } completion:^(BOOL finished) {
-                         [_shareView removeFromSuperview];
-                     }];
+    [UIView animateWithDuration:0.3 animations:^{
+                         
+        [_shareView setFrame:CGRectMake(0, [UIUtils getWindowHeight], [UIUtils getWindowWidth], SHARE_CONTENT_HEIGHT)];
+                         
+    } completion:^(BOOL finished) {
+                         
+        [_shareView removeFromSuperview];
+                         
+    }];
     
 }
 
@@ -612,14 +617,13 @@
     [self.view endEditing:YES];
     app = [AppDelegate sharedAppDelegate];
     
-//    NSLog(@"CID:%@,EMAIL:%@,REQUEST:%@,UID:%@",app.companyID,_emailTextFidld.text,app.request,app.uid);
-
     _uid = app.uid;
     _request = app.request;
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
     _emailStr = [AESCrypt encrypt:_emailTextFidld.text password:[AESCrypt decrypt:app.loginKeycode]];
     
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",_companyId,@"cid",_emailStr,@"email", nil];
+    
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
@@ -628,8 +632,6 @@
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:sendEmail_URl parameters:pdic result:^(id responseObject, NSError *error) {
-                
-//                NSLog(@"企业邮箱发送:%@",responseObject);
                 
                 app.request = responseObject[@"response"];
                 
@@ -659,11 +661,13 @@
 {
     [self.view endEditing:YES];
 }
+
 #pragma mark UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 7;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     app = [AppDelegate sharedAppDelegate];
@@ -720,7 +724,6 @@
         cell.introduceButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.introduceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         cell.introduceButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.introduceButton.titleLabel.bounds.size.width-25, 0, 0);
-        //        [cell.introduceButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:cell.introduceButton];
         
         [cell.creditButton setImage:[UIImage imageNamed:@"app433.png"] forState:UIControlStateNormal];
@@ -729,8 +732,7 @@
         cell.creditButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
         cell.creditButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.creditButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.creditButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.creditButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.creditButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.creditButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.creditButton.titleLabel.bounds.size.width-25, 0, 0);
         [cell addSubview:cell.creditButton];
         
         [cell.authorizationButton setImage:[UIImage imageNamed:@"app444.png"] forState:UIControlStateNormal];
@@ -739,8 +741,7 @@
         cell.authorizationButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
         cell.authorizationButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.authorizationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.authorizationButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.authorizationButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.authorizationButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.authorizationButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.authorizationButton.titleLabel.bounds.size.width-25, 0, 0);
         [cell addSubview:cell.authorizationButton];
         
         return cell;
@@ -757,7 +758,6 @@
         cell.cardButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.cardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         cell.cardButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.cardButton.titleLabel.bounds.size.width-25, 0, 0);
-        //        [cell.cardButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:cell.cardButton];
         
         [cell.trademarkButton setImage:[UIImage imageNamed:@"app466.png"] forState:UIControlStateNormal];
@@ -816,24 +816,26 @@
         [cell.reportButton addTarget:self action:@selector(yearClick) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:cell.reportButton];
         
-        [cell.mapButton setImage:[UIImage imageNamed:@"app511.png"] forState:UIControlStateNormal];
+        [cell.mapButton setImage:[UIImage imageNamed:@"app51.png"] forState:UIControlStateNormal];
         cell.mapButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.mapButton.titleLabel.bounds.size.width-7);
         [cell.mapButton setTitle:@"企业图谱" forState:UIControlStateNormal];//设置button的title
         cell.mapButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
         cell.mapButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.mapButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.mapButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.mapButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.mapButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.mapButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.mapButton.titleLabel.bounds.size.width-25, 0, 0);
+        // [cell.mapButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:cell.mapButton];
         
         [cell.investmentButton setImage:[UIImage imageNamed:@"app52.png"] forState:UIControlStateNormal];
-        cell.investmentButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7);//设置image在button上的位置（上top，左left，下bottom，右right）这里可以写负值，对上写－5，那么image就象上移动5个像素
+        cell.investmentButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7);
+        // 设置image在button上的位置（上top，左left，下bottom，右right）这里可以写负值，对上写－5，那么image就象上移动5个像素
         [cell.investmentButton setTitle:@"对外投资" forState:UIControlStateNormal];//设置button的title
         cell.investmentButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
         cell.investmentButton.titleLabel.textAlignment = NSTextAlignmentCenter;
         [cell.investmentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.investmentButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.investmentButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
+        cell.investmentButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0);
+        // 设置title在button上的位置（上top，左left，下bottom，右right）
+        // [cell.investmentButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
         [cell addSubview:cell.investmentButton];
         
         return cell;

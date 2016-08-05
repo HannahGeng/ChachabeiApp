@@ -230,7 +230,7 @@
                     
                     _flag = responseObject[@"result"][@"flag"];
 
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.0.5）" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"升级", nil];
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.0.6）" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"升级", nil];
                     
                     alert.delegate = self;
                     
@@ -367,7 +367,6 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
             
             [[HTTPSessionManager sharedManager] POST:DENGLU_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
