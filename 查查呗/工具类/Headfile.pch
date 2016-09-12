@@ -181,18 +181,18 @@ self.navigationItem.leftBarButtonItem = leftButtonItem;
 #define MBhud(alertname) \
 mbHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; \
 [mbHud setMode:MBProgressHUDModeText]; \
-mbHud.labelText = alertname; \
-[mbHud setYOffset:0]; \
-[mbHud hide:YES afterDelay:1.0];
-//接上
-#define alertname  [NSString stringWithFormat:@"%@",##alertname];
+mbHud.label.text = alertname; \
+[mbHud setOffset:CGPointMake(0, 0)]; \
+[mbHud hideAnimated:YES afterDelay:1.0];\
+mbHud.offset = CGPointMake(0, 180);\
+mbHud.label.numberOfLines = 0;
 
 //网络连接失败
 #define noWebhud \
 mbHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES]; \
 [mbHud setMode:MBProgressHUDModeText]; \
 mbHud.labelText = @"网络连接失败"; \
-[mbHud setYOffset:0]; \
+[mbHud setYOffset:CGPointMake(0, 0)]; \
 [mbHud hide:YES afterDelay:2.0];
 
 /**
@@ -224,7 +224,7 @@ UIAlertView* alter=[[UIAlertView alloc]initWithTitle:@"很抱歉" message:@"请�
 #define mbHUDinit mbHud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 
 //mbhud hide
-#define hudHide [mbHud hide:YES];
+#define hudHide [mbHud hideAnimated:YES afterDelay:0];
 
 //********扫描区域********//
 #define leftright 50
@@ -280,16 +280,22 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 //注册URL
 #define ZHUCE_URL @"http://api.4000520856.com:8085/ccbapi/account_register"
 
-#define Company_URL @"http://api.4000520856.com:8085/ccbapi/home_hot"
+//热门企业
+#define Company_URL @"http://api.4000520856.com:8085/chachabei/hot"
 
 #define Personal_attention_URL @"http://api.4000520856.com:8085/ccbapi/personal_attention"
 
-#define Company_Search_URL @"http://api.4000520856.com:8085/ccbapi/home_search/"
-#define Company_Vertify_URL @"http://api.4000520856.com:8085/ccbapi/home_fetchlist/"
+//查询企业
+#define Company_Search_URL @"http://api.4000520856.com:8085/chachabei/search"
 
-#define Hot_Detail_URL @"http://api.4000520856.com:8085/ccbapi/hot_detail/"
+//查询企业列表
+#define Company_Vertify_URL @"http://api.4000520856.com:8085/chachabei/fetch/list"
 
-#define Company_Detail_URL @"http://api.4000520856.com:8085/ccbapi/company_detail"
+//热门企业详情
+#define Hot_Detail_URL @"http://api.4000520856.com:8085/chachabei/hot/details"
+
+//查询企业基本信息
+#define Company_Detail_URL @"http://api.4000520856.com:8085/chachabei/fetch/details"
 
 #define Home_Message @"http://api.4000520856.com:8085/ccbapi/home_message"
 
@@ -336,6 +342,6 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 #define cancel_attention @"http://api.4000520856.com:8085/ccbapi/cancel_attentions"
 
 //企业年报接口
-#define YEAR_URL @"http://api.4000520856.com:8085/ccbapi/annual"
+#define YEAR_URL @"http://api.4000520856.com:8085/chachabei/fetch/annual"
 
 #endif
