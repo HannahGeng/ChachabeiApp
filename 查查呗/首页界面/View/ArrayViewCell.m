@@ -28,4 +28,16 @@
     self.companyLabel.text = attention.cname;
 }
 
++ (instancetype)cellWithTableView:(UITableView *)tableView
+{
+    ArrayViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"company"];
+    
+    if (cell == nil) {
+        
+        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
+    }
+    
+    return cell;
+}
+
 @end

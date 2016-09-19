@@ -11,6 +11,7 @@
 @class attentionModel;
 
 @interface ArrayViewCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *companyLabel;
 
 //类别模型
@@ -18,5 +19,7 @@
 
 /** 关注模型 */
 @property (nonatomic,strong)attentionModel * attention;
+
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @end

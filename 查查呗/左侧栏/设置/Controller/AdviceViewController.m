@@ -96,6 +96,7 @@
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
+    
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {

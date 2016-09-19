@@ -10,7 +10,6 @@
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    @public
     SegmentViewCell *_cell;
     NSDictionary *_dic;
     NSString *_timeString;
@@ -37,12 +36,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *viewTableView;
 @property (weak, nonatomic) IBOutlet UITableView *companyTableView;
-@property (nonatomic,strong) NSArray * companyArray;
+@property (nonatomic,strong) NSMutableArray * companyArray;
 
 @end
 
 @implementation ViewController
-static NSString * const CompanyId = @"company";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,16 +53,17 @@ static NSString * const CompanyId = @"company";
     
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容视图
     [self addContentView];
     
     //添加数据(热门企业)
     [self loadHotCompany];
     
-    if (app.isLogin == YES) {
+    if (_cell.CompanyButton.selected == NO) {
         
         //加载我的关注
-        [self loadAttentionCompany];
+//        [self loadAttentionCompany];
         
     }
     
@@ -72,6 +71,7 @@ static NSString * const CompanyId = @"company";
 
 #pragma mark - 设置导航栏
 - (void)setNavigationBar{
+    
     SetNavigationBar;
     self.title = @"首页";
 }
@@ -79,16 +79,7 @@ static NSString * const CompanyId = @"company";
 #pragma mark - 添加内容视图
 -(void)addContentView
 {
-    self.viewTableView.dataSource=self;
-    self.viewTableView.delegate=self;
-    self.viewTableView.backgroundColor=[UIColor clearColor];
-    self.viewTableView.scrollEnabled =YES; //设置tableview滚动
-    //cell的分割线为灰色
-    self.viewTableView.separatorStyle = UITableViewCellSelectionStyleGray;
-    //注册CompantTableView
-    [self.companyTableView registerNib:[UINib nibWithNibName:NSStringFromClass([ArrayViewCell class]) bundle:nil] forCellReuseIdentifier:CompanyId];
-    self.companyTableView.rowHeight = 50;
-    self.automaticallyAdjustsScrollViewInsets = NO;
+
     if (_cell.CompanyButton.selected == YES) {
         
         self.viewTableView.bounces = YES;
@@ -103,13 +94,23 @@ static NSString * const CompanyId = @"company";
 - (void)loadHotCompany
 {
     app = [AppDelegate sharedAppDelegate];
-    _uid = app.uid;
-    _request = app.request;
 
-    self.companyArray = [CompanyDetail mj_objectArrayWithKeyValuesArray:app.hotCompanyArray];
+    NSMutableArray * mArr = [NSMutableArray array];
+    
+    for (NSDictionary * dic in app.hotCompanyArray) {
+        
+        CompanyDetail * detail = [[CompanyDetail alloc] initWithDictionary:dic];
+        
+        [mArr addObject:detail];
+    }
+    
+    app.hotCompanyArray = mArr;
+    self.companyArray = mArr;
     
     [self.companyTableView reloadData];
     
+    [self loadAttentionCompany];
+
 }
 
 #pragma mark - 加载“我的关注“数据
@@ -120,19 +121,17 @@ static NSString * const CompanyId = @"company";
     //封装POST参数
     if (app.isLogin == YES) {
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",app.request,@"request", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request", nil];
         
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             
-//            NSLog(@"\n============网络状态：%zd",status);
-            
             if (status != 0) {
                 //发送POST请求
                 [[HTTPSessionManager sharedManager] POST:Personal_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
-//                    NSLog(@"\n个人关注:%@",responseObject);
+                    
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
                     
@@ -257,6 +256,7 @@ static NSString * const CompanyId = @"company";
             return cell;
         }
         if (indexPath.row==3) {
+            
             _cell=[SegmentViewCell cellWithTableView:self.viewTableView];
             _cell.selectionStyle = UITableViewCellSelectionStyleDefault;
             
@@ -291,12 +291,11 @@ static NSString * const CompanyId = @"company";
     }else{
         
         if (_cell.CompanyButton.selected == YES) {
+        
+            ArrayViewCell *cell=[ArrayViewCell cellWithTableView:tableView];
             
-            ArrayViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CompanyId];
-
-            self.companyArray = [CompanyDetail mj_objectArrayWithKeyValuesArray:app.hotCompanyArray];
             cell.company = self.companyArray[indexPath.row];
-
+                                 
             return cell;
             
         }else{
@@ -309,8 +308,9 @@ static NSString * const CompanyId = @"company";
                 
             }else{
                 
-                ArrayViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CompanyId];
-                cell.attention = self.companyArray[indexPath.row];
+                ArrayViewCell *cell=[ArrayViewCell cellWithTableView:tableView];
+                
+                cell.company = self.companyArray[indexPath.row];
                 
                 return cell;
                 
@@ -365,7 +365,6 @@ static NSString * const CompanyId = @"company";
 #pragma mark - “我的关注”按钮
 -(void)focusClick
 {
-
     app = [AppDelegate sharedAppDelegate];
 //    NSLog(@"%zd",_cell.FocusButton.isSelected);
     if (app.isLogin == YES) {//已登陆用户
@@ -431,7 +430,6 @@ static NSString * const CompanyId = @"company";
     _cell.FocusButton.selected=YES;
     
     _cell.LineIamgeView.frame=CGRectMake([UIUtils getWindowWidth]/2, 48, [UIUtils getWindowWidth]/2, 3);
-    
 }
 
 #pragma mark - 二维码按钮

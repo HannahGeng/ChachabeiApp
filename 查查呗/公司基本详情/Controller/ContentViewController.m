@@ -244,7 +244,7 @@
                             app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
                             app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                             
-                            [mbHud hide:YES];
+                            hudHide;
 
                             [self.ContentTableView reloadData];
                             hudHide;

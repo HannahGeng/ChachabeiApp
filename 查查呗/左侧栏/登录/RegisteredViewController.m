@@ -371,7 +371,7 @@
 - (void)gotoLogin
 {
     LoginViewController * login = [[LoginViewController alloc] init];
-    [self.navigationController dismissViewControllerAnimated:login completion:nil];
+    [self presentViewController:login animated:YES completion:nil];
 }
 
 @end

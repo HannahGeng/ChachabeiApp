@@ -218,6 +218,7 @@
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
+    
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
@@ -273,9 +274,7 @@
                 
                 if ([responseObject[@"status"] integerValue] != 1) {
                     
-                    [mbHud setMode:MBProgressHUDModeText];
-                    mbHud.labelText = @"请求出错，请重试";
-                    [mbHud hide:YES afterDelay:2.0];
+                    MBhud(@"请求出错，请重试");
                     
                 }else{
                     
@@ -389,18 +388,14 @@
                     
                     app.email = [AESCrypt decrypt: responseObject[@"result"][@"email"] password:[AESCrypt decrypt:app.loginKeycode]];
                     
-                    mbHud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                    mbHud.labelText = @"登录中...";
-
+                    mbHUDinit;
+                    
                     //加载热门企业数据
                     [self loadCompanyData];
                     
                 }else{
                     
-                    [mbHud setMode:MBProgressHUDModeText];
-                    mbHud.labelText = @"请求出错，请重试";
-                    [mbHud hide:YES afterDelay:2.0];
-
+                    noWebhud;
                 }
 
             }];
@@ -435,8 +430,8 @@
                     
                     NSLog(@"\n请求:%@",responseObject);
                     
-                    app.companyArray = responseObject[@"result"];
-                    app.hotCompanyArray = responseObject[@"result"];
+                    app.companyArray = responseObject[@"result"][@"data"];
+                    app.hotCompanyArray = responseObject[@"result"][@"data"];
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
@@ -444,9 +439,7 @@
                         
                     }else{
                     
-                        [mbHud setMode:MBProgressHUDModeText];
-                        mbHud.labelText = @"请求出错，请重试";
-                        [mbHud hide:YES afterDelay:2.0];
+                        noWebhud
                     }
                     
                     //保存request
@@ -502,10 +495,7 @@
                         
                     }else{
                         
-                        [mbHud setMode:MBProgressHUDModeText];
-                        mbHud.labelText = @"请求出错，请重试";
-                        
-                        [mbHud hide:YES afterDelay:2.0];
+                        MBhud(@"请求出错，请重试");
                     }
                     
                     app.request = responseObject[@"response"];
@@ -566,7 +556,7 @@
 #pragma mark - 进入“首页”界面
 - (void)UntilSeccessDone
 {
-    [mbHud hide:YES];
+    hudHide;
     
     //初始化_sideBarMenuVC
     UIViewController *viewController = [[UIViewController alloc] init];

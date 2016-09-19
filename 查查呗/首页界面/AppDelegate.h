@@ -24,13 +24,13 @@
 /** 点击企业的ID */
 @property (strong,nonatomic)NSString * companyID;
 /** 企业数组 */
-@property (strong,nonatomic)NSArray * companyArray;
+@property (strong,nonatomic)NSMutableArray * companyArray;
 
 /** 搜索数组 */
 @property (nonatomic,strong) NSArray * resultArray;
 
 /** 热门企业数组 */
-@property (nonatomic,strong) NSArray * hotCompanyArray;
+@property (nonatomic,strong) NSMutableArray * hotCompanyArray;
 
 /** 关注企业数组 */
 @property (nonatomic,strong) NSMutableArray * attentionArray;
