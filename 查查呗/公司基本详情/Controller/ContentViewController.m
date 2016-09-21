@@ -148,7 +148,7 @@
         
         if (app.isLogin == YES) {//登陆
             //时间戳
-            NSDate *  senddate=[NSDate date];
+            NSDate * senddate=[NSDate date];
             
             NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
             
@@ -162,7 +162,6 @@
             //cid
             _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
             
-            NSLog(@"公司ID:%@",app.companyID);
             NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_companyId,@"registNo",_request,@"request",_uid,@"uid",nonce,@"nonce",_timeString,@"timestamp", nil];
             
             //监控网络状态

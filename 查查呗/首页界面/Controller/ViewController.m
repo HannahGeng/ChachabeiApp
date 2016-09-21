@@ -104,7 +104,6 @@
         [mArr addObject:detail];
     }
     
-    app.hotCompanyArray = mArr;
     self.companyArray = mArr;
     
     [self.companyTableView reloadData];
