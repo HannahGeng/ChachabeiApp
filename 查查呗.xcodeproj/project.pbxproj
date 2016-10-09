@@ -32,6 +32,9 @@
 		3D249EA81D122C5C009C22BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA71D122C5C009C22BF /* CoreLocation.framework */; };
 		3D2C28C91D11091D00A52821 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C28C81D11091D00A52821 /* libMBProgressHUD.a */; };
 		3D2C292A1D11478D00A52821 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C29291D11478D00A52821 /* libFMDB.a */; };
+		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
+		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
+		3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD20E0C1DAA14F900A94F3C /* SendView.xib */; };
 		3DD663731D067167006BCB3D /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DD663681D067167006BCB3D /* city.plist */; };
 		3DD663741D067167006BCB3D /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6636A1D067167006BCB3D /* Foundation+Log.m */; };
 		3DD663751D067167006BCB3D /* UIView+XMGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6636C1D067167006BCB3D /* UIView+XMGExtension.m */; };
@@ -252,6 +255,11 @@
 		3D2C28CC1D1139D400A52821 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3D2C28CE1D1139DE00A52821 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		3D2C29291D11478D00A52821 /* libFMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFMDB.a; path = ../../../../.Trash/libFMDB.a; sourceTree = "<group>"; };
+		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
+		3DD20E071DAA13A900A94F3C /* SendCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCover.m; sourceTree = "<group>"; };
+		3DD20E091DAA14EE00A94F3C /* SendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendView.h; sourceTree = "<group>"; };
+		3DD20E0A1DAA14EE00A94F3C /* SendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendView.m; sourceTree = "<group>"; };
+		3DD20E0C1DAA14F900A94F3C /* SendView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendView.xib; sourceTree = "<group>"; };
 		3DD663681D067167006BCB3D /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		3DD6636A1D067167006BCB3D /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		3DD6636B1D067167006BCB3D /* UIView+XMGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XMGExtension.h"; sourceTree = "<group>"; };
@@ -856,6 +864,11 @@
 				3DD663C11D06742A006BCB3D /* WebVC.h */,
 				3DD663C21D06742A006BCB3D /* WebVC.m */,
 				3DD663C31D06742A006BCB3D /* WebVC.xib */,
+				3DD20E061DAA13A900A94F3C /* SendCover.h */,
+				3DD20E071DAA13A900A94F3C /* SendCover.m */,
+				3DD20E091DAA14EE00A94F3C /* SendView.h */,
+				3DD20E0A1DAA14EE00A94F3C /* SendView.m */,
+				3DD20E0C1DAA14F900A94F3C /* SendView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1792,6 +1805,7 @@
 				3DD664881D067D47006BCB3D /* PersonalViewController.xib in Resources */,
 				3DD663CE1D06742A006BCB3D /* TableVC.xib in Resources */,
 				3DD663FE1D06757F006BCB3D /* CityViewCell.xib in Resources */,
+				3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */,
 				3DD663CC1D06742A006BCB3D /* InVC.xib in Resources */,
 				3DD6648F1D067D47006BCB3D /* NewContentController.xib in Resources */,
 				3DD6639F1D0672FE006BCB3D /* MoreViewCell.xib in Resources */,
@@ -1901,6 +1915,7 @@
 				3DD663E21D0674D3006BCB3D /* DrawingViewController.m in Sources */,
 				3DD664A11D067D47006BCB3D /* WeViewController.m in Sources */,
 				3DD663CF1D06742A006BCB3D /* TopButtonVC.m in Sources */,
+				3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */,
 				89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */,
 				3DD663FF1D06757F006BCB3D /* HeadView.m in Sources */,
 				3DD6650C1D06899C006BCB3D /* shareholdModel.m in Sources */,
@@ -1930,6 +1945,7 @@
 				3DD664861D067D47006BCB3D /* ContentViewCell.m in Sources */,
 				3DD664A41D067D47006BCB3D /* aboutViewCell.m in Sources */,
 				3DD663971D0672FE006BCB3D /* ViewController.m in Sources */,
+				3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */,
 				3DD664FC1D06899C006BCB3D /* changeModel.m in Sources */,
 				3DD665051D06899C006BCB3D /* RegistViewCell3.m in Sources */,
 				3DD663A01D0672FE006BCB3D /* SearchViewCell.m in Sources */,

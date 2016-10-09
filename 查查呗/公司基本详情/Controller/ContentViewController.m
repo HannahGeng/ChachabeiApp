@@ -8,21 +8,14 @@
 
 #import "ContentViewController.h"
 
-@interface ContentViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ContentViewController ()<UITableViewDataSource,UITableViewDelegate,SendViewDelegate>
 {
     UIView *_taberView;
     UIButton *_commentButton;
     UIButton *_shareButtn;
     UIButton *_focusButton;
     UIButton * _noFocusButton;
-    UIButton *_sendButton;
-    UIView *_shareView;
-    UIView *_contentView;
-    UILabel *_titleLable;
-    UIImageView *_imageView;
-    UITextField *_emailTextFidld;
     UIButton *_sendBtn;
-    UILabel *_lineLabel;
     NSInteger _rowIndex;
     NSString * _companyId;
     NSString * _timeString;
@@ -508,47 +501,12 @@
     
     if (app.isLogin == YES) {
         
-        _shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
-        UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
-        [_shareView addGestureRecognizer:tapContentGesture];
+        [SendCover show];
         
-        [_shareView setBackgroundColor:LIGHT_OPAQUE_BLACK_COLOR];
-        self.tabBarController.tabBar.hidden=YES;
-        [[UIApplication sharedApplication].keyWindow addSubview:_shareView];
+        //弹出发送邮件窗口
+        SendView * send = [SendView showInPoint:CGPointMake(self.view.width / 2, 120)];
         
-        _contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, [UIUtils getWindowWidth], 120)];
-        [_contentView setBackgroundColor:[UIColor whiteColor]];
-        [_shareView addSubview:_contentView];
-        
-        _titleLable=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 40)];
-        _titleLable.backgroundColor=LIGHT_BLUE_COLOR;
-        _titleLable.text=@"     发送企业信息报告";
-        _titleLable.textColor=[UIColor whiteColor];
-        _titleLable.font=[UIFont systemFontOfSize:16];
-        [_contentView addSubview:_titleLable];
-        
-        _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 65, 30,30)];
-        _imageView.image=[UIImage imageNamed:@"app07.png"];
-        [_contentView addSubview:_imageView];
-        
-        _emailTextFidld=[[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_imageView.frame)+10, 65, 250, 30)];
-        _emailTextFidld.placeholder=@"输入你的邮箱地址";
-        [_contentView addSubview:_emailTextFidld];
-        
-        _sendBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        _sendBtn.frame=CGRectMake(CGRectGetMaxX(_emailTextFidld.frame), 65, 50, 30);
-        _sendBtn.backgroundColor=GREEN_COLOR;
-        [_sendBtn setTitle:@"发送" forState:UIControlStateNormal];
-        [_sendBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _sendBtn.layer.cornerRadius=5;
-        [_sendBtn addTarget:self action:@selector(sendEmail) forControlEvents:UIControlEventTouchUpInside];
-        [_contentView addSubview:_sendBtn];
-        
-        _lineLabel=[[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(_imageView.frame)+3, 280, 1)];
-        _lineLabel.backgroundColor=[UIColor lightGrayColor];
-        [_contentView addSubview:_lineLabel];
-        
-        [_emailTextFidld becomeFirstResponder];
+        send.delegate = self;
 
     }else{
         
@@ -571,29 +529,33 @@
     }
     
 }
-- (void)removeView
+
+- (void)sendMailDidClickSendBtn:(SendView *)send
 {
-    [UIView animateWithDuration:0.3 animations:^{
-                         
-        [_shareView setFrame:CGRectMake(0, [UIUtils getWindowHeight], [UIUtils getWindowWidth], SHARE_CONTENT_HEIGHT)];
-                         
-    } completion:^(BOOL finished) {
-                         
-        [_shareView removeFromSuperview];
-                         
-    }];
+    [self sendEmail];
+}
+
+- (void)closeViewDidClickCloseBtn:(SendView *)send
+{
+    void(^completion)() = ^{
+      
+        [SendCover hide];
+    };
     
+    [SendView hideInPoint:CGPointMake(44, 44) completion:completion];
 }
 
 - (void)sendEmail
 {
+    
     [self.view endEditing:YES];
     AppShare;
     
+    NSLog(@"发送的邮件地址:%@",app.sendEmail);
+
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
-    _emailStr = [AESCrypt encrypt:_emailTextFidld.text password:[AESCrypt decrypt:app.loginKeycode]];
     
-    NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"cid",_emailStr,@"email", nil];
+    NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"eid",[AESCrypt encrypt:app.sendEmail password:[AESCrypt decrypt:app.loginKeycode]],@"email", nil];
     
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
@@ -604,17 +566,20 @@
             
             [[HTTPSessionManager sharedManager] POST:sendEmail_URl parameters:pdic result:^(id responseObject, NSError *error) {
                 
+                NSLog(@"邮件信息:%@",responseObject);
+                
                 app.request = responseObject[@"response"];
                 
                 MBhud(responseObject[@"result"])
                 
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
-                    [UIView animateWithDuration:1.0 animations:^{
+                    void(^completion)() = ^{
                         
-                        [_shareView removeFromSuperview];
-                        
-                    }];
+                        [SendCover hide];
+                    };
+                    
+                    [SendView hideInPoint:CGPointMake(44, 44) completion:completion];
                 }
 
             }];

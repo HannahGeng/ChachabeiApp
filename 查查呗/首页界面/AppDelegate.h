@@ -117,5 +117,8 @@
 /** 企业模型 */
 @property (nonatomic,strong) CompanyDetail * companyModel;
 
+/** 发送的邮箱地址 */
+@property (nonatomic,strong) NSString * sendEmail;
+
 @end
 
