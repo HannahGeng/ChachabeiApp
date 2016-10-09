@@ -153,10 +153,6 @@ self.navigationController.navigationBar.barTintColor=LIGHT_BACKGROUND_COLOR;\
 @{NSFontAttributeName:[UIFont systemFontOfSize:20],\
 NSForegroundColorAttributeName:[UIColor whiteColor]}];\
 
-#define SaveParam \
-[[NSUserDefaults standardUserDefaults] setObject:responseObject forKey:@"responseObject"]; \
-[[NSUserDefaults standardUserDefaults] synchronize];
-
 /**
  *  返回按钮
  */
@@ -234,11 +230,6 @@ UIAlertView* alter=[[UIAlertView alloc]initWithTitle:@"很抱歉" message:@"请�
 #define top 150
 
 /**
- * 登录前获取加密登录参数的密钥(称为key1)
- */
-#define CANSHU_URL @"http://api.4000520856.com:8085/ccbapi/cryptkeywithoutuid/"
-
-/**
  *  手机唯一识别码uuid
  */
 #define UUID \
@@ -274,14 +265,28 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 [_numberTextField setText:phonenum];\
 [_passTextField setText:passnum];
 
+#define APPSHARE \
+AppDelegate * app = [AppDelegate sharedAppDelegate];
+
+//请求头
+#define HEADURL @"http://ta.fqtty.com/ccbapi/"
+
+/**
+ * 登录前获取加密登录参数的密钥(称为key1)
+ */
+#define CANSHU_URL \
+[HEADURL stringByAppendingString:@"cryptkeywithoutuid/"];
+
 //登陆
-#define DENGLU_URL @"http://api.4000520856.com:8085/ccbapi/account_login"
+#define DENGLU_URL \
+[HEADURL stringByAppendingString:@"account_login"];
 
 //注册URL
 #define ZHUCE_URL @"http://api.4000520856.com:8085/ccbapi/account_register"
 
 //热门企业
-#define Company_URL @"http://api.4000520856.com:8085/chachabei/hot"
+#define Company_URL \
+[HEADURL stringByAppendingString:@"hot"]
 
 #define Personal_attention_URL @"http://api.4000520856.com:8085/ccbapi/personal_attention"
 

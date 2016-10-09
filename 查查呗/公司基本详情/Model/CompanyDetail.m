@@ -12,19 +12,18 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    
     if (self = [super init]) {
         
         self.company_name = dictionary[@"ent_name"];
         self.regist_no = dictionary[@"reg_no"];
-        self.registdepartment = dictionary[@"registdepartment"];
-        self.establish_data = dictionary[@"establishment_date"];
+        self.registdepartment = dictionary[@"reg_dept"];
+        self.establish_data = dictionary[@"create_time"];
         self.company_type = dictionary[@"ent_type"];
         self.scope = dictionary[@"scope"];
         self.address = dictionary[@"address"];
-        self.corporation = dictionary[@"corporation"];
+        self.corporation = dictionary[@"legal_person"];
         self.capital = dictionary[@"reg_capital"];
-        self.stockholder = dictionary[@"stockholderDetails"];
+        self.stockholder = dictionary[@"stockInfo"];
         self.member = dictionary[@"member"];
         self.branch = dictionary[@"branch"];
         self.modify = dictionary[@"modify"];

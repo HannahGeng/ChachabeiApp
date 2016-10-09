@@ -16,7 +16,6 @@
     UIButton *_focusButton;
     UIButton * _noFocusButton;
     UIButton *_sendButton;
-    AppDelegate * app;
     UIView *_shareView;
     UIView *_contentView;
     UILabel *_titleLable;
@@ -26,8 +25,6 @@
     UILabel *_lineLabel;
     NSInteger _rowIndex;
     NSString * _companyId;
-    NSString * _uid;
-    NSString * _request;
     NSString * _timeString;
     NSString * _imei;
     NSString * _focus_state;
@@ -57,8 +54,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    app = [AppDelegate sharedAppDelegate];
     
     mbHUDinit;
     [self loadCompanyArray];
@@ -72,19 +67,11 @@
     //添加内容视图
     [self addContentView];
     
-    [self addTableView];
-    
 }
 
 - (void)loadCompanyArray
 {
-    app = [AppDelegate sharedAppDelegate];
-    
-    //uid
-    _uid = app.uid;
-    
-    //request
-    _request = app.request;
+    AppShare;
     
     ResultsViewController * result = [[ResultsViewController alloc] init];
     NSArray * vcArray = [self.navigationController viewControllers];
@@ -107,7 +94,7 @@
         
         _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
         
-        NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",_companyId,@"registNo",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
+        NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"eid",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
         
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
@@ -148,7 +135,7 @@
         
         if (app.isLogin == YES) {//登陆
             //时间戳
-            NSDate * senddate=[NSDate date];
+            NSDate *  senddate=[NSDate date];
             
             NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
             
@@ -162,7 +149,7 @@
             //cid
             _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_companyId,@"registNo",_request,@"request",_uid,@"uid",nonce,@"nonce",_timeString,@"timestamp", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_companyId,@"eid",app.request,@"request",app.uid,@"uid",nonce,@"nonce",_timeString,@"timestamp", nil];
             
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -174,17 +161,16 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
-                        NSLog(@"\n首页登录状态公司详情:%@",responseObject);
-                        
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
                             app.request = responseObject[@"response"];
                             
                             //保存企业详细信息数组源
-                            app.basicInfo = responseObject[@"result"][@"basicInfo"];
+                            app.basicInfo = responseObject[@"result"][@"data"];
                             
-                            app.companyDetailContent = responseObject[@"result"];
-                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
+                            app.companyDetailContent = responseObject[@"result"][@"data"][@"basicInfo"];
+                            
+                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
                             
                             [self.ContentTableView reloadData];
                             hudHide;
@@ -222,7 +208,7 @@
             
             _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.noLoginKeycode]];
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.noLoginKeycode,@"keycode",_companyId,@"registNo",_request,@"request",nonce,@"nonce",_timeString,@"timestamp", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.noLoginKeycode,@"keycode",_companyId,@"registNo",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp", nil];
             
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -266,7 +252,6 @@
             }];
             
         }
-        
     }
 
 }
@@ -276,7 +261,7 @@
 {
     [self.navigationItem setHidesBackButton:YES];
     //设置导航栏的颜色
-    SetNavigationBar;
+    SetNavigationBar(nil);
     
     //为导航栏添加左侧按钮
     Backbutton;
@@ -318,23 +303,14 @@
     }
 
 }
-//加载TableView
--(void)addTableView
-{
-    self.ContentTableView.dataSource=self;
-    self.ContentTableView.delegate=self;
-    self.ContentTableView.backgroundColor=[UIColor clearColor];
-    self.ContentTableView.scrollEnabled =YES; //设置tableview滚动
-    self.ContentTableView.separatorStyle = UITableViewCellSelectionStyleGray;
-
-}
 
 //添加底部试图
 -(void)addContentView
 {
+    AppShare;
     _taberView=[[UIView alloc]initWithFrame:CGRectMake(0, [UIUtils getWindowHeight]-50, [UIUtils getWindowWidth], 50)];
     _taberView.backgroundColor=LIGHT_BLUE_COLOR;
-    [[[UIApplication  sharedApplication]keyWindow] addSubview : _taberView];
+    [[[UIApplication sharedApplication] keyWindow] addSubview: _taberView];
 
     //评论按钮
     _commentButton = [self buttonWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth]/4, 50) image:@"app33.png" imageEdgeInset:UIEdgeInsetsMake(10,10,25,_commentButton.titleLabel.bounds.size.width-7) titleEdgeInsets:UIEdgeInsetsMake(23, -_commentButton.titleLabel.bounds.size.width-25, 0, 0) action:@selector(commentClick) title:@"评论"];
@@ -444,10 +420,7 @@
 #pragma mark - 点击关注
 - (void)focusClick:(id)sender
 {
-    app = [AppDelegate sharedAppDelegate];
-    
-    //request
-    _request = app.request;
+    AppShare;
     
     //cid
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
@@ -462,7 +435,7 @@
             //关注状态
             _focus_state = @"1";
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",_request,@"request",_companyId,@"cid",_focus_state,@"focus_state", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"eid",_focus_state,@"focus_state", nil];
 
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -489,7 +462,7 @@
             //关注状态
             _focus_state = @"2";
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",_request,@"request",_companyId,@"cid",_focus_state,@"focus_state", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"eid",_focus_state,@"focus_state", nil];
             
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -500,7 +473,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Change_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
-//                        NSLog(@"取消关注企业信息:%@",responseObject);
                         app.request = responseObject[@"response"];
                     }];
                     
@@ -532,6 +504,8 @@
 
 -(void)sendClick
 {
+    AppShare;
+    
     if (app.isLogin == YES) {
         
         _shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
@@ -614,14 +588,12 @@
 - (void)sendEmail
 {
     [self.view endEditing:YES];
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
-    _uid = app.uid;
-    _request = app.request;
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
     _emailStr = [AESCrypt encrypt:_emailTextFidld.text password:[AESCrypt decrypt:app.loginKeycode]];
     
-    NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",_companyId,@"cid",_emailStr,@"email", nil];
+    NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"cid",_emailStr,@"email", nil];
     
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
@@ -669,7 +641,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     if (indexPath.row==0) {
         
@@ -853,7 +825,7 @@
 #pragma mark - 年报点击事件
 - (void)yearClick
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     NSArray * yearArr = app.companyDetailContent[@"report_date"];
     

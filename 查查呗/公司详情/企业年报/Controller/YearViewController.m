@@ -35,8 +35,7 @@
 
 - (void)getNav
 {
-    SetNavigationBar;
-    self.navigationItem.title = @"企业年报";
+    SetNavigationBar(@"企业年报");
     Backbutton;
 }
 

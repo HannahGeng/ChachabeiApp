@@ -30,7 +30,7 @@
 @property (nonatomic,strong) NSArray * resultArray;
 
 /** 热门企业数组 */
-@property (nonatomic,strong) NSMutableArray * hotCompanyArray;
+@property (nonatomic,strong) NSArray * hotCompanyArray;
 
 /** 关注企业数组 */
 @property (nonatomic,strong) NSMutableArray * attentionArray;

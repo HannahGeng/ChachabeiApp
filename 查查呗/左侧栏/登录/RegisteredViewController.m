@@ -10,16 +10,11 @@
 
 @interface RegisteredViewController ()<UITextFieldDelegate>
 {
-    TimerButton *_timeButton;
     NSDictionary * _dic;//参数URL的responseObject
-    NSString * _pwd;//加密的keycode
-    NSString * _keycode;//解密的keycode
-    AppDelegate * app;
-    AFNetworkReachabilityManager * mgr;
-    NSString * _hudStr;
     MBProgressHUD * mbHud;
-
+    NSString * _hudStr;
 }
+@property (weak, nonatomic) IBOutlet UIButton *timeButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *verificationButton;
 /**
@@ -59,75 +54,30 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
 
-    _numLabel.tag = 1;
-    _passLabel.tag = 2;
-    _confirmPassLabel.tag = 3;
-    _nameLabel.tag = 4;
-    _messageLabel.tag = 5;
-    
-    //设置导航栏不透明
-    self.navigationController.navigationBar.translucent = NO;
-    
     //设置导航栏
     [self setNavigationBar];
     
-    //取出UserDefaults中的参数
-    GetParam;
-    NSString * decryptKeycode = responseObject[@"result"][@"keycode"];
-    
-    //加密的keycode
-    _pwd = decryptKeycode;
-    //解密的keycode
-    _keycode = [AESCrypt decrypt:_pwd];
-    
     //设置注册界面样式
     [self setUIStyle];
-
-    _nameLabel.delegate = self;
     
 }
 
 //设置导航栏
 -(void)setNavigationBar
 {
-    [self.navigationItem setHidesBackButton:YES];
-    
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"会员注册";
+    SetNavigationBar(@"会员注册");
         
     //为导航栏添加左侧按钮
-        Backbutton;
+    Backbutton;
 }
 
 - (void)setUIStyle
 {
-    //设置背景颜色
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    
     _verificationButton.layer.masksToBounds=YES;
     _verificationButton.layer.cornerRadius=5;
     
-    _timeButton=[TimerButton buttonWithType:UIButtonTypeCustom];
-    _timeButton.frame=CGRectMake([UIUtils getWindowWidth]-20-100, 85, 100, 30);
-    [_timeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [_timeButton setTintColor:[UIColor whiteColor]];
-    _timeButton.backgroundColor=GREEN_COLOR;
-    _timeButton.layer.cornerRadius=5;
-    _timeButton.titleLabel.font=[UIFont systemFontOfSize:15];
-    [_timeButton addTarget:self action:@selector(btn1Clink:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_timeButton];
-    
-    _numLabel.delegate = self;
-    _passLabel.delegate = self;
-    _confirmPassLabel.delegate = self;
-    _messageLabel.delegate = self;
-    _nameLabel.delegate = self;
-    
-    _numLabel.keyboardType = UIKeyboardTypeNumberPad;
-    _messageLabel.keyboardType = UIKeyboardTypeNumberPad;
-    _passLabel.keyboardType = UIKeyboardTypeAlphabet;
-    _confirmPassLabel.keyboardType = UIKeyboardTypeAlphabet;
+    _timeButton.layer.cornerRadius = 5;
 }
 
 - (void)startTime
@@ -166,7 +116,6 @@
         }
     });
     dispatch_resume(_timer);
-    
 }
 
 -(void)backButton
@@ -174,43 +123,38 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)btn1Clink:(UIButton *)btn{
-    
+
+- (IBAction)timeClick:(UIButton *)button {
+     
     [self.view endEditing:YES];
     
-    //加密的keycode
-    GetParam;
-    NSString * encryptKeycode = responseObject[@"result"][@"keycode"];
+    AppShare;
     
     //手机号加密
-    NSString * telePhone = [AESCrypt encrypt:self.numLabel.text password:_keycode];
+    NSString * telePhone = [AESCrypt encrypt:self.numLabel.text password:[AESCrypt decrypt:app.keycode]];
     
-//    NSLog(@"手机号:%@",telePhone);
-    
-    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:encryptKeycode,@"keycode",telePhone,@"telno", nil];
+    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.keycode,@"keycode",telePhone,@"telno", nil];
     
     //监控网络状态
-    mgr = [AFNetworkReachabilityManager sharedManager];
+    AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
+    
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        NSLog(@"\n============网络状态：%zd",status);
         
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:MsgCode_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
-//                NSLog(@"%@",responseObject);
                 _hudStr = responseObject[@"result"];
                 
                 MBhud(_hudStr);
-                
+
                 if ([_hudStr isEqualToString:@"验证码发送成功"]) {
                     
                     [self startTime];
                     
                 }
-
+                
             }];
             
         }else{
@@ -219,7 +163,6 @@
             
         }
     }];
-
     
 }
 
@@ -292,7 +235,6 @@
 
 - (void)keyboardWillHide:(NSNotification *)notif {
     
-//    NSLog(@"键盘退出");
     [UIView animateWithDuration:0.5 animations:^{
         self.view.frame = CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 
@@ -311,25 +253,27 @@
     
     [self.view endEditing:YES];
     
+    AppShare;
+    
     //telno
-    NSString * telePhone = [AESCrypt encrypt:self.numLabel.text password:_keycode];
+    NSString * telePhone = [AESCrypt encrypt:self.numLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //msgcode
-    NSString * messageCode = [AESCrypt encrypt:self.messageLabel.text password:_keycode];
+    NSString * messageCode = [AESCrypt encrypt:self.messageLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //emai
-    NSString * email = [AESCrypt encrypt:self.emailLabel.text password:_keycode];
+    NSString * email = [AESCrypt encrypt:self.emailLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //nickname
-    NSString * nickName = [AESCrypt encrypt:self.nameLabel.text password:_keycode];
+    NSString * nickName = [AESCrypt encrypt:self.nameLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //password
-    NSString * password = [AESCrypt encrypt:self.passLabel.text password:_keycode];
+    NSString * password = [AESCrypt encrypt:self.passLabel.text password:[AESCrypt decrypt:app.keycode]];
         
-    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_pwd,@"keycode",telePhone,@"telno",messageCode,@"msgcode",email,@"email",nickName,@"nickname",password,@"password", nil];
+    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.keycode,@"keycode",telePhone,@"telno",messageCode,@"msgcode",email,@"email",nickName,@"nickname",password,@"password", nil];
     
     //监控网络状态
-    mgr = [AFNetworkReachabilityManager sharedManager];
+    AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
@@ -339,11 +283,11 @@
                 
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
-                    app = [AppDelegate sharedAppDelegate];
                     app.phonenum = self.numLabel.text;
                     app.password = self.passLabel.text;
                     
                     _hudStr = responseObject[@"result"];
+                    
                     MBhud(_hudStr);
                     
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -371,7 +315,7 @@
 - (void)gotoLogin
 {
     LoginViewController * login = [[LoginViewController alloc] init];
-    [self presentViewController:login animated:YES completion:nil];
+    [self.navigationController presentViewController:login animated:YES completion:nil];
 }
 
 @end

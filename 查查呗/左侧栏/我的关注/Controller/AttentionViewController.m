@@ -54,8 +54,7 @@ static NSString * const CompanyId = @"company";
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"我的关注";
+    SetNavigationBar(@"我的关注");
 
     //为导航栏添加右侧按钮
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];

@@ -55,8 +55,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"设置";
+    SetNavigationBar(@"设置");
     
 }
 //添加内容视图

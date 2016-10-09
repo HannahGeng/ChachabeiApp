@@ -37,8 +37,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"消息盒子";
+    SetNavigationBar(@"消息盒子");
     
     //为导航栏添加左侧按钮
     Backbutton;

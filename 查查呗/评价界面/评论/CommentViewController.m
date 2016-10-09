@@ -67,8 +67,7 @@
 {
     [self.navigationItem setHidesBackButton:YES];
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"评论";
+    SetNavigationBar(@"评论");
     
     //为导航栏添加左侧按钮
     Backbutton;

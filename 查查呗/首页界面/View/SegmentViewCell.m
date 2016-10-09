@@ -10,24 +10,15 @@
 
 @implementation SegmentViewCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
+static NSString *cellID=@"TopButtonViewCell";
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"TopButtonViewCell";
     SegmentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SegmentViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //添加cell的背景图片
-        //        cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijing.png"]];
+       
     }
     return cell;
 }

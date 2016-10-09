@@ -65,9 +65,7 @@
     
     //米子架
     NSArray *largestPointArray = [_pointsLengthArrayArray lastObject];
-    
     for (NSValue* pointValue in largestPointArray){
-        
         CGContextRef graphContext = UIGraphicsGetCurrentContext();
         CGContextBeginPath(graphContext);
         CGContextMoveToPoint(graphContext, _centerX, _centerY);
@@ -78,7 +76,6 @@
     }
     //阴影面积
     if (YES) {
-        
         CGContextRef graphContext = UIGraphicsGetCurrentContext();
         CGContextBeginPath(graphContext);
         CGPoint beginPoint = [[_pointsToPlotArray objectAtIndex:0] CGPointValue];
@@ -91,7 +88,6 @@
         CGContextFillPath(graphContext);
     }
 }
-
 #pragma mark - Main Function
 - (void)calculateAllPoints
 {

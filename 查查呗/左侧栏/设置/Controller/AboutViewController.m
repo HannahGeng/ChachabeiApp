@@ -43,8 +43,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"用户协议";
+    SetNavigationBar(@"用户协议");
     //为导航栏添加左侧按钮
     Backbutton;
     //为导航栏添加右侧按钮

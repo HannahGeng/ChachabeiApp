@@ -8,27 +8,51 @@
 
 #import "TopButtonViewCell.h"
 
-@implementation TopButtonViewCell
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
+@interface TopButtonViewCell()
 
-+(instancetype)cellWithTableView:(UITableView *)tableView{
+@end
+
+@implementation TopButtonViewCell
+
+static NSString *cellID=@"TopButtonViewCell";
+
++ (instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"TopButtonViewCell";
-    TopButtonViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    TopButtonViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TopButtonViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //添加cell的背景图片
-        //        cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijing.png"]];
     }
+
+    [cell addSubview:cell.codeButton];
+    [cell addSubview:cell.cardButton];
+    [cell addSubview:cell.recordButton];
+
     return cell;
+}
+
+//扫二维码
+- (void)setCodeButton:(UIButton *)codeButton
+{
+    _codeButton = codeButton;
+    
+    [_codeButton buttonWithImage:[UIImage imageNamed:@"app21"] imageEdgeInsets:UIEdgeInsetsMake(-5,28,25,self.codeButton.titleLabel.bounds.size.width-20) title:@"扫二维码" titleEggeInsets:UIEdgeInsetsMake(65, -self.codeButton.titleLabel.bounds.size.width-65, 0, 0) titleFont:14];
+}
+
+//扫名片
+- (void)setCardButton:(UIButton *)cardButton
+{
+    _cardButton = cardButton;
+    
+    [_cardButton buttonWithImage:[UIImage imageNamed:@"app22"] imageEdgeInsets:UIEdgeInsetsMake(-5,25,25,self.cardButton.titleLabel.bounds.size.width-15) title:@"扫名片" titleEggeInsets:UIEdgeInsetsMake(65, -self.cardButton.titleLabel.bounds.size.width-60, 0, 0) titleFont:14];
+}
+
+//失信纪录
+- (void)setRecordButton:(UIButton *)recordButton
+{
+    _recordButton = recordButton;
+    
+    [_recordButton buttonWithImage:[UIImage imageNamed:@"app23"] imageEdgeInsets:UIEdgeInsetsMake(-5,32,25,self.recordButton.titleLabel.bounds.size.width-25) title:@"失信记录" titleEggeInsets:UIEdgeInsetsMake(65, -self.recordButton.titleLabel.bounds.size.width-55, 0, 0) titleFont:14];
 }
 
 @end

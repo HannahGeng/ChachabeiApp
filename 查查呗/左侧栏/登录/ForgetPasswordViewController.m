@@ -11,16 +11,15 @@
 @interface ForgetPasswordViewController ()<UITextFieldDelegate>
 {
     UIButton * _verificationButton;
-    TimerButton *_timeButton;
-    NSString * _keycode;//解密的keycode
     NSString * _isForgetpass;//是否忘记密码
     NSString * _messageStr;//加密的验证码
     NSString * _newPass;//加密的密码
     NSString * _hudStr;
-    AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 
 }
+
+@property (weak, nonatomic) IBOutlet UIButton *timeButton;
 
 /** 手机号 */
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumLabel;
@@ -38,11 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _phoneNumLabel.tag = 1;
-    _setPassLabel.tag = 2;
-    _confirmPassLabel.tag = 3;
-    _messageLabel.tag = 4;
-    
     //设置导航栏
     [self setNavigationBar];
     
@@ -55,8 +49,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"找回密码";
+    SetNavigationBar(@"找回密码");
     
     //为导航栏添加左侧按钮
     Backbutton;
@@ -69,32 +62,52 @@
 
 - (void)setUIStyle
 {
-    //设置背景颜色
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    _phoneNumLabel.delegate = self;
-    _setPassLabel.delegate = self;
-    _confirmPassLabel.delegate = self;
-    _messageLabel.delegate = self;
-    
-    _phoneNumLabel.keyboardType = UIKeyboardTypeNumberPad;
-    _messageLabel.keyboardType = UIKeyboardTypeNumberPad;
-    _confirmPassLabel.keyboardType = UIKeyboardTypeAlphabet;
-    _setPassLabel.keyboardType = UIKeyboardTypeAlphabet;
-    
     _verificationButton.layer.masksToBounds=YES;
     _verificationButton.layer.cornerRadius=5;
     
-    _timeButton=[TimerButton buttonWithType:UIButtonTypeCustom];
-    _timeButton.frame=CGRectMake([UIUtils getWindowWidth]-20-100, 85, 100, 30);
-    [_timeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-//    [_timeButton addTarget:self action:@selector(startTime) forControlEvents:UIControlEventTouchUpInside];
-    [_timeButton setTintColor:[UIColor whiteColor]];
-    _timeButton.backgroundColor=GREEN_COLOR;
-    _timeButton.layer.cornerRadius=5;
-    _timeButton.titleLabel.font=[UIFont systemFontOfSize:15];
-    [_timeButton addTarget:self action:@selector(btn1Clink:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_timeButton];
+    _timeButton.layer.cornerRadius = 5;
+}
+
+- (IBAction)timeClick:(UIButton *)sender {
     
+    [self.view endEditing:YES];
+    
+    AppShare;
+    
+    //手机号加密
+    NSString * telePhone = [AESCrypt encrypt:self.phoneNumLabel.text password:[AESCrypt decrypt:app.keycode]];
+    
+    _isForgetpass = @"1";
+    
+    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.keycode,@"keycode",telePhone,@"telno",_isForgetpass,@"is_forgetpass", nil];
+    
+    //监控网络状态
+    AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
+    [mgr startMonitoring];
+    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        if (status != 0) {
+            
+            [[HTTPSessionManager sharedManager] POST:MsgCode_URL parameters:pDic result:^(id responseObject, NSError *error) {
+                
+                _hudStr = responseObject[@"result"];
+                
+                MBhud(_hudStr);
+                
+                if ([_hudStr isEqualToString:@"验证码发送成功"]) {
+                    
+                    [self startTime];
+                    
+                }
+                
+            }];
+            
+        }else{
+            
+            noWebhud;
+        }
+    }];
+
 }
 
 - (void)startTime
@@ -104,7 +117,6 @@
         [_messageLabel.text stringByReplacingOccurrencesOfString:_messageLabel.text withString:@""];
     }
     
-//    NSLog(@"===================%@",_phoneNumLabel.text);
     if (_phoneNumLabel.text.length != 0) {
         
         [self.view endEditing:YES];
@@ -193,74 +205,24 @@
     return YES;
 }
 
--(void)btn1Clink:(UIButton *)btn{
-    
-    [self.view endEditing:YES];
-    
-    //加密的keycode
-    GetParam;
-    NSString * encryptKeycode = responseObject[@"result"][@"keycode"];
-    
-    //手机号加密
-    NSString * telePhone = [AESCrypt encrypt:self.phoneNumLabel.text password:[AESCrypt decrypt:encryptKeycode]];
-    
-//    NSLog(@"手机号:%@",telePhone);
-    _isForgetpass = @"1";
-    
-    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:encryptKeycode,@"keycode",telePhone,@"telno",_isForgetpass,@"is_forgetpass", nil];
-
-    //监控网络状态
-    mgr = [AFNetworkReachabilityManager sharedManager];
-    [mgr startMonitoring];
-    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        if (status != 0) {
-            
-            [[HTTPSessionManager sharedManager] POST:MsgCode_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                
-//                NSLog(@"%@",responseObject);
-                _hudStr = responseObject[@"result"];
-                
-                MBhud(_hudStr);
-                
-                if ([_hudStr isEqualToString:@"验证码发送成功"]) {
-                    
-                    [self startTime];
-                    
-                }
-
-            }];
-            
-        }else{
-            
-            noWebhud;
-        }
-    }];
-
-}
-
 - (IBAction)confirmClick:(UIButton *)sender {
     
     [self.view endEditing:YES];
     
-    //加密的keycode
-    GetParam;
-    NSString * encryptKeycode = responseObject[@"result"][@"keycode"];
+    AppShare;
     
     //手机号加密
-    NSString * telePhone = [AESCrypt encrypt:self.phoneNumLabel.text password:[AESCrypt decrypt:encryptKeycode]];
+    NSString * telePhone = [AESCrypt encrypt:self.phoneNumLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //验证码加密
-    _messageStr = [AESCrypt encrypt:_messageLabel.text password:[AESCrypt decrypt:encryptKeycode]];
-//    NSLog(@"%@",_messageLabel.text);
+    _messageStr = [AESCrypt encrypt:_messageLabel.text password:[AESCrypt decrypt:app.keycode]];
     
     //密码加密
-    _newPass = [AESCrypt encrypt:_setPassLabel.text password:[AESCrypt decrypt:encryptKeycode]];
+    _newPass = [AESCrypt encrypt:_setPassLabel.text password:[AESCrypt decrypt:app.keycode]];
     
-//    NSLog(@"手机号:%@",telePhone);
     _isForgetpass = @"1";
     
-    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:encryptKeycode,@"keycode",telePhone,@"telno",_messageStr,@"msgcode",_newPass,@"newpass", nil];
+    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.keycode,@"keycode",telePhone,@"telno",_messageStr,@"msgcode",_newPass,@"newpass", nil];
     
     if (![_setPassLabel.text isEqualToString:_confirmPassLabel.text]) {
         
@@ -269,21 +231,17 @@
     }else{
         
         //监控网络状态
-        mgr = [AFNetworkReachabilityManager sharedManager];
+        AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-            
-//            NSLog(@"\n============网络状态：%zd",status);
             
             if (status != 0) {
                 
                 [[HTTPSessionManager sharedManager] POST:forgetPass_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
-//                    NSLog(@"%@",responseObject);
-                    
                     _hudStr = responseObject[@"result"];
                     
-                    MBhud(responseObject[@"result"]);
+                    MBhud(_hudStr)
                     
                     if ([_hudStr isEqualToString:@"密码更新成功"]) {
                         
@@ -291,6 +249,7 @@
                             
                             [self.navigationController popViewControllerAnimated:YES];
                             
+                            [[NSNotificationCenter defaultCenter] postNotificationName:@"deletePass" object:nil];
                         });
                         
                     }

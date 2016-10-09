@@ -61,7 +61,6 @@
     
 }
 
-
 //POST
 - (void)POST:(NSString *)url parameters:(id)parameters result:(ResultBlock)result
 {

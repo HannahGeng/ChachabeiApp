@@ -71,8 +71,7 @@
 //设置导航栏
 -(void)setNavigationBar
 {
-    self.navigationItem.title = @"附近的企业";
-    SetNavigationBar;
+    SetNavigationBar(@"附近的企业");
     //为导航栏添加左侧按钮
     Backbutton;
     //为导航栏添加右侧按钮

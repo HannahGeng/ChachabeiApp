@@ -169,6 +169,7 @@
 		3DD6657F1D068AF4006BCB3D /* SideBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665551D068AF4006BCB3D /* SideBarMenuViewController.m */; };
 		3DD665851D068AF4006BCB3D /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665621D068AF4006BCB3D /* UIUtils.m */; };
 		3DD665C51D06A1FB006BCB3D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665C41D06A1FB006BCB3D /* AppDelegate.mm */; };
+		3DD999311DA8C3BE0022A639 /* UIButton+CCBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */; };
 		3DE3C06A1D07A9A600122976 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C0691D07A9A600122976 /* libAFNetworking.a */; };
 		3DE3C06E1D07A9C900122976 /* libMJExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C06D1D07A9C900122976 /* libMJExtension.a */; };
 		3DE3C0701D07A9CC00122976 /* libSVProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C06F1D07A9CC00122976 /* libSVProgressHUD.a */; };
@@ -471,6 +472,8 @@
 		3DD665861D069475006BCB3D /* Headfile.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Headfile.pch; sourceTree = "<group>"; };
 		3DD665C31D06A1FB006BCB3D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3DD665C41D06A1FB006BCB3D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		3DD9992F1DA8C3BE0022A639 /* UIButton+CCBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CCBButton.h"; sourceTree = "<group>"; };
+		3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CCBButton.m"; sourceTree = "<group>"; };
 		3DE3C0691D07A9A600122976 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
 		3DE3C06B1D07A9C600122976 /* libFMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFMDB.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libFMDB.a"; sourceTree = "<group>"; };
 		3DE3C06D1D07A9C900122976 /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJExtension.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libMJExtension.a"; sourceTree = "<group>"; };
@@ -711,6 +714,8 @@
 				3DD6636A1D067167006BCB3D /* Foundation+Log.m */,
 				3DD6636B1D067167006BCB3D /* UIView+XMGExtension.h */,
 				3DD6636C1D067167006BCB3D /* UIView+XMGExtension.m */,
+				3DD9992F1DA8C3BE0022A639 /* UIButton+CCBButton.h */,
+				3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */,
 			);
 			path = "扩展类";
 			sourceTree = "<group>";
@@ -1705,19 +1710,22 @@
 		3D15D00A1C03F6B300AB19E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = zdzx;
 				TargetAttributes = {
 					3D15D0111C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = PAJJUPRUG8;
+						DevelopmentTeam = AK5T28Y6FV;
+						ProvisioningStyle = Manual;
 					};
 					3D15D02A1C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 8C6NG32TBS;
 						TestTargetID = 3D15D0111C03F6B300AB19E5;
 					};
 					3D15D0351C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 8C6NG32TBS;
 						TestTargetID = 3D15D0111C03F6B300AB19E5;
 					};
 				};
@@ -1951,6 +1959,7 @@
 				3DD6639C1D0672FE006BCB3D /* ButtonViewCell.m in Sources */,
 				3DD6657F1D068AF4006BCB3D /* SideBarMenuViewController.m in Sources */,
 				3DD664901D067D47006BCB3D /* NewViewController.m in Sources */,
+				3DD999311DA8C3BE0022A639 /* UIButton+CCBButton.m in Sources */,
 				3DD663C61D06742A006BCB3D /* CompanyDetail.m in Sources */,
 				3DD663771D067167006BCB3D /* HTTPSessionManager.m in Sources */,
 				3DD664841D067D47006BCB3D /* LeftViewController.m in Sources */,
@@ -2032,6 +2041,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2041,14 +2051,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8C6NG32TBS;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2080,6 +2093,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -2089,14 +2103,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8C6NG32TBS;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2125,10 +2142,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PAJJUPRUG8;
+				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2149,7 +2166,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
+				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
@@ -2161,9 +2179,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = PAJJUPRUG8;
+				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2183,7 +2201,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
+				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s";
 			};

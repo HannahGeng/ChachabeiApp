@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib {
 
+    [super awakeFromNib];
+    
     self.CityName.layer.cornerRadius=5.5;
     self.CityName.layer.masksToBounds=YES;
 }

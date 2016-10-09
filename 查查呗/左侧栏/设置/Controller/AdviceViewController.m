@@ -51,8 +51,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"问题建议";
+    SetNavigationBar(@"问题建议");
     
     //为导航栏添加左侧按钮
     Backbutton;
@@ -96,7 +95,6 @@
     //监控网络状态
     mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
-    
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {

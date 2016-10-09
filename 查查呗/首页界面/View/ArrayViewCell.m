@@ -28,7 +28,7 @@
     self.companyLabel.text = attention.cname;
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView
++ (instancetype)cellWithTable:(UITableView *)tableView
 {
     ArrayViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"company"];
     

@@ -117,8 +117,7 @@
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
-    SetNavigationBar;
-    self.title=@"个人中心";
+    SetNavigationBar(@"个人中心");
         
     //为导航栏添加左侧按钮
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
