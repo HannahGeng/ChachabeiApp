@@ -11,7 +11,6 @@
 @interface SendView ()
 
 @property (weak, nonatomic) IBOutlet UITextField *sendField;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 @end
 
@@ -28,7 +27,7 @@
 - (IBAction)sendClick:(UIButton *)sender {
 
     AppShare;
-    
+
     app.sendEmail = _sendField.text;
 
     if ([_delegate respondsToSelector:@selector(sendMailDidClickSendBtn:)]) {

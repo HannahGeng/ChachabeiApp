@@ -154,6 +154,8 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
+                        NSLog(@"公司详细信息:%@",responseObject);
+                        
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
                             app.request = responseObject[@"response"];
@@ -270,9 +272,8 @@
 
 -(void)remindButton
 {
-//    //发送通知
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"homeView" object:nil];
+    //发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"homeView" object:nil];
     
 }
 
@@ -314,7 +315,6 @@
     //关注按钮
     _focusButton=[UIButton buttonWithType:UIButtonTypeCustom];
     _focusButton.frame=CGRectMake([UIUtils getWindowWidth]/4*2, 0, [UIUtils getWindowWidth]/4, 50);
-
     [_focusButton setImage:[UIImage imageNamed:@"app35"] forState:UIControlStateNormal];
     [_focusButton setImage:[UIImage imageNamed:@"guanzhu"] forState:UIControlStateSelected];
     
@@ -337,7 +337,6 @@
     [_focusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _focusButton.titleEdgeInsets = UIEdgeInsetsMake(25, -_commentButton.titleLabel.bounds.size.width-35, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
     [_focusButton addTarget:self action:@selector(focusClick:) forControlEvents:UIControlEventTouchUpInside];
-
     [_taberView addSubview:_focusButton];
     
     //如果关注数组不为空
@@ -363,7 +362,7 @@
     _sendBtn = [self buttonWithFrame:CGRectMake([UIUtils getWindowWidth]/4*3, 0, [UIUtils getWindowWidth]/4, 50) image:@"app36.png" imageEdgeInset:UIEdgeInsetsMake(10,10,25,_commentButton.titleLabel.bounds.size.width-7) titleEdgeInsets:UIEdgeInsetsMake(23, -_commentButton.titleLabel.bounds.size.width-25, 0, 0) action:@selector(sendClick) title:@"发送"];
 }
 
-#pragma mark - 封装递补工具条按钮
+#pragma mark - 封装递底部工具条按钮
 - (UIButton *)buttonWithFrame:(CGRect)frame image:(NSString *)image imageEdgeInset:(UIEdgeInsets)imageInset titleEdgeInsets:(UIEdgeInsets)titleInset action:(SEL)action title:(NSString *)title
 {
     UIButton * button =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -479,18 +478,7 @@
         
     }else{//未登录用户
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"账号登录" message:@"匿名用户，你还没有登录！" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-            UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:loginVC];
-            [self presentViewController:naviController animated:YES completion:nil];
-        }]];
-        
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        }]];
-        [self presentViewController:alert animated:YES completion:^{
-        }];
+        NoLoginWarn;
     }
    
 }
@@ -510,22 +498,7 @@
 
     }else{
         
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"账号登录" message:@"匿名用户，你还没有登录！" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            
-            LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-            UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:loginVC];
-            [self presentViewController:naviController animated:YES completion:nil];
-        }]];
-        
-        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            
-        }]];
-        
-        [self presentViewController:alert animated:YES completion:^{
-            
-        }];
-
+        NoLoginWarn;
     }
     
 }
@@ -551,8 +524,6 @@
     [self.view endEditing:YES];
     AppShare;
     
-    NSLog(@"发送的邮件地址:%@",app.sendEmail);
-
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
     
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"eid",[AESCrypt encrypt:app.sendEmail password:[AESCrypt decrypt:app.loginKeycode]],@"email", nil];
@@ -611,7 +582,6 @@
     if (indexPath.row==0) {
         
         HeardViewCell *cell=[HeardViewCell cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = LIGHT_BACKGROUND_COLOR;
         
         cell.companyDetail =  app.companyModel;
@@ -621,64 +591,26 @@
     if (indexPath.row==1) {
         
         TableVC *cell=[TableVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
         cell.backgroundColor = LIGHT_BLUE_COLOR;
         return cell;
     }
+    
     if (indexPath.row==2) {
         AddressVC *cell=[AddressVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
         return cell;
     }
     if (indexPath.row==3) {
         WebVC *cell=[WebVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
     if (indexPath.row==4) {
         
         TopButtonVC *cell=[TopButtonVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.messageButton setImage:[UIImage imageNamed:@"app41.png"] forState:UIControlStateNormal];
-        cell.messageButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.messageButton.titleLabel.bounds.size.width-7);
-        [cell.messageButton setTitle:@"工商信息" forState:UIControlStateNormal];//设置button的title
-        cell.messageButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.messageButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.messageButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.messageButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.messageButton.titleLabel.bounds.size.width-25, 0, 0);
+        
         [cell.messageButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.messageButton];
-        
-        [cell.introduceButton setImage:[UIImage imageNamed:@"app422.png"] forState:UIControlStateNormal];
-        cell.introduceButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.introduceButton.titleLabel.bounds.size.width-7);
-        [cell.introduceButton setTitle:@"公司介绍" forState:UIControlStateNormal];//设置button的title
-        cell.introduceButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.introduceButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.introduceButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.introduceButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.introduceButton.titleLabel.bounds.size.width-25, 0, 0);
-        [cell addSubview:cell.introduceButton];
-        
-        [cell.creditButton setImage:[UIImage imageNamed:@"app433.png"] forState:UIControlStateNormal];
-        cell.creditButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.creditButton.titleLabel.bounds.size.width-7);
-        [cell.creditButton setTitle:@"信用评级" forState:UIControlStateNormal];//设置button的title
-        cell.creditButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.creditButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.creditButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.creditButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.creditButton.titleLabel.bounds.size.width-25, 0, 0);
-        [cell addSubview:cell.creditButton];
-        
-        [cell.authorizationButton setImage:[UIImage imageNamed:@"app444.png"] forState:UIControlStateNormal];
-        cell.authorizationButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.authorizationButton.titleLabel.bounds.size.width-7);
-        [cell.authorizationButton setTitle:@"授权记录" forState:UIControlStateNormal];//设置button的title
-        cell.authorizationButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.authorizationButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.authorizationButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.authorizationButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.authorizationButton.titleLabel.bounds.size.width-25, 0, 0);
-        [cell addSubview:cell.authorizationButton];
         
         return cell;
     
@@ -686,94 +618,15 @@
     if (indexPath.row==5) {
         
         InVC *cell=[InVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.cardButton setImage:[UIImage imageNamed:@"app455.png"] forState:UIControlStateNormal];
-        cell.cardButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.cardButton.titleLabel.bounds.size.width-7);
-        [cell.cardButton setTitle:@"企业二维码" forState:UIControlStateNormal];//设置button的title
-        cell.cardButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.cardButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.cardButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.cardButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.cardButton.titleLabel.bounds.size.width-25, 0, 0);
-        [cell addSubview:cell.cardButton];
         
-        [cell.trademarkButton setImage:[UIImage imageNamed:@"app466.png"] forState:UIControlStateNormal];
-        cell.trademarkButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.trademarkButton.titleLabel.bounds.size.width-7);
-        [cell.trademarkButton setTitle:@"商标展示" forState:UIControlStateNormal];//设置button的title
-        cell.trademarkButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.trademarkButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.trademarkButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.trademarkButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.trademarkButton.titleLabel.bounds.size.width-25, 0, 0);
-        //        [cell.trademarkButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.trademarkButton];
-        
-        [cell.promisesButton setImage:[UIImage imageNamed:@"app47.png"] forState:UIControlStateNormal];
-        cell.promisesButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.promisesButton.titleLabel.bounds.size.width-7);
-        [cell.promisesButton setTitle:@"失信记录" forState:UIControlStateNormal];//设置button的title
-        cell.promisesButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.promisesButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.promisesButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.promisesButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.promisesButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.promisesButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.promisesButton];
-        
-        [cell.recruitmentButton setImage:[UIImage imageNamed:@"app488.png"] forState:UIControlStateNormal];
-        cell.recruitmentButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.recruitmentButton.titleLabel.bounds.size.width-7);
-        [cell.recruitmentButton setTitle:@"招聘信息" forState:UIControlStateNormal];//设置button的title
-        cell.recruitmentButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.recruitmentButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.recruitmentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.recruitmentButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.recruitmentButton.titleLabel.bounds.size.width-25, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
-        //        [cell.recruitmentButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.recruitmentButton];
-
         return cell;
     }
     if (indexPath.row==6) {
         
         UnderButtonVC *cell=[UnderButtonVC cellWithTableView:self.ContentTableView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell.investorsButton setImage:[UIImage imageNamed:@"app499.png"] forState:UIControlStateNormal];
-        cell.investorsButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.investorsButton.titleLabel.bounds.size.width-7);
-        [cell.investorsButton setTitle:@"投资人" forState:UIControlStateNormal];//设置button的title
-        cell.investorsButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.investorsButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.investorsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.investorsButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.investorsButton.titleLabel.bounds.size.width-25, 0, 0);
-        //        [cell.investorsButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.investorsButton];
         
-        [cell.reportButton setImage:[UIImage imageNamed:@"app50.png"] forState:UIControlStateNormal];
-        cell.reportButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.reportButton.titleLabel.bounds.size.width-7);
-        [cell.reportButton setTitle:@"企业年报" forState:UIControlStateNormal];//设置button的title
-        cell.reportButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.reportButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.reportButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.reportButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.reportButton.titleLabel.bounds.size.width-25, 0, 0);
         [cell.reportButton addTarget:self action:@selector(yearClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.reportButton];
-        
-        [cell.mapButton setImage:[UIImage imageNamed:@"app51.png"] forState:UIControlStateNormal];
-        cell.mapButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.mapButton.titleLabel.bounds.size.width-7);
-        [cell.mapButton setTitle:@"企业图谱" forState:UIControlStateNormal];//设置button的title
-        cell.mapButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.mapButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.mapButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.mapButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.mapButton.titleLabel.bounds.size.width-25, 0, 0);
-        // [cell.mapButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.mapButton];
-        
-        [cell.investmentButton setImage:[UIImage imageNamed:@"app52.png"] forState:UIControlStateNormal];
-        cell.investmentButton.imageEdgeInsets = UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7);
-        // 设置image在button上的位置（上top，左left，下bottom，右right）这里可以写负值，对上写－5，那么image就象上移动5个像素
-        [cell.investmentButton setTitle:@"对外投资" forState:UIControlStateNormal];//设置button的title
-        cell.investmentButton.titleLabel.font = [UIFont systemFontOfSize:15];//title字体大小
-        cell.investmentButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        [cell.investmentButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        cell.investmentButton.titleEdgeInsets = UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0);
-        // 设置title在button上的位置（上top，左left，下bottom，右right）
-        // [cell.investmentButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
-        [cell addSubview:cell.investmentButton];
-        
+
         return cell;
     }
     
@@ -792,10 +645,12 @@
 {
     AppShare;
     
-    NSArray * yearArr = app.companyDetailContent[@"report_date"];
+    NSArray * yearArr = app.companyDetailContent[@"changeInfo"];
     
     if (yearArr.count == 0) {
+        
         MBhud(@"该企业暂无年报信息");
+        
     }else{
         
         //六位随机数
@@ -811,8 +666,6 @@
         NSString * year = [AESCrypt encrypt:@"2014" password:[AESCrypt decrypt:app.loginKeycode]];
         
         _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
-        
-        NSLog(@"\nuid:%@\nrequest:%@\nnonce:%@\ntime:%@\nID:%@\nyear:%@",app.uid,app.request,app.nonce,_timeString,app.companyID,year);
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp",[AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]],@"registNo",year,@"year", nil];
         

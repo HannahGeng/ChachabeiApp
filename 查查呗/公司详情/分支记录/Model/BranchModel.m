@@ -13,8 +13,8 @@
 - (instancetype)initWithDic:(NSDictionary *)dic
 {
     if (self = [super init]) {
-        self.company_name = dic[@"company_name"];
-        self.regist_no = dic[@"regist_no"];
+        self.company_name = dic[@"ent_name"];
+        self.regist_no = dic[@"reg_no"];
     }
     return self;
 }

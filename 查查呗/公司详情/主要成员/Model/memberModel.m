@@ -14,9 +14,9 @@
 {
     if (self = [super init]) {
         
-        self.surname = dic[@"surname"];
-        self.position = dic[@"position"];
-        self.sequence = dic[@"sequence"];
+        self.surname = dic[@"stock_name"];
+        self.position = dic[@"stock_type"];
+//        self.sequence = dic[@"sequence"];
     }
     
     return self;

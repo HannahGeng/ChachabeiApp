@@ -9,25 +9,32 @@
 #import "UnderButtonVC.h"
 
 @implementation UnderButtonVC
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
+
+static NSString *cellID=@"TopButtonViewCell";
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"TopButtonViewCell";
     UnderButtonVC *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
     if (cell == nil) {
+        
         cell = [[[NSBundle mainBundle] loadNibNamed:@"UnderButtonVC" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //添加cell的背景图片
-//        cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijing.png"]];
+        
     }
+    
+    [cell.investorsButton buttonWithImage:[UIImage imageNamed:@"app499.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.investorsButton.titleLabel.bounds.size.width-7) title:@"投资人" titleEggeInsets:UIEdgeInsetsMake(45, -cell.investorsButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.investorsButton];
+    
+    [cell.reportButton buttonWithImage:[UIImage imageNamed:@"app50.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.reportButton.titleLabel.bounds.size.width-7) title:@"企业年报" titleEggeInsets:UIEdgeInsetsMake(45, -cell.reportButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.reportButton];
+    
+    [cell.mapButton buttonWithImage:[UIImage imageNamed:@"app51.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.mapButton.titleLabel.bounds.size.width-7) title:@"企业图谱" titleEggeInsets:UIEdgeInsetsMake(45, -cell.mapButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.mapButton];
+    
+    [cell.investorsButton buttonWithImage:[UIImage imageNamed:@"app52.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7) title:@"对外投资" titleEggeInsets:UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.investmentButton];
+    
     return cell;
 }
 

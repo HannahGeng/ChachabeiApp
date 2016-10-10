@@ -11,7 +11,6 @@
 @interface RegistViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     ContentViewController *_contentVC;
-    AppDelegate * app;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSArray * companyDetails;
@@ -23,11 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppShare;
+    
     app = [AppDelegate sharedAppDelegate];
-    app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
-    
-    NSLog(@"\n公司详情数组源：%@",app.basicInfo);
-    
+    app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
+        
     //添加内容视图
     [self addContentView];
     
@@ -39,11 +38,6 @@
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
     view.backgroundColor=LIGHT_GREY_COLOR;
     
-    self.tableView.dataSource=self;
-    self.tableView.delegate=self;
-    self.tableView.backgroundColor=[UIColor clearColor];
-    self.tableView.scrollEnabled =YES; //设置tableview滚动
-    self.tableView.separatorStyle = UITableViewCellSelectionStyleBlue;
     self.tableView.tableHeaderView=view;
 }
 
@@ -52,9 +46,10 @@
 {
     return 5;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     if (indexPath.row==0) {
         
         TableViewCell *cell=[TableViewCell cellWithTableView:self.tableView];
@@ -66,6 +61,7 @@
         return cell;
     }
     if (indexPath.row==1) {
+        
         RegistViewCell *cell=[RegistViewCell cellWithTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
@@ -96,9 +92,14 @@
 #pragma mark UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    AppShare;
+    
     if (indexPath.row==0) {
         return 260;
+        
     }else if (indexPath.row == 1){
+        
         return app.companyModel.cellHeight;
     }
 

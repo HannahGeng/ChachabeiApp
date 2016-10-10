@@ -9,8 +9,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController">
             <connections>
                 <outlet property="companyTableView" destination="M1n-ht-KaH" id="alc-UC-mof"/>
-                <outlet property="label" destination="Vs7-hI-TOZ" id="e50-rK-KAr"/>
-                <outlet property="noneView" destination="LEd-LX-cjb" id="31C-fh-ieQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="EkR-Ke-Att"/>
                 <outlet property="viewTableView" destination="AH0-O6-JPp" id="RDO-TJ-wnB"/>
             </connections>
@@ -38,26 +36,6 @@
                         <outlet property="delegate" destination="-1" id="r88-St-pG6"/>
                     </connections>
                 </tableView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEd-LX-cjb">
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vs7-hI-TOZ">
-                            <frame key="frameInset" minX="4" minY="71" width="92" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="app24" translatesAutoresizingMaskIntoConstraints="NO" id="rWB-56-Ufl">
-                            <frame key="frameInset" minX="25" minY="8" width="50" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="CTW-JT-Vf0"/>
-                        <constraint firstAttribute="height" constant="100" id="Kn4-pf-F6m"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -66,17 +44,12 @@
                 <constraint firstItem="M1n-ht-KaH" firstAttribute="top" secondItem="AH0-O6-JPp" secondAttribute="bottom" id="MLt-zo-PIp"/>
                 <constraint firstItem="AH0-O6-JPp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Rim-c5-rDi"/>
                 <constraint firstItem="AH0-O6-JPp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aH7-By-Hu5"/>
-                <constraint firstItem="LEd-LX-cjb" firstAttribute="centerX" secondItem="M1n-ht-KaH" secondAttribute="centerX" id="f0g-UD-Dyh"/>
                 <constraint firstAttribute="trailing" secondItem="M1n-ht-KaH" secondAttribute="trailing" id="h32-GI-rWn"/>
-                <constraint firstItem="LEd-LX-cjb" firstAttribute="centerY" secondItem="M1n-ht-KaH" secondAttribute="centerY" id="ljA-ze-Vu5"/>
                 <constraint firstAttribute="bottom" secondItem="M1n-ht-KaH" secondAttribute="bottom" id="qc0-QG-wJv"/>
             </constraints>
             <point key="canvasLocation" x="292.5" y="357.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="app24" width="57" height="57"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -10,6 +10,8 @@
 
 @implementation TableViewCell
 
+static NSString *cellID=@"TableViewCell";
+
 - (void)setCompanyDetail:(CompanyDetail *)companyDetail
 {
     _companyDetail = companyDetail;
@@ -46,25 +48,14 @@
     }
 }
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
-
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"TableViewCell";
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TableViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //添加cell的背景图片
-//        cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijing.png"]];
     }
+    
     return cell;
 }
 

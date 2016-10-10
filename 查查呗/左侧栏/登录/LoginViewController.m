@@ -374,9 +374,7 @@
             if (status != 0) {
                 
                 [[HTTPSessionManager sharedManager] POST:Company_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                    
-                    NSLog(@"热门企业:%@",responseObject);
-                    
+                                        
                     app.companyArray = responseObject[@"result"][@"data"];
                     app.hotCompanyArray = responseObject[@"result"][@"data"];
                     

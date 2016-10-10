@@ -120,5 +120,17 @@
 /** 发送的邮箱地址 */
 @property (nonatomic,strong) NSString * sendEmail;
 
+@property (nonatomic,assign) NSInteger selBtnIndex;
+
+@property (nonatomic,assign) NSInteger selConIndex;
+
+@property (nonatomic,strong) NSArray * shareHolderArray;
+
+@property (nonatomic,strong) NSArray * memberArray;
+
+@property (nonatomic,strong) NSArray * branchs;
+
+@property (nonatomic,strong) NSArray * changes;
+
 @end
 

@@ -28,13 +28,12 @@
     NSString * _nonce;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
+    NoneView * noneV;
 }
 
-@property (weak, nonatomic) IBOutlet UIView *noneView;
 @property (weak, nonatomic) IBOutlet UITableView *viewTableView;
 @property (weak, nonatomic) IBOutlet UITableView *companyTableView;
 @property (nonatomic,strong) NSMutableArray * companyArray;
-@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @end
 
@@ -42,8 +41,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    AppShare;
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
         
@@ -60,6 +57,8 @@
     //添加数据(热门企业)
     [self loadHotCompany];
     
+    [self loadAttentionCompany];
+
 }
 
 #pragma mark - 设置导航栏
@@ -256,7 +255,8 @@
 #pragma mark - “热门企业”按钮
 -(void)companyClick
 {
-    _noneView.hidden = YES;
+    [NoneView hide];
+    
     _cell.FocusButton.selected=NO;
     
     if ([_cell.CompanyButton isSelected]) {
@@ -274,7 +274,6 @@
 #pragma mark - “我的关注”按钮
 -(void)focusClick
 {
-    [self loadAttentionCompany];
     
     AppShare;
     
@@ -288,10 +287,11 @@
         if ([app.attentionArray isEqual:@"暂无关注企业"]) {
             
             if (_cell.FocusButton.isSelected == NO) {
+                
                 self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-               
-                _noneView.hidden = NO;
-                _label.text = @"暂无关注企业";
+                
+                [[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"暂无关注企业"];
+                
                 [self.companyTableView reloadData];
             }
             
@@ -305,11 +305,11 @@
         
         if (_cell.FocusButton.isSelected == NO) {
             
-            _noneView.hidden = NO;
             self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             [self loadAttentionCompany];
-            _label.text=@"登陆后可查看";
     
+            [[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"登陆后可查看"];
+            
             [self.companyTableView reloadData];
 
         }

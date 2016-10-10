@@ -278,18 +278,8 @@
         [self showViewControllerWithIndex:(int)indexPath.row];
     }else{
         if ((int)indexPath.row == 1 || (int)indexPath.row == 2 || (int)indexPath.row == 3) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"账号登录" message:@"匿名用户，你还没有登录！" preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                
-                LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
-                UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:loginVC];
-                [self presentViewController:naviController animated:YES completion:nil];
-            }]];
             
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            }]];
-            [self presentViewController:alert animated:YES completion:^{
-            }];
+            NoLoginWarn;
             
         }else{
             [self showViewControllerWithIndex:(int)indexPath.row];

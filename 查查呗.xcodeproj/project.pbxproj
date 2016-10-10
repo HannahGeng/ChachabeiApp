@@ -32,6 +32,8 @@
 		3D249EA81D122C5C009C22BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA71D122C5C009C22BF /* CoreLocation.framework */; };
 		3D2C28C91D11091D00A52821 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C28C81D11091D00A52821 /* libMBProgressHUD.a */; };
 		3D2C292A1D11478D00A52821 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C29291D11478D00A52821 /* libFMDB.a */; };
+		3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */; };
+		3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
 		3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD20E0C1DAA14F900A94F3C /* SendView.xib */; };
@@ -255,6 +257,9 @@
 		3D2C28CC1D1139D400A52821 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3D2C28CE1D1139DE00A52821 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		3D2C29291D11478D00A52821 /* libFMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFMDB.a; path = ../../../../.Trash/libFMDB.a; sourceTree = "<group>"; };
+		3D5FF69F1DAB3DE200DB7B9C /* NoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoneView.h; sourceTree = "<group>"; };
+		3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoneView.m; sourceTree = "<group>"; };
+		3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoneView.xib; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
 		3DD20E071DAA13A900A94F3C /* SendCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCover.m; sourceTree = "<group>"; };
 		3DD20E091DAA14EE00A94F3C /* SendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendView.h; sourceTree = "<group>"; };
@@ -724,6 +729,9 @@
 				3DD6636C1D067167006BCB3D /* UIView+XMGExtension.m */,
 				3DD9992F1DA8C3BE0022A639 /* UIButton+CCBButton.h */,
 				3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */,
+				3D5FF69F1DAB3DE200DB7B9C /* NoneView.h */,
+				3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */,
+				3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */,
 			);
 			path = "扩展类";
 			sourceTree = "<group>";
@@ -1814,6 +1822,7 @@
 				3DD664301D067882006BCB3D /* MessageViewCell.xib in Resources */,
 				3DD664911D067D47006BCB3D /* NewViewController.xib in Resources */,
 				3DD663E61D0674D3006BCB3D /* CommentViewController.xib in Resources */,
+				3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */,
 				3DD663981D0672FE006BCB3D /* ViewController.xib in Resources */,
 				3DD6641A1D06765C006BCB3D /* HotNewsViewController.xib in Resources */,
 				3DD663731D067167006BCB3D /* city.plist in Resources */,
@@ -1993,6 +2002,7 @@
 				3DD664F71D06899C006BCB3D /* BranchViewController.m in Sources */,
 				3DE3C07E1D07B7E300122976 /* AESCrypt.m in Sources */,
 				3DD664031D06757F006BCB3D /* SearVC.m in Sources */,
+				3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */,
 				3DD664F11D06899C006BCB3D /* FilpTableView.m in Sources */,
 				3DD663FB1D06757F006BCB3D /* SearViewController.m in Sources */,
 				3DD664991D067D47006BCB3D /* RegisteredViewController.m in Sources */,

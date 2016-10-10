@@ -9,25 +9,30 @@
 #import "InVC.h"
 
 @implementation InVC
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
+
+static NSString *cellID=@"TopButtonViewCell";
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"TopButtonViewCell";
     InVC *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"InVC" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //添加cell的背景图片
-//        cell.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"beijing.png"]];
     }
+    
+    [cell.cardButton buttonWithImage:[UIImage imageNamed:@"app455.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.cardButton.titleLabel.bounds.size.width-7) title:@"企业二维码" titleEggeInsets:UIEdgeInsetsMake(45, -cell.cardButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.cardButton];
+    
+    [cell.trademarkButton buttonWithImage:[UIImage imageNamed:@"app466.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.trademarkButton.titleLabel.bounds.size.width-7) title:@"商标展示" titleEggeInsets:UIEdgeInsetsMake(45, -cell.trademarkButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.trademarkButton];
+    
+    [cell.promisesButton buttonWithImage:[UIImage imageNamed:@"app47.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.promisesButton.titleLabel.bounds.size.width-7) title:@"失信记录" titleEggeInsets:UIEdgeInsetsMake(45, -cell.promisesButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.promisesButton];
+    
+    [cell.recruitmentButton buttonWithImage:[UIImage imageNamed:@"app488.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.recruitmentButton.titleLabel.bounds.size.width-7) title:@"招聘信息" titleEggeInsets:UIEdgeInsetsMake(45, -cell.recruitmentButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell addSubview:cell.recruitmentButton];
+
     return cell;
 }
 

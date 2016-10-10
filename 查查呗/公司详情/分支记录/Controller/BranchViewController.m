@@ -9,11 +9,7 @@
 #import "BranchViewController.h"
 
 @interface BranchViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
-    UIImageView *_imageView;
-    UILabel *_label;
-    AppDelegate * app;
-}
+
 @property (weak, nonatomic) IBOutlet UITableView *branchTableView;
 @property (nonatomic,strong) NSArray * branchs;
 
@@ -21,10 +17,16 @@
 
 @implementation BranchViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self loadBranchs];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loadBranchs];
     //添加内容视图
     [self addContentView];
 
@@ -32,51 +34,47 @@
 
 - (void)loadBranchs
 {
+    AppShare;
     
-    app = [AppDelegate sharedAppDelegate];
-
-    self.branchs = [BranchModel mj_objectArrayWithKeyValuesArray:app.companyDetailContent[@"branch"]];
+    NSMutableArray * dicArr = [NSMutableArray array];
+    NSArray * stockArr = app.basicInfo[@"branchInfo"];
+    
+    for (NSDictionary * dic in stockArr) {
+        
+        BranchModel * detail = [[BranchModel alloc] initWithDic:dic];
+        
+        [dicArr addObject:detail];
+    }
+    
+    self.branchs = dicArr;
+    
+    app.branchs = dicArr;
 }
 
 -(void)addContentView
 {
     if (self.branchs.count == 0) {
         
-        _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(([UIUtils getWindowWidth]-50)/2, 150,50, 50)];
-        _imageView.image=[UIImage imageNamed:@"app24.png"];
-        [self.view addSubview:_imageView];
-        
-        _label=[[UILabel alloc]initWithFrame:CGRectMake(([UIUtils getWindowWidth]-130)/2, CGRectGetMaxY(_imageView.frame)+10, 130, 30)];
-        _label.text=@"该企业没有相关信息";
-        _label.textAlignment=NSTextAlignmentCenter;
-        _label.font=[UIFont systemFontOfSize:14];
-        [self.view addSubview:_label];
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
-        
-        self.branchTableView.dataSource=self;
-        self.branchTableView.delegate=self;
-        self.branchTableView.backgroundColor=[UIColor clearColor];
-        self.branchTableView.scrollEnabled =YES; //设置tableview滚动
         self.branchTableView.tableHeaderView=view;
         self.branchTableView.tableFooterView=[[UIView alloc]init];
         self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
 
     }else{
     
+        [NoneView hide];
+        
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         
-        self.branchTableView.dataSource=self;
-        self.branchTableView.delegate=self;
-        self.branchTableView.backgroundColor=[UIColor clearColor];
-        self.branchTableView.scrollEnabled =YES; //设置tableview滚动
         self.branchTableView.tableHeaderView=view;
         self.branchTableView.tableFooterView=[[UIView alloc]init];
         self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
     }
 
 }
+
 #pragma mark UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

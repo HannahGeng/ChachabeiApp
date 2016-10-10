@@ -13,8 +13,8 @@
 - (instancetype)initWithDic:(NSDictionary *)dic
 {
     if (self = [super init]) {
-         self.shareholder_name = dic[@"shareholder_name"];
-        self.shareholder_type = dic[@"shareholder_type"];
+        self.shareholder_name = dic[@"stock_name"];
+        self.shareholder_type = dic[@"stock_type"];
     }
     return self;
 }

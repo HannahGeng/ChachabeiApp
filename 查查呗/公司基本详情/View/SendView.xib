@@ -75,7 +75,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="sendClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="bWv-4a-D4j"/>
+                        <action selector="sendClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ugj-6j-Ndw"/>
                     </connections>
                 </button>
             </subviews>
@@ -98,8 +98,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="sendButton" destination="3Xx-p8-KxQ" id="s1P-yR-Ql5"/>
-                <outlet property="sendField" destination="5Ch-21-IBZ" id="a95-cA-cnA"/>
+                <outlet property="sendField" destination="5Ch-21-IBZ" id="7sG-gS-sgg"/>
             </connections>
             <point key="canvasLocation" x="6.5" y="35"/>
         </view>

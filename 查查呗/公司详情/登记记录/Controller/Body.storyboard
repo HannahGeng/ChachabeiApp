@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Regist View Controller-->
@@ -14,16 +15,19 @@
                         <viewControllerLayoutGuide type="bottom" id="C2X-Ws-dZB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oIH-XB-pPs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-rT-gXU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
-                                <color key="backgroundColor" red="0.1082744504" green="0.52238516869999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" tag="10" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-rT-gXU">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aqs-cj-wLR" id="xTz-UA-9tv"/>
+                                    <outlet property="delegate" destination="aqs-cj-wLR" id="6X3-Fh-NX2"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="0w5-rT-gXU" firstAttribute="leading" secondItem="oIH-XB-pPs" secondAttribute="leading" id="I88-jv-NnL"/>
                             <constraint firstAttribute="trailing" secondItem="0w5-rT-gXU" secondAttribute="trailing" id="IOo-ZF-rhZ"/>
@@ -31,7 +35,6 @@
                             <constraint firstItem="0w5-rT-gXU" firstAttribute="top" secondItem="oIH-XB-pPs" secondAttribute="top" id="y6r-Wu-SvQ"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="0w5-rT-gXU" id="hpM-Kk-H0H"/>
                     </connections>
@@ -49,15 +52,18 @@
                         <viewControllerLayoutGuide type="bottom" id="MKw-iK-CkA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vs2-gC-m35">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NeI-LH-Nhn">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
-                                <color key="backgroundColor" red="0.11747414790000001" green="0.32566657859999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" tag="20" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NeI-LH-Nhn">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dg1-k8-8ue" id="qhi-Nr-ynu"/>
+                                    <outlet property="delegate" destination="Dg1-k8-8ue" id="xGP-MN-q46"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="NeI-LH-Nhn" firstAttribute="top" secondItem="vs2-gC-m35" secondAttribute="top" id="1Wr-2B-fex"/>
                             <constraint firstItem="NeI-LH-Nhn" firstAttribute="leading" secondItem="vs2-gC-m35" secondAttribute="leading" id="2nr-0k-2da"/>
@@ -65,7 +71,6 @@
                             <constraint firstAttribute="trailing" secondItem="NeI-LH-Nhn" secondAttribute="trailing" id="cs5-cZ-blg"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="ShareholdTableView" destination="NeI-LH-Nhn" id="5Dz-d1-KFa"/>
                     </connections>
@@ -83,15 +88,18 @@
                         <viewControllerLayoutGuide type="bottom" id="hGd-Du-eff"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cCj-5L-8nM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Re-oo-GWe">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
-                                <color key="backgroundColor" red="1" green="0.24813884629999999" blue="0.2423275342" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" tag="30" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Re-oo-GWe">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="oGZ-7Y-bVO" id="jc1-gW-cCb"/>
+                                    <outlet property="delegate" destination="oGZ-7Y-bVO" id="Oeg-gN-0I1"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9Re-oo-GWe" firstAttribute="top" secondItem="cCj-5L-8nM" secondAttribute="top" id="NDb-j6-mkJ"/>
                             <constraint firstItem="9Re-oo-GWe" firstAttribute="leading" secondItem="cCj-5L-8nM" secondAttribute="leading" id="Pte-81-PI2"/>
@@ -99,7 +107,6 @@
                             <constraint firstAttribute="trailing" secondItem="9Re-oo-GWe" secondAttribute="trailing" id="wMx-fW-rny"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="memberTableView" destination="9Re-oo-GWe" id="OJO-WA-bbf"/>
                     </connections>
@@ -117,15 +124,18 @@
                         <viewControllerLayoutGuide type="bottom" id="B01-A7-N8Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qNL-m2-btT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzW-jP-y7a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
+                            <tableView clipsSubviews="YES" tag="40" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzW-jP-y7a">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Vz-N5-RtK" id="Hh8-NH-F8z"/>
+                                    <outlet property="delegate" destination="3Vz-N5-RtK" id="Nxp-Yr-ObV"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hzW-jP-y7a" firstAttribute="leading" secondItem="qNL-m2-btT" secondAttribute="leading" id="G2y-d7-ynf"/>
                             <constraint firstItem="B01-A7-N8Q" firstAttribute="top" secondItem="hzW-jP-y7a" secondAttribute="bottom" constant="103" id="SyJ-PN-dHv"/>
@@ -133,7 +143,6 @@
                             <constraint firstItem="hzW-jP-y7a" firstAttribute="top" secondItem="qNL-m2-btT" secondAttribute="top" id="kyq-KH-Bwa"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="branchTableView" destination="hzW-jP-y7a" id="5CR-nE-vrX"/>
                     </connections>
@@ -151,15 +160,18 @@
                         <viewControllerLayoutGuide type="bottom" id="H65-EI-nv5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6qc-h4-n9S">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UyY-2w-LDv">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="465"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" tag="50" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UyY-2w-LDv">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="FAO-5S-0Ms" id="9xa-p9-nZk"/>
+                                    <outlet property="delegate" destination="FAO-5S-0Ms" id="X3e-qd-pcn"/>
+                                </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UyY-2w-LDv" firstAttribute="top" secondItem="6qc-h4-n9S" secondAttribute="top" id="1rD-Bc-Zob"/>
                             <constraint firstAttribute="trailing" secondItem="UyY-2w-LDv" secondAttribute="trailing" id="IKr-zH-ewp"/>
@@ -167,7 +179,6 @@
                             <constraint firstItem="H65-EI-nv5" firstAttribute="top" secondItem="UyY-2w-LDv" secondAttribute="bottom" constant="103" id="e2a-hd-KB7"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="changeTableView" destination="UyY-2w-LDv" id="h0O-gD-LGY"/>
                     </connections>
@@ -177,4 +188,9 @@
             <point key="canvasLocation" x="1324" y="352"/>
         </scene>
     </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>
