@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KeyWordView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqY-9h-gz0">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdT-ht-wJL">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H01-P7-hsJ">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search_change" translatesAutoresizingMaskIntoConstraints="NO" id="vMs-KF-06E">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Oa0-dA-HQO"/>
+                                <constraint firstAttribute="width" constant="30" id="hhf-3B-6dR"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="H01-P7-hsJ" firstAttribute="centerY" secondItem="YdT-ht-wJL" secondAttribute="centerY" id="CoO-2H-VTr"/>
+                        <constraint firstItem="vMs-KF-06E" firstAttribute="leading" secondItem="H01-P7-hsJ" secondAttribute="trailing" constant="10" id="NnO-ft-uHB"/>
+                        <constraint firstItem="H01-P7-hsJ" firstAttribute="leading" secondItem="YdT-ht-wJL" secondAttribute="trailing" constant="10" id="Qqh-Ia-7a8"/>
+                        <constraint firstItem="YdT-ht-wJL" firstAttribute="leading" secondItem="kqY-9h-gz0" secondAttribute="leading" constant="10" id="V4j-vm-bvA"/>
+                        <constraint firstItem="vMs-KF-06E" firstAttribute="centerY" secondItem="H01-P7-hsJ" secondAttribute="centerY" id="aH7-vt-fXX"/>
+                        <constraint firstAttribute="trailing" secondItem="vMs-KF-06E" secondAttribute="trailing" constant="10" id="cn1-gD-9HH"/>
+                        <constraint firstItem="YdT-ht-wJL" firstAttribute="centerY" secondItem="kqY-9h-gz0" secondAttribute="centerY" id="iSF-up-0rO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="kqY-9h-gz0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="1PI-Ed-jLC"/>
+                <constraint firstAttribute="trailing" secondItem="kqY-9h-gz0" secondAttribute="trailing" id="9z3-1N-ZZR"/>
+                <constraint firstItem="kqY-9h-gz0" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="e5B-I2-enj"/>
+                <constraint firstItem="kqY-9h-gz0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yPd-CB-OT7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="keywordLabel" destination="H01-P7-hsJ" id="zbn-AH-cQd"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="54"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search_change" width="26" height="26"/>
+    </resources>
+</document>

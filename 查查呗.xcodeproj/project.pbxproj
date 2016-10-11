@@ -34,6 +34,10 @@
 		3D2C292A1D11478D00A52821 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C29291D11478D00A52821 /* libFMDB.a */; };
 		3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */; };
 		3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */; };
+		3D6612DE1DACC116005B780F /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6612DD1DACC116005B780F /* SearchView.m */; };
+		3D6612E01DACC121005B780F /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6612DF1DACC121005B780F /* SearchView.xib */; };
+		3D6612E81DACE748005B780F /* KeyWordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D6612E71DACE748005B780F /* KeyWordView.xib */; };
+		3D6612EE1DACE848005B780F /* KeyWordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6612ED1DACE848005B780F /* KeyWordView.m */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
 		3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD20E0C1DAA14F900A94F3C /* SendView.xib */; };
@@ -260,6 +264,12 @@
 		3D5FF69F1DAB3DE200DB7B9C /* NoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoneView.h; sourceTree = "<group>"; };
 		3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoneView.m; sourceTree = "<group>"; };
 		3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoneView.xib; sourceTree = "<group>"; };
+		3D6612DC1DACC116005B780F /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		3D6612DD1DACC116005B780F /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		3D6612DF1DACC121005B780F /* SearchView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
+		3D6612E71DACE748005B780F /* KeyWordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyWordView.xib; sourceTree = "<group>"; };
+		3D6612EC1DACE848005B780F /* KeyWordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWordView.h; sourceTree = "<group>"; };
+		3D6612ED1DACE848005B780F /* KeyWordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWordView.m; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
 		3DD20E071DAA13A900A94F3C /* SendCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCover.m; sourceTree = "<group>"; };
 		3DD20E091DAA14EE00A94F3C /* SendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendView.h; sourceTree = "<group>"; };
@@ -964,6 +974,12 @@
 				3DD663F81D06757F006BCB3D /* SearVC.xib */,
 				3DD663F91D06757F006BCB3D /* ZWCollectionViewFlowLayout.h */,
 				3DD663FA1D06757F006BCB3D /* ZWCollectionViewFlowLayout.m */,
+				3D6612DC1DACC116005B780F /* SearchView.h */,
+				3D6612DD1DACC116005B780F /* SearchView.m */,
+				3D6612DF1DACC121005B780F /* SearchView.xib */,
+				3D6612EC1DACE848005B780F /* KeyWordView.h */,
+				3D6612ED1DACE848005B780F /* KeyWordView.m */,
+				3D6612E71DACE748005B780F /* KeyWordView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1798,6 +1814,7 @@
 				3DD664041D06757F006BCB3D /* SearVC.xib in Resources */,
 				3DD663A51D0672FE006BCB3D /* TopButtonViewCell.xib in Resources */,
 				3D249E781D1229A8009C22BF /* mapapi.bundle in Resources */,
+				3D6612E81DACE748005B780F /* KeyWordView.xib in Resources */,
 				3DD664FA1D06899C006BCB3D /* BranchViewCell.xib in Resources */,
 				3DD665041D06899C006BCB3D /* RegistViewCell2.xib in Resources */,
 				3DD663FC1D06757F006BCB3D /* SearViewController.xib in Resources */,
@@ -1825,6 +1842,7 @@
 				3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */,
 				3DD663981D0672FE006BCB3D /* ViewController.xib in Resources */,
 				3DD6641A1D06765C006BCB3D /* HotNewsViewController.xib in Resources */,
+				3D6612E01DACC121005B780F /* SearchView.xib in Resources */,
 				3DD663731D067167006BCB3D /* city.plist in Resources */,
 				3D15D0221C03F6B300AB19E5 /* Assets.xcassets in Resources */,
 				3DD665081D06899C006BCB3D /* RegistViewCell4.xib in Resources */,
@@ -1928,6 +1946,7 @@
 				89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */,
 				3DD663FF1D06757F006BCB3D /* HeadView.m in Sources */,
 				3DD6650C1D06899C006BCB3D /* shareholdModel.m in Sources */,
+				3D6612EE1DACE848005B780F /* KeyWordView.m in Sources */,
 				3DD6639E1D0672FE006BCB3D /* MoreViewCell.m in Sources */,
 				3DD663991D0672FE006BCB3D /* attentionModel.m in Sources */,
 				3DD663D31D06742A006BCB3D /* WebVC.m in Sources */,
@@ -1936,6 +1955,7 @@
 				3DD664A31D067D47006BCB3D /* aboutModel.m in Sources */,
 				3DD663D11D06742A006BCB3D /* UnderButtonVC.m in Sources */,
 				3DD663FD1D06757F006BCB3D /* CityViewCell.m in Sources */,
+				3D6612DE1DACC116005B780F /* SearchView.m in Sources */,
 				3DD665071D06899C006BCB3D /* RegistViewCell4.m in Sources */,
 				3DD665031D06899C006BCB3D /* RegistViewCell2.m in Sources */,
 				3DE3C0801D07B7E300122976 /* NSData+CommonCrypto.m in Sources */,

@@ -375,12 +375,12 @@
                 
                 [[HTTPSessionManager sharedManager] POST:Company_URL parameters:pDic result:^(id responseObject, NSError *error) {
                                         
-                    app.companyArray = responseObject[@"result"][@"data"];
-                    app.hotCompanyArray = responseObject[@"result"][@"data"];
-                    
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         [self UntilSeccessDone];
+                        
+                        app.companyArray = responseObject[@"result"][@"data"];
+                        app.hotCompanyArray = responseObject[@"result"][@"data"];
                         
                     }else{
                     

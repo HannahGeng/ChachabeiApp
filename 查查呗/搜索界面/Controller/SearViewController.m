@@ -14,22 +14,11 @@
     UILabel *_cityLabel;
     UIImageView *_photoImageView;
     NSArray *_searInfoArray;
-    AppDelegate * app;
     UIView * searchView;
     UIButton * removeButton;
     
-    NSDictionary *_dic;
-    NSString *_timeString;
-    NSString *_str;
-    NSString *_searKey;
-    NSString *_strrr;
-    NSString *_srr;
-    NSString *_key;
-    NSString * app_uuid;
-    
     UIView *_cityView;
     UITableView *_cityTableView;
-    
     HeadView *_CellHeadView;
     NSArray *_headViewArray;
     NSMutableArray *_dataArray;
@@ -50,28 +39,14 @@
     UILabel *_searLabel;
     UILabel *_cityNameLabel;
     UIImageView *_searImageView;
-    
     NSString *serachStr;
+    
     NSString * _keycode;
-    NSString * _uid;
-    NSString * _request;
-    NSString * _imei;
+    NSString *_timeString;
     NSString * _keyword;
     NSString * _nonce;
-    NSString * _timestamp;
     NSString * _province;
     NSString * _vertifyCode;
-    
-    NSArray *_resultsArray;
-    UIView *_compayView;
-    UIImageView *_imageView;
-    UILabel *_companyLabel1;
-    UILabel *_companyLabel2;
-    UILabel *_companyLabel3;
-    
-    UIView *_searchView;
-    
-    NSString *serchStr;
     
     UIView *_validationView;
     UILabel *_nameLabel;
@@ -82,12 +57,11 @@
     UIButton *_replaceButton;
     UIButton *_confirmButton;
     UITextField *_textField;
-    UIImage * _vertifyImage;
-    
-    NSOperationQueue *_operationQueue;
+
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *searchBarTableView;
 @property (weak, nonatomic) IBOutlet UIButton *historyButton;
 @property (weak, nonatomic) IBOutlet UIButton *myselfButton;
@@ -108,43 +82,48 @@ static NSString * const cellIdentifier = @"attention";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //设置导航栏不透明
-    self.navigationController.navigationBar.translucent = NO;
     //设置导航栏
     [self setNavigationBar];
-    //添加内容视图
-    app = [AppDelegate sharedAppDelegate];
+    
+//    SearchView * search = [SearchView searchV];
+    
+//    search.frame = CGRectMake(0, 0, screen_width, 40);
+    
+//    self.navigationItem.titleView = search;
+        
+    self.navigationItem.titleView = [SearchView showInpoint:CGPointMake(screen_width / 2, 44)];
+
     //导航条的搜索条
-    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10.0f,7.0f,[UIUtils getWindowWidth]-130,30.0f)];
-    _searchBar.delegate = self;
-    _searchBar.layer.masksToBounds=YES;
-    _searchBar.layer.cornerRadius=5;
-    [_searchBar setTintColor:[UIColor blueColor]];
-    [_searchBar setPlaceholder:@"公司/机构名称或个人"];
-    _viewButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    _viewButton.frame=CGRectMake(CGRectGetMaxX(_searchBar.frame), 7, 70, 30);
-    _viewButton.backgroundColor=[UIColor clearColor];
-    
-    [_viewButton addTarget:self action:@selector(cityButton) forControlEvents:UIControlEventTouchUpInside];
-    
-    //城市
-    _cityLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_searchBar.frame)+10,5, 40, 35)];
-    _cityLabel.text=@"全国";
-    _cityLabel.textColor=[UIColor whiteColor];
-    _cityLabel.font=[UIFont systemFontOfSize: 16];
-    
-    _photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cityLabel.frame), 17, 15, 10)];
-    [_photoImageView setImage:[UIImage imageNamed:@"icon_homepage_downArrow"]];
-    
-    //将搜索条放在一个UIView上
-    searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 44)];
-    
-    searchView.backgroundColor = [UIColor clearColor];
-    [searchView addSubview:_searchBar];
-    [searchView addSubview:_viewButton];
-    [searchView addSubview:_cityLabel];
-    [searchView addSubview:_photoImageView];
-    self.navigationItem.titleView = searchView;
+//    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10.0f,7.0f,[UIUtils getWindowWidth]-130,30.0f)];
+//    _searchBar.delegate = self;
+//    _searchBar.layer.masksToBounds=YES;
+//    _searchBar.layer.cornerRadius=5;
+//    [_searchBar setTintColor:[UIColor blueColor]];
+//    [_searchBar setPlaceholder:@"公司/机构名称或个人"];
+//    _viewButton=[UIButton buttonWithType:UIButtonTypeCustom];
+//    _viewButton.frame=CGRectMake(CGRectGetMaxX(_searchBar.frame), 7, 70, 30);
+//    _viewButton.backgroundColor=[UIColor clearColor];
+//    
+//    [_viewButton addTarget:self action:@selector(cityButton) forControlEvents:UIControlEventTouchUpInside];
+//        
+//    //城市
+//    _cityLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_searchBar.frame)+10,5, 40, 35)];
+//    _cityLabel.text=@"全国";
+//    _cityLabel.textColor=[UIColor whiteColor];
+//    _cityLabel.font=[UIFont systemFontOfSize: 16];
+//    
+//    _photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cityLabel.frame), 17, 15, 10)];
+//    [_photoImageView setImage:[UIImage imageNamed:@"icon_homepage_downArrow"]];
+//    
+//    //将搜索条放在一个UIView上
+//    searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 44)];
+//    
+//    searchView.backgroundColor = [UIColor clearColor];
+//    [searchView addSubview:_searchBar];
+//    [searchView addSubview:_viewButton];
+//    [searchView addSubview:_cityLabel];
+//    [searchView addSubview:_photoImageView];
+//    self.navigationItem.titleView = searchView;
     
     self.searchBarTableView.dataSource=self;
     self.searchBarTableView.delegate=self;
@@ -163,15 +142,22 @@ static NSString * const cellIdentifier = @"attention";
     
     [_searchBar becomeFirstResponder];
     
-    [self addContentView];
     //加载数据
     [self loadData];
+    
     //添加按钮
     [self addButton];
     
     // 监听键盘通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keywordView) name:@"keyword" object:nil];
+    
+}
+
+- (void)keywordView
+{
+    [KeyWordView showInPoint:CGPointMake(screen_width / 2, 108)];
 }
 
 - (void)dealloc
@@ -273,8 +259,8 @@ static NSString * const cellIdentifier = @"attention";
 
 - (void)loadAttentionCompany
 {
-    app = [AppDelegate sharedAppDelegate];
-
+    AppShare;
+    
     //封装POST参数
     if (app.isLogin == YES) {
         
@@ -294,12 +280,6 @@ static NSString * const cellIdentifier = @"attention";
         
     }
 
-}
-
-#pragma mark - 导航栏上的搜索条
--(void)addContentView
-{
-    
 }
 
 #pragma mark - 清空搜索记录
@@ -326,6 +306,8 @@ static NSString * const cellIdentifier = @"attention";
 #pragma mark - 加载数据(搜索历史、省份列表)
 -(void)loadData
 {
+    AppShare;
+    
     NSMutableArray * dataArr = [NSMutableArray new];
     
     app.keyword = serachStr;
@@ -339,8 +321,6 @@ static NSString * const cellIdentifier = @"attention";
     }
     
     _searInfoArray = dataArr;
-
-    app = [AppDelegate sharedAppDelegate];
     
     [self.searchBarTableView reloadData];
     
@@ -464,7 +444,7 @@ static NSString * const cellIdentifier = @"attention";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.view endEditing:YES];
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     //点击后变成原色
     [self.searchBarTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -561,6 +541,8 @@ static NSString * const cellIdentifier = @"attention";
 
 -(void)SelectCityNameInCollectionBy:(NSString *)cityName
 {
+    AppShare;
+    
     [self.view endEditing:YES];
     self.navigationController.navigationBar.hidden = NO;
     _cityLabel.text=cityName;
@@ -574,34 +556,14 @@ static NSString * const cellIdentifier = @"attention";
 {
     self.returnBlock=block;
 }
-#pragma mark UISearchBarDelegate
-//任务编辑文本
--(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
-{
-//    NSLog(@"ShouldBeginEditing");
-    return YES;
-}
-//开始编辑UISearchBar的textView时
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-//    NSLog(@"DidBeginEditing");
-}
-//要求
--(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
-{
-//    NSLog(@"ShouldEndEditing");
-    return YES;
-}
-//当编辑完成之后调用此函数
--(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
-//    NSLog(@"DidEndEditing");
-}
+
 //当textView的文字改变或者清除的时候调用此方法，搜索栏目前的状态正在编辑，在搜索文字字段中的当前文本
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    app = [AppDelegate sharedAppDelegate];
-
+    
+    NSLog(@"%@",searchText);
+    
+    AppShare;
     serachStr=searchText;
     app.keyword = serachStr;
     [self.searchBarTableView reloadData];
@@ -640,6 +602,8 @@ static NSString * const cellIdentifier = @"attention";
 #pragma mark - “搜索”按钮点击事件
 -(void)contentButtonClick
 {
+    AppShare;
+    
     //省份代码
     //读取plist文件
     NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
@@ -722,12 +686,6 @@ static NSString * const cellIdentifier = @"attention";
                 //keycode
                 _keycode = app.loginKeycode;
                 
-                //uid
-                _uid = app.uid;
-                
-                //request
-                _request = app.request;
-                
                 //六位随机数
                 _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
                 
@@ -736,13 +694,7 @@ static NSString * const cellIdentifier = @"attention";
                 _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
                 
                 //时间戳
-                NSDate *  senddate=[NSDate date];
-                
-                NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-                
-                [dateformatter setDateFormat:@"YYYYMMddmmss"];
-                
-                _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+                loginTimeStr;
                 
                 //省份代码
                 //读取plist文件
@@ -761,7 +713,7 @@ static NSString * const cellIdentifier = @"attention";
                 
                 _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
                 
-                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",_request,@"request", nil];
+                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",app.request,@"request", nil];
                 
                 //监控网络状态
                 mgr = [AFNetworkReachabilityManager sharedManager];
@@ -827,11 +779,7 @@ static NSString * const cellIdentifier = @"attention";
                 
                 //keycode
                 _keycode = app.noLoginKeycode;
-//                NSLog(@"未登陆的keycode:%@",_keycode);
-                
-                //request
-                _request = app.request;
-                
+            
                 //六位随机数
                 _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
                 
@@ -840,15 +788,7 @@ static NSString * const cellIdentifier = @"attention";
                 _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
                 
                 //时间戳
-                NSDate *  senddate=[NSDate date];
-                
-                NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-                
-                [dateformatter setDateFormat:@"YYYYMMddmmss"];
-                
-                _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-                
-//                NSLog(@"locationString:%@",_timeString);
+                noLoginTimeStr;
                 
                 //省份代码
                 //读取plist文件
@@ -868,7 +808,7 @@ static NSString * const cellIdentifier = @"attention";
                 _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
                 app.province = _newnum;
                 
-                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request", nil];
+                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",app.request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei", nil];
                 
                 //监控网络状态
                 mgr = [AFNetworkReachabilityManager sharedManager];
@@ -945,6 +885,8 @@ static NSString * const cellIdentifier = @"attention";
 - (void)historyCellClick
 {
 
+    AppShare;
+    
     //省份编码
     NSArray * historyArr = [[DatabaseManager sharedManger] getAllCompanys];
     NSString * province = historyArr[app.historyIndex][@"province_name"];
@@ -972,12 +914,6 @@ static NSString * const cellIdentifier = @"attention";
         //keycode
         _keycode = app.loginKeycode;
         
-        //uid
-        _uid = app.uid;
-        
-        //request
-        _request = app.request;
-        
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
@@ -985,17 +921,10 @@ static NSString * const cellIdentifier = @"attention";
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-        
+        loginTimeStr;
         _province = [AESCrypt encrypt:province password:[AESCrypt decrypt:_keycode]];
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",_request,@"request", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",app.request,@"request", nil];
         
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
@@ -1061,9 +990,6 @@ static NSString * const cellIdentifier = @"attention";
         //keycode
         _keycode = app.noLoginKeycode;
         
-        //request
-        _request = app.request;
-        
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
@@ -1071,17 +997,11 @@ static NSString * const cellIdentifier = @"attention";
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+        noLoginTimeStr;
         
         _province = [AESCrypt encrypt:province password:[AESCrypt decrypt:_keycode]];
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",app.request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei", nil];
         
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
@@ -1188,18 +1108,12 @@ static NSString * const cellIdentifier = @"attention";
 
 -(void)confirmBtnClick
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     if (app.isLogin == YES) {//已登陆
         
         //keycode
         _keycode = app.loginKeycode;
-        
-        //uid
-        _uid = app.uid;
-        
-        //request
-        _request = app.request;
         
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
@@ -1209,13 +1123,7 @@ static NSString * const cellIdentifier = @"attention";
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+        loginTimeStr;
         
         _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
         
@@ -1225,7 +1133,7 @@ static NSString * const cellIdentifier = @"attention";
         //验证码
         _vertifyCode = _textField.text;
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
         
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
@@ -1282,9 +1190,6 @@ static NSString * const cellIdentifier = @"attention";
             //keycode
             _keycode = app.noLoginKeycode;
         
-            //request
-            _request = app.request;
-            
             //六位随机数
             _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
             
@@ -1293,13 +1198,7 @@ static NSString * const cellIdentifier = @"attention";
             _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
             
             //时间戳
-            NSDate *  senddate=[NSDate date];
-            
-            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-            
-            [dateformatter setDateFormat:@"YYYYMMddmmss"];
-            
-            _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+            noLoginTimeStr;
         
             //省份代码
             //读取plist文件
@@ -1321,7 +1220,7 @@ static NSString * const cellIdentifier = @"attention";
             //验证码
             _vertifyCode = _textField.text;
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
         
         [self.view endEditing:YES];
             [_contentView removeFromSuperview];
@@ -1383,6 +1282,8 @@ static NSString * const cellIdentifier = @"attention";
  
 - (void)historyConfirmBtnClick
 {
+    AppShare;
+    
     //省份编码
     NSArray * historyArr = [[DatabaseManager sharedManger] getAllCompanys];
     NSString * province = historyArr[app.historyIndex][@"province_name"];
@@ -1398,12 +1299,6 @@ static NSString * const cellIdentifier = @"attention";
         //keycode
         _keycode = app.loginKeycode;
         
-        //uid
-        _uid = app.uid;
-        
-        //request
-        _request = app.request;
-        
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
@@ -1411,14 +1306,7 @@ static NSString * const cellIdentifier = @"attention";
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-        //
+        loginTimeStr;
         
         _province = [AESCrypt encrypt:province password:[AESCrypt decrypt:_keycode]];
         
@@ -1427,9 +1315,7 @@ static NSString * const cellIdentifier = @"attention";
         //验证码
         _vertifyCode = _textField.text;
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
-        
-        //        NSLog(@"uid:%@\nrequest:%@\nvalue:%@\nkeyword:%@\ntime:%@\nprovince:%@\nvertify:%@\nimei:%@",_uid,_request,_nonce,_keyword,_timeString,app.province,_vertifyCode,imei);
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
         
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
@@ -1482,9 +1368,6 @@ static NSString * const cellIdentifier = @"attention";
         //keycode
         _keycode = app.noLoginKeycode;
         
-        //request
-        _request = app.request;
-        
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
@@ -1492,20 +1375,14 @@ static NSString * const cellIdentifier = @"attention";
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+        noLoginTimeStr;
         
         _province = [AESCrypt encrypt:province password:[AESCrypt decrypt:_keycode]];
         
         //验证码
         _vertifyCode = _textField.text;
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
         
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
@@ -1566,7 +1443,7 @@ static NSString * const cellIdentifier = @"attention";
 #pragma mark - 验证码图片
 - (void)createVertifyImage
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     _validationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
     UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
@@ -1645,7 +1522,7 @@ static NSString * const cellIdentifier = @"attention";
 
 - (void)createHistoryVertifyImage
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     _validationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
     UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
