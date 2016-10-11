@@ -102,6 +102,7 @@
 #pragma mark - 加载“我的关注“数据
 - (void)loadAttentionCompany
 {
+
     AppShare;
     
     //封装POST参数
@@ -121,10 +122,8 @@
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
                     
-                    self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
-                    
-                    [[NSUserDefaults standardUserDefaults] setObject:app.attentionArray forKey:@"attentionArray"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
+//                    self.attentionArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
+                    NSLog(@"%@",responseObject);
 
                 }];
                 
@@ -274,16 +273,10 @@
 #pragma mark - “我的关注”按钮
 -(void)focusClick
 {
-    
     AppShare;
-    
+
     if (app.isLogin == YES) {//已登陆用户
         
-        NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-        NSArray * attentionArray = [defau arrayForKey:@"attentionArray"];
-        
-        [[NSUserDefaults standardUserDefaults] synchronize];
-                
         if ([app.attentionArray isEqual:@"暂无关注企业"]) {
             
             if (_cell.FocusButton.isSelected == NO) {
@@ -297,7 +290,7 @@
             
         }else{
         
-            self.companyArray =  [attentionModel mj_objectArrayWithKeyValuesArray:attentionArray];
+            self.companyArray =  [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
             [self.companyTableView reloadData];
         }
         
@@ -389,6 +382,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppShare;
+    
     //点击后变成原色
     [self.viewTableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -420,7 +414,14 @@
                     app.companyIndex = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
                     
                     //公司ID
-                    app.companyID = app.attentionArray[indexPath.row][@"cid"];
+                    for (int i = 0; i < app.companyArray.count; i++) {
+                        
+                        if ([app.attentionArray[indexPath.row][@"cname"] isEqualToString:app.companyArray[i][@"ent_name"]]) {
+                            
+                            app.companyID = app.companyArray[i][@"eid"];
+                        }
+                    }
+//                    app.companyID = app.attentionArray[indexPath.row][@"cid"];
                     
                     app.companyName = app.attentionArray[indexPath.row][@"cname"];
 

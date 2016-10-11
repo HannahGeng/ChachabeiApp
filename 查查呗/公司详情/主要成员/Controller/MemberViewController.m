@@ -42,9 +42,21 @@
 - (void)loadMemberArray
 {
     AppShare;
+    
     NSMutableArray * dicArr = [NSMutableArray array];
+    NSMutableArray * nameArr = [NSMutableArray array];
+
     NSArray * stockArr = app.basicInfo[@"stockInfo"];
     
+    for (int i = 0; i < stockArr.count; i++) {
+        
+        NSString * nameStr = stockArr[i][@"stock_name"];
+        
+        [nameArr addObject:nameStr];
+    }
+    
+    app.nameArr = nameArr;
+        
     for (NSDictionary * dic in stockArr) {
         
         memberModel * detail = [[memberModel alloc] initWithDic:dic];

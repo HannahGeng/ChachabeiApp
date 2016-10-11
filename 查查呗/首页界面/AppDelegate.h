@@ -132,5 +132,7 @@
 
 @property (nonatomic,strong) NSArray * changes;
 
+@property (nonatomic,strong) NSArray * nameArr;
+
 @end
 

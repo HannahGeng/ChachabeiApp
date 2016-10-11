@@ -12,11 +12,21 @@
 
 - (instancetype)initWithDic:(NSDictionary *)dic
 {
+    AppShare;
+    
     if (self = [super init]) {
         
         self.surname = dic[@"stock_name"];
         self.position = dic[@"stock_type"];
-//        self.sequence = dic[@"sequence"];
+        
+        for (int i = 0; i < app.nameArr.count; i++) {
+            
+            if ([self.surname isEqualToString:app.nameArr[i]]) {
+                
+                self.sequence = i;
+            }
+            
+        }
     }
     
     return self;

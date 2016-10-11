@@ -127,6 +127,7 @@
     }else{//首页push进来的
         
         if (app.isLogin == YES) {//登陆
+            
             //时间戳
             NSDate *  senddate=[NSDate date];
             
@@ -154,8 +155,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
-                        NSLog(@"公司详细信息:%@",responseObject);
-                        
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
                             app.request = responseObject[@"response"];
@@ -168,6 +167,7 @@
                             app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
                             
                             [self.ContentTableView reloadData];
+                            
                             hudHide;
 
                         }else {
@@ -345,7 +345,7 @@
         for (int i = 0; i < app.attentionArray.count; i++) {
             
             //如果所点击的公司id与关注公司的id相同，则证明该企业已被关注
-            if ([app.attentionArray[i][@"cid"] containsString:app.companyID]) {
+            if ([app.attentionArray[i][@"cid"] containsString:app.companyIndex]) {
                 
                 _focusButton.selected = YES;
                 _isFocus = YES;
@@ -438,6 +438,7 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Change_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
+                        NSLog(@"%@",responseObject);
                         app.request = responseObject[@"response"];
                         
                     }];

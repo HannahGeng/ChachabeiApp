@@ -27,6 +27,7 @@
     [super viewWillAppear:animated];
     
     [self loadCompanyArray];
+    
 }
 
 - (void)viewDidLoad {

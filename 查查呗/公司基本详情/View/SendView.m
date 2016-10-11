@@ -76,7 +76,7 @@
 #pragma mark - 隐藏动画
 - (void)setUpHideAnim:(CGPoint)point completion:(void (^)())completion
 {
-    [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         
         CGAffineTransform transform = CGAffineTransformIdentity;
         

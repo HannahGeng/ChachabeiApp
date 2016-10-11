@@ -26,8 +26,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    //设置导航栏不透明
-    self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
     
@@ -35,6 +34,7 @@
     [self initFlipTableView];
     
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {
@@ -48,13 +48,16 @@
 
 -(void)backButton
 {
+    [NoneView hide];
     [[self navigationController] popViewControllerAnimated:YES];
 }
 
 -(void)initSegment{
+    
     self.segment = [[SegmentTapView alloc] initWithFrame:CGRectMake(0, 0, ScreeFrame.size.width, 40) withDataArray:[NSArray arrayWithObjects:@"登记信息",@"股东信息",@"主要成员",@"分支机构",@"变更记录",nil] withFont:15];
     self.segment.delegate = self;
     [self.view addSubview:self.segment];
+    
 }
 
 -(void)initFlipTableView{
@@ -79,8 +82,53 @@
 #pragma mark - select Index
 -(void)selectedIndex:(NSInteger)index
 {
+    
+    AppShare;
+    
     [self.flipView selectIndex:index];
-    NSLog(@"sel:%ld",(long)index);
+    
+    if (index == 0) {
+        
+        [NoneView hide];
+        
+    }else if(index == 1) {//股东信息
+        
+        if (app.shareHolderArray.count == 0) {
+            
+            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
+        }
+    }else if (index == 2){
+        
+        if (app.memberArray.count == 0) {
+            
+            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
+        }
+        
+    }else if (index == 3){
+        
+        if (app.branchs.count == 0) {
+            
+            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
+        }
+    }else if (index == 4){
+        
+        if (app.changes.count == 0) {
+            
+            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
+        }
+    }
 }
 
 -(void)scrollChangeToIndex:(NSInteger)index
@@ -89,16 +137,27 @@
     
     [self.segment selectIndex:index];
     
-    if(index == 2) {//股东信息
+    if (index == 1) {
+        
+        [NoneView hide];
+        
+    }else if(index == 2) {//股东信息
+        
         if (app.shareHolderArray.count == 0) {
             
             [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
         }
     }else if (index == 3){
         
         if (app.memberArray.count == 0) {
             
             [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
         }
 
     }else if (index == 4){
@@ -106,16 +165,19 @@
         if (app.branchs.count == 0) {
             
             [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
         }
     }else if (index == 5){
         
         if (app.changes.count == 0) {
             
             [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
+        }else
+        {
+            [NoneView hide];
         }
-    }else
-    {
-        [NoneView hide];
     }
 }
 

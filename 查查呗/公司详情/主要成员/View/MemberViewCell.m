@@ -12,9 +12,10 @@
 
 - (void)setMember:(memberModel *)member
 {
+    
     _member = member;
 
-    if ([member.sequence intValue] %2 == 0) {//偶数
+    if ((long)member.sequence % 2 == 0) {//偶数
         
         //偶数
         self.name.text = member.surname;
@@ -25,31 +26,24 @@
         //奇数
         self.nameLabel.text = member.surname;
         self.positionLabel.text = member.position;
-
     }
     
-    
-}
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
 }
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
     static NSString *cellID=@"member";
     MemberViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
     if (cell == nil) {
+        
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MemberViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
        
     }
+    
     return cell;
+    
 }
 
 
