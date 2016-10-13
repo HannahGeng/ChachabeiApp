@@ -8,7 +8,6 @@
 
 #import "CityViewCell.h"
 
-
 #define RowMagrin 10 //瀑布流上下间隔
 #define ColMagrin 15 //瀑布流左右间隔
 #define colHeight 40 //瀑布流高度
@@ -23,19 +22,9 @@ static NSString *cellIdentifier = @"ItemCell";
 
 }
 @end
+
 @implementation CityViewCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
-    if (self) {
-        
-        
-    }
-    
-    return self;
-}
 -(void)setContentView:(NSArray *)dataArray
 {
     self.cityArray=dataArray;
@@ -44,7 +33,6 @@ static NSString *cellIdentifier = @"ItemCell";
 
 -(void)initContentView
 {
-    
     //初始化自定义layout
     _flowLayout = [[ZWCollectionViewFlowLayout alloc] init];
     _flowLayout.colMagrin = ColMagrin;
@@ -74,9 +62,9 @@ static NSString *cellIdentifier = @"ItemCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-
     return _cityArray.count;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     //重用cell
@@ -85,6 +73,7 @@ static NSString *cellIdentifier = @"ItemCell";
     
     return cell;
 }
+
 #pragma mark UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -94,12 +83,13 @@ static NSString *cellIdentifier = @"ItemCell";
 #pragma mark ZWwaterFlowDelegate
 - (CGFloat)ZWwaterFlow:(ZWCollectionViewFlowLayout *)waterFlow heightForWidth:(CGFloat)width atIndexPath:(NSIndexPath *)indexPach
 {
-    
     return colHeight;
 }
+
 + (CGFloat)getHeightWithCityArray:(NSArray *)array
 {
     CGFloat height;
+    
     if (array.count%4==0) {
         
         height=array.count/4*colHeight+(array.count/4+1)*RowMagrin;

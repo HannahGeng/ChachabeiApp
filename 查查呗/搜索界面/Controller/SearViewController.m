@@ -88,17 +88,16 @@ static NSString * const cellIdentifier = @"attention";
     //搜索框
     [self searchBar];
     
-    //清空搜索历史按钮
-    [self cleanHistory];
-
     //加载数据
     [self loadData];
     
-    //添加按钮
-    [self addButton];
+    //清空搜索历史按钮
+    [self cleanHistory];
     
     // 监听键盘通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    _historyButton.selected = YES;
 }
 
 - (void)dealloc
@@ -174,12 +173,8 @@ static NSString * const cellIdentifier = @"attention";
 #pragma mark - 清空搜索历史Button
 - (void)cleanHistory
 {
-    self.searchBarTableView.dataSource=self;
-    self.searchBarTableView.delegate=self;
     self.searchBarTableView.backgroundColor=[UIColor clearColor];
-    self.searchBarTableView.scrollEnabled =YES; //设置tableview滚动
     [self.searchBarTableView registerNib:[UINib nibWithNibName:NSStringFromClass([SearVC class]) bundle:nil] forCellReuseIdentifier:cellIdentifier];
-    self.searchBarTableView.separatorStyle = UITableViewCellSelectionStyleBlue;
     
     removeButton = [[UIButton alloc] init];
     removeButton.frame = CGRectMake(0, [UIUtils getWindowHeight] - 100, [UIUtils getWindowWidth], 40);
@@ -199,33 +194,11 @@ static NSString * const cellIdentifier = @"attention";
      postNotificationName:@"homeView" object:nil];
 }
 
-//添加按钮搜索历史和我的关注
--(void)addButton
-{
-    NSString *str= [[NSUserDefaults standardUserDefaults] objectForKey:@"font-min"];
-    if ([str isEqualToString:@"YES"]) {
-        _historyButton.selected=YES;
-    }
-    _historyButton.contentEdgeInsets = UIEdgeInsetsMake(0,33, 0, 0);
-    _historyButton.selected=YES;
-    [_historyButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_historyButton setTitleColor:LIGHT_BLUE_COLOR forState:UIControlStateSelected];
-    [_historyButton addTarget:self action:@selector(companyClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    NSString *str1= [[NSUserDefaults standardUserDefaults] objectForKey:@"font-max"];
-    if ([str1 isEqualToString:@"YES"]) {
-        _historyButton.selected=YES;
-    }
-
-     _myselfButton.contentEdgeInsets = UIEdgeInsetsMake(0,33, 0, 0);
-    [_myselfButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    [_myselfButton setTitleColor:LIGHT_BLUE_COLOR forState:UIControlStateSelected];
-    [_myselfButton addTarget:self action:@selector(focusClick) forControlEvents:UIControlEventTouchUpInside];
-}
-
 #pragma mark - 搜索历史
--(void)companyClick
-{
+- (IBAction)companyClick {
+    
+    removeButton.hidden = NO;
+    
     [self loadData];
     
     [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font-min"];
@@ -243,9 +216,12 @@ static NSString * const cellIdentifier = @"attention";
 }
 
 #pragma mark - 我的关注
--(void)focusClick
+- (IBAction)focusClick
 {
+    removeButton.hidden = YES;
+    
     [self loadAttentionCompany];
+    
     [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font-min"];
     [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font-max"];
     [[NSUserDefaults standardUserDefaults]synchronize];
@@ -262,15 +238,11 @@ static NSString * const cellIdentifier = @"attention";
 - (void)loadAttentionCompany
 {
     AppShare;
-    
+        
     //封装POST参数
     if (app.isLogin == YES) {
         
-        NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-        NSArray * attentionArray = [defau arrayForKey:@"attentionArray"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        _searInfoArray = [attentionModel mj_objectArrayWithKeyValuesArray:attentionArray];
+        _searInfoArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
             
         [self.searchBarTableView reloadData];
         
@@ -368,7 +340,7 @@ static NSString * const cellIdentifier = @"attention";
     _cityTableView.delegate=self;
     _cityTableView.dataSource=self;
     [_cityView addSubview:_cityTableView];
-    removeButton.hidden = YES;
+
 }
 
 #pragma mark UITableViewDataSource
@@ -382,7 +354,7 @@ static NSString * const cellIdentifier = @"attention";
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    NSLog(@"cearInfoArray:%@",_searInfoArray);
+
     if ([tableView isEqual:self.searchBarTableView]) {
         return _searInfoArray.count;
     }
@@ -410,7 +382,6 @@ static NSString * const cellIdentifier = @"attention";
             SearVC *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             cell.attention =_searInfoArray[indexPath.row];
             return cell;
-            
         }
     }
     if ([tableView isEqual:_cityTableView]) {
@@ -428,6 +399,7 @@ static NSString * const cellIdentifier = @"attention";
         
         return cell;
     }
+    
     return nil;
 }
 
@@ -440,6 +412,7 @@ static NSString * const cellIdentifier = @"attention";
     if ([tableView isEqual:_cityTableView]) {
         return [CityViewCell getHeightWithCityArray:_dataArray[indexPath.section]];
     }
+    
     return 0;
 }
 
@@ -729,9 +702,6 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
-                            
-                            NSLog(@"\n搜索信息:%@",responseObject);
-                            
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
@@ -889,7 +859,6 @@ static NSString * const cellIdentifier = @"attention";
 #pragma  mark - 搜索历史点击事件
 - (void)historyCellClick
 {
-
     AppShare;
     
     //省份编码
@@ -942,26 +911,26 @@ static NSString * const cellIdentifier = @"attention";
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
-                    app.resultArray = responseObject[@"result"];
+                    NSLog(@"搜索历史:%@",responseObject);
                     
+                    app.resultArray = responseObject[@"result"][@"data"];
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         hudHide;
                         
-                        if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                        if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                             
-                            if ([responseObject[@"result"][@"image"] isEqual:[NSNull null]]) {//验证码为空
-                                
+                            if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
+
                                 MBhud(@"暂无搜索结果");
                                 
                             }else{//验证码不为空
                                 
                                 app.isVertify = YES;
-                                app.vertifyImage = responseObject[@"result"][@"image"];
+                                app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
                                 
                                 [self createHistoryVertifyImage];
-                      
                             }
                             
                         }else//无验证码
@@ -1170,6 +1139,7 @@ static NSString * const cellIdentifier = @"attention";
                         [_validationView removeFromSuperview];
                         
                     }else{
+                        
                         hudHide;
                         
                         if (_textField.text.length == 0) {
@@ -1245,7 +1215,6 @@ static NSString * const cellIdentifier = @"attention";
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
-//                    NSLog(@"%@",responseObject);
                     app.request = responseObject[@"response"];
                     app.resultArray = responseObject[@"result"][@"data"];
                     
@@ -1296,6 +1265,7 @@ static NSString * const cellIdentifier = @"attention";
     NSArray * historyArr = [[DatabaseManager sharedManger] getAllCompanys];
     NSString * province = historyArr[app.historyIndex][@"province_name"];
     NSLog(@"\n省份编码:%@",province);
+    
     //关键字
     NSString * keywordStr = historyArr[app.historyIndex][@"company_name"];
     NSLog(@"\n关键字:%@",keywordStr);
@@ -1339,7 +1309,7 @@ static NSString * const cellIdentifier = @"attention";
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
-                    app.resultArray = responseObject[@"result"];
+                    app.resultArray = responseObject[@"result"][@"data"];
                     
                     if ([responseObject[@"status"] intValue] == 1) {
                         
@@ -1567,8 +1537,6 @@ static NSString * const cellIdentifier = @"attention";
     
     NSData * imageData = [[NSData alloc] initWithBase64EncodedString:app.vertifyImage options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage * vertifyImage = [UIImage imageWithData:imageData];
-    
-    //    NSLog(@"vertifyImage: %@",vertifyImage);
     
     _photoImage.image=vertifyImage;
     

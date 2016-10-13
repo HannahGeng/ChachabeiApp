@@ -10,8 +10,6 @@
 
 @interface SearVC ()
 
-
-
 @end
 
 @implementation SearVC

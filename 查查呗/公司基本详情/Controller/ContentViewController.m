@@ -349,7 +349,6 @@
                 _isFocus = YES;
                 
                 break;
-
             }
             
         }
