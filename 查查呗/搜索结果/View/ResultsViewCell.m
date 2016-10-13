@@ -20,32 +20,23 @@
         self.company_name.text = companyDetail.company_name;
     }
     
-    if ([companyDetail.capital isEqualToString:@"null"]) {
+//    if ([companyDetail.capital isEqualToString:@"null"]) {
         self.capital.text = @"---";
-    }else{
-        self.capital.text = companyDetail.capital;
-    }
-    
-//    if ([companyDetail.establish_data isEqualToString:@"unll"]) {
-        self.establishment_date.text = @"---";
 //    }else{
-//        self.establishment_date.text = companyDetail.establish_data;
+//        self.capital.text = companyDetail.capital;
 //    }
+    
+    if ([companyDetail.establish_data isEqualToString:@"unll"]) {
+        self.establishment_date.text = @"---";
+    }else{
+        self.establishment_date.text = companyDetail.establish_data;
+    }
     
     if ([companyDetail.corporation isEqualToString:@"null"]) {
         self.corporation.text = @"---";
     }else{
         self.corporation.text = companyDetail.corporation;
     }
-}
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
 }
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{

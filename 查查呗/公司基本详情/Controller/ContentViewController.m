@@ -66,6 +66,8 @@
 {
     AppShare;
     
+    NSLog(@"%@,%@,%@,%@",app.province,app.companyID,app.url,app.province);
+    
     ResultsViewController * result = [[ResultsViewController alloc] init];
     NSArray * vcArray = [self.navigationController viewControllers];
     NSInteger vcCount = vcArray.count;
@@ -77,13 +79,7 @@
         _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:app.loginKeycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
+        loginTimeStr;
         
         _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
         
@@ -97,6 +93,8 @@
             if (status != 0) {
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
+                    
+                    NSLog(@"搜索企业详情:%@",responseObject);
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
                     

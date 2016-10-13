@@ -85,63 +85,12 @@ static NSString * const cellIdentifier = @"attention";
     //设置导航栏
     [self setNavigationBar];
     
-//    SearchView * search = [SearchView searchV];
+    //搜索框
+    [self searchBar];
     
-//    search.frame = CGRectMake(0, 0, screen_width, 40);
-    
-//    self.navigationItem.titleView = search;
-        
-    self.navigationItem.titleView = [SearchView showInpoint:CGPointMake(screen_width / 2, 44)];
+    //清空搜索历史按钮
+    [self cleanHistory];
 
-    //导航条的搜索条
-//    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10.0f,7.0f,[UIUtils getWindowWidth]-130,30.0f)];
-//    _searchBar.delegate = self;
-//    _searchBar.layer.masksToBounds=YES;
-//    _searchBar.layer.cornerRadius=5;
-//    [_searchBar setTintColor:[UIColor blueColor]];
-//    [_searchBar setPlaceholder:@"公司/机构名称或个人"];
-//    _viewButton=[UIButton buttonWithType:UIButtonTypeCustom];
-//    _viewButton.frame=CGRectMake(CGRectGetMaxX(_searchBar.frame), 7, 70, 30);
-//    _viewButton.backgroundColor=[UIColor clearColor];
-//    
-//    [_viewButton addTarget:self action:@selector(cityButton) forControlEvents:UIControlEventTouchUpInside];
-//        
-//    //城市
-//    _cityLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_searchBar.frame)+10,5, 40, 35)];
-//    _cityLabel.text=@"全国";
-//    _cityLabel.textColor=[UIColor whiteColor];
-//    _cityLabel.font=[UIFont systemFontOfSize: 16];
-//    
-//    _photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cityLabel.frame), 17, 15, 10)];
-//    [_photoImageView setImage:[UIImage imageNamed:@"icon_homepage_downArrow"]];
-//    
-//    //将搜索条放在一个UIView上
-//    searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 44)];
-//    
-//    searchView.backgroundColor = [UIColor clearColor];
-//    [searchView addSubview:_searchBar];
-//    [searchView addSubview:_viewButton];
-//    [searchView addSubview:_cityLabel];
-//    [searchView addSubview:_photoImageView];
-//    self.navigationItem.titleView = searchView;
-    
-    self.searchBarTableView.dataSource=self;
-    self.searchBarTableView.delegate=self;
-    self.searchBarTableView.backgroundColor=[UIColor clearColor];
-    self.searchBarTableView.scrollEnabled =YES; //设置tableview滚动
-    [self.searchBarTableView registerNib:[UINib nibWithNibName:NSStringFromClass([SearVC class]) bundle:nil] forCellReuseIdentifier:cellIdentifier];
-    self.searchBarTableView.separatorStyle = UITableViewCellSelectionStyleBlue;
-    
-    removeButton = [[UIButton alloc] init];
-    removeButton.frame = CGRectMake(0, [UIUtils getWindowHeight] - 100, [UIUtils getWindowWidth], 40);
-    removeButton.backgroundColor = [UIColor lightGrayColor];
-    [removeButton setTitle:@"清空搜索历史" forState:UIControlStateNormal];
-    [removeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [removeButton addTarget:self action:@selector(removeResult) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:removeButton];
-    
-    [_searchBar becomeFirstResponder];
-    
     //加载数据
     [self loadData];
     
@@ -150,14 +99,6 @@ static NSString * const cellIdentifier = @"attention";
     
     // 监听键盘通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(keywordView) name:@"keyword" object:nil];
-    
-}
-
-- (void)keywordView
-{
-    [KeyWordView showInPoint:CGPointMake(screen_width / 2, 108)];
 }
 
 - (void)dealloc
@@ -184,12 +125,72 @@ static NSString * const cellIdentifier = @"attention";
     [_searchBar resignFirstResponder];
 }
 
-//设置导航栏
+#pragma mark - 导航栏
 -(void)setNavigationBar
 {
     //为导航栏添加左侧按钮
     Backbutton;
 }
+
+#pragma mark - 搜索框
+- (void)searchBar
+{
+    //导航条的搜索条
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10.0f,7.0f,[UIUtils getWindowWidth]-130,30.0f)];
+    _searchBar.delegate = self;
+    _searchBar.layer.masksToBounds=YES;
+    _searchBar.layer.cornerRadius=5;
+    [_searchBar setTintColor:[UIColor blueColor]];
+    [_searchBar setPlaceholder:@"公司/机构名称或个人"];
+    _viewButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    _viewButton.frame=CGRectMake(CGRectGetMaxX(_searchBar.frame), 7, 70, 30);
+    _viewButton.backgroundColor=[UIColor clearColor];
+    
+    [_viewButton addTarget:self action:@selector(cityButton) forControlEvents:UIControlEventTouchUpInside];
+    
+    //城市
+    _cityLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_searchBar.frame)+10,5, 40, 35)];
+    _cityLabel.text=@"全国";
+    _cityLabel.textColor=[UIColor whiteColor];
+    _cityLabel.font=[UIFont systemFontOfSize: 16];
+    
+    _photoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_cityLabel.frame), 17, 15, 10)];
+    [_photoImageView setImage:[UIImage imageNamed:@"icon_homepage_downArrow"]];
+    
+    //将搜索条放在一个UIView上
+    searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 44)];
+    
+    searchView.backgroundColor = [UIColor clearColor];
+    [searchView addSubview:_searchBar];
+    [searchView addSubview:_viewButton];
+    [searchView addSubview:_cityLabel];
+    [searchView addSubview:_photoImageView];
+    self.navigationItem.titleView = searchView;
+
+    //searchBar自动弹出键盘
+    [_searchBar becomeFirstResponder];
+}
+
+#pragma mark - 清空搜索历史Button
+- (void)cleanHistory
+{
+    self.searchBarTableView.dataSource=self;
+    self.searchBarTableView.delegate=self;
+    self.searchBarTableView.backgroundColor=[UIColor clearColor];
+    self.searchBarTableView.scrollEnabled =YES; //设置tableview滚动
+    [self.searchBarTableView registerNib:[UINib nibWithNibName:NSStringFromClass([SearVC class]) bundle:nil] forCellReuseIdentifier:cellIdentifier];
+    self.searchBarTableView.separatorStyle = UITableViewCellSelectionStyleBlue;
+    
+    removeButton = [[UIButton alloc] init];
+    removeButton.frame = CGRectMake(0, [UIUtils getWindowHeight] - 100, [UIUtils getWindowWidth], 40);
+    removeButton.backgroundColor = [UIColor lightGrayColor];
+    [removeButton setTitle:@"清空搜索历史" forState:UIControlStateNormal];
+    [removeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [removeButton addTarget:self action:@selector(removeResult) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:removeButton];
+
+}
+
 -(void)backButton
 {
     [self.view endEditing:YES];
@@ -197,7 +198,8 @@ static NSString * const cellIdentifier = @"attention";
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"homeView" object:nil];
 }
-//添加按钮
+
+//添加按钮搜索历史和我的关注
 -(void)addButton
 {
     NSString *str= [[NSUserDefaults standardUserDefaults] objectForKey:@"font-min"];
@@ -292,7 +294,7 @@ static NSString * const cellIdentifier = @"attention";
    
 }
 
-//alert代理
+#pragma mark - alert代理
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
@@ -492,6 +494,7 @@ static NSString * const cellIdentifier = @"attention";
     }
     return 0.1;
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
@@ -557,7 +560,7 @@ static NSString * const cellIdentifier = @"attention";
     self.returnBlock=block;
 }
 
-//当textView的文字改变或者清除的时候调用此方法，搜索栏目前的状态正在编辑，在搜索文字字段中的当前文本
+#pragma mark - SearchBarDelegate
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     
@@ -726,24 +729,25 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
-                            app.resultArray = responseObject[@"result"];
                             
-//                            NSLog(@"\n搜索信息:%@",responseObject);
+                            NSLog(@"\n搜索信息:%@",responseObject);
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
 
-                                if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                                if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                                     
-                                    if ([responseObject[@"result"][@"image"] isEqual:[NSNull null]]) {//验证码为空
+                                    if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
                                         
                                         MBhud(@"暂无搜索结果");
                                         
                                     }else{//验证码不为空
                                         
+                                        app.resultArray = responseObject[@"result"];
+
                                         app.isVertify = YES;
-                                        app.vertifyImage = responseObject[@"result"][@"image"];
+                                        app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
                                         
                                         [self createVertifyImage];
                                         
@@ -751,6 +755,7 @@ static NSString * const cellIdentifier = @"attention";
                                     
                                 }else//无验证码
                                 {
+                                    app.resultArray = responseObject[@"result"][@"data"];
                                     hudHide;
                                     app.isVertify = NO;
                                     [_validationView removeFromSuperview];
@@ -1106,6 +1111,7 @@ static NSString * const cellIdentifier = @"attention";
     [self historyCellClick];
 }
 
+#pragma mark - 验证码输入确认
 -(void)confirmBtnClick
 {
     AppShare;
@@ -1149,8 +1155,10 @@ static NSString * const cellIdentifier = @"attention";
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
+                    NSLog(@"验证码结果:%@",responseObject);
+                    
                     app.request = responseObject[@"response"];
-                    app.resultArray = responseObject[@"result"];
+                    app.resultArray = responseObject[@"result"][@"data"];
                     
                     if ([responseObject[@"status"] intValue] == 1) {
                         
@@ -1598,6 +1606,5 @@ static NSString * const cellIdentifier = @"attention";
     [_textField becomeFirstResponder];
 
 }
-
 
 @end

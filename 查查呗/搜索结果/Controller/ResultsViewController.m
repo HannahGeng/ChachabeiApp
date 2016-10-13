@@ -74,7 +74,6 @@
     AFNetworkReachabilityManager * mgr;
     
     NSString * _company_no;
-    AppDelegate * app;
     MBProgressHUD * mbHud;
 }
 @property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
@@ -109,8 +108,20 @@
 
 - (void)loadCompanyResults
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     self.companyResult = [CompanyDetail mj_objectArrayWithKeyValuesArray:app.resultArray];
+    
+    NSMutableArray * resultA = [NSMutableArray array];
+    
+    for (NSDictionary * dic in app.resultArray) {
+        
+        CompanyDetail * detail = [[CompanyDetail alloc] initWithDictionary:dic];
+        
+        [resultA addObject:detail];
+    }
+    
+    self.companyResult = resultA;
+    
 }
 
 //设置导航栏
@@ -161,8 +172,7 @@
 }
 -(void)addContentView
 {
-    app = [AppDelegate sharedAppDelegate];
-    
+    AppShare;
     //导航条的搜索条
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(10.0f,7.0f,[UIUtils getWindowWidth]-130,30.0f)];
     _searchBar.delegate = self;
@@ -283,8 +293,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    app = [AppDelegate sharedAppDelegate];
-    
+    AppShare;
     [self.view endEditing:YES];
     //点击后变成原色
     [self.resultsTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -292,8 +301,8 @@
     if ([tableView isEqual:self.resultsTableView]) {
         
         if (app.isLogin == YES) {
-            app.companyID = app.resultArray[indexPath.row][@"regist_no"];
-            app.companyName = app.resultArray[indexPath.row][@"company_name"];
+            app.companyID = app.resultArray[indexPath.row][@"reg_no"];
+            app.companyName = app.resultArray[indexPath.row][@"ent_name"];
             app.companyIndex = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
             app.url = app.resultArray[indexPath.row][@"url"];
             
@@ -326,6 +335,7 @@
     self.navigationController.navigationBar.hidden = NO;
     [_cityView removeFromSuperview];
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
@@ -336,6 +346,7 @@
     }
     return 0.1;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
@@ -346,6 +357,7 @@
     }
     return 0.1;
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
@@ -424,8 +436,7 @@
 #pragma mark - 验证码图片
 - (void)createVertifyImage
 {
-    app = [AppDelegate sharedAppDelegate];
-    
+    AppShare;
     _validationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
     UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
     [_validationView addGestureRecognizer:tapContentGesture];
@@ -506,25 +517,10 @@
 {
     [self.view endEditing:YES];
     
-    app = [AppDelegate sharedAppDelegate];
-    
+    AppShare;
     if ([_cityLabel.text isEqualToString:@"全国"]) {
         
-        UILabel * alertLabel = [[UILabel alloc] init];
-        alertLabel.centerX = [UIUtils getWindowWidth] / 2 - 75;
-        alertLabel.centerY = [UIUtils getWindowHeight] / 2 + 50;
-        alertLabel.width = 150;
-        alertLabel.height = 30;
-        alertLabel.text = @"请选择城市";
-        alertLabel.alpha = 0.3;
-        alertLabel.textAlignment = NSTextAlignmentCenter;
-        alertLabel.textColor = [UIColor whiteColor];
-        alertLabel.backgroundColor = [UIColor blackColor];
-        [self.view addSubview:alertLabel];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            alertLabel.alpha = 0.0;
-        });
+        MBhud(@"请选择城市");
         
     }else{
         
@@ -546,12 +542,6 @@
                 _keycode = app.loginKeycode;
 //                NSLog(@"keycode:%@",_keycode);
                 
-                //uid
-                _uid = app.uid;
-                
-                //request
-                _request = app.request;
-                
                 //六位随机数
                 _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
                 
@@ -560,13 +550,7 @@
                 _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
                 
                 //时间戳
-                NSDate *  senddate=[NSDate date];
-                
-                NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-                
-                [dateformatter setDateFormat:@"YYYYMMddmmss"];
-                
-                _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+                loginTimeStr;
                 
                 //省份代码
                 //读取plist文件
@@ -585,7 +569,7 @@
                 
                 _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
                 
-                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",_request,@"request", nil];
+                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.loginKeycode]],@"imei",app.request,@"request", nil];
                 
                 //监控网络状态
                 mgr = [AFNetworkReachabilityManager sharedManager];
@@ -598,6 +582,8 @@
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
 
+                            NSLog(@"搜索结果:%@",responseObject);
+                            
                             app.resultArray = responseObject[@"result"];
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
@@ -789,7 +775,7 @@
 
 -(void)confirmBtnClick
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     if (app.isLogin == YES) {//已登陆
         
@@ -1018,8 +1004,7 @@
 //当textView的文字改变或者清除的时候调用此方法，搜索栏目前的状态正在编辑，在搜索文字字段中的当前文本
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    app = [AppDelegate sharedAppDelegate];
-//    NSLog(@"textDidChange:%@",searchText);
+    AppShare;
     
     serchStr=searchText;
     app.keyword = serchStr;
