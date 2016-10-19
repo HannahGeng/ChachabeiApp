@@ -63,12 +63,15 @@
 
 #pragma mark - 设置导航栏
 - (void)setNavigationBar{
+    
     SetNavigationBar(@"首页");
 }
 
 #pragma mark - 添加内容视图
 -(void)addContentView
 {
+    self.viewTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+    
     if (_cell.CompanyButton.selected == YES) {
         
         self.viewTableView.bounces = YES;
@@ -102,7 +105,6 @@
 #pragma mark - 加载“我的关注“数据
 - (void)loadAttentionCompany
 {
-
     AppShare;
     
     //封装POST参数
@@ -122,9 +124,6 @@
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
                     
-//                    self.attentionArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
-                    NSLog(@"%@",responseObject);
-
                 }];
                 
             }else{
@@ -421,7 +420,6 @@
                             app.companyID = app.companyArray[i][@"eid"];
                         }
                     }
-//                    app.companyID = app.attentionArray[indexPath.row][@"cid"];
                     
                     app.companyName = app.attentionArray[indexPath.row][@"cname"];
 

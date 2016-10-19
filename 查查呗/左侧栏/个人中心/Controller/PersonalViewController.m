@@ -147,7 +147,7 @@
     _imageView.layer.masksToBounds = YES;
     _imageView.layer.cornerRadius=25;
     
-    NSData *data=[[NSUserDefaults standardUserDefaults]objectForKey:@"image"];
+    NSData *data = [SaveTool objectForKey:@"image"];
     if (!data) {
         _imageView.image=[UIImage imageNamed:@"touxiang.png"];
     }else{
@@ -219,11 +219,8 @@
     [_nameView addSubview:_nicknameLabel];
     
     nameLabel=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-145, 10, 100, 30)];
-    NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-    app.username = [defau stringForKey:@"username"];
+    app.username = [SaveTool objectForKey:@"username"];
     nameLabel.text = app.username;
-    [defau synchronize];
-//    NSLog(@"昵称:%@",nameLabel.text);
     nameLabel.textAlignment=NSTextAlignmentRight;
     nameLabel.font=[UIFont systemFontOfSize:16];
     [_nameView addSubview:nameLabel];
@@ -745,8 +742,7 @@
                     nameLabel.text = _nameTextField.text;
                     app.username = nameLabel.text;
 
-                    [[NSUserDefaults standardUserDefaults] setObject:nameLabel.text forKey:@"username"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [SaveTool setObject:nameLabel.text forKey:@"username"];
                     
                 }
                 app.request = responseObject[@"response"];
@@ -967,7 +963,6 @@
         
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phonenum"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passnum"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
 
         LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
             UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
@@ -1054,7 +1049,8 @@
     }
     
     _imageView.image=[UIImage imageWithData:data];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"image"];
+    [SaveTool setObject:data forKey:@"image"];
+    
     //结束操作
     [self dismissViewControllerAnimated:YES completion:nil];
 }

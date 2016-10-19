@@ -65,7 +65,9 @@
     _imageView.layer.cornerRadius=40;
     
     if (app.isLogin == YES) {
-        NSData *data=[[NSUserDefaults standardUserDefaults]objectForKey:@"image"];
+        
+        NSData *data = [SaveTool objectForKey:@"image"];
+        
         if (!data) {
             _imageView.image=[UIImage imageNamed:@"touxiang.png"];
         }else{
@@ -85,10 +87,10 @@
     }
     
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(122, CGRectGetMaxY(_imageView.frame)+5, 80, 30)];
+    
     if (app.isLogin == YES) {
-        
-        NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-        _nameLabel.text = [defau stringForKey:@"username"];
+   
+        _nameLabel.text = [SaveTool objectForKey:@"username"];
         
     }else{
         _nameLabel.text=@"游客";
@@ -144,7 +146,7 @@
 }
 -(void)image
 {
-    NSData *data=[[NSUserDefaults standardUserDefaults]objectForKey:@"image"];
+    NSData *data = [SaveTool objectForKey:@"image"];
     
     _imageView.image=[UIImage imageWithData:data];
     
@@ -177,7 +179,6 @@
         app.isLogin = NO;
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phonenum"];
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passnum"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
         
         LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
         UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];

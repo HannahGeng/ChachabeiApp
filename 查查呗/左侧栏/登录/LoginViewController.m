@@ -53,7 +53,7 @@
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passnum"];
     
-    _passTextField.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"passnum"];
+    _passTextField.text = [SaveTool objectForKey:@"passnum"];
     
     [_passTextField resignFirstResponder];
 }
@@ -73,7 +73,7 @@
     [self setNavigationBar];
     
     //头像
-    NSData *data=[[NSUserDefaults standardUserDefaults]objectForKey:@"image"];
+    NSData *data = [SaveTool objectForKey:@"image"];
     if (!data) {
         _headImageView.image=[UIImage imageNamed:@"touxiang.png"];
     }else{
@@ -326,9 +326,8 @@
                     app.request = responseObject[@"response"];
                     app.loginKeycode = responseObject[@"result"][@"keycode"];
                     
-                    [[NSUserDefaults standardUserDefaults] setObject:_numberTextField.text forKey:@"phonenum"];
-                    [[NSUserDefaults standardUserDefaults] setObject:_passTextField.text forKey:@"passnum"];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [SaveTool setObject:_numberTextField.text forKey:@"phonenum"];
+                    [SaveTool setObject:_passTextField.text forKey:@"passnum"];
                     
                     app.phonenum = _numberTextField.text;
                     app.password = _passTextField.text;

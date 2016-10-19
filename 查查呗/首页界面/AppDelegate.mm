@@ -8,13 +8,12 @@
 
 #import "AppDelegate.h"
 
-#define VersionKey @"version"
-
 @interface AppDelegate ()
 {
     SideBarMenuViewController *_sideBarMenuVC;
     BMKMapManager *_mapManager;
 }
+
 @end
 
 @implementation AppDelegate
@@ -42,44 +41,12 @@
         
     //注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(shouye)
-                                                 name:@"homeView" object:nil];
+                                             selector:@selector(shouye) name:@"homeView" object:nil];
     
-    NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
-    NSString * blog = [defau objectForKey:@"first"];
-    if ([blog isEqualToString:@"2"]) {
-        
-        LoginViewController * login = [[LoginViewController alloc] init];
-        UINavigationController *navigation=[[UINavigationController alloc] initWithRootViewController:login];
-        self.window.rootViewController = navigation;
-                
-    }else{
-        
-        //判断下有没有最新的版本号
-        //获取用户最新的版本号:info.plist
-        NSString * curVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
-        //获取上一次版本号
-        NSString * oldVersion = [[NSUserDefaults standardUserDefaults] objectForKey:VersionKey];
-
-        if ([curVersion isEqualToString:oldVersion]) {
-            //没有最新版本号,进入登录界面
-            LoginViewController * login = [[LoginViewController alloc] init];
-            UINavigationController *navigation=[[UINavigationController alloc] initWithRootViewController:login];
-            self.window.rootViewController = navigation;
-        }else{
-        
-        GuideViewController *guideVC=[[GuideViewController alloc] init];
-        UINavigationController *navigation=[[UINavigationController alloc] initWithRootViewController:guideVC];
-        self.window.rootViewController=navigation;
-        
-        //注册通知
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(tongzhi)
-                                                     name:@"viewController" object:nil];
-            
-       
-        }
-    }
+    self.window.rootViewController = [GuideTool chooseRootViewController];
+    
+    //注册通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi) name:@"viewController" object:nil];
     
     return YES;
 }
@@ -102,6 +69,7 @@
     LeftViewController *leftViewController= [[LeftViewController alloc] init];
     leftViewController.sideBarMenuVC = _sideBarMenuVC;
     _sideBarMenuVC.leftViewController = leftViewController;
+    
     //leftViewController展示主视图
     [leftViewController showViewControllerWithIndex:0];
     self.window.rootViewController = _sideBarMenuVC;

@@ -102,10 +102,8 @@
     //发送通知
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"viewController" object:nil];
-    
-    NSUserDefaults *defau = [NSUserDefaults standardUserDefaults];
-    [defau setObject:@"2" forKey:@"first"];
-    [defau synchronize];
+
+    [SaveTool setObject:@"2" forKey:@"first"];
     
     ViewController *viewController=[[ViewController alloc]initWithNibName:@"ViewController" bundle:nil];
     self.navigationController.navigationBarHidden=NO;

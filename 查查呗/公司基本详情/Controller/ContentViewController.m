@@ -300,6 +300,7 @@
 -(void)addContentView
 {
     AppShare;
+    _ContentTableView.separatorStyle = UITableViewCellSelectionStyleGray;
     _taberView=[[UIView alloc]initWithFrame:CGRectMake(0, [UIUtils getWindowHeight]-50, [UIUtils getWindowWidth], 50)];
     _taberView.backgroundColor=LIGHT_BLUE_COLOR;
     [[[UIApplication sharedApplication] keyWindow] addSubview: _taberView];

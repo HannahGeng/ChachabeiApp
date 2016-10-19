@@ -24,6 +24,8 @@
 		3D1B21C91DB70B69008B4AA5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1B21C21DB70B69008B4AA5 /* LoginViewController.xib */; };
 		3D1B21CA1DB70B69008B4AA5 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21C41DB70B69008B4AA5 /* RegisteredViewController.m */; };
 		3D1B21CB1DB70B69008B4AA5 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1B21C51DB70B69008B4AA5 /* RegisteredViewController.xib */; };
+		3D1B21D11DB71249008B4AA5 /* GuideTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21D01DB71249008B4AA5 /* GuideTool.m */; };
+		3D1B21D41DB71254008B4AA5 /* SaveTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21D31DB71254008B4AA5 /* SaveTool.m */; };
 		3D249E711D1229A8009C22BF /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4B1D1229A8009C22BF /* BaiduMapAPI_Base.framework */; };
 		3D249E721D1229A8009C22BF /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4C1D1229A8009C22BF /* BaiduMapAPI_Cloud.framework */; };
 		3D249E731D1229A8009C22BF /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4D1D1229A8009C22BF /* BaiduMapAPI_Location.framework */; };
@@ -237,6 +239,10 @@
 		3D1B21C31DB70B69008B4AA5 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
 		3D1B21C41DB70B69008B4AA5 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
 		3D1B21C51DB70B69008B4AA5 /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisteredViewController.xib; sourceTree = "<group>"; };
+		3D1B21CF1DB71249008B4AA5 /* GuideTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideTool.h; sourceTree = "<group>"; };
+		3D1B21D01DB71249008B4AA5 /* GuideTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideTool.m; sourceTree = "<group>"; };
+		3D1B21D21DB71254008B4AA5 /* SaveTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveTool.h; sourceTree = "<group>"; };
+		3D1B21D31DB71254008B4AA5 /* SaveTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveTool.m; sourceTree = "<group>"; };
 		3D249E4B1D1229A8009C22BF /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 		3D249E4C1D1229A8009C22BF /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
 		3D249E4D1D1229A8009C22BF /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
@@ -683,6 +689,33 @@
 			path = "登录";
 			sourceTree = "<group>";
 		};
+		3D1B21CC1DB71235008B4AA5 /* 业务类 */ = {
+			isa = PBXGroup;
+			children = (
+				3D1B21CD1DB71235008B4AA5 /* Guide */,
+				3D1B21CE1DB71235008B4AA5 /* Save */,
+			);
+			path = "业务类";
+			sourceTree = "<group>";
+		};
+		3D1B21CD1DB71235008B4AA5 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				3D1B21CF1DB71249008B4AA5 /* GuideTool.h */,
+				3D1B21D01DB71249008B4AA5 /* GuideTool.m */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
+		3D1B21CE1DB71235008B4AA5 /* Save */ = {
+			isa = PBXGroup;
+			children = (
+				3D1B21D21DB71254008B4AA5 /* SaveTool.h */,
+				3D1B21D31DB71254008B4AA5 /* SaveTool.m */,
+			);
+			path = Save;
+			sourceTree = "<group>";
+		};
 		3D249E491D1229A8009C22BF /* 框架 */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,6 +752,7 @@
 			isa = PBXGroup;
 			children = (
 				3DD663681D067167006BCB3D /* city.plist */,
+				3D1B21CC1DB71235008B4AA5 /* 业务类 */,
 				3DD664311D067ADA006BCB3D /* 倒计时按钮 */,
 				3DD663691D067167006BCB3D /* 扩展类 */,
 				3DD6636D1D067167006BCB3D /* 数据库 */,
@@ -1952,6 +1986,8 @@
 				3DD6639C1D0672FE006BCB3D /* ButtonViewCell.m in Sources */,
 				3DD6657F1D068AF4006BCB3D /* SideBarMenuViewController.m in Sources */,
 				3DD664901D067D47006BCB3D /* NewViewController.m in Sources */,
+				3D1B21D11DB71249008B4AA5 /* GuideTool.m in Sources */,
+				3D1B21D41DB71254008B4AA5 /* SaveTool.m in Sources */,
 				3DD999311DA8C3BE0022A639 /* UIButton+CCBButton.m in Sources */,
 				3DD663C61D06742A006BCB3D /* CompanyDetail.m in Sources */,
 				3DD663771D067167006BCB3D /* HTTPSessionManager.m in Sources */,

@@ -75,13 +75,12 @@ static NSString * const CompanyId = @"company";
 {
         app = [AppDelegate sharedAppDelegate];
         _uid = app.uid;
-//        NSLog(@"关注的request:%@,%d",app.request,app.isLogin);
+
         //封装POST参数
         if (app.isLogin == YES) {
             
-            NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-            NSArray * attentionArray = [defau arrayForKey:@"attentionArray"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            NSArray * attentionArray = [SaveTool objectForKey:@"attentionArray"];
+            
             self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:attentionArray];
             [self.attentionTableView reloadData];
             

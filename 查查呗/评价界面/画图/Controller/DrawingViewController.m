@@ -17,7 +17,7 @@
     UILabel *_label4;
     UILabel *_label5;
     UILabel *_label6;
-    AppDelegate * app;
+
 }
 @property (weak, nonatomic) IBOutlet UILabel *companyName;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
@@ -35,11 +35,10 @@
     //添加内容视图
     [self addContentView];
     
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
     NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
-//    NSLog(@"comment:%@",commentResult);
     
     NSDictionary *valueDictionary = @{@"企业诚信": commentResult[@"honesty"],
                                       @"社会声誉": commentResult[@"reputation"],
@@ -67,7 +66,6 @@
     
     //为导航栏添加左侧按钮
     Backbutton;
-   
 }
 
 -(void)backButton
@@ -82,6 +80,7 @@
      postNotificationName:@"homeView" object:nil];
     
 }
+
 //添加内容视图
 -(void)addContentView
 {
@@ -159,8 +158,6 @@
 }
 
 - (IBAction)shareButton:(UIButton *)sender {
-    
-//    NSLog(@"分享");
     
     NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
     NSArray *activityItem=@[shareUrl];

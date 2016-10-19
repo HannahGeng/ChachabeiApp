@@ -297,12 +297,9 @@
     
     [[HTTPSessionManager sharedManager] POST:CompanyComment_URL parameters:pDic result:^(id responseObject, NSError *error) {
         
-//        NSLog(@"评价信息：%@",responseObject);
-        
         app.request = responseObject[@"response"];
         
-        [[NSUserDefaults standardUserDefaults] setObject:responseObject[@"result"] forKey:@"commentResult"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [SaveTool setObject:responseObject[@"result"] forKey:@"commentResult"];
         
         if ([responseObject[@"status"] integerValue] == -3) {
             
