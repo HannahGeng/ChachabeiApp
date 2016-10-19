@@ -13,6 +13,17 @@
 		3D15D0251C03F6B300AB19E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D15D0231C03F6B300AB19E5 /* LaunchScreen.storyboard */; };
 		3D15D0301C03F6B300AB19E5 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D15D02F1C03F6B300AB19E5 /* ___Tests.m */; };
 		3D15D03B1C03F6B300AB19E5 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D15D03A1C03F6B300AB19E5 /* ___UITests.m */; };
+		3D1B21B01DB7038A008B4AA5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21AF1DB7038A008B4AA5 /* AFNetworking.framework */; };
+		3D1B21B21DB7038F008B4AA5 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B11DB7038F008B4AA5 /* FMDB.framework */; };
+		3D1B21B41DB70392008B4AA5 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B31DB70392008B4AA5 /* MJExtension.framework */; };
+		3D1B21B61DB70396008B4AA5 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B51DB70396008B4AA5 /* Reachability.framework */; };
+		3D1B21B81DB70399008B4AA5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B71DB70399008B4AA5 /* SVProgressHUD.framework */; };
+		3D1B21C61DB70B69008B4AA5 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21BE1DB70B69008B4AA5 /* ForgetPasswordViewController.m */; };
+		3D1B21C71DB70B69008B4AA5 /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1B21BF1DB70B69008B4AA5 /* ForgetPasswordViewController.xib */; };
+		3D1B21C81DB70B69008B4AA5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21C11DB70B69008B4AA5 /* LoginViewController.m */; };
+		3D1B21C91DB70B69008B4AA5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1B21C21DB70B69008B4AA5 /* LoginViewController.xib */; };
+		3D1B21CA1DB70B69008B4AA5 /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1B21C41DB70B69008B4AA5 /* RegisteredViewController.m */; };
+		3D1B21CB1DB70B69008B4AA5 /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D1B21C51DB70B69008B4AA5 /* RegisteredViewController.xib */; };
 		3D249E711D1229A8009C22BF /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4B1D1229A8009C22BF /* BaiduMapAPI_Base.framework */; };
 		3D249E721D1229A8009C22BF /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4C1D1229A8009C22BF /* BaiduMapAPI_Cloud.framework */; };
 		3D249E731D1229A8009C22BF /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4D1D1229A8009C22BF /* BaiduMapAPI_Location.framework */; };
@@ -30,10 +41,9 @@
 		3D249EA41D122C47009C22BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA31D122C47009C22BF /* Security.framework */; };
 		3D249EA61D122C4E009C22BF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA51D122C4E009C22BF /* CoreTelephony.framework */; };
 		3D249EA81D122C5C009C22BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA71D122C5C009C22BF /* CoreLocation.framework */; };
-		3D2C28C91D11091D00A52821 /* libMBProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C28C81D11091D00A52821 /* libMBProgressHUD.a */; };
-		3D2C292A1D11478D00A52821 /* libFMDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2C29291D11478D00A52821 /* libFMDB.a */; };
 		3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */; };
 		3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */; };
+		3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
 		3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD20E0C1DAA14F900A94F3C /* SendView.xib */; };
@@ -122,12 +132,6 @@
 		3DD664921D067D47006BCB3D /* newModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6645B1D067D46006BCB3D /* newModel.m */; };
 		3DD664931D067D47006BCB3D /* NewViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6645E1D067D46006BCB3D /* NewViewCell.m */; };
 		3DD664941D067D47006BCB3D /* NewViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD6645F1D067D46006BCB3D /* NewViewCell.xib */; };
-		3DD664951D067D47006BCB3D /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664631D067D47006BCB3D /* ForgetPasswordViewController.m */; };
-		3DD664961D067D47006BCB3D /* ForgetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664641D067D47006BCB3D /* ForgetPasswordViewController.xib */; };
-		3DD664971D067D47006BCB3D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664661D067D47006BCB3D /* LoginViewController.m */; };
-		3DD664981D067D47006BCB3D /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664671D067D47006BCB3D /* LoginViewController.xib */; };
-		3DD664991D067D47006BCB3D /* RegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6646A1D067D47006BCB3D /* RegisteredViewController.m */; };
-		3DD6649A1D067D47006BCB3D /* RegisteredViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD6646B1D067D47006BCB3D /* RegisteredViewController.xib */; };
 		3DD6649B1D067D47006BCB3D /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664701D067D47006BCB3D /* AboutViewController.m */; };
 		3DD6649C1D067D47006BCB3D /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664711D067D47006BCB3D /* AboutViewController.xib */; };
 		3DD6649D1D067D47006BCB3D /* AdviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664731D067D47006BCB3D /* AdviceViewController.m */; };
@@ -175,15 +179,10 @@
 		3DD665851D068AF4006BCB3D /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665621D068AF4006BCB3D /* UIUtils.m */; };
 		3DD665C51D06A1FB006BCB3D /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665C41D06A1FB006BCB3D /* AppDelegate.mm */; };
 		3DD999311DA8C3BE0022A639 /* UIButton+CCBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */; };
-		3DE3C06A1D07A9A600122976 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C0691D07A9A600122976 /* libAFNetworking.a */; };
-		3DE3C06E1D07A9C900122976 /* libMJExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C06D1D07A9C900122976 /* libMJExtension.a */; };
-		3DE3C0701D07A9CC00122976 /* libSVProgressHUD.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C06F1D07A9CC00122976 /* libSVProgressHUD.a */; };
-		3DE3C0741D07B17B00122976 /* libReachability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DE3C0731D07B17B00122976 /* libReachability.a */; };
 		3DE3C07E1D07B7E300122976 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3C0771D07B7E300122976 /* AESCrypt.m */; };
 		3DE3C07F1D07B7E300122976 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3C0791D07B7E300122976 /* NSData+Base64.m */; };
 		3DE3C0801D07B7E300122976 /* NSData+CommonCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3C07B1D07B7E300122976 /* NSData+CommonCrypto.m */; };
 		3DE3C0811D07B7E300122976 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3C07D1D07B7E300122976 /* NSString+Base64.m */; };
-		84284A896D891D5FF1FFAC6B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A047F97ECDD435215FCFEFA /* libPods.a */; };
 		89CA2D031D0912CC007115D4 /* reportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF61D0912CC007115D4 /* reportViewController.m */; };
 		89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CA2CF71D0912CC007115D4 /* reportViewController.xib */; };
 		89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF91D0912CC007115D4 /* YearViewController.m */; };
@@ -212,8 +211,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0A047F97ECDD435215FCFEFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		356169E88481656DD8C4EC5A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3D15D0121C03F6B300AB19E5 /* 查查呗.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "查查呗.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D15D0161C03F6B300AB19E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3D15D01F1C03F6B300AB19E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -226,6 +223,20 @@
 		3D15D0361C03F6B300AB19E5 /* 查查呗UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "查查呗UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D15D03A1C03F6B300AB19E5 /* ___UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "___UITests.m"; sourceTree = "<group>"; };
 		3D15D03C1C03F6B300AB19E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D1B21AF1DB7038A008B4AA5 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
+		3D1B21B11DB7038F008B4AA5 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/FMDB/FMDB.framework"; sourceTree = "<group>"; };
+		3D1B21B31DB70392008B4AA5 /* MJExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJExtension.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MJExtension/MJExtension.framework"; sourceTree = "<group>"; };
+		3D1B21B51DB70396008B4AA5 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/Reachability/Reachability.framework"; sourceTree = "<group>"; };
+		3D1B21B71DB70399008B4AA5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		3D1B21BD1DB70B69008B4AA5 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		3D1B21BE1DB70B69008B4AA5 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		3D1B21BF1DB70B69008B4AA5 /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgetPasswordViewController.xib; sourceTree = "<group>"; };
+		3D1B21C01DB70B69008B4AA5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3D1B21C11DB70B69008B4AA5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3D1B21C21DB70B69008B4AA5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		3D1B21C31DB70B69008B4AA5 /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisteredViewController.h; sourceTree = "<group>"; };
+		3D1B21C41DB70B69008B4AA5 /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisteredViewController.m; sourceTree = "<group>"; };
+		3D1B21C51DB70B69008B4AA5 /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisteredViewController.xib; sourceTree = "<group>"; };
 		3D249E4B1D1229A8009C22BF /* BaiduMapAPI_Base.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Base.framework; sourceTree = "<group>"; };
 		3D249E4C1D1229A8009C22BF /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
 		3D249E4D1D1229A8009C22BF /* BaiduMapAPI_Location.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Location.framework; sourceTree = "<group>"; };
@@ -252,14 +263,13 @@
 		3D249EA31D122C47009C22BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3D249EA51D122C4E009C22BF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3D249EA71D122C5C009C22BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		3D2C28C81D11091D00A52821 /* libMBProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMBProgressHUD.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-aolmnedvymmuqcgeokawdaeyrzdg/Build/Products/Release-iphonesimulator/libMBProgressHUD.a"; sourceTree = "<group>"; };
 		3D2C28CA1D1139C700A52821 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3D2C28CC1D1139D400A52821 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3D2C28CE1D1139DE00A52821 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		3D2C29291D11478D00A52821 /* libFMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFMDB.a; path = ../../../../.Trash/libFMDB.a; sourceTree = "<group>"; };
 		3D5FF69F1DAB3DE200DB7B9C /* NoneView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoneView.h; sourceTree = "<group>"; };
 		3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoneView.m; sourceTree = "<group>"; };
 		3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoneView.xib; sourceTree = "<group>"; };
+		3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
 		3DD20E071DAA13A900A94F3C /* SendCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCover.m; sourceTree = "<group>"; };
 		3DD20E091DAA14EE00A94F3C /* SendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendView.h; sourceTree = "<group>"; };
@@ -398,15 +408,6 @@
 		3DD6645D1D067D46006BCB3D /* NewViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewViewCell.h; sourceTree = "<group>"; };
 		3DD6645E1D067D46006BCB3D /* NewViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewViewCell.m; sourceTree = "<group>"; };
 		3DD6645F1D067D46006BCB3D /* NewViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewViewCell.xib; sourceTree = "<group>"; };
-		3DD664621D067D47006BCB3D /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgetPasswordViewController.h; path = ../ForgetPasswordViewController.h; sourceTree = "<group>"; };
-		3DD664631D067D47006BCB3D /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgetPasswordViewController.m; path = ../ForgetPasswordViewController.m; sourceTree = "<group>"; };
-		3DD664641D067D47006BCB3D /* ForgetPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgetPasswordViewController.xib; path = ../ForgetPasswordViewController.xib; sourceTree = "<group>"; };
-		3DD664651D067D47006BCB3D /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ../LoginViewController.h; sourceTree = "<group>"; };
-		3DD664661D067D47006BCB3D /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ../LoginViewController.m; sourceTree = "<group>"; };
-		3DD664671D067D47006BCB3D /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ../LoginViewController.xib; sourceTree = "<group>"; };
-		3DD664691D067D47006BCB3D /* RegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisteredViewController.h; path = ../RegisteredViewController.h; sourceTree = "<group>"; };
-		3DD6646A1D067D47006BCB3D /* RegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisteredViewController.m; path = ../RegisteredViewController.m; sourceTree = "<group>"; };
-		3DD6646B1D067D47006BCB3D /* RegisteredViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisteredViewController.xib; path = ../RegisteredViewController.xib; sourceTree = "<group>"; };
 		3DD6646F1D067D47006BCB3D /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3DD664701D067D47006BCB3D /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3DD664711D067D47006BCB3D /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -482,17 +483,10 @@
 		3DD665551D068AF4006BCB3D /* SideBarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarMenuViewController.m; sourceTree = "<group>"; };
 		3DD665611D068AF4006BCB3D /* UIUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
 		3DD665621D068AF4006BCB3D /* UIUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIUtils.m; sourceTree = "<group>"; };
-		3DD665861D069475006BCB3D /* Headfile.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Headfile.pch; sourceTree = "<group>"; };
 		3DD665C31D06A1FB006BCB3D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3DD665C41D06A1FB006BCB3D /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		3DD9992F1DA8C3BE0022A639 /* UIButton+CCBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CCBButton.h"; sourceTree = "<group>"; };
 		3DD999301DA8C3BE0022A639 /* UIButton+CCBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CCBButton.m"; sourceTree = "<group>"; };
-		3DE3C0691D07A9A600122976 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libAFNetworking.a"; sourceTree = "<group>"; };
-		3DE3C06B1D07A9C600122976 /* libFMDB.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFMDB.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libFMDB.a"; sourceTree = "<group>"; };
-		3DE3C06D1D07A9C900122976 /* libMJExtension.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMJExtension.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libMJExtension.a"; sourceTree = "<group>"; };
-		3DE3C06F1D07A9CC00122976 /* libSVProgressHUD.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSVProgressHUD.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libSVProgressHUD.a"; sourceTree = "<group>"; };
-		3DE3C0711D07B17800122976 /* libAESCrypt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAESCrypt.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libAESCrypt.a"; sourceTree = "<group>"; };
-		3DE3C0731D07B17B00122976 /* libReachability.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReachability.a; path = "../../../../Library/Developer/Xcode/DerivedData/查查呗-cenxbhzhpirlfadkkonommwyoxwb/Build/Products/Release-iphonesimulator/libReachability.a"; sourceTree = "<group>"; };
 		3DE3C0761D07B7E300122976 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
 		3DE3C0771D07B7E300122976 /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
 		3DE3C0781D07B7E300122976 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -501,7 +495,7 @@
 		3DE3C07B1D07B7E300122976 /* NSData+CommonCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+CommonCrypto.m"; sourceTree = "<group>"; };
 		3DE3C07C1D07B7E300122976 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
 		3DE3C07D1D07B7E300122976 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
-		570BAD08569B746C2F7861E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		63A86EEC9FCCD16905C3F52B /* Pods-查查呗.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-查查呗.release.xcconfig"; path = "Pods/Target Support Files/Pods-查查呗/Pods-查查呗.release.xcconfig"; sourceTree = "<group>"; };
 		89CA2CF51D0912CC007115D4 /* reportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reportViewController.h; sourceTree = "<group>"; };
 		89CA2CF61D0912CC007115D4 /* reportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reportViewController.m; sourceTree = "<group>"; };
 		89CA2CF71D0912CC007115D4 /* reportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reportViewController.xib; sourceTree = "<group>"; };
@@ -515,6 +509,7 @@
 		89CA2D001D0912CC007115D4 /* SKSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableViewCell.m; sourceTree = "<group>"; };
 		89CA2D011D0912CC007115D4 /* SKSTableViewCellIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKSTableViewCellIndicator.h; sourceTree = "<group>"; };
 		89CA2D021D0912CC007115D4 /* SKSTableViewCellIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKSTableViewCellIndicator.m; sourceTree = "<group>"; };
+		A0B4820E38D4743EF5AFD200 /* Pods-查查呗.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-查查呗.debug.xcconfig"; path = "Pods/Target Support Files/Pods-查查呗/Pods-查查呗.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,11 +517,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DE3C0741D07B17B00122976 /* libReachability.a in Frameworks */,
-				3DE3C0701D07A9CC00122976 /* libSVProgressHUD.a in Frameworks */,
-				3DE3C06E1D07A9C900122976 /* libMJExtension.a in Frameworks */,
-				3D2C292A1D11478D00A52821 /* libFMDB.a in Frameworks */,
-				3DE3C06A1D07A9A600122976 /* libAFNetworking.a in Frameworks */,
+				3D1B21B81DB70399008B4AA5 /* SVProgressHUD.framework in Frameworks */,
+				3D1B21B61DB70396008B4AA5 /* Reachability.framework in Frameworks */,
+				3D1B21B41DB70392008B4AA5 /* MJExtension.framework in Frameworks */,
+				3D1B21B21DB7038F008B4AA5 /* FMDB.framework in Frameworks */,
+				3D1B21B01DB7038A008B4AA5 /* AFNetworking.framework in Frameworks */,
+				3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */,
 				3D249E741D1229A8009C22BF /* BaiduMapAPI_Map.framework in Frameworks */,
 				3D249E981D122BCD009C22BF /* libsqlite3.tbd in Frameworks */,
 				3D249EA61D122C4E009C22BF /* CoreTelephony.framework in Frameworks */,
@@ -543,8 +539,6 @@
 				3D249E9C1D122C1F009C22BF /* QuartzCore.framework in Frameworks */,
 				3D249EA81D122C5C009C22BF /* CoreLocation.framework in Frameworks */,
 				3D249E721D1229A8009C22BF /* BaiduMapAPI_Cloud.framework in Frameworks */,
-				84284A896D891D5FF1FFAC6B /* libPods.a in Frameworks */,
-				3D2C28C91D11091D00A52821 /* libMBProgressHUD.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,8 +562,8 @@
 		08B1D89849B2E882031ADA99 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				570BAD08569B746C2F7861E2 /* Pods.debug.xcconfig */,
-				356169E88481656DD8C4EC5A /* Pods.release.xcconfig */,
+				A0B4820E38D4743EF5AFD200 /* Pods-查查呗.debug.xcconfig */,
+				63A86EEC9FCCD16905C3F52B /* Pods-查查呗.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -577,6 +571,12 @@
 		218A45E393B6F36EC8CFAFC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D1B21B71DB70399008B4AA5 /* SVProgressHUD.framework */,
+				3D1B21B51DB70396008B4AA5 /* Reachability.framework */,
+				3D1B21B31DB70392008B4AA5 /* MJExtension.framework */,
+				3D1B21B11DB7038F008B4AA5 /* FMDB.framework */,
+				3D1B21AF1DB7038A008B4AA5 /* AFNetworking.framework */,
+				3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */,
 				3D249E951D122BB5009C22BF /* CoreLocation.framework */,
 				3D249E931D122BAA009C22BF /* QuartzCore.framework */,
 				3D249E911D122B97009C22BF /* OpenGLES.framework */,
@@ -586,18 +586,9 @@
 				3D249E891D122B35009C22BF /* libstdc++.6.0.9.tbd */,
 				3D249E871D122A13009C22BF /* CoreTelephony.framework */,
 				3D249E851D1229FA009C22BF /* libsqlite3.tbd */,
-				3D2C29291D11478D00A52821 /* libFMDB.a */,
 				3D2C28CE1D1139DE00A52821 /* libiconv.tbd */,
 				3D2C28CC1D1139D400A52821 /* libz.tbd */,
 				3D2C28CA1D1139C700A52821 /* libstdc++.tbd */,
-				3D2C28C81D11091D00A52821 /* libMBProgressHUD.a */,
-				3DE3C0731D07B17B00122976 /* libReachability.a */,
-				3DE3C0711D07B17800122976 /* libAESCrypt.a */,
-				3DE3C06F1D07A9CC00122976 /* libSVProgressHUD.a */,
-				3DE3C06D1D07A9C900122976 /* libMJExtension.a */,
-				3DE3C06B1D07A9C600122976 /* libFMDB.a */,
-				3DE3C0691D07A9A600122976 /* libAFNetworking.a */,
-				0A047F97ECDD435215FCFEFA /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -676,6 +667,22 @@
 			path = "查查呗UITests";
 			sourceTree = "<group>";
 		};
+		3D1B21BC1DB70B68008B4AA5 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				3D1B21BD1DB70B69008B4AA5 /* ForgetPasswordViewController.h */,
+				3D1B21BE1DB70B69008B4AA5 /* ForgetPasswordViewController.m */,
+				3D1B21BF1DB70B69008B4AA5 /* ForgetPasswordViewController.xib */,
+				3D1B21C01DB70B69008B4AA5 /* LoginViewController.h */,
+				3D1B21C11DB70B69008B4AA5 /* LoginViewController.m */,
+				3D1B21C21DB70B69008B4AA5 /* LoginViewController.xib */,
+				3D1B21C31DB70B69008B4AA5 /* RegisteredViewController.h */,
+				3D1B21C41DB70B69008B4AA5 /* RegisteredViewController.m */,
+				3D1B21C51DB70B69008B4AA5 /* RegisteredViewController.xib */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
 		3D249E491D1229A8009C22BF /* 框架 */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,7 +718,6 @@
 		3DD663671D067167006BCB3D /* 工具类 */ = {
 			isa = PBXGroup;
 			children = (
-				3DD665861D069475006BCB3D /* Headfile.pch */,
 				3DD663681D067167006BCB3D /* city.plist */,
 				3DD664311D067ADA006BCB3D /* 倒计时按钮 */,
 				3DD663691D067167006BCB3D /* 扩展类 */,
@@ -1082,7 +1088,7 @@
 				3DD6643E1D067D46006BCB3D /* 个人中心 */,
 				3DD664481D067D46006BCB3D /* 我的关注 */,
 				3DD664511D067D46006BCB3D /* 消息盒子 */,
-				3DD664601D067D46006BCB3D /* 登录 */,
+				3D1B21BC1DB70B68008B4AA5 /* 登录 */,
 				3DD6646D1D067D47006BCB3D /* 设置 */,
 			);
 			path = "左侧栏";
@@ -1225,46 +1231,6 @@
 				3DD6645D1D067D46006BCB3D /* NewViewCell.h */,
 				3DD6645E1D067D46006BCB3D /* NewViewCell.m */,
 				3DD6645F1D067D46006BCB3D /* NewViewCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		3DD664601D067D46006BCB3D /* 登录 */ = {
-			isa = PBXGroup;
-			children = (
-				3DD664611D067D46006BCB3D /* Controller */,
-				3DD664681D067D47006BCB3D /* Model */,
-				3DD6646C1D067D47006BCB3D /* View */,
-			);
-			path = "登录";
-			sourceTree = "<group>";
-		};
-		3DD664611D067D46006BCB3D /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				3DD664651D067D47006BCB3D /* LoginViewController.h */,
-				3DD664661D067D47006BCB3D /* LoginViewController.m */,
-				3DD664671D067D47006BCB3D /* LoginViewController.xib */,
-				3DD664691D067D47006BCB3D /* RegisteredViewController.h */,
-				3DD6646A1D067D47006BCB3D /* RegisteredViewController.m */,
-				3DD6646B1D067D47006BCB3D /* RegisteredViewController.xib */,
-				3DD664621D067D47006BCB3D /* ForgetPasswordViewController.h */,
-				3DD664631D067D47006BCB3D /* ForgetPasswordViewController.m */,
-				3DD664641D067D47006BCB3D /* ForgetPasswordViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		3DD664681D067D47006BCB3D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3DD6646C1D067D47006BCB3D /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1673,11 +1639,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D15D03F1C03F6B300AB19E5 /* Build configuration list for PBXNativeTarget "查查呗" */;
 			buildPhases = (
-				26D4CEC346867623364E6645 /* Check Pods Manifest.lock */,
+				26D4CEC346867623364E6645 /* [CP] Check Pods Manifest.lock */,
 				3D15D00E1C03F6B300AB19E5 /* Sources */,
 				3D15D0101C03F6B300AB19E5 /* Resources */,
-				B9740CCA811A83800159BAAB /* Embed Pods Frameworks */,
-				4AB6D0DFD8088E6CA0D26E35 /* Copy Pods Resources */,
+				B9740CCA811A83800159BAAB /* [CP] Embed Pods Frameworks */,
+				4AB6D0DFD8088E6CA0D26E35 /* [CP] Copy Pods Resources */,
 				3D15D00F1C03F6B300AB19E5 /* Frameworks */,
 			);
 			buildRules = (
@@ -1787,6 +1753,7 @@
 				3DD663C51D06742A006BCB3D /* ContentViewController.xib in Resources */,
 				3DD663D01D06742A006BCB3D /* TopButtonVC.xib in Resources */,
 				3DD6639D1D0672FE006BCB3D /* ButtonViewCell.xib in Resources */,
+				3D1B21C91DB70B69008B4AA5 /* LoginViewController.xib in Resources */,
 				3DD6650A1D06899C006BCB3D /* TableViewCell.xib in Resources */,
 				3DD6649E1D067D47006BCB3D /* AdviceViewController.xib in Resources */,
 				3DD663C81D06742A006BCB3D /* AddressVC.xib in Resources */,
@@ -1802,12 +1769,11 @@
 				3DD665041D06899C006BCB3D /* RegistViewCell2.xib in Resources */,
 				3DD663FC1D06757F006BCB3D /* SearViewController.xib in Resources */,
 				3DD664F61D06899C006BCB3D /* MemberViewCell.xib in Resources */,
-				3DD6649A1D067D47006BCB3D /* RegisteredViewController.xib in Resources */,
 				3D15D0251C03F6B300AB19E5 /* LaunchScreen.storyboard in Resources */,
-				3DD664981D067D47006BCB3D /* LoginViewController.xib in Resources */,
 				3DD663E31D0674D3006BCB3D /* DrawingViewController.xib in Resources */,
 				3DD663A11D0672FE006BCB3D /* SearchViewCell.xib in Resources */,
 				3DD664941D067D47006BCB3D /* NewViewCell.xib in Resources */,
+				3D1B21C71DB70B69008B4AA5 /* ForgetPasswordViewController.xib in Resources */,
 				3DD665061D06899C006BCB3D /* RegistViewCell3.xib in Resources */,
 				3DD6642E1D067882006BCB3D /* NearViewController.xib in Resources */,
 				3DD664881D067D47006BCB3D /* PersonalViewController.xib in Resources */,
@@ -1835,7 +1801,7 @@
 				3DD6650E1D06899C006BCB3D /* ShareholdViewCell.xib in Resources */,
 				3DD664A51D067D47006BCB3D /* aboutViewCell.xib in Resources */,
 				3DD664851D067D47006BCB3D /* LeftViewController.xib in Resources */,
-				3DD664961D067D47006BCB3D /* ForgetPasswordViewController.xib in Resources */,
+				3D1B21CB1DB70B69008B4AA5 /* RegisteredViewController.xib in Resources */,
 				3DD6639B1D0672FE006BCB3D /* ArrayViewCell.xib in Resources */,
 				3DD664FF1D06899C006BCB3D /* Body.storyboard in Resources */,
 				3D15D0201C03F6B300AB19E5 /* Main.storyboard in Resources */,
@@ -1860,49 +1826,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		26D4CEC346867623364E6645 /* Check Pods Manifest.lock */ = {
+		26D4CEC346867623364E6645 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4AB6D0DFD8088E6CA0D26E35 /* Copy Pods Resources */ = {
+		4AB6D0DFD8088E6CA0D26E35 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-查查呗/Pods-查查呗-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9740CCA811A83800159BAAB /* Embed Pods Frameworks */ = {
+		B9740CCA811A83800159BAAB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-查查呗/Pods-查查呗-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1920,6 +1886,7 @@
 				3DD664341D067ADA006BCB3D /* TimerButton.m in Sources */,
 				3DD664191D06765C006BCB3D /* HotNewsViewController.m in Sources */,
 				3DD665851D068AF4006BCB3D /* UIUtils.m in Sources */,
+				3D1B21C81DB70B69008B4AA5 /* LoginViewController.m in Sources */,
 				3DD664231D0676A4006BCB3D /* CodeController.m in Sources */,
 				3DD663E21D0674D3006BCB3D /* DrawingViewController.m in Sources */,
 				3DD664A11D067D47006BCB3D /* WeViewController.m in Sources */,
@@ -1947,7 +1914,6 @@
 				3DD664F81D06899C006BCB3D /* BranchModel.m in Sources */,
 				3DD6648E1D067D47006BCB3D /* NewContentController.m in Sources */,
 				3DD664FD1D06899C006BCB3D /* ChangeViewCell.m in Sources */,
-				3DD664971D067D47006BCB3D /* LoginViewController.m in Sources */,
 				3DD664891D067D47006BCB3D /* PersonalViewCell.m in Sources */,
 				3DD663761D067167006BCB3D /* DatabaseManager.m in Sources */,
 				3DD664F51D06899C006BCB3D /* MemberViewCell.m in Sources */,
@@ -1955,9 +1921,11 @@
 				3DD664A41D067D47006BCB3D /* aboutViewCell.m in Sources */,
 				3DD663971D0672FE006BCB3D /* ViewController.m in Sources */,
 				3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */,
+				3D1B21C61DB70B69008B4AA5 /* ForgetPasswordViewController.m in Sources */,
 				3DD664FC1D06899C006BCB3D /* changeModel.m in Sources */,
 				3DD665051D06899C006BCB3D /* RegistViewCell3.m in Sources */,
 				3DD663A01D0672FE006BCB3D /* SearchViewCell.m in Sources */,
+				3D1B21CA1DB70B69008B4AA5 /* RegisteredViewController.m in Sources */,
 				3DD663C41D06742A006BCB3D /* ContentViewController.m in Sources */,
 				3DD6637B1D0671F2006BCB3D /* GuideViewController.m in Sources */,
 				89CA2D031D0912CC007115D4 /* reportViewController.m in Sources */,
@@ -1990,7 +1958,6 @@
 				3DD664841D067D47006BCB3D /* LeftViewController.m in Sources */,
 				3DD664921D067D47006BCB3D /* newModel.m in Sources */,
 				89CA2D081D0912CC007115D4 /* SKSTableView.m in Sources */,
-				3DD664951D067D47006BCB3D /* ForgetPasswordViewController.m in Sources */,
 				3DD663A41D0672FE006BCB3D /* TopButtonViewCell.m in Sources */,
 				3DD665111D0689E7006BCB3D /* SegmentViewController.m in Sources */,
 				3DD663751D067167006BCB3D /* UIView+XMGExtension.m in Sources */,
@@ -2005,7 +1972,6 @@
 				3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */,
 				3DD664F11D06899C006BCB3D /* FilpTableView.m in Sources */,
 				3DD663FB1D06757F006BCB3D /* SearViewController.m in Sources */,
-				3DD664991D067D47006BCB3D /* RegisteredViewController.m in Sources */,
 				3DD664A61D067D47006BCB3D /* SetViewCell.m in Sources */,
 				3DD663C91D06742A006BCB3D /* HeardViewCell.m in Sources */,
 				3DD665001D06899C006BCB3D /* RegistViewController.m in Sources */,
@@ -2111,7 +2077,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
@@ -2158,13 +2124,13 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
 		3D15D0401C03F6B300AB19E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 570BAD08569B746C2F7861E2 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = A0B4820E38D4743EF5AFD200 /* Pods-查查呗.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2183,11 +2149,7 @@
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/查查呗/框架/UMSocial_Sdk_4.4",
-					"$(SRCROOT)/查查呗/框架/Sina",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
@@ -2195,13 +2157,13 @@
 				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
 				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Debug;
 		};
 		3D15D0411C03F6B300AB19E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 356169E88481656DD8C4EC5A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 63A86EEC9FCCD16905C3F52B /* Pods-查查呗.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2219,18 +2181,15 @@
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/查查呗/框架/UMSocial_Sdk_4.4",
-					"$(SRCROOT)/查查呗/框架/Sina",
-				);
+				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
 				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "arm64 armv7 armv7s";
+				VALID_ARCHS = "arm64 armv7";
 			};
 			name = Release;
 		};
