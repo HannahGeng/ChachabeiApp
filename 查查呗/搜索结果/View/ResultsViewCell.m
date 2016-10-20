@@ -20,22 +20,22 @@
         self.company_name.text = companyDetail.company_name;
     }
     
-//    if ([companyDetail.capital isEqualToString:@"null"]) {
+    if ([companyDetail.capital isEqualToString:@"null"]) {
         self.capital.text = @"---";
-//    }else{
-//        self.capital.text = companyDetail.capital;
-//    }
-    
+    }else{
+        self.capital.text = companyDetail.reg_capital;
+    }
+
     if ([companyDetail.establish_data isEqualToString:@"unll"]) {
         self.establishment_date.text = @"---";
     }else{
-        self.establishment_date.text = companyDetail.establish_data;
+        self.establishment_date.text = companyDetail.start_date;
     }
     
-    if ([companyDetail.corporation isEqualToString:@"null"]) {
+    if ([companyDetail.legal_person isEqualToString:@"null"]) {
         self.corporation.text = @"---";
     }else{
-        self.corporation.text = companyDetail.corporation;
+        self.corporation.text = companyDetail.legal_person;
     }
 }
 

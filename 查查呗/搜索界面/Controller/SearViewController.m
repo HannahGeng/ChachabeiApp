@@ -158,7 +158,6 @@ static NSString * const cellIdentifier = @"attention";
     
     //将搜索条放在一个UIView上
     searchView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 400, 44)];
-    
     searchView.backgroundColor = [UIColor clearColor];
     [searchView addSubview:_searchBar];
     [searchView addSubview:_viewButton];
@@ -201,8 +200,6 @@ static NSString * const cellIdentifier = @"attention";
     
     [self loadData];
     
-    [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font-min"];
-    [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font-max"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     _myselfButton.selected=NO;
     
@@ -702,6 +699,7 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
+                            NSLog(@"搜索结果:%@",responseObject);
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;

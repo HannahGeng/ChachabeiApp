@@ -66,8 +66,6 @@
 {
     AppShare;
     
-    NSLog(@"%@,%@,%@,%@",app.province,app.companyID,app.url,app.province);
-    
     ResultsViewController * result = [[ResultsViewController alloc] init];
     NSArray * vcArray = [self.navigationController viewControllers];
     NSInteger vcCount = vcArray.count;
@@ -85,6 +83,8 @@
         
         NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"eid",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
         
+        NSDictionary * Dic = [NSDictionary dictionaryWithObjectsAndKeys:_companyId,@"eid",app.request,@"request",app.uid,@"uid",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp", nil];
+        
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
@@ -92,27 +92,47 @@
             
             if (status != 0) {
                 
-                [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
+                //无验证码的企业详情
+                if (app.url == nil) {
                     
-                    NSLog(@"搜索企业详情:%@",responseObject);
-                    
-                    if ([responseObject[@"status"] integerValue] == 1) {
-                    
-                        app.companyDetailContent = responseObject[@"result"];
+                    [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
+                        
+                        NSLog(@"搜索企业详情:%@",responseObject);
+                        app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
-                        app.basicInfo = responseObject[@"result"][@"basicInfo"];
+                        app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
                         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                         
                         [self.ContentTableView reloadData];
+                        
                         hudHide;
 
-                    }else{
+                    }];
+                    
+                }else{
+                    
+                    //有验证码的企业详情
+                    [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
+                        NSLog(@"搜索有验证码企业详情:%@",responseObject);
                         
-                        hudHide;
-                        MBhud(@"暂无结果")
-                        
-                    }
-                }];
+                        if ([responseObject[@"status"] integerValue] == 1) {
+                            
+                            app.companyDetailContent = responseObject[@"result"];
+                            app.request = responseObject[@"response"];
+                            app.basicInfo = responseObject[@"result"][@"basicInfo"];
+                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
+                            
+                            [self.ContentTableView reloadData];
+                            hudHide;
+                            
+                        }else{
+                            
+                            hudHide;
+                            MBhud(@"暂无结果")
+                            
+                        }
+                    }];
+                }
                 
             }else{
                 
@@ -582,7 +602,6 @@
         
         HeardViewCell *cell=[HeardViewCell cellWithTableView:self.ContentTableView];
         cell.backgroundColor = LIGHT_BACKGROUND_COLOR;
-        
         cell.companyDetail =  app.companyModel;
         
         return cell;
@@ -608,7 +627,7 @@
     if (indexPath.row==4) {
         
         TopButtonVC *cell=[TopButtonVC cellWithTableView:self.ContentTableView];
-        
+
         [cell.messageButton addTarget:self action:@selector(tapClick) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
@@ -667,7 +686,6 @@
         _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
         
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp",[AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]],@"registNo",year,@"year", nil];
-        
         
         if (app.isLogin == YES) {
             

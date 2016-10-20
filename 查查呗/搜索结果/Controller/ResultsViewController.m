@@ -301,7 +301,7 @@
     if ([tableView isEqual:self.resultsTableView]) {
         
         if (app.isLogin == YES) {
-            app.companyID = app.resultArray[indexPath.row][@"reg_no"];
+            app.companyID = app.resultArray[indexPath.row][@"eid"];
             app.companyName = app.resultArray[indexPath.row][@"ent_name"];
             app.companyIndex = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
             app.url = app.resultArray[indexPath.row][@"url"];

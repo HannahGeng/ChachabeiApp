@@ -76,6 +76,15 @@
 /** cell的高度 */
 @property (assign, nonatomic) CGFloat cellHeight;
 
+/** legal_person */
+@property (nonatomic,strong) NSString * legal_person;
+
+/** start_date */
+@property (nonatomic,strong) NSString * start_date;
+
+/** reg_capital */
+@property (nonatomic,strong) NSString * reg_capital;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

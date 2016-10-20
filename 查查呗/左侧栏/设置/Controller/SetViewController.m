@@ -61,16 +61,6 @@
 //添加内容视图
 -(void)addContentView
 {
-    NSString *str=APP_Font;
-    if (!str){
-        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"change_font"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    }
-    if ( ![[NSUserDefaults standardUserDefaults] objectForKey:@"font_min"]) {
-        [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font_min"];
-        [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font_max"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
-    }
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-90, 18, 70, 30)];
     
     self.setTableView.dataSource=self;
@@ -79,12 +69,11 @@
     self.setTableView.scrollEnabled =NO; //设置tableview不滚动
     self.setTableView.tableFooterView=[[UIView alloc]init];//影藏多余的分割线
 }
+
 //加载数据
 -(void)loadData
 {
     _setInfoArray = @[
-//                       @{@"image":[UIImage imageNamed:@"app12.png"],
-//                         @"text":@"字体大小"},
                        @{@"image":[UIImage imageNamed:@"app13.png"],
                          @"text":@"分享"},
                        @{@"image":[UIImage imageNamed:@"app15.png"],

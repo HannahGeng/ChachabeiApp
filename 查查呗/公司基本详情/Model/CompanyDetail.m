@@ -29,6 +29,9 @@
         self.modify = dictionary[@"modify"];
         self.busniss_alloted_time_later = dictionary[@"busniss_alloted_time_later"];
         self.busniss_alloted_time_start = dictionary[@"busniss_alloted_time_start"];
+        self.legal_person = dictionary[@"legal_person"];
+        self.start_date = dictionary[@"start_date"];
+        self.reg_capital = dictionary[@"reg_capital"];
     }
     
     return self;
