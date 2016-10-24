@@ -82,7 +82,6 @@
 #pragma mark - select Index
 -(void)selectedIndex:(NSInteger)index
 {
-    
     AppShare;
     
     [self.flipView selectIndex:index];

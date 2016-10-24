@@ -17,7 +17,7 @@
         self.company_name = dictionary[@"ent_name"];
         self.regist_no = dictionary[@"reg_no"];
         self.registdepartment = dictionary[@"reg_dept"];
-        self.establish_data = dictionary[@"create_date"];
+        self.establish_data = dictionary[@"create_time"];
         self.company_type = dictionary[@"ent_type"];
         self.scope = dictionary[@"scope"];
         self.address = dictionary[@"address"];
@@ -32,6 +32,9 @@
         self.legal_person = dictionary[@"legal_person"];
         self.start_date = dictionary[@"start_date"];
         self.reg_capital = dictionary[@"reg_capital"];
+        self.statu = dictionary[@"statu"];
+        self.term = dictionary[@"term"];
+        self.create_date = dictionary[@"create_date"];
     }
     
     return self;

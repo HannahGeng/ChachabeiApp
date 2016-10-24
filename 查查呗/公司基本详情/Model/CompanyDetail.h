@@ -85,6 +85,15 @@
 /** reg_capital */
 @property (nonatomic,strong) NSString * reg_capital;
 
+/** statu */
+@property (nonatomic,strong) NSString * statu;
+
+/** 营业期限 */
+@property (nonatomic,strong) NSString * term;
+
+/** create_date */
+@property (nonatomic,strong) NSString * create_date;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

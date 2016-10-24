@@ -26,15 +26,6 @@
     changemodel.cellHeight = MAX(leftMaxY, rightMaxY);
 }
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-    }
-    return self;
-}
-
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
     static NSString *cellID=@"change";

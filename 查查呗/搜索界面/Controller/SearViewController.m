@@ -200,7 +200,6 @@ static NSString * const cellIdentifier = @"attention";
     
     [self loadData];
     
-    [[NSUserDefaults standardUserDefaults]synchronize];
     _myselfButton.selected=NO;
     
     if ([_historyButton isSelected]) {
@@ -219,16 +218,17 @@ static NSString * const cellIdentifier = @"attention";
     
     [self loadAttentionCompany];
     
-    [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font-min"];
-    [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font-max"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
     _historyButton.selected=NO;
     
     if ([_myselfButton isSelected]) {
+        
         _myselfButton.selected=YES;
+        
     }else{
+        
         _myselfButton.selected=YES;
     }
+    
     _LineIamgeView.frame=CGRectMake([UIUtils getWindowWidth]/2, 37, [UIUtils getWindowWidth]/2, 3);
 }
 
@@ -422,6 +422,7 @@ static NSString * const cellIdentifier = @"attention";
     [self.searchBarTableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if ([tableView isEqual:self.searchBarTableView]) {
+        
         if (_historyButton.selected == YES) {
             
             app.historyIndex = indexPath.row;
@@ -430,6 +431,7 @@ static NSString * const cellIdentifier = @"attention";
 
         }
         else{
+            
             ContentViewController * content = [[ContentViewController alloc] init];
             
             //公司ID
@@ -533,9 +535,6 @@ static NSString * const cellIdentifier = @"attention";
 #pragma mark - SearchBarDelegate
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
-    
-    NSLog(@"%@",searchText);
-    
     AppShare;
     serachStr=searchText;
     app.keyword = serachStr;
@@ -582,6 +581,8 @@ static NSString * const cellIdentifier = @"attention";
     NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
     
     self.cityArray = [NSArray arrayWithContentsOfFile:file];
+
+    app.cityArray = self.cityArray;
     
     for (int i = 0; i < self.cityArray.count; i++) {
         
@@ -600,7 +601,6 @@ static NSString * const cellIdentifier = @"attention";
     if ([_cityLabel.text isEqualToString:@"全国"]) {
         
         MBhud(@"请选择城市");
-
         
     }else{
     
@@ -729,7 +729,6 @@ static NSString * const cellIdentifier = @"attention";
                                     [_validationView removeFromSuperview];
                                     ResultsViewController * result = [[ResultsViewController alloc] init];
                                     [self.navigationController pushViewController:result animated:YES];
-                            
                                 }
                                 
                             }else{
@@ -827,7 +826,6 @@ static NSString * const cellIdentifier = @"attention";
                                     
                                     ResultsViewController * result = [[ResultsViewController alloc] init];
                                     [self.navigationController pushViewController:result animated:YES];
-                                    
                                 }
                                 
                             }else{
@@ -842,16 +840,11 @@ static NSString * const cellIdentifier = @"attention";
                         
                         hudHide;
                         noWebhud;
-                        
                     }
                 }];
-                
             }
-            
         }
-
     }
-        
 }
 
 #pragma  mark - 搜索历史点击事件
@@ -1101,7 +1094,6 @@ static NSString * const cellIdentifier = @"attention";
         _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
         
         NSString * imei = [AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:_keycode]];
-        NSLog(@"imei:%@",app.app_uuid);
         
         //验证码
         _vertifyCode = _textField.text;
@@ -1201,7 +1193,6 @@ static NSString * const cellIdentifier = @"attention";
         [self.view endEditing:YES];
             [_contentView removeFromSuperview];
 
-
         //监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
@@ -1262,11 +1253,9 @@ static NSString * const cellIdentifier = @"attention";
     //省份编码
     NSArray * historyArr = [[DatabaseManager sharedManger] getAllCompanys];
     NSString * province = historyArr[app.historyIndex][@"province_name"];
-    NSLog(@"\n省份编码:%@",province);
     
     //关键字
     NSString * keywordStr = historyArr[app.historyIndex][@"company_name"];
-    NSLog(@"\n关键字:%@",keywordStr);
     
     app = [AppDelegate sharedAppDelegate];
     
@@ -1314,6 +1303,7 @@ static NSString * const cellIdentifier = @"attention";
                         hudHide;
                         ResultsViewController * result = [[ResultsViewController alloc] init];
                         [self.navigationController pushViewController:result animated:YES];
+                        
                         [_validationView removeFromSuperview];
     
                     }else{
@@ -1457,8 +1447,6 @@ static NSString * const cellIdentifier = @"attention";
     NSData * imageData = [[NSData alloc] initWithBase64EncodedString:app.vertifyImage options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage * vertifyImage = [UIImage imageWithData:imageData];
     
-//    NSLog(@"vertifyImage: %@",vertifyImage);
-    
     _photoImage.image=vertifyImage;
     
     _replaceButton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -1478,7 +1466,7 @@ static NSString * const cellIdentifier = @"attention";
     [_contentView addSubview:_textField];
     
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(_textField.frame)+10, [UIUtils getWindowWidth]-160, 20)];
-    //            _nameLabel.text=@"你输入的验证码有误，请重新输入。";
+
     _nameLabel.font=[UIFont systemFontOfSize:12];
     _nameLabel.textAlignment=NSTextAlignmentCenter;
     _nameLabel.textColor=[UIColor redColor];
@@ -1555,7 +1543,7 @@ static NSString * const cellIdentifier = @"attention";
     [_contentView addSubview:_textField];
     
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(50, CGRectGetMaxY(_textField.frame)+10, [UIUtils getWindowWidth]-160, 20)];
-    //            _nameLabel.text=@"你输入的验证码有误，请重新输入。";
+
     _nameLabel.font=[UIFont systemFontOfSize:12];
     _nameLabel.textAlignment=NSTextAlignmentCenter;
     _nameLabel.textColor=[UIColor redColor];

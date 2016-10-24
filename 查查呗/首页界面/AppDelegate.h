@@ -134,5 +134,8 @@
 
 @property (nonatomic,strong) NSArray * nameArr;
 
+/** cityArray */
+@property (nonatomic,strong) NSArray * cityArray;
+
 @end
 

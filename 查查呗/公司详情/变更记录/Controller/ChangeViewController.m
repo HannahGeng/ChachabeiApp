@@ -37,11 +37,10 @@
 
 - (void)loadChanges
 {
-    
     AppShare;
     
     NSMutableArray * dicArr = [NSMutableArray array];
-    NSArray * stockArr = app.basicInfo[@"changeInfo"];
+    NSArray * stockArr = app.companyDetailContent[@"changeInfo"];
     
     for (NSDictionary * dic in stockArr) {
         
@@ -79,6 +78,7 @@
     }
     
 }
+
 #pragma mark UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     int i=(int)indexPath.row+1;
-//
+
     if (self.changes.count == 0) {
         
         UITableViewCell * cell = [[UITableViewCell alloc] init];
@@ -106,14 +106,15 @@
     }
     
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     changeModel * change = self.changes[indexPath.row];
     return change.cellHeight;
     
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色

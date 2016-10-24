@@ -12,6 +12,7 @@
 {
     ContentViewController *_contentVC;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic,strong) NSArray * companyDetails;
 
@@ -24,9 +25,18 @@
     
     AppShare;
     
-    app = [AppDelegate sharedAppDelegate];
+    NSLog(@"变更记录：%@",app.companyDetailContent);
+
     app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
+    
+    if ([[app.companyDetailContent allKeys] containsObject:@"basicInfo"]) {
         
+        app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent[@"basicInfo"]];
+    }else{
+        
+        app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
+    }
+    
     //添加内容视图
     [self addContentView];
     
@@ -69,12 +79,14 @@
         return cell;
     }
     if (indexPath.row==2) {
+        
         RegistViewCell2 *cell=[RegistViewCell2 cellWithTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
         return cell;
     }
     if (indexPath.row==3) {
+        
         RegistViewCell3 *cell=[RegistViewCell3 cellWithTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
@@ -82,15 +94,17 @@
         return cell;
     }
     if (indexPath.row==4) {
+        
         RegistViewCell4 *cell=[RegistViewCell4 cellWithTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.companyDetail =  app.companyModel;
         return cell;
     }
+    
     return nil;
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     AppShare;
@@ -106,6 +120,7 @@
     return 80;
     
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色

@@ -37,7 +37,7 @@
     AppShare;
     
     NSMutableArray * dicArr = [NSMutableArray array];
-    NSArray * stockArr = app.basicInfo[@"branchInfo"];
+    NSArray * stockArr = app.companyDetailContent[@"branchInfo"];
     
     for (NSDictionary * dic in stockArr) {
         

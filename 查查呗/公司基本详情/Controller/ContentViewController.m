@@ -97,7 +97,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
                         
-                        NSLog(@"搜索企业详情:%@",responseObject);
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
@@ -113,6 +112,7 @@
                     
                     //有验证码的企业详情
                     [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
+                        
                         NSLog(@"搜索有验证码企业详情:%@",responseObject);
                         
                         if ([responseObject[@"status"] integerValue] == 1) {

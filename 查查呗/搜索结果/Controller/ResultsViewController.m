@@ -122,6 +122,7 @@
     
     self.companyResult = resultA;
     
+    NSLog(@"搜索结果：%@",app.resultArray);
 }
 
 //设置导航栏

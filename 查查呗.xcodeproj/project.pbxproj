@@ -1323,7 +1323,6 @@
 			isa = PBXGroup;
 			children = (
 				3DD664A81D06899C006BCB3D /* Controller */,
-				3DD664A91D06899C006BCB3D /* Mdoel */,
 				3DD664AA1D06899C006BCB3D /* View */,
 				3DD664AF1D06899C006BCB3D /* 主要成员 */,
 				3DD664BA1D06899C006BCB3D /* 分支记录 */,
@@ -1341,6 +1340,7 @@
 			children = (
 				3DD6650F1D0689E7006BCB3D /* SegmentViewController.h */,
 				3DD665101D0689E7006BCB3D /* SegmentViewController.m */,
+				3DD664A91D06899C006BCB3D /* Mdoel */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1349,7 +1349,8 @@
 			isa = PBXGroup;
 			children = (
 			);
-			path = Mdoel;
+			name = Mdoel;
+			path = ../Mdoel;
 			sourceTree = "<group>";
 		};
 		3DD664AA1D06899C006BCB3D /* View */ = {

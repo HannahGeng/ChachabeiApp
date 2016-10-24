@@ -19,7 +19,7 @@ static NSString *cellID=@"TableViewCell";
     if ([companyDetail.corporation isEqualToString:@"null"]) {
         self.nameLabel.text = @"---";
     }else{
-        self.nameLabel.text = companyDetail.corporation;
+        self.nameLabel.text = companyDetail.legal_person;
     }
     
     if ([companyDetail.establish_data isEqualToString:@"null"]) {
@@ -27,7 +27,12 @@ static NSString *cellID=@"TableViewCell";
     }else{
         self.SetupDate.text = companyDetail.establish_data;
     }
-    self.registrationLabel.text = @"登记成立";
+    
+    if ([companyDetail.statu isEqualToString:@"null"]) {
+        self.SetupDate.text = @"---";
+    }else{
+        self.registrationLabel.text = companyDetail.statu;
+    }
     
     if ([companyDetail.capital isEqualToString:@"null"]) {
         self.registeredCapital.text = @"---";

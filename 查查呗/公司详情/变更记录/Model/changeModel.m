@@ -15,11 +15,11 @@
     if (self = [super init]) {
         
         self.change_item = dic[@"change_item"];
-        self.after_change = dic[@"after_change"];
+        self.after_change = dic[@"change_after"];
         self.change_date = dic[@"change_date"];
         self.changecompany_type = dic[@"changecompany_type"];
-        self.before_change = dic[@"before_change"];
-        self.regist_no = dic[@"regist_no"];
+        self.before_change = dic[@"change_before"];
+        self.regist_no = dic[@"eid"];
     }
     
     return self;

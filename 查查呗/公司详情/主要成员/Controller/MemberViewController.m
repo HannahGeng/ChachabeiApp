@@ -46,7 +46,7 @@
     NSMutableArray * dicArr = [NSMutableArray array];
     NSMutableArray * nameArr = [NSMutableArray array];
 
-    NSArray * stockArr = app.basicInfo[@"stockInfo"];
+    NSArray * stockArr = app.companyDetailContent[@"stockInfo"];
     
     for (int i = 0; i < stockArr.count; i++) {
         
@@ -64,10 +64,10 @@
         [dicArr addObject:detail];
     }
     
-    self.memberArray = dicArr;
-    
     app.memberArray = dicArr;
 
+    self.memberArray = dicArr;
+    
 }
 
 //添加内容视图

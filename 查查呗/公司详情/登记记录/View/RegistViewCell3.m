@@ -28,7 +28,7 @@
         self.businessTerm.text = [NSString stringWithFormat:@"---"];
     }else{
         
-        self.businessTerm.text = [NSString stringWithFormat:@"%@ - %@", companyDetail.busniss_alloted_time_start,companyDetail.busniss_alloted_time_later];
+        self.businessTerm.text = companyDetail.term;
     }
 }
 

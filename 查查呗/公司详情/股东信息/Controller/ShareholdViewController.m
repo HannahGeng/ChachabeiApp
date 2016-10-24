@@ -38,6 +38,7 @@
     
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容视图
     [self addContentView];
     
@@ -48,7 +49,7 @@
 {
     AppShare;
     NSMutableArray * dicArr = [NSMutableArray array];
-    NSArray * stockArr = app.basicInfo[@"stockInfo"];
+    NSArray * stockArr = app.companyDetailContent[@"stockInfo"];
     
     for (NSDictionary * dic in stockArr) {
         
@@ -60,6 +61,8 @@
     self.shareHolderArray = dicArr;
     
     app.shareHolderArray = dicArr;
+    
+    NSLog(@"股东信息:%@",stockArr);
 }
 
 //设置导航栏
@@ -81,6 +84,8 @@
 //添加内容视图
 -(void)addContentView
 {
+    NSLog(@"数量:%lu",(unsigned long)self.shareHolderArray.count);
+    
     if (self.shareHolderArray.count == 0) {
         
 //        [[NoneView showNoneView] showInPoint:self.view.center title:@"该企业没有相关信息"];
