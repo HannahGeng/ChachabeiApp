@@ -43,6 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    mbHUDinit;
+    
     [self loadUI];
     
     mbHud.delegate = self;
@@ -147,6 +149,8 @@
                 
                 //参数返回失败
                 if ([responseObject[@"status"] intValue] == 1) {
+                    
+                    hudHide;
                     
                     AppShare;
                     app.keycode = responseObject[@"result"][@"keycode"];

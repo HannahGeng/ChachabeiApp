@@ -39,10 +39,13 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    AppShare;
+    
     _taberView.hidden=NO;
     
     [self.ContentTableView reloadData];
     
+    app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
 }
 
 - (void)viewDidLoad {
@@ -59,6 +62,8 @@
     
     //添加内容视图
     [self addContentView];
+    
+    AppShare;
     
 }
 
@@ -81,7 +86,7 @@
         
         _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
         
-        NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"eid",app.url,@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
+        NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",_companyId,@"registNo",[AESCrypt encrypt:app.url password:[AESCrypt decrypt:app.loginKeycode]],@"url",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp",_province,@"province", nil];
         
         NSDictionary * Dic = [NSDictionary dictionaryWithObjectsAndKeys:_companyId,@"eid",app.request,@"request",app.uid,@"uid",[AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]],@"nonce",_timeString,@"timestamp", nil];
         
@@ -96,6 +101,8 @@
                 if (app.url == nil) {
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
+                        
+                        CCBLog(@"无验证码企业详情:%@",responseObject);
                         
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
@@ -113,23 +120,35 @@
                     //有验证码的企业详情
                     [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
                         
-                        NSLog(@"搜索有验证码企业详情:%@",responseObject);
-                        
+                        CCBLog(@"有验证码企业详情：%@",responseObject);
+
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
-                            app.companyDetailContent = responseObject[@"result"];
                             app.request = responseObject[@"response"];
-                            app.basicInfo = responseObject[@"result"][@"basicInfo"];
-                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
+
+                            NSArray * dataArr = responseObject[@"result"][@"data"];
                             
-                            [self.ContentTableView reloadData];
-                            hudHide;
+                            if (dataArr.count == 0) {
+                                
+                                hudHide;
+
+                                MBhud(@"暂无信息");
+                                
+                            }else
+                            {
+                                app.companyDetailContent = responseObject[@"result"];
+                                app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                                app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
+                                
+                                [self.ContentTableView reloadData];
+                                hudHide;
+
+                            }
                             
                         }else{
                             
                             hudHide;
                             MBhud(@"暂无结果")
-                            
                         }
                     }];
                 }
@@ -168,7 +187,6 @@
             [mgr startMonitoring];
             [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status)
             {
-                
                 if (status != 0) {
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
@@ -233,7 +251,6 @@
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
                         if ([responseObject[@"status"] integerValue] == 1){
-                        
                             app.request = responseObject[@"response"];
                             
                             //保存企业详细信息数组源
@@ -407,7 +424,6 @@
 
 -(void)shareClick
 {
-    
     _taberView.hidden=YES;
     
     NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
@@ -456,7 +472,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Change_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
-                        NSLog(@"%@",responseObject);
                         app.request = responseObject[@"response"];
                         
                     }];
@@ -603,18 +618,21 @@
         HeardViewCell *cell=[HeardViewCell cellWithTableView:self.ContentTableView];
         cell.backgroundColor = LIGHT_BACKGROUND_COLOR;
         cell.companyDetail =  app.companyModel;
-        
+
         return cell;
     }
+    
     if (indexPath.row==1) {
         
         TableVC *cell=[TableVC cellWithTableView:self.ContentTableView];
         cell.companyDetail =  app.companyModel;
         cell.backgroundColor = LIGHT_BLUE_COLOR;
+        
         return cell;
     }
     
     if (indexPath.row==2) {
+        
         AddressVC *cell=[AddressVC cellWithTableView:self.ContentTableView];
         cell.companyDetail =  app.companyModel;
         return cell;
@@ -654,6 +672,10 @@
 #pragma mark - 工商信息点击事件
 -(void)tapClick
 {
+    AppShare;
+    
+    CCBLog(@"%@",app.companyDetailContent);
+    
     SegmentViewController * segment = [[SegmentViewController alloc] init];
     [self.navigationController pushViewController:segment animated:YES];
 }
@@ -663,7 +685,7 @@
 {
     AppShare;
     
-    NSArray * yearArr = app.companyDetailContent[@"changeInfo"];
+    NSArray * yearArr = app.companyDetailContent[@"annualYear"];
     
     if (yearArr.count == 0) {
         
@@ -691,7 +713,7 @@
             
             [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
                 
-                NSLog(@"\n年报信息:%@",responseObject);
+                CCBLog(@"\n年报信息:%@",responseObject);
                 
                 app.request = responseObject[@"response"];
             }];

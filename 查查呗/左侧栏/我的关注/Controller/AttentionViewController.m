@@ -23,6 +23,7 @@
     UILabel *_label;
     MBProgressHUD * mbHud;
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *attentionTableView;
 @property (nonatomic,strong) NSMutableArray * companyArray;
 
@@ -64,12 +65,14 @@ static NSString * const CompanyId = @"company";
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
 }
+
 -(void)remindButton
 {
     //发送通知
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"homeView" object:nil];
 }
+
 //加载数据
 -(void)loadData
 {
@@ -210,8 +213,6 @@ static NSString * const CompanyId = @"company";
     NSString * cidStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
     [self.companyArray removeObjectsInArray:deletmodels];
-
-//    NSLog(@"删除后的数组:%@",self.companyArray);
     
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",cidStr,@"cids", nil];
     
@@ -248,30 +249,25 @@ static NSString * const CompanyId = @"company";
     return cell;
 
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-//    NSLog(@"%ld",self.attentionTableView.isEditing);
     if ([self.attentionTableView isEditing] == YES) {
-        
-//        NSLog(@"%ld",(long)indexPath.row);
         
         _cidStr = app.attentionArray[indexPath.row][@"cid"];
         
-//        NSLog(@"选择删除的数组:%@",_cidStr);
-
     }else{
 
         //点击后变成原色
         [self.attentionTableView deselectRowAtIndexPath:indexPath animated:YES];
         app.companyID = app.attentionArray[indexPath.row][@"cid"];
         app.companyName = app.attentionArray[indexPath.row][@"cname"];
-//        NSLog(@"被选中的企业ID:%@",app.companyID);
         
         ContentViewController *contentVC=[[ContentViewController alloc]initWithNibName:@"ContentViewController" bundle:nil];
         [self.navigationController pushViewController:contentVC animated:YES];
@@ -279,9 +275,9 @@ static NSString * const CompanyId = @"company";
     }
     
 }
+
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
      return UITableViewCellEditingStyleDelete;
 
 }

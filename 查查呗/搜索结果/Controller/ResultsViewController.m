@@ -302,7 +302,14 @@
     if ([tableView isEqual:self.resultsTableView]) {
         
         if (app.isLogin == YES) {
-            app.companyID = app.resultArray[indexPath.row][@"eid"];
+            
+            if ([[app.resultArray[0] allKeys] containsObject:@"url"]) {
+                
+                app.companyID = app.resultArray[indexPath.row][@"reg_no"];
+            }else{
+                
+                app.companyID = app.resultArray[indexPath.row][@"eid"];
+            }
             app.companyName = app.resultArray[indexPath.row][@"ent_name"];
             app.companyIndex = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
             app.url = app.resultArray[indexPath.row][@"url"];
@@ -330,6 +337,7 @@
         
     }
 }
+
 -(void)SelectCityNameInCollectionBy:(NSString *)cityName
 {
     _cityLabel.text=cityName;
@@ -473,8 +481,6 @@
     
     NSData * imageData = [[NSData alloc] initWithBase64EncodedString:app.vertifyImage options:NSDataBase64DecodingIgnoreUnknownCharacters];
     UIImage * vertifyImage = [UIImage imageWithData:imageData];
-    
-//    NSLog(@"vertifyImage: %@",vertifyImage);
     
     _photoImage.image=vertifyImage;
     
@@ -658,8 +664,6 @@
                 
                 _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
                 
-//                NSLog(@"locationString:%@",_timeString);
-                
                 //省份代码
                 //读取plist文件
                 NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
@@ -699,7 +703,7 @@
                                 if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                                     
                                     if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
-//                                        NSLog(@"空");
+
                                         MBhud(@"暂无搜索结果");
                                         
                                     }else{//验证码不为空
@@ -782,7 +786,6 @@
         
         //keycode
         _keycode = app.loginKeycode;
-//        NSLog(@"keycode:%@",_keycode);
         
         //uid
         _uid = app.uid;
@@ -805,8 +808,6 @@
         [dateformatter setDateFormat:@"YYYYMMddmmss"];
         
         _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-        
-//        NSLog(@"timeString:%@",_timeString);
         
         //省份代码
         //读取plist文件
@@ -847,7 +848,6 @@
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
-//                    NSLog(@"有验证码的搜索结果：%@",responseObject);
                     app.request = responseObject[@"response"];
                     app.resultArray = responseObject[@"result"];
                     
@@ -884,7 +884,6 @@
         
         //keycode
         _keycode = app.noLoginKeycode;
-//        NSLog(@"keycode:%@",_keycode);
         
         //request
         _request = app.request;
@@ -940,7 +939,7 @@
                 mbHUDinit;
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
-//                    NSLog(@"%@",responseObject);
+
                     app.request = responseObject[@"response"];
                     app.resultArray = responseObject[@"result"][@"data"];
                     
@@ -988,18 +987,11 @@
 {
     return YES;
 }
-//开始编辑UISearchBar的textView时
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
-{
-}
+
 //要求
 -(BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
     return YES;
-}
-//当编辑完成之后调用此函数
--(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
-{
 }
 
 //当textView的文字改变或者清除的时候调用此方法，搜索栏目前的状态正在编辑，在搜索文字字段中的当前文本

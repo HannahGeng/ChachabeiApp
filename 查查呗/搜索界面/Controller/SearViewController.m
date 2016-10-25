@@ -109,10 +109,13 @@ static NSString * const cellIdentifier = @"attention";
 {
     // 取出键盘最终的frame
     CGRect rect = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
     // 取出键盘弹出需要花费的时间
     double duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
     // 修改transform
     [UIView animateWithDuration:duration animations:^{
+        
         CGFloat ty = [UIScreen mainScreen].bounds.size.height - rect.origin.y;
         removeButton.transform = CGAffineTransformMakeTranslation(0, - ty);
     }];
@@ -248,7 +251,6 @@ static NSString * const cellIdentifier = @"attention";
         _searInfoArray = [attentionModel mj_objectArrayWithKeyValuesArray:nil];
         
         [self.searchBarTableView reloadData];
-        
     }
 
 }
@@ -259,8 +261,8 @@ static NSString * const cellIdentifier = @"attention";
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"确定要删除历史记录吗？" message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
 
     alert.delegate = self;
+    
     [alert show];
-   
 }
 
 #pragma mark - alert代理
@@ -270,7 +272,6 @@ static NSString * const cellIdentifier = @"attention";
     
         [[DatabaseManager sharedManger] removeAllCompanys];
         [self loadData];
-        
     }
 }
 
@@ -590,7 +591,6 @@ static NSString * const cellIdentifier = @"attention";
             
             app.province = self.cityArray[i][@"num"];
         }
-        
     }
 
     [self.view endEditing:YES];
@@ -630,7 +630,6 @@ static NSString * const cellIdentifier = @"attention";
                 if (exist) {
                     
                     [[DatabaseManager sharedManger] insertCompanys:serachStr cityName:app.province];
- 
                 }
                 
                 [self loadData];
@@ -699,7 +698,6 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
-                            NSLog(@"搜索结果:%@",responseObject);
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
@@ -901,15 +899,13 @@ static NSString * const cellIdentifier = @"attention";
                 mbHUDinit;
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                    
-                    NSLog(@"搜索历史:%@",responseObject);
-                    
-                    app.resultArray = responseObject[@"result"][@"data"];
-                    
+                                        
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         hudHide;
                         
+                        app.resultArray = responseObject[@"result"][@"data"];
+
                         if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                             
                             if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
@@ -1057,7 +1053,6 @@ static NSString * const cellIdentifier = @"attention";
 
 -(void)replaceBtnClick
 {
-
     [_validationView removeFromSuperview];
     [_contentView removeFromSuperview];
     [self contentButtonClick];
@@ -1113,8 +1108,6 @@ static NSString * const cellIdentifier = @"attention";
                 mbHUDinit;
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                    
-                    NSLog(@"验证码结果:%@",responseObject);
                     
                     app.request = responseObject[@"response"];
                     app.resultArray = responseObject[@"result"][@"data"];
