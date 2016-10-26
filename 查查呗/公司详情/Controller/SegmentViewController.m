@@ -81,102 +81,16 @@
 #pragma mark - select Index
 -(void)selectedIndex:(NSInteger)index
 {
-//    AppShare;
     
     [self.flipView selectIndex:index];
     
-//    if (index == 0) {
-//        
-//        [NoneView hide];
-//        
-//    }else if(index == 1) {//股东信息
-//        
-//        if (app.shareHolderArray.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }else if (index == 2){
-//        
-//        if (app.memberArray.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//        
-//    }else if (index == 3){
-//        
-//        if (app.branchs.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }else if (index == 4){
-//        
-//        if (app.changes.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }
 }
 
 -(void)scrollChangeToIndex:(NSInteger)index
 {
-//    AppShare;
     
     [self.segment selectIndex:index];
     
-//    if (index == 1) {
-//        
-//        [NoneView hide];
-//        
-//    }else if(index == 2) {//股东信息
-//        
-//        if (app.shareHolderArray.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }else if (index == 3){
-//        
-//        if (app.memberArray.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//
-//    }else if (index == 4){
-//        
-//        if (app.branchs.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }else if (index == 5){
-//        
-//        if (app.changes.count == 0) {
-//            
-//            [[NoneView showNoneView] showInPoint:self.view.center title:@"暂无信息" ];
-//        }else
-//        {
-//            [NoneView hide];
-//        }
-//    }
 }
 
 @end

@@ -56,9 +56,7 @@
 {
     app = [AppDelegate sharedAppDelegate];
     NSString *sql = @"insert into Companys(company_name,province_name) values(?,?)";
-    
-    NSLog(@"\n结果:%@,%@",app.keyword,app.province);
-    
+        
     //插入搜索历史
     return [db executeUpdate:sql, app.keyword,app.province];
 }

@@ -471,6 +471,7 @@ static NSString * const cellIdentifier = @"attention";
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
+        
         _CellHeadView=[[HeadView alloc]init];
         _CellHeadView.TitleLable.text=_headViewArray[section];
         
@@ -791,21 +792,23 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
-                            app.resultArray = responseObject[@"result"][@"data"];
+                            NSLog(@"搜索:%@",responseObject);
+                            
+                            app.resultArray = responseObject[@"result"][@"data"][@"data"];
                             app.request = responseObject[@"response"];
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
                                 
-                                if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                                if ([responseObject[@"result"][@"data"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                                     
-                                    if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
+                                    if ([responseObject[@"result"][@"data"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
                                         MBhud(@"暂无搜索结果");
                                         
                                     }else{//验证码不为空
                                         
-                                        app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
+                                        app.vertifyImage = responseObject[@"result"][@"data"][@"data"][@"image"];
                                         
                                         [_textField becomeFirstResponder];
                                         
@@ -899,7 +902,7 @@ static NSString * const cellIdentifier = @"attention";
                 mbHUDinit;
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                                        
+                    
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         hudHide;
@@ -975,14 +978,16 @@ static NSString * const cellIdentifier = @"attention";
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
+                    NSLog(@"历史记录:%@",responseObject);
+
                     app.request = responseObject[@"response"];
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         hudHide;
-                        app.resultArray = responseObject[@"result"][@"data"];
+                        app.resultArray = responseObject[@"result"][@"data"][@"data"];
 
-                        if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                        if ([responseObject[@"result"][@"data"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                             
                             if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
 

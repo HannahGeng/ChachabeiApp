@@ -276,7 +276,6 @@
     [self loadFreeLogin];
     AppShare;
     app.isLogin = NO;
-
 }
 
 #pragma mark - 登陆按钮点击事件
@@ -413,14 +412,9 @@
         //六位随机数
         NSString * nonceStr = [NSString stringWithFormat:@"%i",(arc4random() % 999999) + 100000];
         _nonce = [AESCrypt encrypt:nonceStr password:[AESCrypt decrypt:app.keycode]];
+        
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.keycode]];
+        loginTimeStr;
         
         NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_imei,@"imei",app.request,@"request",app.noLoginKeycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce", nil];
         
@@ -434,8 +428,8 @@
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
-                        app.companyArray = responseObject[@"result"][@"data"];
-                        app.hotCompanyArray = responseObject[@"result"][@"data"];
+                        app.companyArray = responseObject[@"result"][@"data"][@"data"];
+                        app.hotCompanyArray = responseObject[@"result"][@"data"][@"data"];
                         
                         [self UntilSeccessDone];
                         

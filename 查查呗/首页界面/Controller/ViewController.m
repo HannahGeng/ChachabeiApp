@@ -58,7 +58,8 @@
     [self loadHotCompany];
     
     [self loadAttentionCompany];
-
+    
+    AppShare;
 }
 
 #pragma mark - 设置导航栏
@@ -136,6 +137,7 @@
     }else{//未登陆
         
         self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:nil];
+        
     }
  
 }
@@ -151,13 +153,13 @@
     }else{
         
         return self.companyArray.count;
-        
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     AppShare;
+    
     if (tableView == self.viewTableView) {
         
         if (indexPath.row==0) {
@@ -179,7 +181,7 @@
             
             [cell.redianButton addTarget:self action:@selector(redianClick) forControlEvents:UIControlEventTouchUpInside];
                         
-                        [cell.nearButton addTarget:self action:@selector(nearButton) forControlEvents:UIControlEventTouchUpInside];
+            [cell.nearButton addTarget:self action:@selector(nearButton) forControlEvents:UIControlEventTouchUpInside];
             
             [cell.serviceButton addTarget:self action:@selector(serviceBtnClick) forControlEvents:UIControlEventTouchUpInside];
             
@@ -210,7 +212,7 @@
             return _cell;
         }
 
-    }else{
+    }else {
         
         if (_cell.CompanyButton.selected == YES) {
             
@@ -240,7 +242,7 @@
         
     }
     
-        return nil;
+    return nil;
 }
 
 #pragma mark - 搜索框点击事件
@@ -303,7 +305,7 @@
             self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
             [self loadAttentionCompany];
     
-            [[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"登陆后可查看"];
+            [self.view addSubview:[[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"登陆后可查看"]];
             
             [self.companyTableView reloadData];
 
@@ -438,8 +440,8 @@
             
             app.companyIndex = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
             
-            app.companyID = app.companyArray[indexPath.row][@"regist_no"];
-            app.companyName = app.companyArray[indexPath.row][@"company_name"];
+            app.companyID = app.companyArray[indexPath.row][@"eid"];
+            app.companyName = app.companyArray[indexPath.row][@"ent_name"];
             
             [self.navigationController pushViewController:contentVC animated:YES];
         }

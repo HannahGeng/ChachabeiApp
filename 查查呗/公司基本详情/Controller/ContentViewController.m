@@ -240,7 +240,7 @@
             
             _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.noLoginKeycode]];
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.noLoginKeycode,@"keycode",_companyId,@"registNo",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.noLoginKeycode,@"keycode",_companyId,@"eid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp", nil];
             
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -251,13 +251,16 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
+                        NSLog(@"未登录的企业详情:%@",responseObject);
+                        
                         if ([responseObject[@"status"] integerValue] == 1){
                             app.request = responseObject[@"response"];
                             
                             //保存企业详细信息数组源
-                            app.companyDetailContent = responseObject[@"result"][@"data"];
+                            app.companyDetailContent = responseObject[@"result"][@"data"][@"data"];
                             
-                            app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                            app.basicInfo = responseObject[@"result"][@"data"][@"data"][@"basicInfo"];
+                            
                             app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                             
                             hudHide;

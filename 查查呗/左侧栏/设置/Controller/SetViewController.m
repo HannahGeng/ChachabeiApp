@@ -26,9 +26,8 @@
     
     NSString * _uid;
     NSString * _request;
-    AppDelegate * app;
-
 }
+
 @property (weak, nonatomic) IBOutlet UITableView *setTableView;
 
 @end
@@ -38,17 +37,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor=[UIColor whiteColor];
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容视图
     [self addContentView];
+    
     //加载数据
     [self loadData];
     
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {
@@ -58,6 +63,7 @@
     SetNavigationBar(@"设置");
     
 }
+
 //添加内容视图
 -(void)addContentView
 {
@@ -121,15 +127,20 @@
 //        _nameLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
 //        [cell addSubview:_nameLabel];
 //    }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    //显示最右边的箭头
     return cell;
 
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return 65;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
@@ -204,6 +215,7 @@
         NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
         NSArray *activityItem=@[shareUrl];
         UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItem applicationActivities:nil];
+        
         //设置不出现的活动项目
         activityController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToFacebook,UIActivityTypePostToTwitter
                                                      ,UIActivityTypeMessage
@@ -230,6 +242,7 @@
         [self.navigationController pushViewController:weVC animated:YES];
     }
 }
+
 - (void)removeView
 {
     [UIView animateWithDuration:0.3
@@ -239,10 +252,9 @@
                          [_shareView removeFromSuperview];
                      }];
 }
+
 -(void)minButtonClick
 {
-//    NSLog(@"标准");
-    
     [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"change_font"];
     [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font_min"];
     [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font_max"];
@@ -263,10 +275,9 @@
     [self.setTableView reloadData];
 
 }
+
 -(void)maxButtonClick
 {
-//    NSLog(@"大号");
-    
     [[NSUserDefaults standardUserDefaults]setObject:@"1.2" forKey:@"change_font"];
     [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font_min"];
     [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font_max"];
@@ -287,4 +298,5 @@
     [self.setTableView reloadData];
 
 }
+
 @end

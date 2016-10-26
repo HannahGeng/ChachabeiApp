@@ -28,8 +28,6 @@
     
     [super viewDidLoad];
     
-    [self loadChanges];
-
 }
 
 - (void)loadChanges

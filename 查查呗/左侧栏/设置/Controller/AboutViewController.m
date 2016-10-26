@@ -69,13 +69,10 @@
     [mgr startMonitoring];
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
-//        NSLog(@"\n============网络状态：%zd",status);
-        
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:Home_Agreement_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
-//                NSLog(@"用户协议:%@",responseObject[@"result"]);
                 self.aboutArray = [aboutModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
                 app.request = responseObject[@"response"];
                 
@@ -112,7 +109,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"数组:%@",self.aboutArray);
     
     aboutViewCell * cell=[aboutViewCell cellWithTableView:tableView];
 
