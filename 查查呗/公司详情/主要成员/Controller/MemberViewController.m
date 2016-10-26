@@ -33,10 +33,7 @@
     AppShare;
     
     _rowIndex = [app.companyIndex integerValue];
-    
-    //添加内容视图
-    [self addContentView];
-    
+
 }
 
 - (void)loadMemberArray
@@ -68,12 +65,17 @@
 
     self.memberArray = dicArr;
     
+    //添加内容视图
+    [self addContentView];
+
 }
 
 //添加内容视图
 -(void)addContentView
 {
     if (self.memberArray.count == 0) {
+        
+        NoneMessage;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         self.memberTableView.tableHeaderView=view;
@@ -82,6 +84,7 @@
         
     }else {
         
+        NoneHide;
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
     }

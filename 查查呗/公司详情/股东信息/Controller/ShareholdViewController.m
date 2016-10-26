@@ -39,9 +39,6 @@
     //设置导航栏
     [self setNavigationBar];
     
-    //添加内容视图
-    [self addContentView];
-    
 }
 
 #pragma mark - 加载数组源
@@ -62,7 +59,9 @@
     
     app.shareHolderArray = dicArr;
     
-    NSLog(@"股东信息:%@",stockArr);
+    //添加内容视图
+    [self addContentView];
+    
 }
 
 //设置导航栏
@@ -84,20 +83,21 @@
 //添加内容视图
 -(void)addContentView
 {
-    NSLog(@"数量:%lu",(unsigned long)self.shareHolderArray.count);
-    
+
     if (self.shareHolderArray.count == 0) {
         
-//        [[NoneView showNoneView] showInPoint:self.view.center title:@"该企业没有相关信息"];
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
+        
+        NoneMessage;
         
         self.ShareholdTableView.tableHeaderView=view;
         self.ShareholdTableView.tableFooterView=[[UIView alloc]init];
 
     }else{
         
-        [NoneView hide];
+        NoneHide;
+        
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         self.ShareholdTableView.tableHeaderView=view;

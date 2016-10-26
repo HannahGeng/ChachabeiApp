@@ -45,7 +45,16 @@
     
     [self.ContentTableView reloadData];
     
-    app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
+    ResultsViewController * result = [[ResultsViewController alloc] init];
+    NSArray * vcArray = [self.navigationController viewControllers];
+    NSInteger vcCount = vcArray.count;
+    UIViewController * lastVc = vcArray[vcCount - 2];
+    
+    if ([lastVc isKindOfClass:[result class]]) {
+    
+        app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
+    }
+    
 }
 
 - (void)viewDidLoad {
@@ -62,8 +71,6 @@
     
     //添加内容视图
     [self addContentView];
-    
-    AppShare;
     
 }
 
@@ -120,7 +127,7 @@
                     //有验证码的企业详情
                     [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
                         
-                        CCBLog(@"有验证码企业详情：%@",responseObject);
+                        CCBLog(@"有验证码企业详情:%@",responseObject);
 
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
@@ -166,13 +173,7 @@
         if (app.isLogin == YES) {//登陆
             
             //时间戳
-            NSDate *  senddate=[NSDate date];
-            
-            NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-            
-            [dateformatter setDateFormat:@"YYYYMMddmmss"];
-            
-            _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
+            loginTimeStr;
             
             //六位随机数
             NSString * nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]];
@@ -309,7 +310,6 @@
 {
     //发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:@"homeView" object:nil];
-    
 }
 
 -(void)backButton
@@ -367,11 +367,17 @@
         _focusButton.imageEdgeInsets = UIEdgeInsetsMake(10,30,24,32);
     }
     
-    [_focusButton setTitle:@"关注" forState:UIControlStateNormal];//设置button的title
-    _focusButton.titleLabel.font = [UIFont systemFontOfSize:14];//title字体大小
+    [_focusButton setTitle:@"关注" forState:UIControlStateNormal];
+    
+    //设置button的title
+    _focusButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    //title字体大小
     _focusButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [_focusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _focusButton.titleEdgeInsets = UIEdgeInsetsMake(25, -_commentButton.titleLabel.bounds.size.width-35, 0, 0);//设置title在button上的位置（上top，左left，下bottom，右right）
+    _focusButton.titleEdgeInsets = UIEdgeInsetsMake(25, -_commentButton.titleLabel.bounds.size.width-35, 0, 0);
+    
+    //设置title在button上的位置（上top，左left，下bottom，右right）
     [_focusButton addTarget:self action:@selector(focusClick:) forControlEvents:UIControlEventTouchUpInside];
     [_taberView addSubview:_focusButton];
     
@@ -381,7 +387,7 @@
         for (int i = 0; i < app.attentionArray.count; i++) {
             
             //如果所点击的公司id与关注公司的id相同，则证明该企业已被关注
-            if ([app.attentionArray[i][@"cid"] containsString:app.companyIndex]) {
+            if ([app.attentionArray[i][@"cid"] containsString:app.companyID]) {
                 
                 _focusButton.selected = YES;
                 _isFocus = YES;
@@ -461,7 +467,7 @@
             //关注状态
             _focus_state = @"1";
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"eid",_focus_state,@"focus_state", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"cid",_focus_state,@"focus_state", nil];
 
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -471,7 +477,7 @@
                 if (status != 0) {
                     
                     [[HTTPSessionManager sharedManager] POST:Change_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                        
+                                                
                         app.request = responseObject[@"response"];
                         
                     }];
@@ -488,7 +494,7 @@
             //关注状态
             _focus_state = @"2";
             
-            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"eid",_focus_state,@"focus_state", nil];
+            NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:[AESCrypt encrypt:app.companyName password:[AESCrypt decrypt:app.loginKeycode]],@"cname", app.uid,@"uid",app.request,@"request",_companyId,@"cid",_focus_state,@"focus_state", nil];
             
             //监控网络状态
             mgr = [AFNetworkReachabilityManager sharedManager];
@@ -503,6 +509,7 @@
                     }];
                     
                 }else{
+                    
                     noWebhud;
 
                 }

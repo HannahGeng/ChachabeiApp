@@ -30,9 +30,6 @@
     
     [self loadChanges];
 
-    //添加内容视图
-    [self addContentView];
-    
 }
 
 - (void)loadChanges
@@ -53,11 +50,16 @@
     
     app.changes = dicArr;
     
+    //添加内容视图
+    [self addContentView];
+
 }
 
 -(void)addContentView
 {
     if (self.changes.count == 0) {
+        
+        NoneMessage;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
@@ -68,7 +70,8 @@
         
     }else{
         
-        [NoneView hide];
+        NoneHide;
+        
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         

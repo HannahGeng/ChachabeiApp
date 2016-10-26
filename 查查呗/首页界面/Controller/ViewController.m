@@ -120,7 +120,7 @@
             if (status != 0) {
                 //发送POST请求
                 [[HTTPSessionManager sharedManager] POST:Personal_attention_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                                        
+                    
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
                     
@@ -253,13 +253,16 @@
 #pragma mark - “热门企业”按钮
 -(void)companyClick
 {
-    [NoneView hide];
+    NoneHide;
     
     _cell.FocusButton.selected=NO;
     
     if ([_cell.CompanyButton isSelected]) {
+        
         _cell.CompanyButton.selected=YES;
+        
     }else{
+        
         _cell.CompanyButton.selected=YES;
     }
     
@@ -280,9 +283,9 @@
             
             if (_cell.FocusButton.isSelected == NO) {
                 
-                self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+                [self.view addSubview:[[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"暂无关注企业"]];
                 
-                [[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"暂无关注企业"];
+                self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
                 
                 [self.companyTableView reloadData];
             }

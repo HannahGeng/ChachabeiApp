@@ -26,9 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //添加内容视图
-    [self addContentView];
 
 }
 
@@ -49,11 +46,16 @@
     self.branchs = dicArr;
     
     app.branchs = dicArr;
+    
+    //添加内容视图
+    [self addContentView];
 }
 
 -(void)addContentView
 {
     if (self.branchs.count == 0) {
+        
+        NoneMessage;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
@@ -62,8 +64,8 @@
         self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
 
     }else{
-    
-        [NoneView hide];
+        
+        NoneHide;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;

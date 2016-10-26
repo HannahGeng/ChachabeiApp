@@ -11,7 +11,6 @@
 @interface AttentionViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * selectArr;
-    AppDelegate * app;
     NSString * _uid;
     AFNetworkReachabilityManager * mgr;
     UIButton *button;
@@ -38,12 +37,16 @@ static NSString * const CompanyId = @"company";
     
     self.attentionTableView.allowsMultipleSelectionDuringEditing = YES;
     self.view.backgroundColor=[UIColor whiteColor];
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
+    
     //加载数据
     [self loadData];
+    
     //添加内容视图
     [self addContentView];
     
@@ -76,30 +79,33 @@ static NSString * const CompanyId = @"company";
 //加载数据
 -(void)loadData
 {
-        app = [AppDelegate sharedAppDelegate];
-        _uid = app.uid;
 
-        //封装POST参数
-        if (app.isLogin == YES) {
-            
-            NSArray * attentionArray = [SaveTool objectForKey:@"attentionArray"];
-            
-            self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:attentionArray];
-            [self.attentionTableView reloadData];
-            
-        }else{
-            
-            self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:nil];
-            
-            [self.attentionTableView reloadData];
-            
-        }
+    AppShare;
+    
+    _uid = app.uid;
+
+    //封装POST参数
+    if (app.isLogin == YES) {
+        
+        self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
+        
+        [self.attentionTableView reloadData];
+        
+    }else{
+        
+        self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:nil];
+        
+        [self.attentionTableView reloadData];
+        
+    }
     
 }
 
 //添加内容视图
 -(void)addContentView
 {
+    AppShare;
+    
     self.attentionTableView.dataSource=self;
     self.attentionTableView.delegate=self;
     self.attentionTableView.backgroundColor=[UIColor clearColor];
@@ -156,6 +162,7 @@ static NSString * const CompanyId = @"company";
 
 - (void)allSeclectButton
 {
+    AppShare;
     
     if (self.attentionTableView.isEditing == YES) {
 
@@ -184,7 +191,7 @@ static NSString * const CompanyId = @"company";
 
 - (void)removeButton
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     NSArray * indexpaths = [self.attentionTableView indexPathsForSelectedRows];
    
@@ -257,6 +264,7 @@ static NSString * const CompanyId = @"company";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppShare;
     
     if ([self.attentionTableView isEditing] == YES) {
         

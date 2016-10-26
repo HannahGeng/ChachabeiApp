@@ -21,25 +21,13 @@
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
 }
 
-- (void)showInPoint:(CGPoint)point title:(NSString *)title
+- (instancetype)showInPoint:(CGPoint)point title:(NSString *)title
 {    
     self.center = point;
     
     _textLabel.text = title;
-    
-    [KWindow addSubview:self];
-
-}
-
-+ (void)hide
-{
-    for (UIView * childView in KWindow.subviews) {
         
-        if ([childView isKindOfClass:self]) {
-            
-            [childView removeFromSuperview];
-        }
-    }
+    return self;
 }
 
 @end

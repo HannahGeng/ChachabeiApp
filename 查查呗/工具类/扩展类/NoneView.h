@@ -12,8 +12,6 @@
 
 + (instancetype)showNoneView;
 
-- (void)showInPoint:(CGPoint)point title:(NSString *)title;
-
-+ (void)hide;
+- (instancetype)showInPoint:(CGPoint)point title:(NSString *)title;
 
 @end
