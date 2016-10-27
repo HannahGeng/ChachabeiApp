@@ -12,10 +12,9 @@
 
 - (void)setMember:(memberModel *)member
 {
-    
-    _member = member;
+     _member = member;
 
-    if ((long)member.sequence % 2 == 0) {//偶数
+    if (((long)member.sequence + 1) % 2 == 0) {//偶数
         
         //偶数
         self.name.text = member.surname;
@@ -32,14 +31,15 @@
 
 +(instancetype)cellWithTableView:(UITableView *)tableView{
     
-    static NSString *cellID=@"member";
-    MemberViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    static NSString * cellID = @"member";
+    
+    MemberViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
     if (cell == nil) {
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MemberViewCell" owner:self options:nil] lastObject];
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-       
     }
     
     return cell;

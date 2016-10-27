@@ -185,7 +185,6 @@
     {
             
         AVMetadataMachineReadableCodeObject *object = [metadataObjects lastObject];
-        NSLog(@"%@", object.stringValue);
         
         // 停止扫描
         [self.session stopRunning];
@@ -198,7 +197,6 @@
         
         }else{
             
-//        NSLog(@"没有扫描到数据");
     }
 
     [self.session stopRunning];

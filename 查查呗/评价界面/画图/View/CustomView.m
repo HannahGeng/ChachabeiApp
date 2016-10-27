@@ -121,7 +121,7 @@
     for (id value in valueArray) {
         CGFloat valueFloat = [value floatValue];
         if (valueFloat > _maxValue) {
-//            NSLog(@"ERROR - Value number is higher than max value - value: %f - maxValue: %f", valueFloat, _maxValue);
+
             return;
         }
         CGFloat length = valueFloat/_maxValue * maxLength;

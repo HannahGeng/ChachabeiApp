@@ -29,7 +29,7 @@
     MBProgressHUD * mbHud;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *ContentTableView;
+@property (strong, nonatomic) IBOutlet UITableView *ContentTableView;
 @property (nonatomic,strong) NSArray * companys;
 @property (nonatomic,strong) NSArray * resultCompanys;
 
@@ -109,8 +109,6 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
                         
-                        CCBLog(@"无验证码企业详情:%@",responseObject);
-                        
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
@@ -126,16 +124,14 @@
                     
                     //有验证码的企业详情
                     [[HTTPSessionManager sharedManager] POST:Company_Detail_URL parameters:pdic result:^(id responseObject, NSError *error) {
-                        
-                        CCBLog(@"有验证码企业详情:%@",responseObject);
-
+                    
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
                             app.request = responseObject[@"response"];
 
-                            NSArray * dataArr = responseObject[@"result"][@"data"];
+                            app.dataArr = responseObject[@"result"][@"data"];
                             
-                            if (dataArr.count == 0) {
+                            if (app.dataArr.count == 0) {
                                 
                                 hudHide;
 
@@ -250,8 +246,6 @@
                 if (status != 0) {
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                        
-                        NSLog(@"未登录的企业详情:%@",responseObject);
                         
                         if ([responseObject[@"status"] integerValue] == 1){
                             app.request = responseObject[@"response"];
@@ -580,9 +574,7 @@
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:sendEmail_URl parameters:pdic result:^(id responseObject, NSError *error) {
-                
-                NSLog(@"邮件信息:%@",responseObject);
-                
+                                
                 app.request = responseObject[@"response"];
                 
                 MBhud(responseObject[@"result"])
@@ -684,10 +676,16 @@
 {
     AppShare;
     
-    CCBLog(@"%@",app.companyDetailContent);
-    
-    SegmentViewController * segment = [[SegmentViewController alloc] init];
-    [self.navigationController pushViewController:segment animated:YES];
+    if (app.dataArr.count == 0) {
+        
+        MBhud(@"暂无信息");
+        
+    }else{
+        
+        SegmentViewController * segment = [[SegmentViewController alloc] init];
+        [self.navigationController pushViewController:segment animated:YES];
+
+    }
 }
 
 #pragma mark - 年报点击事件
@@ -722,9 +720,7 @@
         if (app.isLogin == YES) {
             
             [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
-                
-                CCBLog(@"\n年报信息:%@",responseObject);
-                
+                                
                 app.request = responseObject[@"response"];
             }];
             

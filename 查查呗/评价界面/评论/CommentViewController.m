@@ -282,9 +282,6 @@
     _keycode = app.keycode;
     _request = app.request;
     _cid = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:_keycode password:nil]];
-
-//    NSLog(@"keycode:%@",app.loginKeycode);
-//    NSLog(@"\nuid:%@\ncid:%@\nrequest:%@\nplatform:%.0f\nenviroment:%.0f\ndelvelopment:%.0f\nculture:%.0f\nhonest:%.0f\nreputation:%.0f",_uid,app.companyID,_request,_percent1,_percent2,_percent3,_percent4,_percent5,_percent6);
     
     NSString * percent1 = [NSString stringWithFormat:@"%.f",_percent1];
     NSString * percent2 = [NSString stringWithFormat:@"%.f",_percent2];

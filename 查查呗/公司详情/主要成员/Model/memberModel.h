@@ -17,7 +17,7 @@
 @property (nonatomic,strong) NSString * surname;
 
 /** 编号 */
-@property (nonatomic,assign) int * sequence;
+@property (nonatomic,assign) int sequence;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 

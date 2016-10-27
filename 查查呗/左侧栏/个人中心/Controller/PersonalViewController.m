@@ -155,8 +155,6 @@
     }
     [_photoView addSubview:_imageView];
     
-    NSLog(@"头像:%@",_imageView);
-    
     //发送通知
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"image" object:nil];
@@ -311,7 +309,7 @@
     
     emaiLabel=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-195, 10, 150, 30)];
     emaiLabel.text=app.email;
-//    NSLog(@"电子邮箱:%@",app.email);
+
     emaiLabel.textAlignment=NSTextAlignmentRight;
     emaiLabel.font=[UIFont systemFontOfSize:16];
     [_emailView addSubview:emaiLabel];
@@ -621,8 +619,8 @@
             int seconds = timeout % 100;
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
+                
                 //设置界面的按钮显示 根据自己需求设置
-                //NSLog(@"____%@",strTime);
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:1];
                 [_timeButton setTitle:[NSString stringWithFormat:@"已发送%@秒",strTime] forState:UIControlStateNormal];
@@ -711,10 +709,6 @@
     app = [AppDelegate sharedAppDelegate];
     _request = app.request;
     
-//    NSLog(@"个人资料用到的request:%@",_request);
-    
-//    NSLog(@"keycode:%@",_keycode);
-    
     //加密昵称和邮箱
     _nickName = [AESCrypt encrypt:_nameTextField.text password:[AESCrypt decrypt:_keycode]];
     _email = [AESCrypt encrypt:_emilTextField.text password:[AESCrypt decrypt:_keycode]];
@@ -730,9 +724,7 @@
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:ChangeNickName_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                
-//                NSLog(@"修改资料结果:%@",responseObject);
-                
+                                
                 _hudStr = responseObject[@"result"];
                 
                 MBhud(_hudStr);

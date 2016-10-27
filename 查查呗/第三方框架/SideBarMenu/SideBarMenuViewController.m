@@ -18,15 +18,6 @@
 
 @implementation SideBarMenuViewController
 
-//- (void)dealloc
-//{
-////    NSLog(@"SideBarMenuViewController dealloc");
-//    [_leftViewController release];
-//    [_rightViewController release];
-//    [_middleViewController release];
-//    [super dealloc];
-//}
-
 //初始化方法
 - (id)initWithRootViewController:(UIViewController *)rootViewController
 {
@@ -104,7 +95,6 @@
 
 - (void)tap:(UITapGestureRecognizer *)gesture
 {
-//    NSLog(@"tap");
     [tapGesture setEnabled:NO];
     [self showMiddleViewController:YES];
 }
@@ -340,13 +330,11 @@
 //点击tabBar左边按钮 展示左视图 加动画效果
 - (void)tabshowLeft:(id)sender
 {
-//    NSLog(@"点击tabBar左边按钮 展示左边栏");
     [self showLeftViewController:YES];
 }
 //点击navBar左边按钮 展示左视图 加动画效果
 - (void)navShowLeft:(id)sender
 {
-//    NSLog(@"点击navBar左边按钮 展示左边栏");
     [self showLeftViewController:YES];
 }
 

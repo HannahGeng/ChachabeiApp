@@ -102,7 +102,6 @@
 -(NSString *)dbPath
 {
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSLog(@"path:%@", path);
     
     return [path stringByAppendingPathComponent:@"company.db"];
 }

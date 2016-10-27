@@ -792,8 +792,6 @@ static NSString * const cellIdentifier = @"attention";
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
-                            NSLog(@"搜索:%@",responseObject);
-                            
                             app.resultArray = responseObject[@"result"][@"data"][@"data"];
                             app.request = responseObject[@"response"];
                             
@@ -978,8 +976,6 @@ static NSString * const cellIdentifier = @"attention";
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
-                    NSLog(@"历史记录:%@",responseObject);
-
                     app.request = responseObject[@"response"];
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
@@ -989,18 +985,18 @@ static NSString * const cellIdentifier = @"attention";
 
                         if ([responseObject[@"result"][@"data"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                             
-                            if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
+                            if ([responseObject[@"result"][@"data"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
 
                                 MBhud(@"暂无搜索结果");
                                 
                             }else{//验证码不为空
                                 
-                                app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
+                                app.vertifyImage = responseObject[@"result"][@"data"][@"data"][@"image"];
                                 
                                 [_textField becomeFirstResponder];
                                 
                                 app.isVertify = YES;
-                                [AESCrypt decrypt:responseObject[@"result"][@"image"]];
+                                [AESCrypt decrypt:responseObject[@"result"][@"data"][@"data"][@"image"]];
                                 
                                 [self createHistoryVertifyImage];
                                 
@@ -1360,13 +1356,13 @@ static NSString * const cellIdentifier = @"attention";
                 
                 mbHUDinit;
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                    
+                                        
                     app.request = responseObject[@"response"];
                     
                     if ([responseObject[@"status"] intValue] == 1) {
                         
                         hudHide;
-                        app.resultArray = responseObject[@"result"][@"data"];
+                        app.resultArray = responseObject[@"result"][@"data"][@"data"];
 
                         [self.view endEditing:YES];
                         [_validationView removeFromSuperview];

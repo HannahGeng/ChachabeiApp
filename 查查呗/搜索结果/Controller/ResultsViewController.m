@@ -122,7 +122,6 @@
     
     self.companyResult = resultA;
     
-    NSLog(@"搜索结果：%@",app.resultArray);
 }
 
 //设置导航栏
@@ -182,7 +181,6 @@
     [_searchBar setTintColor:[UIColor blueColor]];
     [_searchBar setPlaceholder:@"公司/机构名称或个人"];
     _searchBar.text = app.keyword;
-//    NSLog(@"~~~~~~~~~~~~~搜索公司关键字：%@",app.keyword);
     
     _viewButton=[UIButton buttonWithType:UIButtonTypeCustom];
     _viewButton.frame=CGRectMake(CGRectGetMaxX(_searchBar.frame), 7, 70, 30);
@@ -213,11 +211,13 @@
     self.resultsTableView.scrollEnabled =YES; //设置tableview滚动
     self.resultsTableView.separatorStyle=UITableViewCellEditingStyleNone;
 }
+
 //键盘退下事件的处理
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
 }
+
 -(void)cityButtonClick
 {
     self.navigationController.navigationBar.hidden = YES;
@@ -243,6 +243,7 @@
     }
     return 0;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([tableView isEqual:self.resultsTableView]) {
@@ -280,8 +281,8 @@
      }
      return nil;
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if ([tableView isEqual:self.resultsTableView]) {
@@ -292,10 +293,12 @@
     }
     return 0;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppShare;
     [self.view endEditing:YES];
+    
     //点击后变成原色
     [self.resultsTableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -541,13 +544,11 @@
             
             app.historyCompany = serchStr;
             app.provinceName =_cityLabel.text;
-//            NSLog(@"省份名:%@",app.provinceName);
             
             if (app.isLogin == YES) {//登录状态
                 
                 //keycode
                 _keycode = app.loginKeycode;
-//                NSLog(@"keycode:%@",_keycode);
                 
                 //六位随机数
                 _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
@@ -559,7 +560,6 @@
                 //时间戳
                 loginTimeStr;
                 
-                //省份代码
                 //读取plist文件
                 NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
                 
@@ -588,25 +588,23 @@
                         mbHUDinit;
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
-
-                            NSLog(@"搜索结果:%@",responseObject);
-                            
-                            app.resultArray = responseObject[@"result"];
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
                                 
-                                if ([responseObject[@"result"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                                if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                                     
-                                    if ([responseObject[@"result"][@"image"] isEqual:[NSNull null]]) {//验证码为空
-
+                                    if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
+                                        
                                         MBhud(@"暂无搜索结果");
                                         
                                     }else{//验证码不为空
                                         
+                                        app.resultArray = responseObject[@"result"];
+                                        
                                         app.isVertify = YES;
-                                        app.vertifyImage = responseObject[@"result"][@"image"];
+                                        app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
                                         
                                         [self createVertifyImage];
                                         
@@ -614,28 +612,29 @@
                                     
                                 }else//无验证码
                                 {
+                                    app.resultArray = responseObject[@"result"][@"data"];
                                     hudHide;
                                     app.isVertify = NO;
                                     [_validationView removeFromSuperview];
-                                    app.resultArray = responseObject[@"result"];
                                     
                                     [self loadCompanyResults];
                                     [self.resultsTableView reloadData];
+                                    
                                 }
                                 
                             }else{
+                                
                                 hudHide;
                                 MBhud(@"暂无搜索结果");
                             }
                             
                             app.request = responseObject[@"response"];
                             
-
                         }];
                         
                     }else{
                         
-                       noWebhud;
+                        noWebhud;
                     }
                 }];
                 
@@ -643,10 +642,6 @@
                 
                 //keycode
                 _keycode = app.noLoginKeycode;
-//                NSLog(@"未登陆的keycode:%@",_keycode);
-                
-                //request
-                _request = app.request;
                 
                 //六位随机数
                 _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
@@ -656,13 +651,7 @@
                 _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
                 
                 //时间戳
-                NSDate *  senddate=[NSDate date];
-                
-                NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-                
-                [dateformatter setDateFormat:@"YYYYMMddmmss"];
-                
-                _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
+                noLoginTimeStr;
                 
                 //省份代码
                 //读取plist文件
@@ -680,8 +669,9 @@
                 }
                 
                 _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
+                app.province = _newnum;
                 
-                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request", nil];
+                NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",app.request,@"request",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei", nil];
                 
                 //监控网络状态
                 mgr = [AFNetworkReachabilityManager sharedManager];
@@ -693,29 +683,30 @@
                         mbHUDinit;
                         
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                            
-                            app.resultArray = responseObject[@"result"][@"data"];
+                                                        
+                            app.resultArray = responseObject[@"result"][@"data"][@"data"];
                             app.request = responseObject[@"response"];
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
                                 
                                 hudHide;
-                                if ([responseObject[@"result"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
+                                
+                                if ([responseObject[@"result"][@"data"][@"data"] isKindOfClass:[NSDictionary class]]) {//有验证码
                                     
-                                    if ([responseObject[@"result"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
-
+                                    if ([responseObject[@"result"][@"data"][@"data"][@"image"] isEqual:[NSNull null]]) {//验证码为空
                                         MBhud(@"暂无搜索结果");
                                         
                                     }else{//验证码不为空
                                         
-                                        app.vertifyImage = responseObject[@"result"][@"data"][@"image"];
+                                        app.vertifyImage = responseObject[@"result"][@"data"][@"data"][@"image"];
                                         
                                         [_textField becomeFirstResponder];
+                                        
                                         app.isVertify = YES;
                                         [AESCrypt decrypt:responseObject[@"result"][@"image"]];
                                         
                                         [self createVertifyImage];
-                      
+                                        
                                     }
                                     
                                 }else{//无验证码
@@ -727,6 +718,8 @@
                                     [self loadCompanyResults];
                                     [self.resultsTableView reloadData];
                                     
+                                    _searchBar.text ;
+
                                 }
                                 
                             }else{
@@ -735,16 +728,14 @@
                                 MBhud(@"暂无搜索结果");
                             }
                             
-
                         }];
                         
                     }else{
                         
+                        hudHide;
                         noWebhud;
-                        
                     }
                 }];
-                
             }
             
         }
@@ -787,12 +778,6 @@
         //keycode
         _keycode = app.loginKeycode;
         
-        //uid
-        _uid = app.uid;
-        
-        //request
-        _request = app.request;
-        
         //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
@@ -801,43 +786,21 @@
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-        
-        //省份代码
-        //读取plist文件
-        NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
-        
-        self.cityArray = [NSArray arrayWithContentsOfFile:file];
-        
-        for (int i = 0; i < self.cityArray.count; i++) {
-            
-            if ([_cityLabel.text isEqualToString:self.cityArray[i][@"city"]]) {
-                
-                app.province = self.cityArray[i][@"num"];
-            }
-            
-        }
+        loginTimeStr;
         
         _province = [AESCrypt encrypt:app.province password:[AESCrypt decrypt:_keycode]];
         
-        //手机唯一识别码
         NSString * imei = [AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:_keycode]];
         
         //验证码
         _vertifyCode = _textField.text;
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",app.uid,@"uid",_timeString,@"timestamp",_nonce,@"nonce",imei,@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
         
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
         
-        //监控网络状态
+        //132132671监控网络状态
         mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
@@ -849,18 +812,21 @@
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
-                    app.resultArray = responseObject[@"result"];
+                    app.resultArray = responseObject[@"result"][@"data"];
                     
                     if ([responseObject[@"status"] intValue] == 1) {
                         
+                        hudHide;
+                        
                         [self loadCompanyResults];
                         [self.resultsTableView reloadData];
-                        hudHide;
+                        
                         [_validationView removeFromSuperview];
                         
                     }else{
                         
                         hudHide;
+                        
                         if (_textField.text.length == 0) {
                             _nameLabel.text=@"请输入验证码";
                             
@@ -868,14 +834,16 @@
                             
                             [self.view endEditing:YES];
                             [_validationView removeFromSuperview];
+                            
                             MBhud(@"暂无搜索结果");
                         }
                     }
-
+                    
                 }];
                 
             }else{
                 
+                hudHide;
                 noWebhud;
             }
         }];
@@ -885,10 +853,7 @@
         //keycode
         _keycode = app.noLoginKeycode;
         
-        //request
-        _request = app.request;
-        
-              //六位随机数
+        //六位随机数
         _nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:_keycode]];
         
         //关键字
@@ -896,15 +861,8 @@
         _keyword = [AESCrypt encrypt:keywordStr password:[AESCrypt decrypt:_keycode]];
         
         //时间戳
-        NSDate *  senddate=[NSDate date];
+        noLoginTimeStr;
         
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:_keycode]];
-        
-        //省份代码
         //读取plist文件
         NSString * file = [[NSBundle mainBundle] pathForResource:@"city" ofType:@"plist"];
         
@@ -924,8 +882,8 @@
         //验证码
         _vertifyCode = _textField.text;
         
-        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",_request,@"request",_vertifyCode,@"verifyCode", nil];
-                
+        NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_keyword,@"keyword",_province,@"province",_keycode,@"keycode",_timeString,@"timestamp",_nonce,@"nonce",[AESCrypt encrypt:app.app_uuid password:[AESCrypt decrypt:app.noLoginKeycode]],@"imei",app.request,@"request",_vertifyCode,@"verifyCode", nil];
+        
         [self.view endEditing:YES];
         [_contentView removeFromSuperview];
         
@@ -939,19 +897,19 @@
                 mbHUDinit;
                 
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
-
+                    
                     app.request = responseObject[@"response"];
-                    app.resultArray = responseObject[@"result"][@"data"];
+                    app.resultArray = responseObject[@"result"][@"data"][@"data"];
                     
                     if ([responseObject[@"status"] intValue] == 1) {
                         
+                        hudHide;
                         [self.view endEditing:YES];
                         [_validationView removeFromSuperview];
-
+                        
                         [self loadCompanyResults];
                         [self.resultsTableView reloadData];
-                        hudHide;
-
+                        
                         [_validationView removeFromSuperview];
                         
                     }else{
@@ -964,25 +922,26 @@
                             
                             [self.view endEditing:YES];
                             [_validationView removeFromSuperview];
-                            MBhud(@"暂无搜索结果");
+                            
+                            MBhud(responseObject[@"result"][@"msg"]);
                             
                         }
                     }
-
+                    
                 }];
                 
             }else{
-                
-               noWebhud;
+                hudHide;
+                noWebhud;
             }
         }];
         
     }
     
+    
 }
 
 #pragma mark UISearchBarDelegate
-//任务编辑文本
 -(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     return YES;

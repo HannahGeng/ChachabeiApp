@@ -25,8 +25,6 @@
     
     AppShare;
     
-    NSLog(@"变更记录：%@",app.companyDetailContent);
-
     app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
     
     if ([[app.companyDetailContent allKeys] containsObject:@"basicInfo"]) {

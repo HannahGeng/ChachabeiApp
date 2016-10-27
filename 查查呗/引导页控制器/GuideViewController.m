@@ -63,8 +63,9 @@
 //    [self.view addSubview:pageControl];
 }
 - (void) click{
-//    NSLog(@"xxx");
+    
 }
+
 #pragma mark scrollView的代理
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     //这里是在滚动的时候判断 我滚动到哪张图片了，如果滚动到了最后一张图片，那么

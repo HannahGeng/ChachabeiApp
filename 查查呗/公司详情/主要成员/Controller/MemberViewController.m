@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *memberTableView;
 @property (nonatomic,strong) NSArray * memberArray;
+
 @end
 
 @implementation MemberViewController
@@ -39,7 +40,7 @@
 - (void)loadMemberArray
 {
     AppShare;
-    
+        
     NSMutableArray * dicArr = [NSMutableArray array];
     NSMutableArray * nameArr = [NSMutableArray array];
 
@@ -53,7 +54,7 @@
     }
     
     app.nameArr = nameArr;
-        
+    
     for (NSDictionary * dic in stockArr) {
         
         memberModel * detail = [[memberModel alloc] initWithDic:dic];
@@ -101,21 +102,21 @@
     MemberViewCell *cell=[MemberViewCell cellWithTableView:self.memberTableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    //如果是技术行，去除最后一行偶数列的分割线和头像图标
-    if (self.memberArray.count % 2 == 1) {//    奇数个
+    //如果是奇数行，去除最后一行偶数列的分割线和头像图标
+    if (self.memberArray.count % 2 == 1) {//奇数个
         
         if (indexPath.row == self.memberArray.count / 2 + self.memberArray.count % 2 - 1) {
+            
             [cell.line removeFromSuperview];
             [cell.headView removeFromSuperview];
-
         }
     }
     
     cell.member = self.memberArray[indexPath.row * 2];
     
-    if (!(self.memberArray.count % 2==1 && indexPath.row == self.memberArray.count / 2 + self.memberArray.count % 2-1)) {
+    if (!(self.memberArray.count % 2 == 1 && indexPath.row == self.memberArray.count / 2 + self.memberArray.count % 2-1)) {
         
-        cell.member = self.memberArray[indexPath.row * 2+1];
+        cell.member = self.memberArray[indexPath.row * 2 + 1];
     }
     
     return cell;
@@ -123,6 +124,7 @@
 
 #pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     return 65;
 }
 
