@@ -111,6 +111,8 @@
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                        app.dataArr = app.basicInfo;
+                        
                         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                         
                         [self.ContentTableView reloadData];
@@ -140,6 +142,7 @@
                             {
                                 app.companyDetailContent = responseObject[@"result"];
                                 app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                                app.dataArr = app.basicInfo;
                                 app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                                 
                                 [self.ContentTableView reloadData];
@@ -158,7 +161,6 @@
                 
                 hudHide;
                 noWebhud;
-                
             }
         }];
     

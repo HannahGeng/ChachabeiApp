@@ -12,7 +12,6 @@
 {
 
     UILabel *_placeholderLabel;
-    AppDelegate * app;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 }
@@ -23,7 +22,9 @@
 @implementation AdviceViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
     //设置背景颜色
     self.view.backgroundColor=[UIColor whiteColor];
     //设置导航栏不透明
@@ -45,6 +46,7 @@
     [self.contentTextView addSubview:_placeholderLabel];
 
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {
@@ -55,6 +57,7 @@
     
     //为导航栏添加左侧按钮
     Backbutton;
+    
     //为导航栏添加右侧按钮
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake([UIUtils getWindowWidth]-35, 0, 30, 30);
@@ -63,6 +66,7 @@
     UIBarButtonItem *rightButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
     self.navigationItem.rightBarButtonItem = rightButtonItem;
 }
+
 -(void)remindButton
 {
     //发送通知
@@ -88,7 +92,7 @@
 - (IBAction)submitSuggest:(UIButton *)sender {
     
     [self.view endEditing:YES];
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",[AESCrypt encrypt:self.contentTextView.text password:[AESCrypt decrypt:app.loginKeycode]],@"content", nil];
 

@@ -10,17 +10,15 @@
 
 @interface AboutViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    AppDelegate * app;
     NSString * _uid;
     NSString * _request;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
-
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *aboutTableView;
 
-@property(nonatomic,strong) NSArray * aboutArray;
+@property(nonatomic,weak) NSMutableArray * aboutArray;
 
 @end
 
@@ -33,10 +31,13 @@
     
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
+    
     [self loadData];
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {
@@ -44,8 +45,10 @@
     
     //设置导航栏的颜色
     SetNavigationBar(@"用户协议");
+    
     //为导航栏添加左侧按钮
     Backbutton;
+    
     //为导航栏添加右侧按钮
     UIButton* rightBtn= [UIButton buttonWithType:UIButtonTypeCustom];
     rightBtn.frame = CGRectMake([UIUtils getWindowWidth]-35, 0, 30, 30);
@@ -57,7 +60,7 @@
 
 - (void)loadData
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     _uid = app.uid;
     _request = app.request;
@@ -73,7 +76,19 @@
             
             [[HTTPSessionManager sharedManager] POST:Home_Agreement_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
-                self.aboutArray = [aboutModel mj_objectArrayWithKeyValuesArray:responseObject[@"result"]];
+                NSLog(@"用户协议:%@",responseObject[@"result"]);
+                
+                NSMutableArray * aboutArr = [NSMutableArray array];
+                
+                for (NSDictionary * dic in responseObject[@"result"]) {
+                    
+                    aboutModel * about = [[aboutModel alloc] initWithDiat:dic];
+                    
+                    [aboutArr addObject:about];
+                }
+                
+                self.aboutArray = aboutArr;
+                
                 app.request = responseObject[@"response"];
                 
                 [self.aboutTableView reloadData];
@@ -83,11 +98,8 @@
         }else{
             
             noWebhud;
-
         }
-    }];
-
-    
+    }];    
 }
 
 -(void)remindButton
@@ -109,13 +121,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     aboutViewCell * cell=[aboutViewCell cellWithTableView:tableView];
 
     cell.about = self.aboutArray[indexPath.row];
     
     return cell;
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

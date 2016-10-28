@@ -723,6 +723,9 @@ static NSString * const cellIdentifier = @"attention";
                                 }else//无验证码
                                 {
                                     app.resultArray = responseObject[@"result"][@"data"];
+                                    
+                                    app.dataArr = app.resultArray;
+                                    
                                     hudHide;
                                     app.isVertify = NO;
                                     [_validationView removeFromSuperview];
@@ -1292,6 +1295,8 @@ static NSString * const cellIdentifier = @"attention";
                     app.request = responseObject[@"response"];
                     app.resultArray = responseObject[@"result"][@"data"];
                     
+                    app.dataArr = app.resultArray;
+                    
                     if ([responseObject[@"status"] intValue] == 1) {
                         
                         hudHide;
@@ -1364,6 +1369,8 @@ static NSString * const cellIdentifier = @"attention";
                         hudHide;
                         app.resultArray = responseObject[@"result"][@"data"][@"data"];
 
+                        app.dataArr = app.resultArray;
+                        
                         [self.view endEditing:YES];
                         [_validationView removeFromSuperview];
                         

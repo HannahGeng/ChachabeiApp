@@ -13,8 +13,10 @@
 - (instancetype)initWithDiat:(NSDictionary *)dict
 {
     if (self = [super init]) {
+        
         self.content = dict[@"content"];
     }
+    
     return self;
 }
 

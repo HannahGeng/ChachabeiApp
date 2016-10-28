@@ -10,7 +10,7 @@
 
 @interface SetViewCell : UITableViewCell
 
-@property (nonatomic,strong) UILabel *titleLabel;
+//@property (nonatomic,strong) UILabel *titleLabel;
 
 -(void)setContentView:(NSDictionary *)dictionary;
 

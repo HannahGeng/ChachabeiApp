@@ -11,23 +11,25 @@
 @interface SetViewCell ()
 {
     UIImageView *_pointImage;
-//    UILabel *_titleLabel;
+    UILabel *_titleLabel;
 }
 @end
 
 @implementation SetViewCell
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         //添加内容视图
         [self addContentView];
     }
     return self;
-    
 }
+
 //添加内容视图
 -(void)addContentView{
     
@@ -38,6 +40,7 @@
     _titleLabel.font=[UIFont systemFontOfSize:17];
     [self addSubview:_titleLabel];
 }
+
 -(void)setContentView:(NSDictionary *)dictionary{
     
     _pointImage.image=dictionary[@"image"];

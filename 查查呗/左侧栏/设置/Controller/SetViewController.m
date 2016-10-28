@@ -34,7 +34,6 @@
 
 @implementation SetViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -109,8 +108,8 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     [cell setContentView:_setInfoArray[indexPath.row]];
     
-    NSString *string=APP_Font;
-    cell.titleLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
+//    NSString *string=APP_Font;
+//    cell.titleLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
     
 //    if (indexPath.row==0) {
 //        if ([_textFont isEqualToString:@"b"]) {
