@@ -102,7 +102,6 @@
 -(void)setNavigationBar
 {
     SetNavigationBar(@"会员登录");
-//    为导航栏添加左侧按钮
     Backbutton;
 }
 
@@ -111,7 +110,6 @@
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"你确定要退出程序吗？" message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
     alert.delegate = self;
     [alert show];
-  
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -122,7 +120,6 @@
     if (buttonIndex == 1) {
         
         exit(0);
-        
     }
     
     if (alertView.tag == 10) {
@@ -137,7 +134,6 @@
 #pragma mark - 用户进入app时请求参数
 - (void)loadData
 {
-    //发送请求
     //监控网络状态
     AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
@@ -430,7 +426,7 @@
                         
                         app.companyArray = responseObject[@"result"][@"data"][@"data"];
                         app.hotCompanyArray = responseObject[@"result"][@"data"][@"data"];
-                        
+                                            
                         [self UntilSeccessDone];
                         
                     }else{

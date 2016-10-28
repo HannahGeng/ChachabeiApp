@@ -54,7 +54,6 @@
     
         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
     }
-    
 }
 
 - (void)viewDidLoad {
@@ -145,7 +144,6 @@
                                 
                                 [self.ContentTableView reloadData];
                                 hudHide;
-
                             }
                             
                         }else{
@@ -195,6 +193,8 @@
                             //保存企业详细信息数组源
                             app.basicInfo = responseObject[@"result"][@"data"];
                             
+                            app.dataArr = app.basicInfo;
+                            
                             app.companyDetailContent = responseObject[@"result"][@"data"][@"basicInfo"];
                             
                             app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
@@ -216,7 +216,6 @@
                     
                     hudHide;
                     noWebhud;
-                    
                 }
             }];
             
@@ -257,9 +256,12 @@
                             
                             app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                             
+                            app.dataArr = app.basicInfo;
+                            
                             hudHide;
 
                             [self.ContentTableView reloadData];
+                            
                             hudHide;
 
                         }else {
@@ -274,20 +276,18 @@
                 }else{
                     
                     hudHide;
-                   noWebhud;
-                    
+                    noWebhud;
                 }
             }];
-            
         }
     }
-
 }
 
 //设置导航栏
 -(void)setNavigationBar
 {
     [self.navigationItem setHidesBackButton:YES];
+    
     //设置导航栏的颜色
     SetNavigationBar(nil);
     
@@ -319,6 +319,7 @@
     UIViewController * lastVc = vcArray[vcCount - 2];
     
     if ([lastVc isKindOfClass:[vc class]]) {
+        
         //发送通知
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"homeView" object:nil];
@@ -334,6 +335,7 @@
 -(void)addContentView
 {
     AppShare;
+    
     _ContentTableView.separatorStyle = UITableViewCellSelectionStyleGray;
     _taberView=[[UIView alloc]initWithFrame:CGRectMake(0, [UIUtils getWindowHeight]-50, [UIUtils getWindowWidth], 50)];
     _taberView.backgroundColor=LIGHT_BLUE_COLOR;
@@ -430,8 +432,11 @@
     _taberView.hidden=YES;
     
     NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
+    
     NSArray *activityItem=@[shareUrl];
+    
     UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItem applicationActivities:nil];
+    
     //设置不出现的活动项目
     activityController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToFacebook,UIActivityTypePostToTwitter
                                                  ,UIActivityTypeMessage
@@ -485,7 +490,6 @@
                 }
             }];
             
-
         }else{
             
             //关注状态
@@ -511,14 +515,12 @@
 
                 }
             }];
-            
         }
         
     }else{//未登录用户
         
         NoLoginWarn;
     }
-   
 }
 
 -(void)sendClick
@@ -558,8 +560,8 @@
 
 - (void)sendEmail
 {
-    
     [self.view endEditing:YES];
+    
     AppShare;
     
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
@@ -637,13 +639,18 @@
         
         AddressVC *cell=[AddressVC cellWithTableView:self.ContentTableView];
         cell.companyDetail =  app.companyModel;
+        
         return cell;
     }
+    
     if (indexPath.row==3) {
+        
         WebVC *cell=[WebVC cellWithTableView:self.ContentTableView];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
         return cell;
     }
+    
     if (indexPath.row==4) {
         
         TopButtonVC *cell=[TopButtonVC cellWithTableView:self.ContentTableView];
@@ -653,12 +660,14 @@
         return cell;
     
     }
+    
     if (indexPath.row==5) {
         
         InVC *cell=[InVC cellWithTableView:self.ContentTableView];
         
         return cell;
     }
+    
     if (indexPath.row==6) {
         
         UnderButtonVC *cell=[UnderButtonVC cellWithTableView:self.ContentTableView];
@@ -733,7 +742,6 @@
             MBhud(@"登陆后方可查看");
         }
     }
-    
 }
 
 #pragma mark UITableViewDelegate

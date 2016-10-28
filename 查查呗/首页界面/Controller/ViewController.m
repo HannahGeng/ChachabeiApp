@@ -31,13 +31,19 @@
     NoneView * noneV;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *viewTableView;
-@property (weak, nonatomic) IBOutlet UITableView *companyTableView;
+@property (strong, nonatomic) IBOutlet UITableView *viewTableView;
+@property (strong, nonatomic) IBOutlet UITableView *companyTableView;
 @property (nonatomic,strong) NSMutableArray * companyArray;
 
 @end
 
 @implementation ViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //添加内容视图
+    [self addContentView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,20 +52,14 @@
         
     //导航栏为不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     //设置导航栏
     [self setNavigationBar];
     
-    //添加内容视图
-    [self addContentView];
-    
-    //添加数据(热门企业)
-    [self loadHotCompany];
-    
     [self loadAttentionCompany];
     
-    AppShare;
 }
 
 #pragma mark - 设置导航栏
@@ -81,6 +81,10 @@
         
         self.viewTableView.bounces = NO;
     }
+    
+    //添加数据(热门企业)
+    [self loadHotCompany];
+
 }
 
 #pragma mark - 加载”热门企业“数据
@@ -161,22 +165,27 @@
     AppShare;
     
     if (tableView == self.viewTableView) {
-        
+    
         if (indexPath.row==0) {
+            
             SearchViewCell *cell=[SearchViewCell cellWithTableView:self.viewTableView];
             [cell.searchButton addTarget:self action:@selector(searchBarClick) forControlEvents:UIControlEventTouchUpInside];
+            
             return cell;
         }
         if (indexPath.row==1) {
+            
             TopButtonViewCell *cell=[TopButtonViewCell cellWithTableView:self.viewTableView];
             [cell.codeButton addTarget:self action:@selector(codeButtonClick) forControlEvents:UIControlEventTouchUpInside];
 
             [cell.cardButton addTarget:self action:@selector(cardButtonClick) forControlEvents:UIControlEventTouchUpInside];
             
             [cell.recordButton addTarget:self action:@selector(recordButtonClick) forControlEvents:UIControlEventTouchUpInside];
+            
             return cell;
         }
         if (indexPath.row==2) {
+            
             ButtonViewCell *cell=[ButtonViewCell cellWithTableView:self.viewTableView];
             
             [cell.redianButton addTarget:self action:@selector(redianClick) forControlEvents:UIControlEventTouchUpInside];
@@ -200,7 +209,7 @@
             [_cell.CompanyButton setTitleColor:LIGHT_BLUE_COLOR forState:UIControlStateSelected];
             [_cell.CompanyButton addTarget:self action:@selector(companyClick) forControlEvents:UIControlEventTouchUpInside];
             
-            _cell.FocusButton.contentEdgeInsets = UIEdgeInsetsMake(0,5, 0, 0);
+            _cell.FocusButton.contentEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
             [_cell.FocusButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
             [_cell.FocusButton setTitleColor:LIGHT_BLUE_COLOR forState:UIControlStateSelected];
             
@@ -209,11 +218,12 @@
                 [_cell.FocusButton addTarget:self action:@selector(focusClick) forControlEvents:UIControlEventTouchUpInside];
             }
             _cell.LineIamgeView.backgroundColor=LIGHT_BLUE_COLOR;
+            
             return _cell;
         }
 
     }else {
-        
+    
         if (_cell.CompanyButton.selected == YES) {
             
             ArrayViewCell *cell=[ArrayViewCell cellWithTable:tableView];
@@ -228,6 +238,7 @@
                 
                 UITableViewCell *cell=[[UITableViewCell alloc] init];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
                 return cell;
                 
             }else{
@@ -236,12 +247,11 @@
                 cell.attention = self.companyArray[indexPath.row];
                 
                 return cell;
-                
             }
         }
         
     }
-    
+
     return nil;
 }
 
@@ -371,7 +381,7 @@
     if (tableView == self.viewTableView) {
          if (indexPath.row==0) {
              return 80;
-         }
+        }
         if (indexPath.row==1){
              return 120;
         }
