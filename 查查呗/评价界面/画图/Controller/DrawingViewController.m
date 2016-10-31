@@ -17,10 +17,11 @@
     UILabel *_label4;
     UILabel *_label5;
     UILabel *_label6;
-
 }
+
 @property (weak, nonatomic) IBOutlet UILabel *companyName;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
+
 @end
 
 @implementation DrawingViewController
@@ -30,8 +31,10 @@
     
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容视图
     [self addContentView];
     
@@ -61,6 +64,7 @@
 -(void)setNavigationBar
 {
     [self.navigationItem setHidesBackButton:YES];
+    
     //设置导航栏的颜色
     SetNavigationBar(@"评论");
     
@@ -78,83 +82,44 @@
     //发送通知
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"homeView" object:nil];
-    
 }
 
 //添加内容视图
 -(void)addContentView
 {
     if ([UIUtils getWindowWidth] < 350) {
-        _label1=[[UILabel alloc]initWithFrame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2 + 20, ([UIUtils getWindowHeight]-128)/2, 55, 20)];
+        
+        [self labelWithLabel:_label1 Frame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2 + 20, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"前景趋势" tag:1];
     }else{
-         _label1=[[UILabel alloc]initWithFrame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2, ([UIUtils getWindowHeight]-128)/2, 55, 20)];
+        
+        [self labelWithLabel:_label1 Frame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"前景趋势" tag:1];
     }
     
-    _label1.text=@"前景趋势";
-    _label1.tag = 1;
-    _label1.textAlignment=NSTextAlignmentCenter;
-    _label1.textColor=[UIColor whiteColor];
-    _label1.layer.masksToBounds = YES;
-    _label1.layer.cornerRadius=10;
-    _label1.backgroundColor=ORANGE_COLOR;
-    _label1.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label1];
+    [self labelWithLabel:_label2 Frame:CGRectMake([UIUtils getWindowWidth]-58, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"企业诚信" tag:2];
     
-    _label2=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-58, ([UIUtils getWindowHeight]-128)/2, 55, 20)];
-    _label2.text=@"企业诚信";
-    _label2.tag = 2;
-    _label2.textAlignment=NSTextAlignmentCenter;
-    _label2.textColor=[UIColor whiteColor];
-    _label2.layer.masksToBounds = YES;
-    _label2.layer.cornerRadius=10;
-    _label2.backgroundColor=DARK_RED_COLOR;
-    _label2.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label2];
+    [self labelWithLabel:_label3 Frame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4, 60, 20) text:@"发展平台" tag:3];
     
-    _label3=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4, 60, 20)];
-    _label3.text=@"发展平台";
-    _label3.tag = 3;
-    _label3.textAlignment=NSTextAlignmentCenter;
-    _label3.textColor=[UIColor whiteColor];
-    _label3.layer.masksToBounds = YES;
-    _label3.layer.cornerRadius=10;
-    _label3.backgroundColor=LIGHT_BLUE_COLOR;
-    _label3.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label3];
+    [self labelWithLabel:_label4 Frame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4, 60, 20) text:@"工作环境" tag:4];
     
-    _label4=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4, 60, 20)];
-    _label4.text=@"工作环境";
-    _label4.tag = 4;
-    _label4.textAlignment=NSTextAlignmentCenter;
-    _label4.textColor=[UIColor whiteColor];
-    _label4.layer.masksToBounds = YES;
-    _label4.layer.cornerRadius=10;
-    _label4.backgroundColor=GREEN_COLOR;
-    _label4.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label4];
+    [self labelWithLabel:_label5 Frame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4 * 3 - 20, 60, 20) text:@"企业文化" tag:5];
     
-    _label5=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4 * 3 - 20, 60, 20)];
-    _label5.text=@"企业文化";
-    _label5.tag = 5;
-    _label5.textAlignment=NSTextAlignmentCenter;
-    _label5.textColor=[UIColor whiteColor];
-    _label5.layer.masksToBounds = YES;
-    _label5.layer.cornerRadius=10;
-    _label5.backgroundColor=LIGHT_BACKGROUND_COLOR;
-    _label5.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label5];
+    [self labelWithLabel:_label6 Frame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4 * 3-20, 60, 20) text:@"社会声誉" tag:6];
+}
 
-    _label6=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4 * 3-20, 60, 20)];
-    _label6.text=@"社会声誉";
-    _label6.tag = 6;
-    _label6.textAlignment=NSTextAlignmentCenter;
-    _label6.textColor=[UIColor whiteColor];
-    _label6.layer.masksToBounds = YES;
-    _label6.layer.cornerRadius=10;
-    _label6.backgroundColor=DARK_GREEN_COLOR;
-    _label6.font=[UIFont systemFontOfSize:13];
-    [self.view addSubview:_label6];
-
+- (void)labelWithLabel:(UILabel *)label Frame:(CGRect)frame text:(NSString *)text tag:(int)tag
+{
+    label = [[UILabel alloc] init];
+    label.frame = frame;
+    label.text = text;
+    label.tag = tag;
+    label.textAlignment=NSTextAlignmentCenter;
+    label.textColor=[UIColor whiteColor];
+    label.layer.masksToBounds = YES;
+    label.layer.cornerRadius=10;
+    label.backgroundColor=DARK_GREEN_COLOR;
+    label.font=[UIFont systemFontOfSize:13];
+    
+    [self.view addSubview:label];
 }
 
 - (IBAction)shareButton:(UIButton *)sender {
@@ -162,6 +127,7 @@
     NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
     NSArray *activityItem=@[shareUrl];
     UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItem applicationActivities:nil];
+    
     //设置不出现的活动项目
     activityController.excludedActivityTypes = @[UIActivityTypePrint, UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypePostToFacebook,UIActivityTypePostToTwitter
                                                  ,UIActivityTypeMessage

@@ -41,6 +41,7 @@
     [_contentLabel sizeToFit];
     
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {
@@ -77,22 +78,21 @@
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.4000520856.com"]];
 }
+
 -(void)telephoneButtonClick
 {
     UIWebView*callWebview =[[UIWebView alloc] init];
     NSURL *telURL =[NSURL URLWithString:@"tel://4000520856"];
     [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
+    
     //记得添加到view上
     [self.view addSubview:callWebview];
 }
+
 -(void)emailButtonClick{
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"mailto://798391466@qq.com"]];
 
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

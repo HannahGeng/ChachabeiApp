@@ -22,6 +22,7 @@
     NSMutableDictionary *_animationStepValueDictionary;
     NSMutableDictionary *_targetValueDictionary;
 }
+
 @end
 
 @implementation CustomView
@@ -29,7 +30,9 @@
 - (id)initWithFrame:(CGRect)frame valueDictionary:(NSDictionary *)valueDictionary
 {
     self = [super initWithFrame:frame];
+    
     if (self) {
+        
         self.backgroundColor = [UIColor clearColor];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         
@@ -44,6 +47,7 @@
         
         [self calculateAllPoints];
     }
+    
     return self;
 }
 
@@ -52,13 +56,16 @@
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClearRect(context, rect);
     
-    for (NSArray *pointArray in _pointsLengthArrayArray) {
+    for (NSArray * pointArray in _pointsLengthArrayArray) {
         CGContextRef graphContext = UIGraphicsGetCurrentContext();
+        
         CGContextBeginPath(graphContext);
+        
         for (int i=1; i<6; i++) {
+            
             CGContextAddArc(context, _centerX, _centerY, 26*i, 0, 2*PI, 0); //添加一个圆
-            CGContextDrawPath(context, kCGPathStroke); //绘制路径
-        }
+            CGContextDrawPath(context, kCGPathStroke);      }
+        
         CGContextSetStrokeColorWithColor(graphContext, _drawboardColor.CGColor);
         CGContextStrokePath(graphContext);
     }
@@ -74,6 +81,7 @@
         CGContextSetStrokeColorWithColor(graphContext, _drawboardColor.CGColor);
         CGContextStrokePath(graphContext);
     }
+    
     //阴影面积
     if (YES) {
         CGContextRef graphContext = UIGraphicsGetCurrentContext();
@@ -88,6 +96,7 @@
         CGContextFillPath(graphContext);
     }
 }
+
 #pragma mark - Main Function
 - (void)calculateAllPoints
 {
@@ -98,6 +107,7 @@
     NSArray *valueArray = [self getValueArrayFromDictionary:_valueDictionary keyArray:keyArray];
     _maxValue = [self getMaxValueFromValueArray:valueArray];
     NSArray *angleArray = [self getAngleArrayFromNumberOfSection:(int)[keyArray count]];
+    
     //设置画布的位置
 //    CGFloat boundWidth = self.bounds.size.width;
 //    CGFloat boundHeight =  self.bounds.size.height-120;
@@ -106,6 +116,7 @@
 
     _centerX = boundWidth/2;
     _centerY = boundHeight/2;
+    
     //米子架的长度
     CGFloat maxLength = MIN(boundWidth, boundHeight) * 14/40;
     int plotCircles = (_maxValue/_valueDivider);
@@ -133,7 +144,6 @@
     }
     
     [self drawLabelWithMaxLength:maxLength labelArray:keyArray angleArray:angleArray];
-    
 }
 
 #pragma mark - Helper Function
@@ -222,6 +232,7 @@
     }
     _displayLink.paused = NO;
 }
+
 - (void)reportProgress:(CADisplayLink *)dl
 {
     NSArray *keyArray = [_valueDictionary allKeys];

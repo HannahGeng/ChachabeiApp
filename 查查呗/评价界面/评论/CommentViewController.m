@@ -20,7 +20,6 @@
     NSString * _reputation;
     NSString * _keycode;
     NSString * _request;
-    AppDelegate * app;
     MBProgressHUD * mbHud;
 
 }
@@ -72,6 +71,7 @@
     //为导航栏添加左侧按钮
     Backbutton;
 }
+
 -(void)backButton
 {
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -159,6 +159,7 @@
         _label1.text=array[4];
     }
 }
+
 -(void)setPercent2:(CGFloat)percent2{
     _percent2 = percent2;
     _slider2.value = percent2;
@@ -182,6 +183,7 @@
         _label2.text=array[4];
     }
 }
+
 -(void)setPercent3:(CGFloat)percent3{
     _percent3 = percent3;
     _slider3.value = percent3;
@@ -205,6 +207,7 @@
         _label3.text=array[4];
     }
 }
+
 -(void)setPercent4:(CGFloat)percent4{
     _percent4 = percent4;
     _slider4.value = percent4;
@@ -228,6 +231,7 @@
         _label4.text=array[4];
     }
 }
+
 -(void)setPercent5:(CGFloat)percent5{
     _percent5 = percent5;
     _slider5.value = percent5;
@@ -251,6 +255,7 @@
         _label5.text=array[4];
     }
 }
+
 -(void)setPercent6:(CGFloat)percent6{
     _percent6 = percent6;
     _slider6.value = percent6;
@@ -277,11 +282,11 @@
 
 - (IBAction)submitClick:(UIButton *)sender {
     
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     _uid = app.uid;
     _keycode = app.keycode;
     _request = app.request;
-    _cid = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:_keycode password:nil]];
+    _cid = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:_keycode]];
     
     NSString * percent1 = [NSString stringWithFormat:@"%.f",_percent1];
     NSString * percent2 = [NSString stringWithFormat:@"%.f",_percent2];
@@ -290,9 +295,11 @@
     NSString * percent5 = [NSString stringWithFormat:@"%.f",_percent5];
     NSString * percent6 = [NSString stringWithFormat:@"%.f",_percent6];
 
-    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_cid,@"cid",_request,@"request",percent1,@"platform",percent2,@"environment",percent3,@"development",percent4,@"culture",percent5,@"honest",percent6,@"reputation", nil];
+    NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_cid,@"eid",_request,@"request",percent1,@"platform",percent2,@"environment",percent3,@"development",percent4,@"culture",percent5,@"honest",percent6,@"reputation", nil];
     
     [[HTTPSessionManager sharedManager] POST:CompanyComment_URL parameters:pDic result:^(id responseObject, NSError *error) {
+        
+        NSLog(@"评论:%@",responseObject);
         
         app.request = responseObject[@"response"];
         
@@ -307,7 +314,6 @@
             DrawingViewController *drawingVC=[[DrawingViewController alloc]init];
             UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:drawingVC];
             [self presentViewController:naviController animated:YES completion:nil];
-            
         }
 
     }];

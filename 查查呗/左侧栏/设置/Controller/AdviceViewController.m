@@ -10,11 +10,11 @@
 
 @interface AdviceViewController ()<UITextViewDelegate>
 {
-
     UILabel *_placeholderLabel;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 }
+
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
 @end
@@ -27,8 +27,10 @@
     
     //设置背景颜色
     self.view.backgroundColor=[UIColor whiteColor];
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
     
@@ -44,7 +46,6 @@
     _placeholderLabel.enabled = NO;//lable必须设置为不可用
     _placeholderLabel.backgroundColor = [UIColor clearColor];
     [self.contentTextView addSubview:_placeholderLabel];
-
 }
 
 //设置导航栏

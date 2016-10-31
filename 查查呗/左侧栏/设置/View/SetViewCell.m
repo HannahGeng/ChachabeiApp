@@ -13,13 +13,15 @@
     UIImageView *_pointImage;
     UILabel *_titleLabel;
 }
+
 @end
 
 @implementation SetViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
-    self=[super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    
     if (self) {
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -27,6 +29,7 @@
         //添加内容视图
         [self addContentView];
     }
+    
     return self;
 }
 
