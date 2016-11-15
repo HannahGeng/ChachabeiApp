@@ -37,26 +37,37 @@
 
 /** 登陆成功时获取到的keycode */
 @property (strong,nonatomic)NSString * loginKeycode;
+
 /** 登陆成功后返回的 */
 @property (strong,nonatomic)NSString * uid;
+
 /** 版本keycode */
 @property (strong,nonatomic)NSString * keycode;
+
 /** 用户名 */
 @property (strong,nonatomic)NSString * username;
+
 /** 电话号码 */
 @property (strong,nonatomic)NSString * phonenum;
+
 /** 密码 */
 @property (strong,nonatomic)NSString * password;
+
 /** 邮箱 */
 @property (strong,nonatomic)NSString * email;
+
 /** 未登录用户的keycode */
 @property (strong,nonatomic)NSString * noLoginKeycode;
+
 /** 判断用户是否登陆 */
 @property (nonatomic,assign)BOOL isLogin;
+
 /** 企业详情 */
 @property (nonatomic,strong)NSDictionary * companyDetailContent;
+
 /** 企业基本信息 */
 @property (nonatomic,strong)NSDictionary * basicInfo;
+
 /** 是否有验证码 */
 @property (nonatomic,assign) BOOL isVertify;
 

@@ -16,6 +16,7 @@ static NSString *cellID=@"TopButtonViewCell";
     
     SegmentViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
+        
         cell = [[[NSBundle mainBundle] loadNibNamed:@"SegmentViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
        

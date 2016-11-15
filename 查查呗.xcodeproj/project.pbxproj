@@ -46,6 +46,11 @@
 		3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */; };
 		3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */; };
 		3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */; };
+		3D7ADDE61DC8315000ADBE75 /* UILabel+LabelFontChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE51DC8315000ADBE75 /* UILabel+LabelFontChange.m */; };
+		3D7ADDEA1DC835E100ADBE75 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE81DC835E100ADBE75 /* ContentView.m */; };
+		3D7ADDEB1DC835E100ADBE75 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE91DC835E100ADBE75 /* ContentView.xib */; };
+		3D7ADDEF1DC836C400ADBE75 /* FDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDEE1DC836C400ADBE75 /* FDAlertView.m */; };
+		3D98AA7E1DC97C350063927C /* CopyRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D98AA7D1DC97C350063927C /* CopyRightViewController.m */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
 		3DD20E0D1DAA14F900A94F3C /* SendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD20E0C1DAA14F900A94F3C /* SendView.xib */; };
@@ -276,6 +281,15 @@
 		3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoneView.m; sourceTree = "<group>"; };
 		3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoneView.xib; sourceTree = "<group>"; };
 		3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		3D7ADDE41DC8315000ADBE75 /* UILabel+LabelFontChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelFontChange.h"; sourceTree = "<group>"; };
+		3D7ADDE51DC8315000ADBE75 /* UILabel+LabelFontChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelFontChange.m"; sourceTree = "<group>"; };
+		3D7ADDE71DC835E100ADBE75 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		3D7ADDE81DC835E100ADBE75 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
+		3D7ADDE91DC835E100ADBE75 /* ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentView.xib; sourceTree = "<group>"; };
+		3D7ADDED1DC836C400ADBE75 /* FDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDAlertView.h; sourceTree = "<group>"; };
+		3D7ADDEE1DC836C400ADBE75 /* FDAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDAlertView.m; sourceTree = "<group>"; };
+		3D98AA7C1DC97C350063927C /* CopyRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyRightViewController.h; sourceTree = "<group>"; };
+		3D98AA7D1DC97C350063927C /* CopyRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyRightViewController.m; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
 		3DD20E071DAA13A900A94F3C /* SendCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCover.m; sourceTree = "<group>"; };
 		3DD20E091DAA14EE00A94F3C /* SendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendView.h; sourceTree = "<group>"; };
@@ -748,10 +762,55 @@
 			path = baiduSDK;
 			sourceTree = "<group>";
 		};
+		3D7ADDEC1DC836C400ADBE75 /* FDAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3D7ADDED1DC836C400ADBE75 /* FDAlertView.h */,
+				3D7ADDEE1DC836C400ADBE75 /* FDAlertView.m */,
+			);
+			path = FDAlertView;
+			sourceTree = "<group>";
+		};
+		3D98AA781DC97BB80063927C /* 著作权 */ = {
+			isa = PBXGroup;
+			children = (
+				3D98AA791DC97BB80063927C /* Controller */,
+				3D98AA7A1DC97BB80063927C /* Model */,
+				3D98AA7B1DC97BB80063927C /* View */,
+			);
+			path = "著作权";
+			sourceTree = "<group>";
+		};
+		3D98AA791DC97BB80063927C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3D98AA7C1DC97C350063927C /* CopyRightViewController.h */,
+				3D98AA7D1DC97C350063927C /* CopyRightViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3D98AA7A1DC97BB80063927C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3D98AA7B1DC97BB80063927C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3DD663671D067167006BCB3D /* 工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				3D7ADDE41DC8315000ADBE75 /* UILabel+LabelFontChange.h */,
+				3D7ADDE51DC8315000ADBE75 /* UILabel+LabelFontChange.m */,
 				3DD663681D067167006BCB3D /* city.plist */,
+				3D7ADDEC1DC836C400ADBE75 /* FDAlertView */,
 				3D1B21CC1DB71235008B4AA5 /* 业务类 */,
 				3DD664311D067ADA006BCB3D /* 倒计时按钮 */,
 				3DD663691D067167006BCB3D /* 扩展类 */,
@@ -1310,6 +1369,9 @@
 		3DD6647E1D067D47006BCB3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3D7ADDE71DC835E100ADBE75 /* ContentView.h */,
+				3D7ADDE81DC835E100ADBE75 /* ContentView.m */,
+				3D7ADDE91DC835E100ADBE75 /* ContentView.xib */,
 				3DD6647F1D067D47006BCB3D /* aboutViewCell.h */,
 				3DD664801D067D47006BCB3D /* aboutViewCell.m */,
 				3DD664811D067D47006BCB3D /* aboutViewCell.xib */,
@@ -1331,6 +1393,7 @@
 				3DD664E61D06899C006BCB3D /* 股东信息 */,
 				89CA2CEB1D09121C007115D4 /* 企业年报 */,
 				3DDD0DFA1D374158006D0E4E /* 企业图谱 */,
+				3D98AA781DC97BB80063927C /* 著作权 */,
 			);
 			path = "公司详情";
 			sourceTree = "<group>";
@@ -1340,17 +1403,8 @@
 			children = (
 				3DD6650F1D0689E7006BCB3D /* SegmentViewController.h */,
 				3DD665101D0689E7006BCB3D /* SegmentViewController.m */,
-				3DD664A91D06899C006BCB3D /* Mdoel */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		3DD664A91D06899C006BCB3D /* Mdoel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Mdoel;
-			path = ../Mdoel;
 			sourceTree = "<group>";
 		};
 		3DD664AA1D06899C006BCB3D /* View */ = {
@@ -1832,6 +1886,7 @@
 				3DD663CA1D06742A006BCB3D /* HeardViewCell.xib in Resources */,
 				89CA2D071D0912CC007115D4 /* expandableImage@2x.png in Resources */,
 				3DD664A21D067D47006BCB3D /* WeViewController.xib in Resources */,
+				3D7ADDEB1DC835E100ADBE75 /* ContentView.xib in Resources */,
 				3DD6648A1D067D47006BCB3D /* PersonalViewCell.xib in Resources */,
 				3DD6650E1D06899C006BCB3D /* ShareholdViewCell.xib in Resources */,
 				3DD664A51D067D47006BCB3D /* aboutViewCell.xib in Resources */,
@@ -1928,6 +1983,7 @@
 				3DD663CF1D06742A006BCB3D /* TopButtonVC.m in Sources */,
 				3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */,
 				89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */,
+				3D7ADDEA1DC835E100ADBE75 /* ContentView.m in Sources */,
 				3DD663FF1D06757F006BCB3D /* HeadView.m in Sources */,
 				3DD6650C1D06899C006BCB3D /* shareholdModel.m in Sources */,
 				3DD6639E1D0672FE006BCB3D /* MoreViewCell.m in Sources */,
@@ -1945,6 +2001,7 @@
 				3DD6650B1D06899C006BCB3D /* ShareholdViewController.m in Sources */,
 				3DD665011D06899C006BCB3D /* RegistViewCell.m in Sources */,
 				3DD6649D1D067D47006BCB3D /* AdviceViewController.m in Sources */,
+				3D7ADDEF1DC836C400ADBE75 /* FDAlertView.m in Sources */,
 				3DE3C0811D07B7E300122976 /* NSString+Base64.m in Sources */,
 				3DD664F81D06899C006BCB3D /* BranchModel.m in Sources */,
 				3DD6648E1D067D47006BCB3D /* NewContentController.m in Sources */,
@@ -1959,6 +2016,7 @@
 				3D1B21C61DB70B69008B4AA5 /* ForgetPasswordViewController.m in Sources */,
 				3DD664FC1D06899C006BCB3D /* changeModel.m in Sources */,
 				3DD665051D06899C006BCB3D /* RegistViewCell3.m in Sources */,
+				3D7ADDE61DC8315000ADBE75 /* UILabel+LabelFontChange.m in Sources */,
 				3DD663A01D0672FE006BCB3D /* SearchViewCell.m in Sources */,
 				3D1B21CA1DB70B69008B4AA5 /* RegisteredViewController.m in Sources */,
 				3DD663C41D06742A006BCB3D /* ContentViewController.m in Sources */,
@@ -1989,6 +2047,7 @@
 				3DD664901D067D47006BCB3D /* NewViewController.m in Sources */,
 				3D1B21D11DB71249008B4AA5 /* GuideTool.m in Sources */,
 				3D1B21D41DB71254008B4AA5 /* SaveTool.m in Sources */,
+				3D98AA7E1DC97C350063927C /* CopyRightViewController.m in Sources */,
 				3DD999311DA8C3BE0022A639 /* UIButton+CCBButton.m in Sources */,
 				3DD663C61D06742A006BCB3D /* CompanyDetail.m in Sources */,
 				3DD663771D067167006BCB3D /* HTTPSessionManager.m in Sources */,

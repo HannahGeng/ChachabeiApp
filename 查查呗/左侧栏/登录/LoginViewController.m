@@ -48,7 +48,6 @@
     [self loadUI];
     
     mbHud.delegate = self;
-    
 }
 
 - (void)deletePass

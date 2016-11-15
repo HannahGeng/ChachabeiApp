@@ -13,7 +13,7 @@
     NSArray *_setInfoArray;
     
     UIView *_shareView;
-    UIView *_contentView;
+//    UIView *_contentView;
     UIButton *_minButton;
     UIButton *_maxButton;
     UILabel *_nameLabel;
@@ -35,6 +35,7 @@
 @implementation SetViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.view.backgroundColor=[UIColor whiteColor];
@@ -51,6 +52,11 @@
     //加载数据
     [self loadData];
     
+    //标准
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(standard) name:@"standard" object:nil];
+    
+    //变大
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bigger) name:@"bigger" object:nil];
 }
 
 //设置导航栏
@@ -68,8 +74,10 @@
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-90, 18, 70, 30)];
     
     self.setTableView.backgroundColor=[UIColor clearColor];
-    self.setTableView.scrollEnabled =NO; //设置tableview不滚动
-    self.setTableView.tableFooterView=[[UIView alloc]init];//影藏多余的分割线
+    
+    self.setTableView.scrollEnabled =NO;
+    
+    self.setTableView.tableFooterView=[[UIView alloc]init];
 }
 
 //加载数据
@@ -77,7 +85,7 @@
 {
     _setInfoArray = @[
                       @{@"image":[UIImage imageNamed:@"app12.png"],
-                        @"text":@"分享"},
+                        @"text":@"字体大小"},
                        @{@"image":[UIImage imageNamed:@"app13.png"],
                          @"text":@"分享"},
                        @{@"image":[UIImage imageNamed:@"app15.png"],
@@ -86,7 +94,7 @@
                          @"text":@"用户协议"},
                        @{@"image":[UIImage imageNamed:@"app16.png"],
                          @"text":@"关于我们"},
-                       ];
+                    ];
 }
 
 #pragma mark UITableViewDataSource
@@ -98,27 +106,31 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellIdentifier=@"cellIdentifier";
+    
     SetViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    NSString *string=APP_Font;
+
+    cell.textLabel.font = [UIFont systemFontOfSize:17 * [string floatValue]];
+    
     if (!cell) {
         cell=[[SetViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-//    cell.detailTextLabel.textColor=[UIColor redColor];
+
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     [cell setContentView:_setInfoArray[indexPath.row]];
-    
-//    NSString *string=APP_Font;
-//    cell.titleLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
-    
+
     if (indexPath.row==0) {
+        
         if ([_textFont isEqualToString:@"b"]) {
             _nameLabel.text=@"标准";
+            
         }else{
             if ([_textFont isEqualToString:@"d"]) {
                 _nameLabel.text=@"大号";
             }else{
                 _nameLabel.text=@"标准";
             }
-            
         }
         _nameLabel.textAlignment=NSTextAlignmentCenter;
 //        _nameLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
@@ -145,67 +157,12 @@
     
     if (indexPath.row==0) {
     
-        _shareView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], [UIUtils getWindowHeight])];
-        UITapGestureRecognizer *tapContentGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeView)];
-        [_shareView addGestureRecognizer:tapContentGesture];
+        FDAlertView *alert = [[FDAlertView alloc] init];
+        ContentView *contentView = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:nil options:nil].lastObject;
+        contentView.frame = CGRectMake(0, 0, 270, 160);
+        alert.contentView = contentView;
+        [alert show];
         
-        [_shareView setBackgroundColor:LIGHT_OPAQUE_BLACK_COLOR];
-        self.tabBarController.tabBar.hidden=YES;
-        [[UIApplication sharedApplication].keyWindow addSubview:_shareView];
-        
-        _contentView = [[UIView alloc] initWithFrame:CGRectMake(30, 180, [UIUtils getWindowWidth]-60, 150)];
-        [_contentView setBackgroundColor:[UIColor whiteColor]];
-        _contentView.layer.cornerRadius=5;
-        [_shareView addSubview:_contentView];
-        
-        _titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth]-60, 50)];
-        _titleLabel.backgroundColor=LIGHT_BLUE_COLOR;
-        _titleLabel.text=@"设置字体大小";
-        _titleLabel.textColor=[UIColor whiteColor];
-        _titleLabel.textAlignment=NSTextAlignmentCenter;
-        _titleLabel.layer.masksToBounds=YES;
-        _titleLabel.layer.cornerRadius=5;
-        _titleLabel.font=[UIFont systemFontOfSize:17];
-        [_contentView addSubview:_titleLabel];
-        
-        _minButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _minButton.frame=CGRectMake(([UIUtils getWindowWidth]-160)/2, 65, 100, 30);
-        _minButton.backgroundColor=LIGHT_BLUE_COLOR;
-        [_minButton setTitle:@"标准" forState:UIControlStateNormal];
-        
-        _string=APP_Font;
-        _minButton.titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-        NSString *str= [[NSUserDefaults standardUserDefaults] objectForKey:@"font_min"];
-        if ([str isEqualToString:@"YES"]) {
-            _minButton.selected=YES;
-        }else{
-            _minButton.selected=NO;
-        }
-
-        [_minButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_minButton addTarget:self action:@selector(minButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        _minButton.layer.cornerRadius=5;
-        [_contentView addSubview:_minButton];
-        
-        _maxButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        _maxButton.frame=CGRectMake(([UIUtils getWindowWidth]-160)/2, 110, 100, 30);
-        _maxButton.backgroundColor=LIGHT_BLUE_COLOR;
-        [_maxButton setTitle:@"大号" forState:UIControlStateNormal];
-        
-        NSString *string3=APP_Font;
-        _maxButton.titleLabel.font=[UIFont systemFontOfSize:17*[string3 floatValue]];
-        NSString *str1= [[NSUserDefaults standardUserDefaults] objectForKey:@"font_max"];
-        if ([str1 isEqualToString:@"YES"]) {
-            _maxButton.selected=YES;
-        }else{
-            
-            _maxButton.selected=NO;
-        }
-
-        [_maxButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_maxButton addTarget:self action:@selector(maxButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        _maxButton.layer.cornerRadius=5;
-        [_contentView addSubview:_maxButton];
     }
     if (indexPath.row==1) {
       
@@ -250,29 +207,24 @@
                      }];
 }
 
--(void)minButtonClick
+//标准字体
+-(void)standard
 {
-    [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:@"change_font"];
-    [[NSUserDefaults standardUserDefaults]setObject:@"YES" forKey:@"font_min"];
-    [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font_max"];
-    [[NSUserDefaults standardUserDefaults]synchronize];
-    _maxButton.selected=NO;
-    
-    if ([_minButton isSelected]) {
-        _minButton.selected=YES;
-    }else{
-        _minButton.selected=YES;
-    }
+    [SaveTool setObject:@"1" forKey:@"change_font"];
+    [SaveTool setObject:@"YES" forKey:@"font_min"];
+    [SaveTool setObject:@"NO" forKey:@"font_max"];
+
     _textFont=@"b";
     _string=APP_Font;
     _nameLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _minButton.titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _maxButton.titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
+    
     [self.setTableView reloadData];
+    
+    [UILabel appearance].font = [UILabel changeFont];
 }
 
--(void)maxButtonClick
+//大号字体
+-(void)bigger
 {
     [[NSUserDefaults standardUserDefaults]setObject:@"1.2" forKey:@"change_font"];
     [[NSUserDefaults standardUserDefaults]setObject:@"NO" forKey:@"font_min"];
@@ -280,17 +232,10 @@
     [[NSUserDefaults standardUserDefaults]synchronize];
     _minButton.selected=NO;
     
-    if ([_maxButton isSelected]) {
-        _maxButton.selected=YES;
-    }else{
-        _maxButton.selected=YES;
-    }
     _textFont=@"d";
     _string=APP_Font;
     _nameLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _minButton.titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _maxButton.titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
-    _titleLabel.font=[UIFont systemFontOfSize:17*[_string floatValue]];
+   
     [self.setTableView reloadData];
 
 }

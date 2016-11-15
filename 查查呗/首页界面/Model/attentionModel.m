@@ -12,11 +12,13 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-    AppDelegate * app = [AppDelegate sharedAppDelegate];
+    AppShare;
+    
     if (self = [super init]) {
         self.cname = dictionary[@"cname"];
         self.province_name = app.province;
-    }
+    } 
+    
     return self;
 }
 

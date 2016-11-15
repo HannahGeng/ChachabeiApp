@@ -83,7 +83,6 @@
 //添加内容视图
 -(void)addContentView
 {
-
     if (self.shareHolderArray.count == 0) {
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];

@@ -9,15 +9,20 @@
 #import "SegmentTapView.h"
 
 @interface SegmentTapView ()
+
 @property (nonatomic, strong)NSMutableArray *buttonsArray;
 @property (nonatomic, strong)UIImageView *lineImageView;
+
 @end
 
 @implementation SegmentTapView
 
 -(instancetype)initWithFrame:(CGRect)frame withDataArray:(NSArray *)dataArray withFont:(CGFloat)font {
+    
     self = [super initWithFrame:frame];
+    
     if (self) {
+        
         self.frame = frame;
         self.backgroundColor = [UIColor whiteColor];
         _buttonsArray = [[NSMutableArray alloc] init];
@@ -31,6 +36,7 @@
         
         [self addSubSegmentView];
     }
+    
     return self;
 }
 
@@ -88,6 +94,7 @@
         [self.delegate selectedIndex:button.tag -1];
     }
 }
+
 -(void)selectIndex:(NSInteger)index
 {
     for (UIButton *subButton in self.buttonsArray) {
@@ -102,6 +109,7 @@
         }
     }
 }
+
 #pragma mark -- set
 -(void)setLineColor:(UIColor *)lineColor{
     if (_lineColor != lineColor) {
@@ -109,6 +117,7 @@
         _lineColor = lineColor;
     }
 }
+
 -(void)setTextNomalColor:(UIColor *)textNomalColor{
     if (_textNomalColor != textNomalColor) {
         for (UIButton *subButton in self.buttonsArray){
@@ -117,6 +126,7 @@
         _textNomalColor = textNomalColor;
     }
 }
+
 -(void)setTextSelectedColor:(UIColor *)textSelectedColor{
     if (_textSelectedColor != textSelectedColor) {
         for (UIButton *subButton in self.buttonsArray){
@@ -125,6 +135,7 @@
         _textSelectedColor = textSelectedColor;
     }
 }
+
 -(void)setTitleFont:(CGFloat)titleFont{
     if (_titleFont != titleFont) {
         for (UIButton *subButton in self.buttonsArray){

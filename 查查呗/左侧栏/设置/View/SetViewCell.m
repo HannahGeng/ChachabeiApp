@@ -39,7 +39,7 @@
     _pointImage =[[UIImageView alloc] initWithFrame:CGRectMake(20, 17, 30, 30)];
     [self addSubview:_pointImage];
     
-    _titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
     _titleLabel.font=[UIFont systemFontOfSize:17];
     [self addSubview:_titleLabel];
 }

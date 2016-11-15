@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,12 +22,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="m8L-pA-4Bk" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="08m-dj-hrp"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="m8L-pA-4Bk" secondAttribute="bottom" constant="11" id="0eq-fa-FuP"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="m8L-pA-4Bk" secondAttribute="trailing" constant="52" id="3BY-Eh-J5h"/>
                     <constraint firstItem="wju-2W-apT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="D1U-F6-JTN"/>
+                    <constraint firstItem="m8L-pA-4Bk" firstAttribute="centerY" secondItem="wju-2W-apT" secondAttribute="centerY" id="Lyk-G6-WuC"/>
+                    <constraint firstItem="m8L-pA-4Bk" firstAttribute="leading" secondItem="wju-2W-apT" secondAttribute="trailing" constant="8" symbolic="YES" id="YV5-su-xRb"/>
                     <constraint firstItem="wju-2W-apT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="hA7-o2-N2e"/>
-                    <constraint firstItem="m8L-pA-4Bk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="qIA-xy-Gzt"/>
                     <constraint firstAttribute="bottom" secondItem="wju-2W-apT" secondAttribute="bottom" constant="17" id="ye0-c0-ec8"/>
                 </constraints>
             </tableViewCellContentView>

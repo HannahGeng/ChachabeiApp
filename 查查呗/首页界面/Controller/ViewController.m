@@ -10,29 +10,14 @@
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    SegmentViewCell *_cell;
-    NSDictionary *_dic;
-    NSString *_timeString;
-    NSString *_str;
-    NSString *_searKey;
-    NSString *_strrr;
-    NSString *_srr;
-    NSString *_key;
-    NSString * _uid;
-    NSString * _request;
-    NSString * _request1;
-    NSString * _attentionRequest;
-    NSString * _index;
-    NSString * _company_no;
-    NSString * _imei;
-    NSString * _nonce;
+    SegmentViewCell * _cell;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
-    NoneView * noneV;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *viewTableView;
 @property (strong, nonatomic) IBOutlet UITableView *companyTableView;
+
 @property (nonatomic,strong) NSMutableArray * companyArray;
 
 @end
@@ -60,7 +45,6 @@
     [self setNavigationBar];
     
     [self loadAttentionCompany];
-    
 }
 
 #pragma mark - 设置导航栏
@@ -72,7 +56,7 @@
 #pragma mark - 添加内容视图
 -(void)addContentView
 {
-    self.viewTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+    self.viewTableView.separatorStyle =UITableViewCellSelectionStyleGray;
     
     if (_cell.CompanyButton.selected == YES) {
         
@@ -85,7 +69,6 @@
     
     //添加数据(热门企业)
     [self loadHotCompany];
-
 }
 
 #pragma mark - 加载”热门企业“数据
@@ -135,16 +118,13 @@
             }else{
                 
                 noWebhud;
-                
             }
         }];
         
     }else{//未登陆
         
         self.companyArray = [attentionModel mj_objectArrayWithKeyValuesArray:nil];
-        
     }
- 
 }
 
 #pragma mark － UITableViewDataSource
@@ -268,6 +248,8 @@
 {
     NoneHide;
     
+    self.companyTableView.scrollEnabled = YES;
+
     _cell.FocusButton.selected=NO;
     
     if ([_cell.CompanyButton isSelected]) {
@@ -299,6 +281,7 @@
                 [self.view addSubview:[[NoneView showNoneView] showInPoint:self.companyTableView.center title:@"暂无关注企业"]];
                 
                 self.companyTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+                self.companyTableView.scrollEnabled = NO;
                 
                 [self.companyTableView reloadData];
             }
@@ -321,14 +304,12 @@
             [self.companyTableView reloadData];
 
         }
-       
     }
     
     _cell.CompanyButton.selected=NO;
     _cell.FocusButton.selected=YES;
     
     _cell.LineIamgeView.frame=CGRectMake([UIUtils getWindowWidth]/2, 48, [UIUtils getWindowWidth]/2, 3);
-    
 }
 
 #pragma mark - 二维码按钮
@@ -380,6 +361,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.viewTableView) {
+        
          if (indexPath.row==0) {
              return 80;
         }
@@ -391,6 +373,7 @@
         }
              return 50;
     }
+    
     return 50;
 }
 
@@ -421,7 +404,7 @@
 
             }else{//我的关注
                 
-                    if ([app.attentionArray isEqual:@"暂无关注企业"]) {
+                if ([app.attentionArray isEqual:@"暂无关注企业"]) {
                     
                 }else{
                     
@@ -440,9 +423,7 @@
                     app.companyName = app.attentionArray[indexPath.row][@"cname"];
 
                     [self.navigationController pushViewController:contentVC animated:YES];
-
                 }
-                
             }
             
         }else//未登陆用户
@@ -456,9 +437,7 @@
             
             [self.navigationController pushViewController:contentVC animated:YES];
         }
-        
     }
-    
 }
 
 @end

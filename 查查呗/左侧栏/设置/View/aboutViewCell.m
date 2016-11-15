@@ -39,7 +39,6 @@
 - (void)setAbout:(aboutModel *)about
 {
     _about = about;
-//    self.contentLabel.text = [about.content stringByReplacingOccurrencesOfString:@"#" withString:@"\n"];
     
     self.contentLabel.text = about.content;
         

@@ -38,7 +38,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="营业期限" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0z-ba-L2W">
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="8f1-mh-1Ll"/>
                             <constraint firstAttribute="height" constant="20" id="xwl-xR-Xvr"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -54,7 +53,6 @@
                 <constraints>
                     <constraint firstItem="vnl-Hc-hSI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="2Ib-rd-jCA"/>
                     <constraint firstItem="S0z-ba-L2W" firstAttribute="centerY" secondItem="vnl-Hc-hSI" secondAttribute="centerY" id="67D-kd-fc6"/>
-                    <constraint firstItem="qwG-8B-dwe" firstAttribute="leading" secondItem="vnl-Hc-hSI" secondAttribute="trailing" constant="38" id="6wr-ez-PpL"/>
                     <constraint firstItem="cxL-jD-pLk" firstAttribute="top" secondItem="vnl-Hc-hSI" secondAttribute="bottom" constant="6" id="9N7-Qi-HDc"/>
                     <constraint firstAttribute="bottom" secondItem="cxL-jD-pLk" secondAttribute="bottom" constant="6" id="AvW-py-seZ"/>
                     <constraint firstItem="cxL-jD-pLk" firstAttribute="top" secondItem="vnl-Hc-hSI" secondAttribute="bottom" constant="6" id="ETD-bt-xdJ"/>
