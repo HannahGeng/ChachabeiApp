@@ -206,8 +206,11 @@ static NSString * const cellIdentifier = @"attention";
     _myselfButton.selected=NO;
     
     if ([_historyButton isSelected]) {
+        
         _historyButton.selected=YES;
+        
     }else{
+        
         _historyButton.selected=YES;
     }
     
@@ -367,16 +370,18 @@ static NSString * const cellIdentifier = @"attention";
     
     if ([tableView isEqual:self.searchBarTableView]) {
         
-        if (_historyButton.selected == YES) {//如果点击的事搜索历史按钮
-
+        if (_historyButton.selected == YES) {
+            
+            //如果点击的事搜索历史按钮
             SearVC *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             cell.attentionCompanyLabel.text =_searInfoArray[indexPath.row];
             cell.textLabel.font = [UIFont systemFontOfSize:15];
             
             return cell;
             
-        }else{//如果是点击我的关注按钮
-        
+        }else{
+            
+            //如果是点击我的关注按钮
             SearVC *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             cell.attention =_searInfoArray[indexPath.row];
             return cell;
@@ -417,6 +422,7 @@ static NSString * const cellIdentifier = @"attention";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.view endEditing:YES];
+    
     AppShare;
     
     //点击后变成原色
@@ -463,8 +469,10 @@ static NSString * const cellIdentifier = @"attention";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if ([tableView isEqual:_cityTableView]) {
+        
         return 0.1;
     }
+    
     return 0.1;
 }
 
