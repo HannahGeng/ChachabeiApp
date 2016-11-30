@@ -10,7 +10,8 @@
 
 @interface BranchViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *branchTableView;
+@property (strong, nonatomic) UITableView * tableView;
+
 @property (nonatomic,strong) NSArray * branchs;
 
 @end
@@ -27,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    [self.view addSubview:self.tableView];
 }
 
 - (void)loadBranchs
@@ -59,9 +65,9 @@
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
-        self.branchTableView.tableHeaderView=view;
-        self.branchTableView.tableFooterView=[[UIView alloc]init];
-        self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleGray;
 
     }else{
         
@@ -70,9 +76,9 @@
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         
-        self.branchTableView.tableHeaderView=view;
-        self.branchTableView.tableFooterView=[[UIView alloc]init];
-        self.branchTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleGray;
     }
 
 }
@@ -84,7 +90,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    BranchViewCell *cell=[BranchViewCell cellWithTableView:self.branchTableView];
+    BranchViewCell *cell=[BranchViewCell cellWithTableView:self.tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
 //    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;//显示箭头
     cell.branch = self.branchs[indexPath.row];
@@ -98,12 +104,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
-    [self.branchTableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

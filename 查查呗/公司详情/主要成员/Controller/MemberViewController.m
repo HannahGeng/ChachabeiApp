@@ -13,7 +13,7 @@
     NSInteger _rowIndex;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *memberTableView;
+@property (strong, nonatomic) UITableView * tableView;
 @property (nonatomic,strong) NSArray * memberArray;
 
 @end
@@ -34,6 +34,12 @@
     AppShare;
     
     _rowIndex = [app.companyIndex integerValue];
+
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    [self.view addSubview:self.tableView];
 
 }
 
@@ -79,8 +85,8 @@
         NoneMessage;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
-        self.memberTableView.tableHeaderView=view;
-        self.memberTableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
         view.backgroundColor=LIGHT_GREY_COLOR;
         
     }else {
@@ -99,7 +105,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    MemberViewCell *cell=[MemberViewCell cellWithTableView:self.memberTableView];
+    MemberViewCell *cell=[MemberViewCell cellWithTableView:self.tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     //如果是奇数行，去除最后一行偶数列的分割线和头像图标
@@ -131,7 +137,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
-    [self.memberTableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

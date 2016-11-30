@@ -13,7 +13,7 @@
     ContentViewController *_contentVC;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (nonatomic,strong) NSArray * companyDetails;
 
 @end
@@ -25,11 +25,18 @@
     
     AppShare;
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    [self.view addSubview:self.tableView];
+    
     app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
     
     if ([[app.companyDetailContent allKeys] containsObject:@"basicInfo"]) {
         
         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent[@"basicInfo"]];
+        
     }else{
         
         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];

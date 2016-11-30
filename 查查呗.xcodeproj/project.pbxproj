@@ -46,6 +46,8 @@
 		3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */; };
 		3D5FF6A31DAB3DED00DB7B9C /* NoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */; };
 		3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */; };
+		3D6ABA651DEE81FF006854E1 /* TitleScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ABA641DEE81FF006854E1 /* TitleScrollLabel.m */; };
+		3D6ABA681DEE8240006854E1 /* XMGConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D6ABA671DEE8240006854E1 /* XMGConst.m */; };
 		3D7ADDE61DC8315000ADBE75 /* UILabel+LabelFontChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE51DC8315000ADBE75 /* UILabel+LabelFontChange.m */; };
 		3D7ADDEA1DC835E100ADBE75 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE81DC835E100ADBE75 /* ContentView.m */; };
 		3D7ADDEB1DC835E100ADBE75 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE91DC835E100ADBE75 /* ContentView.xib */; };
@@ -151,8 +153,6 @@
 		3DD664A41D067D47006BCB3D /* aboutViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664801D067D47006BCB3D /* aboutViewCell.m */; };
 		3DD664A51D067D47006BCB3D /* aboutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664811D067D47006BCB3D /* aboutViewCell.xib */; };
 		3DD664A61D067D47006BCB3D /* SetViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664831D067D47006BCB3D /* SetViewCell.m */; };
-		3DD664F11D06899C006BCB3D /* FilpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664AC1D06899C006BCB3D /* FilpTableView.m */; };
-		3DD664F21D06899C006BCB3D /* SegmentTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664AE1D06899C006BCB3D /* SegmentTapView.m */; };
 		3DD664F31D06899C006BCB3D /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664B21D06899C006BCB3D /* MemberViewController.m */; };
 		3DD664F41D06899C006BCB3D /* memberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664B51D06899C006BCB3D /* memberModel.m */; };
 		3DD664F51D06899C006BCB3D /* MemberViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664B81D06899C006BCB3D /* MemberViewCell.m */; };
@@ -165,7 +165,6 @@
 		3DD664FC1D06899C006BCB3D /* changeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664CB1D06899C006BCB3D /* changeModel.m */; };
 		3DD664FD1D06899C006BCB3D /* ChangeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664CE1D06899C006BCB3D /* ChangeViewCell.m */; };
 		3DD664FE1D06899C006BCB3D /* ChangeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664CF1D06899C006BCB3D /* ChangeViewCell.xib */; };
-		3DD664FF1D06899C006BCB3D /* Body.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664D21D06899C006BCB3D /* Body.storyboard */; };
 		3DD665001D06899C006BCB3D /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664D41D06899C006BCB3D /* RegistViewController.m */; };
 		3DD665011D06899C006BCB3D /* RegistViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664D81D06899C006BCB3D /* RegistViewCell.m */; };
 		3DD665021D06899C006BCB3D /* RegistViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664D91D06899C006BCB3D /* RegistViewCell.xib */; };
@@ -281,6 +280,10 @@
 		3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoneView.m; sourceTree = "<group>"; };
 		3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoneView.xib; sourceTree = "<group>"; };
 		3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		3D6ABA631DEE81FF006854E1 /* TitleScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScrollLabel.h; sourceTree = "<group>"; };
+		3D6ABA641DEE81FF006854E1 /* TitleScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleScrollLabel.m; sourceTree = "<group>"; };
+		3D6ABA661DEE8240006854E1 /* XMGConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMGConst.h; sourceTree = "<group>"; };
+		3D6ABA671DEE8240006854E1 /* XMGConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGConst.m; sourceTree = "<group>"; };
 		3D7ADDE41DC8315000ADBE75 /* UILabel+LabelFontChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelFontChange.h"; sourceTree = "<group>"; };
 		3D7ADDE51DC8315000ADBE75 /* UILabel+LabelFontChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelFontChange.m"; sourceTree = "<group>"; };
 		3D7ADDE71DC835E100ADBE75 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
@@ -447,10 +450,6 @@
 		3DD664811D067D47006BCB3D /* aboutViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = aboutViewCell.xib; sourceTree = "<group>"; };
 		3DD664821D067D47006BCB3D /* SetViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewCell.h; sourceTree = "<group>"; };
 		3DD664831D067D47006BCB3D /* SetViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewCell.m; sourceTree = "<group>"; };
-		3DD664AB1D06899C006BCB3D /* FilpTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilpTableView.h; sourceTree = "<group>"; };
-		3DD664AC1D06899C006BCB3D /* FilpTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilpTableView.m; sourceTree = "<group>"; };
-		3DD664AD1D06899C006BCB3D /* SegmentTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentTapView.h; sourceTree = "<group>"; };
-		3DD664AE1D06899C006BCB3D /* SegmentTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentTapView.m; sourceTree = "<group>"; };
 		3DD664B11D06899C006BCB3D /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		3DD664B21D06899C006BCB3D /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
 		3DD664B41D06899C006BCB3D /* memberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memberModel.h; sourceTree = "<group>"; };
@@ -472,7 +471,6 @@
 		3DD664CD1D06899C006BCB3D /* ChangeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeViewCell.h; sourceTree = "<group>"; };
 		3DD664CE1D06899C006BCB3D /* ChangeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeViewCell.m; sourceTree = "<group>"; };
 		3DD664CF1D06899C006BCB3D /* ChangeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeViewCell.xib; sourceTree = "<group>"; };
-		3DD664D21D06899C006BCB3D /* Body.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Body.storyboard; sourceTree = "<group>"; };
 		3DD664D31D06899C006BCB3D /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		3DD664D41D06899C006BCB3D /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		3DD664D71D06899C006BCB3D /* RegistViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewCell.h; sourceTree = "<group>"; };
@@ -823,6 +821,8 @@
 		3DD663691D067167006BCB3D /* 扩展类 */ = {
 			isa = PBXGroup;
 			children = (
+				3D6ABA661DEE8240006854E1 /* XMGConst.h */,
+				3D6ABA671DEE8240006854E1 /* XMGConst.m */,
 				3DD6636A1D067167006BCB3D /* Foundation+Log.m */,
 				3DD6636B1D067167006BCB3D /* UIView+XMGExtension.h */,
 				3DD6636C1D067167006BCB3D /* UIView+XMGExtension.m */,
@@ -831,6 +831,8 @@
 				3D5FF69F1DAB3DE200DB7B9C /* NoneView.h */,
 				3D5FF6A01DAB3DE200DB7B9C /* NoneView.m */,
 				3D5FF6A21DAB3DED00DB7B9C /* NoneView.xib */,
+				3D6ABA631DEE81FF006854E1 /* TitleScrollLabel.h */,
+				3D6ABA641DEE81FF006854E1 /* TitleScrollLabel.m */,
 			);
 			path = "扩展类";
 			sourceTree = "<group>";
@@ -1385,7 +1387,6 @@
 			isa = PBXGroup;
 			children = (
 				3DD664A81D06899C006BCB3D /* Controller */,
-				3DD664AA1D06899C006BCB3D /* View */,
 				3DD664AF1D06899C006BCB3D /* 主要成员 */,
 				3DD664BA1D06899C006BCB3D /* 分支记录 */,
 				3DD664C51D06899C006BCB3D /* 变更记录 */,
@@ -1405,17 +1406,6 @@
 				3DD665101D0689E7006BCB3D /* SegmentViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		3DD664AA1D06899C006BCB3D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3DD664AB1D06899C006BCB3D /* FilpTableView.h */,
-				3DD664AC1D06899C006BCB3D /* FilpTableView.m */,
-				3DD664AD1D06899C006BCB3D /* SegmentTapView.h */,
-				3DD664AE1D06899C006BCB3D /* SegmentTapView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		3DD664AF1D06899C006BCB3D /* 主要成员 */ = {
@@ -1545,7 +1535,6 @@
 		3DD664D11D06899C006BCB3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3DD664D21D06899C006BCB3D /* Body.storyboard */,
 				3DD664D31D06899C006BCB3D /* RegistViewController.h */,
 				3DD664D41D06899C006BCB3D /* RegistViewController.m */,
 			);
@@ -1893,7 +1882,6 @@
 				3DD664851D067D47006BCB3D /* LeftViewController.xib in Resources */,
 				3D1B21CB1DB70B69008B4AA5 /* RegisteredViewController.xib in Resources */,
 				3DD6639B1D0672FE006BCB3D /* ArrayViewCell.xib in Resources */,
-				3DD664FF1D06899C006BCB3D /* Body.storyboard in Resources */,
 				3D15D0201C03F6B300AB19E5 /* Main.storyboard in Resources */,
 				3DD6648C1D067D47006BCB3D /* AttentionViewController.xib in Resources */,
 			);
@@ -1970,7 +1958,6 @@
 			files = (
 				89CA2D0A1D0912CC007115D4 /* SKSTableViewCellIndicator.m in Sources */,
 				3DD6639A1D0672FE006BCB3D /* ArrayViewCell.m in Sources */,
-				3DD664F21D06899C006BCB3D /* SegmentTapView.m in Sources */,
 				3DD663C71D06742A006BCB3D /* AddressVC.m in Sources */,
 				3DD664F31D06899C006BCB3D /* MemberViewController.m in Sources */,
 				3DD664341D067ADA006BCB3D /* TimerButton.m in Sources */,
@@ -1984,12 +1971,14 @@
 				3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */,
 				89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */,
 				3D7ADDEA1DC835E100ADBE75 /* ContentView.m in Sources */,
+				3D6ABA681DEE8240006854E1 /* XMGConst.m in Sources */,
 				3DD663FF1D06757F006BCB3D /* HeadView.m in Sources */,
 				3DD6650C1D06899C006BCB3D /* shareholdModel.m in Sources */,
 				3DD6639E1D0672FE006BCB3D /* MoreViewCell.m in Sources */,
 				3DD663991D0672FE006BCB3D /* attentionModel.m in Sources */,
 				3DD663D31D06742A006BCB3D /* WebVC.m in Sources */,
 				3DD6650D1D06899C006BCB3D /* ShareholdViewCell.m in Sources */,
+				3D6ABA651DEE81FF006854E1 /* TitleScrollLabel.m in Sources */,
 				3DD664011D06757F006BCB3D /* ItemViewCell.m in Sources */,
 				3DD664A31D067D47006BCB3D /* aboutModel.m in Sources */,
 				3DD663D11D06742A006BCB3D /* UnderButtonVC.m in Sources */,
@@ -2066,7 +2055,6 @@
 				3DE3C07E1D07B7E300122976 /* AESCrypt.m in Sources */,
 				3DD664031D06757F006BCB3D /* SearVC.m in Sources */,
 				3D5FF6A11DAB3DE200DB7B9C /* NoneView.m in Sources */,
-				3DD664F11D06899C006BCB3D /* FilpTableView.m in Sources */,
 				3DD663FB1D06757F006BCB3D /* SearViewController.m in Sources */,
 				3DD664A61D067D47006BCB3D /* SetViewCell.m in Sources */,
 				3DD663C91D06742A006BCB3D /* HeardViewCell.m in Sources */,

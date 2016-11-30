@@ -10,7 +10,7 @@
 
 @interface ChangeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView *changeTableView;
+@property (strong, nonatomic) UITableView * tableView;
 @property (nonatomic,strong) NSArray * changes;
 
 @end
@@ -28,6 +28,11 @@
     
     [super viewDidLoad];
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    [self.view addSubview:self.tableView];
 }
 
 - (void)loadChanges
@@ -62,9 +67,9 @@
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         
-        self.changeTableView.tableHeaderView=view;
-        self.changeTableView.tableFooterView=[[UIView alloc]init];
-        self.changeTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleGray;
         
     }else{
         
@@ -73,9 +78,9 @@
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
         
-        self.changeTableView.tableHeaderView=view;
-        self.changeTableView.tableFooterView=[[UIView alloc]init];
-        self.changeTableView.separatorStyle = UITableViewCellSelectionStyleGray;
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.separatorStyle = UITableViewCellSelectionStyleGray;
     }
     
 }
@@ -98,7 +103,7 @@
         
     }else{
     
-        ChangeViewCell *cell=[ChangeViewCell cellWithTableView:self.changeTableView];
+        ChangeViewCell *cell=[ChangeViewCell cellWithTableView:self.tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.numberLabel.text=[NSString stringWithFormat:@"%d",i];
         cell.changemodel = self.changes[indexPath.row];
@@ -119,7 +124,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
-    [self.changeTableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath

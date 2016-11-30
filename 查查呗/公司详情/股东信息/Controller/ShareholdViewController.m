@@ -14,7 +14,7 @@
     UILabel *_label;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *ShareholdTableView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @property (nonatomic,strong) NSArray * shareHolderArray;
 
@@ -33,6 +33,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    [self.view addSubview:self.tableView];
+
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
     
@@ -90,8 +96,8 @@
         
         NoneMessage;
         
-        self.ShareholdTableView.tableHeaderView=view;
-        self.ShareholdTableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
 
     }else{
         
@@ -99,8 +105,8 @@
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
         view.backgroundColor=LIGHT_GREY_COLOR;
-        self.ShareholdTableView.tableHeaderView=view;
-        self.ShareholdTableView.tableFooterView=[[UIView alloc]init];
+        self.tableView.tableHeaderView=view;
+        self.tableView.tableFooterView=[[UIView alloc]init];
     }
 }
 
@@ -112,7 +118,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ShareholdViewCell *cell=[ShareholdViewCell cellWithTableView:self.ShareholdTableView];
+    ShareholdViewCell *cell=[ShareholdViewCell cellWithTableView:self.tableView];
     cell.sharehold = self.shareHolderArray[indexPath.row];
     
     return cell;
@@ -128,7 +134,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
-    [self.ShareholdTableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end
