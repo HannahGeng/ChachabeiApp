@@ -27,7 +27,6 @@
     UINavigationController *_navSetViewController;
     UIImageView *_imageView;
     UILabel *_nameLabel;
-    AppDelegate * app;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
@@ -51,7 +50,9 @@
 //添加内容视图
 -(void)addContentView
 {
-    app = [AppDelegate sharedAppDelegate];
+    
+    AppShare;
+    
     //headView
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [ UIUtils getWindowWidth], 144)];
     headView.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"background1.png"]];
@@ -78,8 +79,7 @@
         
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(image)
-                                                     name:@"image" object:nil];
+                                                 selector:@selector(image)name:@"image" object:nil];
 
     }else{
         _imageView.image = [UIImage imageNamed:@"touxiang"];
@@ -155,6 +155,7 @@
 
 -(void)loginButton {
     
+    AppShare;
     app.isLogin = YES;
     LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
@@ -172,7 +173,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     if (buttonIndex == 1) {
         
@@ -262,15 +263,17 @@
     return cell;
 
 }
-#pragma mark UITableViewDelegate
 
+#pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     return 50;
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
+    
     //点击后变成原色
     [self.leftTableView deselectRowAtIndexPath:indexPath animated:YES];
     

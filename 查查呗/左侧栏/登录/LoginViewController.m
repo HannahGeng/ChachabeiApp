@@ -316,6 +316,8 @@
         
         if (status != 0) {
             
+            mbHUDinit;
+
             [[HTTPSessionManager sharedManager] POST:DENGLU_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 if ([responseObject[@"status"] intValue] == 1) {
@@ -332,8 +334,6 @@
                     
                     app.email = [AESCrypt decrypt: responseObject[@"result"][@"email"] password:[AESCrypt decrypt:app.loginKeycode]];
                     
-                    mbHUDinit;
-
                     //加载热门企业数据
                     [self loadCompanyData];
                     

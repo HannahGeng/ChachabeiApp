@@ -179,12 +179,17 @@
     _middleViewController.view.userInteractionEnabled = NO;
     //0.3秒执行动画_middleViewController.view向右移动 动画结束后tapGesture手势设置为可以点击
     [UIView animateWithDuration:0.3f animations:^{
+        
         _middleViewController.view.frame = frame;
+        
     } completion:^(BOOL finished) {
         if (finished) {
+            
             [tapGesture setEnabled:YES];
+            
         }
     }];
+    
     //如果animated为NO 则视图设置为初始状态enabled
     if (!animated) {
         [UIView setAnimationsEnabled:enabled];
@@ -319,7 +324,7 @@
                 [sideBarMenuViewController showMiddleViewController:animated];
             }
         }];
-    } else {
+    }else {
         //self调用setRootViewController方法 把rootViewController设置为根视图
         [self setRootViewController:rootViewController];
         //self调用showMiddleViewController方法 展示出中间视图
@@ -332,6 +337,7 @@
 {
     [self showLeftViewController:YES];
 }
+
 //点击navBar左边按钮 展示左视图 加动画效果
 - (void)navShowLeft:(id)sender
 {
@@ -349,20 +355,27 @@
 {    
     //如果为点击手势tapGesture
     if (gestureRecognizer == tapGesture) {
+        
         if (_middleViewController && (menuFlags.showingRightView || menuFlags.showingLeftView)) {
+            
             //设置可点击的范围
             return CGRectContainsPoint(_middleViewController.view.frame, [gestureRecognizer locationInView:self.view]);
         }
+        
         return NO;
     }
+    
     return YES;
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if(gestureRecognizer == tapGesture) {
+        
         return YES;
+        
     }
+    
     return NO;
 }
 
