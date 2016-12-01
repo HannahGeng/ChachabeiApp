@@ -12,7 +12,7 @@
 
 @interface reportViewController ()
 
-@property (weak, nonatomic) IBOutlet SKSTableView *mainTableView;
+@property (weak, nonatomic) IBOutlet SKSTableView *tableView;
 @property (nonatomic,strong)NSArray * contents;
 
 @end
@@ -42,11 +42,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.mainTableView.SKSTableViewDelegate = self;
-    _mainTableView.sectionHeaderHeight = 10;
-    _mainTableView.sectionFooterHeight = 0.1;
-    _mainTableView.rowHeight = 40;
-    
+    self.tableView.SKSTableViewDelegate = self;
+    self.tableView.sectionHeaderHeight = 10;
+    self.tableView.sectionFooterHeight = 0.1;
+    self.tableView.rowHeight = 40;
+    [self.view addSubview:self.tableView];
+
     Backbutton;
 }
 

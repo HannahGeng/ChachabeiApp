@@ -32,10 +32,10 @@
     
     //设置导航栏
     [self setNavigationBar];
-    
+
     //添加子控制器
     [self setupChildVc];
-
+    
     //添加标题栏
     [self setupTitle];
     
@@ -61,7 +61,7 @@
     self.contentScrollView = contentScrollView;
     contentScrollView.pagingEnabled = YES;
     [self.view addSubview:contentScrollView];
-
+   
 }
 
 //设置导航栏
@@ -84,7 +84,7 @@
 {
     //登记记录
     RegistViewController * regist = [[RegistViewController alloc] init];
-    regist.title = @"变更记录";
+    regist.title = @"登记记录";
     [self addChildViewController:regist];
     
     //股东信息
@@ -106,6 +106,11 @@
     ChangeViewController * change = [[ChangeViewController alloc] init];
     change.title = @"变更记录";
     [self addChildViewController:change];
+    
+    //企业年报
+//    reportViewController * report = [[reportViewController alloc] init];
+//    report.title = @"企业年报";
+//    [self addChildViewController:report];
 }
 
 - (void)setupTitle
@@ -125,7 +130,7 @@
         [label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClick:)]];
         
         label.tag = i;
-        
+
         [self.titleScrollView addSubview:label];
         
         if (i == 0) {//最前面的label
@@ -133,17 +138,19 @@
             label.scale = 1.0;
         }
     }
-
+    
 }
 
 - (void)labelClick:(UITapGestureRecognizer *)tap
 {
     NSInteger index = tap.view.tag;
+    
     CGPoint offset = self.contentScrollView.contentOffset;
     offset.x = index * self.contentScrollView.frame.size.width;
     [self.contentScrollView setContentOffset:offset animated:YES];
 }
 
+//scrollView结束了滚动动画以后就会调用这个方法（比如- (void)setContentOffset:(CGPoint)contentOffset animated:(BOOL)animated;方法执行的动画完毕后）
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     //一些临时变量
@@ -169,10 +176,10 @@
     [self.titleScrollView setContentOffset:titleOffset animated:YES];
     
     //让其他label回到最初的状态
-    for (TitleScrollLabel *otherLabel in self.titleScrollView.subviews) {
+//    for (TitleScrollLabel * otherLabel in self.titleScrollView.subviews) {
         
-        if (otherLabel != label) otherLabel.scale = 0.0;
-    }
+//        if (otherLabel != label) otherLabel.scale = 0.0;
+//    }
     
     //取出需要显示的控制器
     UIViewController * willShowVc = self.childViewControllers[index];
@@ -201,7 +208,8 @@
     
     // 获得需要操作的右边label
     NSInteger rightIndex = leftIndex + 1;
-    TitleScrollLabel *rightLabel = (rightIndex == self.titleScrollView.subviews.count) ? nil : self.titleScrollView.subviews[rightIndex];
+    
+    TitleScrollLabel *rightLabel = (rightIndex == self.titleScrollView.subviews.count - 2) ? nil : self.titleScrollView.subviews[rightIndex];
     
     // 右边比例
     CGFloat rightScale = scale - leftIndex;
