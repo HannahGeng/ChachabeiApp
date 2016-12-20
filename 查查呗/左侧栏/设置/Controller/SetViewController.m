@@ -40,6 +40,8 @@
     
     self.view.backgroundColor=[UIColor whiteColor];
     
+    leftButton;
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
     

@@ -49,6 +49,8 @@
     
     //设置导航栏的颜色
     SetNavigationBar(@"消息盒子");
+    
+    leftButton;
 }
 
 /**

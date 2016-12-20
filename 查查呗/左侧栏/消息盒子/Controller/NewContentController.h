@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewContentController : UIViewController
+@interface NewContentController : CCBBaseViewController
 
 @end

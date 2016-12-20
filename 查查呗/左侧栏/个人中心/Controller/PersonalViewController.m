@@ -80,6 +80,9 @@
     
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
+    leftButton;
+    
     //设置导航栏
     [self setNavigationBar];
     //添加内容视图

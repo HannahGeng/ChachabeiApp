@@ -54,12 +54,15 @@
     
         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
     }
+    
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     mbHUDinit;
+    
     [self loadCompanyArray];
     
     //设置导航栏不透明
@@ -111,6 +114,7 @@
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                        
                         app.dataArr = app.basicInfo;
                         
                         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
@@ -315,21 +319,7 @@
 {
     [_taberView removeFromSuperview];
     
-    ViewController * vc = [[ViewController alloc] init];
-    NSArray * vcArray = [self.navigationController viewControllers];
-    NSInteger vcCount = vcArray.count;
-    UIViewController * lastVc = vcArray[vcCount - 2];
-    
-    if ([lastVc isKindOfClass:[vc class]]) {
-        
-        //发送通知
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"homeView" object:nil];
-        
-    }else{
-        
-        [self.navigationController popViewControllerAnimated:YES];
-    }
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 
@@ -675,6 +665,8 @@
         UnderButtonVC *cell=[UnderButtonVC cellWithTableView:self.ContentTableView];
         
         [cell.reportButton addTarget:self action:@selector(yearClick) forControlEvents:UIControlEventTouchUpInside];
+        
+        [cell.mapButton addTarget:self action:@selector(mapClick) forControlEvents:UIControlEventTouchUpInside];
 
         return cell;
     }
@@ -744,6 +736,13 @@
             MBhud(@"登陆后方可查看");
         }
     }
+}
+
+- (void)mapClick
+{
+    ChartViewController * chart = [[ChartViewController alloc] init];
+    
+    [self.navigationController pushViewController:chart animated:YES];
 }
 
 #pragma mark UITableViewDelegate

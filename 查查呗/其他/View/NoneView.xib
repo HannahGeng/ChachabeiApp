@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoneView">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAI-MQ-yPi">
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="app24" translatesAutoresizingMaskIntoConstraints="NO" id="OBN-gk-y3i">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="g0k-mO-5CW"/>
+                        <constraint firstAttribute="width" constant="65" id="uyA-At-pSn"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="eAI-MQ-yPi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JnU-Hf-CTL"/>
+                <constraint firstItem="OBN-gk-y3i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="S34-0u-Zh4"/>
+                <constraint firstItem="eAI-MQ-yPi" firstAttribute="top" secondItem="OBN-gk-y3i" secondAttribute="bottom" constant="5" id="cnq-nc-EwQ"/>
+                <constraint firstItem="OBN-gk-y3i" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lSG-UX-KIK"/>
+                <constraint firstAttribute="trailing" secondItem="eAI-MQ-yPi" secondAttribute="trailing" id="p45-GI-7wg"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="textLabel" destination="eAI-MQ-yPi" id="3al-CB-IWQ"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="app24" width="57" height="57"/>
+    </resources>
+</document>

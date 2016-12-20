@@ -74,6 +74,7 @@
 -(void)setNavigationBar
 {
     [self.navigationItem setHidesBackButton:YES];
+    
     //设置导航栏的颜色
     SetNavigationBar(nil);
     

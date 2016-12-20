@@ -21,12 +21,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //设置背景颜色
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"backgroundImage.png"]]];
+    
+    leftButton;
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
+    
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容
     [self addContentView];
 

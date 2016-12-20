@@ -1,0 +1,13 @@
+//
+//  CCBLeftViewController.h
+//  CCB-Demo
+//
+//  Created by zdzx-008 on 2016/12/14.
+//  Copyright © 2016年 Binngirl. All rights reserved.
+//
+
+#import "CCBBaseViewController.h"
+
+@interface CCBLeftViewController : CCBBaseViewController
+
+@end

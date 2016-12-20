@@ -8,5 +8,8 @@ pod "MJExtension"
 pod "SVProgressHUD"
 pod "Reachability"
 pod "MBProgressHUD"
+pod "iOS-Echarts"
+pod "MMDrawerController"
+pod "YYKit"
 end
 

@@ -91,11 +91,11 @@
     downView.backgroundColor=LIGHT_OPAQUE_BLACK_COLOR;
     [self.view addSubview:downView];
     
-    UIView *leftView=[[UIView alloc]initWithFrame:CGRectMake(0,0,leftright+5, Height)];
+    UIView *leftView=[[UIView alloc]initWithFrame:CGRectMake(0,0,leftright+5, screen_height)];
     leftView.backgroundColor=LIGHT_OPAQUE_BLACK_COLOR;
     [self.view addSubview:leftView];
     
-    UIView *rightView=[[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(backView.frame)-5,0,leftright+5, Height)];
+    UIView *rightView=[[UIView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(backView.frame)-5,0,leftright+5, screen_height)];
     rightView.backgroundColor=LIGHT_OPAQUE_BLACK_COLOR;
     [self.view addSubview:rightView];
     
@@ -140,7 +140,7 @@
     
     //限制扫描区域（上左下右）
     
-    [ _output setRectOfInterest : CGRectMake (( Height/2-Size/2) / Height ,( Width/2-Size/2 )/ Width , Size /Height , Size / Width)];
+    [ _output setRectOfInterest : CGRectMake (( screen_height/2-Size/2) / screen_height ,(screen_width/2-Size/2 )/ screen_width , Size /screen_height , Size / screen_width)];
     
     _session = [[AVCaptureSession alloc]init];
     [_session setSessionPreset:AVCaptureSessionPresetHigh];
@@ -161,7 +161,7 @@
     _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     
     //_preview.frame =CGRectMake(leftright,top,Size,Size);
-    _preview.frame =CGRectMake(0,0,Width,Height);
+    _preview.frame =CGRectMake(0,0,screen_width,screen_height);
     [self.view.layer insertSublayer:self.preview atIndex:0];
 //    [self.view.layer addSublayer:self.output];
 //    self.output = _output;

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CCBLeftViewController">
+            <connections>
+                <outlet property="leftTableView" destination="whb-DB-DjQ" id="hiu-cX-fjN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="whb-DB-DjQ">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="Rdc-U3-AgW"/>
+                    </constraints>
+                    <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Ef6-Fi-q1f"/>
+                        <outlet property="delegate" destination="-1" id="AB7-Lf-Lui"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqo-RD-NPo">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="2SR-bc-K1w"/>
+                        <constraint firstAttribute="height" constant="55" id="Vde-RU-IS4"/>
+                    </constraints>
+                    <state key="normal" image="exit"/>
+                    <connections>
+                        <action selector="exitClick" destination="-1" eventType="touchUpInside" id="UZz-Ce-dSX"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="uZQ-Sy-YtH">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="vVc-be-4j3"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touxiang" translatesAutoresizingMaskIntoConstraints="NO" id="v3f-GN-AEm">
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="bvy-jb-E96"/>
+                        <constraint firstAttribute="height" constant="65" id="uWD-3E-dCd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjs-GX-vLB">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="uZQ-Sy-YtH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Hr-ZV-if6"/>
+                <constraint firstItem="pjs-GX-vLB" firstAttribute="top" secondItem="v3f-GN-AEm" secondAttribute="bottom" constant="10" id="10V-E3-wEu"/>
+                <constraint firstItem="pjs-GX-vLB" firstAttribute="centerX" secondItem="v3f-GN-AEm" secondAttribute="centerX" id="5cd-7v-bQW"/>
+                <constraint firstItem="Kqo-RD-NPo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="960-3B-3tf"/>
+                <constraint firstItem="whb-DB-DjQ" firstAttribute="top" secondItem="uZQ-Sy-YtH" secondAttribute="bottom" id="Erg-ab-zFy"/>
+                <constraint firstItem="uZQ-Sy-YtH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MG6-5r-lfa"/>
+                <constraint firstAttribute="trailing" secondItem="whb-DB-DjQ" secondAttribute="trailing" id="MGU-Px-gkH"/>
+                <constraint firstAttribute="trailing" secondItem="uZQ-Sy-YtH" secondAttribute="trailing" id="Nqb-KK-nGi"/>
+                <constraint firstItem="Kqo-RD-NPo" firstAttribute="top" secondItem="whb-DB-DjQ" secondAttribute="bottom" constant="50" id="Tao-52-nj2"/>
+                <constraint firstItem="v3f-GN-AEm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="VGc-wK-9ta"/>
+                <constraint firstItem="whb-DB-DjQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rA8-ze-bDi"/>
+                <constraint firstItem="v3f-GN-AEm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="t3n-pK-6Ps"/>
+            </constraints>
+            <point key="canvasLocation" x="-58" y="-101"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background1" width="375" height="129"/>
+        <image name="exit" width="321" height="46"/>
+        <image name="touxiang" width="91" height="91"/>
+    </resources>
+</document>
