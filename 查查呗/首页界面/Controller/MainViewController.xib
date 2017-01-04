@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController">
+            <connections>
+                <outlet property="view" destination="5gV-zA-UI4" id="Sa6-40-hkE"/>
+                <outlet property="viewTableView" destination="bUF-Rg-PL1" id="nKW-AL-gez"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5gV-zA-UI4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUF-Rg-PL1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="280" id="zTc-IR-46y"/>
+                    </constraints>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="AGU-ra-blz"/>
+                        <outlet property="delegate" destination="-1" id="M4e-fP-5OK"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bUF-Rg-PL1" firstAttribute="leading" secondItem="5gV-zA-UI4" secondAttribute="leading" id="6Of-3m-40R"/>
+                <constraint firstItem="bUF-Rg-PL1" firstAttribute="top" secondItem="5gV-zA-UI4" secondAttribute="top" id="FPc-Hj-rmb"/>
+                <constraint firstAttribute="trailing" secondItem="bUF-Rg-PL1" secondAttribute="trailing" id="HGi-b5-UKk"/>
+            </constraints>
+            <point key="canvasLocation" x="292.5" y="357.5"/>
+        </view>
+    </objects>
+</document>

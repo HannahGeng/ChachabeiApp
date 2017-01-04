@@ -8,7 +8,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CCBLeftViewController">
             <connections>
+                <outlet property="headView" destination="v3f-GN-AEm" id="H4F-WE-bWC"/>
                 <outlet property="leftTableView" destination="whb-DB-DjQ" id="hiu-cX-fjN"/>
+                <outlet property="nickName" destination="pjs-GX-vLB" id="lGV-Eh-bRB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

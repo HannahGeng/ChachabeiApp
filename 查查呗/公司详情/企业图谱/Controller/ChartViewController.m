@@ -71,6 +71,8 @@
     
     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:nil];
     
+    NSLog(@"%@",jsonDic);
+
     PYOption *option = [RMMapper objectWithClass:[PYOption class] fromDictionary:jsonDic];
     
     [_echartsView setOption:option];

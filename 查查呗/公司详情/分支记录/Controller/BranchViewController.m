@@ -29,6 +29,7 @@
     [super viewDidLoad];
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, screen_width, screen_height) style:UITableViewStylePlain];
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.contentSize = CGSizeMake(0, screen_height + 35);

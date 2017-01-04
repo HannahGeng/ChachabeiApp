@@ -18,6 +18,8 @@
 
 @property (nonatomic,strong) UIScrollView * contentScrollView;
 
+@property (nonatomic,strong) NSArray * controllArray;
+
 @end
 
 @interface SegmentViewController ()
@@ -25,6 +27,27 @@
 @end
 
 @implementation SegmentViewController
+
+- (NSArray *)controllArray
+{
+    if (_controllArray == nil) {
+        
+        _controllArray = @[
+                           @{@"controll":[[RegistViewController alloc] init],
+                             @"title":@"登记记录"},
+                           @{@"controll":[[ShareholdViewController alloc] init],
+                             @"title":@"股东信息"},
+                           @{@"controll":[[MemberViewController alloc] init],
+                             @"title":@"主要成员"},
+                           @{@"controll":[[BranchViewController alloc] init],
+                             @"title":@"分支机构"},
+                           @{@"controll":[[ChangeViewController alloc] init],
+                             @"title":@"变更记录"},
+                           ];
+    }
+    
+    return _controllArray;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -45,6 +68,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     //标题scrollView
     UIScrollView * titleScrollView = [[UIScrollView alloc] init];
@@ -82,35 +107,13 @@
 
 - (void)setupChildVc
 {
-    //登记记录
-    RegistViewController * regist = [[RegistViewController alloc] init];
-    regist.title = @"登记记录";
-    [self addChildViewController:regist];
+    for (int i = 0; i < self.controllArray.count; i++) {
+        
+        [self addChildViewController:self.controllArray[i][@"controll"]];
+        
+        self.childViewControllers[i].title =  self.controllArray[i][@"title"];
+    }
     
-    //股东信息
-    ShareholdViewController * share = [[ShareholdViewController alloc] init];
-    share.title = @"股东信息";
-    [self addChildViewController:share];
-    
-    //主要成员
-    MemberViewController * member = [[MemberViewController alloc] init];
-    member.title = @"主要成员";
-    [self addChildViewController:member];
-    
-    //分支机构
-    BranchViewController * branch = [[BranchViewController alloc] init];
-    branch.title = @"分支机构";
-    [self addChildViewController:branch];
-    
-    //变更记录
-    ChangeViewController * change = [[ChangeViewController alloc] init];
-    change.title = @"变更记录";
-    [self addChildViewController:change];
-    
-    //企业年报
-//    reportViewController * report = [[reportViewController alloc] init];
-//    report.title = @"企业年报";
-//    [self addChildViewController:report];
 }
 
 - (void)setupTitle
@@ -122,7 +125,7 @@
     for (NSInteger i = 0; i < 5; i++) {
         
         TitleScrollLabel * label = [[TitleScrollLabel alloc] init];
-        label.text = [self.childViewControllers[i] title];
+        label.text = self.childViewControllers[i].title;
         label.textAlignment = NSTextAlignmentCenter;
         CGFloat labelX = i * labelW;
         label.frame = CGRectMake(labelX, labelY, labelW, labelH);

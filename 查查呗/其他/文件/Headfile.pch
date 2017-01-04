@@ -41,7 +41,6 @@
 #import "SearchViewCell.h"
 #import "TopButtonViewCell.h"
 #import "ButtonViewCell.h"
-#import "SegmentViewCell.h"
 #import "SearViewController.h"
 #import "ArrayViewCell.h"
 #import "MoreViewCell.h"
@@ -123,6 +122,9 @@
 #import "CCBBaseViewController.h"
 #import "CCBLeftViewController.h"
 #import "CCBLeftViewCell.h"
+#import "CCBSegmentView.h"
+#import "CCBHotComViewController.h"
+#import "CCBAttentViewController.h"
 
 /**
  *  颜色配置
@@ -169,8 +171,7 @@ AppShare;\
 CCBNavigationController * mainNav = [[CCBNavigationController alloc] initWithRootViewController:[[MainViewController alloc] init]];\
 app.drawerController = [[MMDrawerController alloc] initWithCenterViewController:mainNav leftDrawerViewController:[[CCBLeftViewController alloc] init]];\
 [app.drawerController setShowsShadow:YES];\
-app.drawerController.maximumLeftDrawerWidth = screen_width*3/4;\
-app.drawerController.maximumRightDrawerWidth = screen_width*3/4;\
+app.drawerController.maximumLeftDrawerWidth = screen_width*3/3.8;\
 [app.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];\
 [app.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];\
 KWindow.rootViewController = app.drawerController;\

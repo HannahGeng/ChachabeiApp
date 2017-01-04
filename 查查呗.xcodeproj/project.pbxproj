@@ -42,6 +42,9 @@
 		3D3F6A8B1DFE808600DDD04C /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F6A891DFE808600DDD04C /* ChartViewController.m */; };
 		3D3F6A8C1DFE808600DDD04C /* ChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3F6A8A1DFE808600DDD04C /* ChartViewController.xib */; };
 		3D3F6A8E1DFE80FD00DDD04C /* iOS_Echarts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3F6A8D1DFE80FD00DDD04C /* iOS_Echarts.framework */; };
+		3D46A9681E1C92C500802E76 /* CCBSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D46A9671E1C92C500802E76 /* CCBSegmentView.m */; };
+		3D46A96B1E1C99C900802E76 /* CCBHotComViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D46A96A1E1C99C900802E76 /* CCBHotComViewController.m */; };
+		3D46A96E1E1C99DE00802E76 /* CCBAttentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D46A96D1E1C99DE00802E76 /* CCBAttentViewController.m */; };
 		3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */; };
 		3D778CF71E090F5900052D11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778CF51E090F5900052D11 /* MainViewController.m */; };
 		3D778CF81E090F5900052D11 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D778CF61E090F5900052D11 /* MainViewController.xib */; };
@@ -96,8 +99,6 @@
 		3DD6639F1D0672FE006BCB3D /* MoreViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD6638D1D0672FE006BCB3D /* MoreViewCell.xib */; };
 		3DD663A01D0672FE006BCB3D /* SearchViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD6638F1D0672FE006BCB3D /* SearchViewCell.m */; };
 		3DD663A11D0672FE006BCB3D /* SearchViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD663901D0672FE006BCB3D /* SearchViewCell.xib */; };
-		3DD663A21D0672FE006BCB3D /* SegmentViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD663921D0672FE006BCB3D /* SegmentViewCell.m */; };
-		3DD663A31D0672FE006BCB3D /* SegmentViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD663931D0672FE006BCB3D /* SegmentViewCell.xib */; };
 		3DD663A41D0672FE006BCB3D /* TopButtonViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD663951D0672FE006BCB3D /* TopButtonViewCell.m */; };
 		3DD663A51D0672FE006BCB3D /* TopButtonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD663961D0672FE006BCB3D /* TopButtonViewCell.xib */; };
 		3DD663C41D06742A006BCB3D /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD663A91D06742A006BCB3D /* ContentViewController.m */; };
@@ -288,6 +289,12 @@
 		3D3F6A891DFE808600DDD04C /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 		3D3F6A8A1DFE808600DDD04C /* ChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartViewController.xib; sourceTree = "<group>"; };
 		3D3F6A8D1DFE80FD00DDD04C /* iOS_Echarts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iOS_Echarts.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Debug-iphonesimulator/iOS-Echarts/iOS_Echarts.framework"; sourceTree = "<group>"; };
+		3D46A9661E1C92C500802E76 /* CCBSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBSegmentView.h; sourceTree = "<group>"; };
+		3D46A9671E1C92C500802E76 /* CCBSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBSegmentView.m; sourceTree = "<group>"; };
+		3D46A9691E1C99C900802E76 /* CCBHotComViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBHotComViewController.h; sourceTree = "<group>"; };
+		3D46A96A1E1C99C900802E76 /* CCBHotComViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBHotComViewController.m; sourceTree = "<group>"; };
+		3D46A96C1E1C99DE00802E76 /* CCBAttentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBAttentViewController.h; sourceTree = "<group>"; };
+		3D46A96D1E1C99DE00802E76 /* CCBAttentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBAttentViewController.m; sourceTree = "<group>"; };
 		3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
 		3D778CF41E090F5900052D11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3D778CF51E090F5900052D11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -380,9 +387,6 @@
 		3DD6638E1D0672FE006BCB3D /* SearchViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewCell.h; sourceTree = "<group>"; };
 		3DD6638F1D0672FE006BCB3D /* SearchViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewCell.m; sourceTree = "<group>"; };
 		3DD663901D0672FE006BCB3D /* SearchViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewCell.xib; sourceTree = "<group>"; };
-		3DD663911D0672FE006BCB3D /* SegmentViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentViewCell.h; sourceTree = "<group>"; };
-		3DD663921D0672FE006BCB3D /* SegmentViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentViewCell.m; sourceTree = "<group>"; };
-		3DD663931D0672FE006BCB3D /* SegmentViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentViewCell.xib; sourceTree = "<group>"; };
 		3DD663941D0672FE006BCB3D /* TopButtonViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopButtonViewCell.h; sourceTree = "<group>"; };
 		3DD663951D0672FE006BCB3D /* TopButtonViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopButtonViewCell.m; sourceTree = "<group>"; };
 		3DD663961D0672FE006BCB3D /* TopButtonViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopButtonViewCell.xib; sourceTree = "<group>"; };
@@ -832,7 +836,6 @@
 			children = (
 				3D778D081E09200900052D11 /* Controller */,
 				3D778D121E09200900052D11 /* View */,
-				3D778D131E09200900052D11 /* 登录 */,
 			);
 			path = "登陆界面";
 			sourceTree = "<group>";
@@ -858,13 +861,6 @@
 			children = (
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		3D778D131E09200900052D11 /* 登录 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "登录";
 			sourceTree = "<group>";
 		};
 		3D778D1A1E09201600052D11 /* 欢迎界面 */ = {
@@ -1008,10 +1004,10 @@
 		3D778D471E09218200052D11 /* 文件 */ = {
 			isa = PBXGroup;
 			children = (
+				3D778D491E09218200052D11 /* Headfile.pch */,
 				3D778D731E09228A00052D11 /* UIUtils.h */,
 				3D778D741E09228A00052D11 /* UIUtils.m */,
 				3D778D481E09218200052D11 /* city.plist */,
-				3D778D491E09218200052D11 /* Headfile.pch */,
 				3D778D4A1E09218200052D11 /* XMGConst.h */,
 				3D778D4B1E09218200052D11 /* XMGConst.m */,
 			);
@@ -1094,6 +1090,10 @@
 				3D778CF41E090F5900052D11 /* MainViewController.h */,
 				3D778CF51E090F5900052D11 /* MainViewController.m */,
 				3D778CF61E090F5900052D11 /* MainViewController.xib */,
+				3D46A9691E1C99C900802E76 /* CCBHotComViewController.h */,
+				3D46A96A1E1C99C900802E76 /* CCBHotComViewController.m */,
+				3D46A96C1E1C99DE00802E76 /* CCBAttentViewController.h */,
+				3D46A96D1E1C99DE00802E76 /* CCBAttentViewController.m */,
 				3D778D701E09223B00052D11 /* CCBBaseViewController.h */,
 				3D778D711E09223B00052D11 /* CCBBaseViewController.m */,
 			);
@@ -1124,12 +1124,11 @@
 				3DD6638E1D0672FE006BCB3D /* SearchViewCell.h */,
 				3DD6638F1D0672FE006BCB3D /* SearchViewCell.m */,
 				3DD663901D0672FE006BCB3D /* SearchViewCell.xib */,
-				3DD663911D0672FE006BCB3D /* SegmentViewCell.h */,
-				3DD663921D0672FE006BCB3D /* SegmentViewCell.m */,
-				3DD663931D0672FE006BCB3D /* SegmentViewCell.xib */,
 				3DD663941D0672FE006BCB3D /* TopButtonViewCell.h */,
 				3DD663951D0672FE006BCB3D /* TopButtonViewCell.m */,
 				3DD663961D0672FE006BCB3D /* TopButtonViewCell.xib */,
+				3D46A9661E1C92C500802E76 /* CCBSegmentView.h */,
+				3D46A9671E1C92C500802E76 /* CCBSegmentView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1951,7 +1950,6 @@
 				3DD663C81D06742A006BCB3D /* AddressVC.xib in Resources */,
 				89CA2D061D0912CC007115D4 /* expandableImage.png in Resources */,
 				89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */,
-				3DD663A31D0672FE006BCB3D /* SegmentViewCell.xib in Resources */,
 				3DD664101D06760F006BCB3D /* ResultsViewController.xib in Resources */,
 				3DD664FE1D06899C006BCB3D /* ChangeViewCell.xib in Resources */,
 				3DD664041D06757F006BCB3D /* SearVC.xib in Resources */,
@@ -2074,6 +2072,7 @@
 				89CA2D0A1D0912CC007115D4 /* SKSTableViewCellIndicator.m in Sources */,
 				3DD6639A1D0672FE006BCB3D /* ArrayViewCell.m in Sources */,
 				3D778D5F1E09218200052D11 /* HTTPSessionManager.m in Sources */,
+				3D46A96E1E1C99DE00802E76 /* CCBAttentViewController.m in Sources */,
 				3DD663C71D06742A006BCB3D /* AddressVC.m in Sources */,
 				3DD664F31D06899C006BCB3D /* MemberViewController.m in Sources */,
 				3D778D181E09200900052D11 /* RegisteredViewController.m in Sources */,
@@ -2124,6 +2123,7 @@
 				3DD664891D067D47006BCB3D /* PersonalViewCell.m in Sources */,
 				3DD664F51D06899C006BCB3D /* MemberViewCell.m in Sources */,
 				3DD664A41D067D47006BCB3D /* aboutViewCell.m in Sources */,
+				3D46A96B1E1C99C900802E76 /* CCBHotComViewController.m in Sources */,
 				3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */,
 				3D778D501E09218200052D11 /* Foundation+Log.m in Sources */,
 				3DD664FC1D06899C006BCB3D /* changeModel.m in Sources */,
@@ -2173,11 +2173,11 @@
 				3DD6649B1D067D47006BCB3D /* AboutViewController.m in Sources */,
 				89CA2D091D0912CC007115D4 /* SKSTableViewCell.m in Sources */,
 				3D778D511E09218200052D11 /* UIButton+CCBButton.m in Sources */,
-				3DD663A21D0672FE006BCB3D /* SegmentViewCell.m in Sources */,
 				3DD664F71D06899C006BCB3D /* BranchViewController.m in Sources */,
 				3DD664031D06757F006BCB3D /* SearVC.m in Sources */,
 				3DD663FB1D06757F006BCB3D /* SearViewController.m in Sources */,
 				3DD664A61D067D47006BCB3D /* SetViewCell.m in Sources */,
+				3D46A9681E1C92C500802E76 /* CCBSegmentView.m in Sources */,
 				3DD663C91D06742A006BCB3D /* HeardViewCell.m in Sources */,
 				3DD665001D06899C006BCB3D /* RegistViewController.m in Sources */,
 				3D778D581E09218200052D11 /* TitleScrollLabel.m in Sources */,
@@ -2351,7 +2351,7 @@
 					"$(SRCROOT)/查查呗/框架/baiduSDK",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2383,7 +2383,7 @@
 					"$(SRCROOT)/查查呗/框架/baiduSDK",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

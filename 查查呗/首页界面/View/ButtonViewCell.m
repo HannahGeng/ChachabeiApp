@@ -16,7 +16,7 @@
     ButtonViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ButtonViewCell" owner:self options:nil] lastObject];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     }
     
     [cell addSubview:cell.redianButton];

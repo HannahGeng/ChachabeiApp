@@ -16,6 +16,10 @@
 
 @interface CCBLeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *headView;
+
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 
 @property (nonatomic,strong) NSArray * menuArray;

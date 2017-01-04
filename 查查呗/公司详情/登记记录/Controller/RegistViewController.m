@@ -29,6 +29,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.contentSize = CGSizeMake(0, screen_height + 35);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 150, 0);
+    self.tableView.backgroundColor = [UIColor greenColor];
+
     [self.view addSubview:self.tableView];
     
     app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
