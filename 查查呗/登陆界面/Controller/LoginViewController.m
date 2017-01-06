@@ -373,6 +373,8 @@
                                         
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
+                        app.isLogin = YES;
+                        
                         [self UntilSeccessDone];
                         
                         app.companyArray = responseObject[@"result"][@"data"];
@@ -490,6 +492,7 @@
 #pragma mark - 进入“首页”界面
 - (void)UntilSeccessDone
 {
+
     hudHide;
         
     SHOUYE;

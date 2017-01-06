@@ -16,6 +16,10 @@
 
 @interface CCBLeftViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *headView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nickName;
@@ -29,6 +33,22 @@
 @end
 
 @implementation CCBLeftViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    AppShare;
+    
+    [super viewWillAppear:animated];
+    
+    if (app.isLogin) {//登录状态
+        
+        self.loginButton.hidden = YES;
+        
+    }else{//为登录状态
+        
+        self.exitButton.hidden = YES;
+    }
+}
 
 - (NSArray *)menuArray
 {
@@ -101,9 +121,34 @@
      completion:nil];
 }
 
+//退出按钮
 - (IBAction)exitClick {
     
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"你确定要退出登录吗？" message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"退出", nil];
+    alert.delegate = self;
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"phonenum"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"passnum"];
+        
+        LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+        UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self.view.window.rootViewController presentViewController:navController animated:YES completion:nil];
+        
+    }
+}
+
+//登录按钮
+- (IBAction)loginClick {
     
+    LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+    [self.view.window.rootViewController presentViewController:navController animated:YES completion:nil];
 }
 
 @end

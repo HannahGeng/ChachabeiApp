@@ -20,20 +20,20 @@
 
 @implementation CCBAttentViewController
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     [self loadAttantion];
 
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
 
 }
 
 - (void)loadAttantion
 {
     AppShare;
-
+    
     //封装POST参数
     if (app.isLogin == YES) {
         
@@ -51,12 +51,13 @@
                     
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
+                    
                     self.attentArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
                     
                     if ([app.attentionArray isEqual:@"暂无关注企业"]) {
                         
                         [self.tableView reloadData];
-
+                        
                         [self.tableView addSubview:[[NoneView showNoneView] showInPoint:CGPointMake(screen_width / 2, screen_height / 2 - 200) title:@"暂无信息"]];
                         
                         self.tableView.tableFooterView=[[UIView alloc]init];
@@ -66,9 +67,9 @@
                         NoneHide;
                         
                         [self.tableView reloadData];
-
+                        
                     }
-                    
+
                 }];
                 
             }else{
@@ -82,8 +83,9 @@
         [self.tableView addSubview:[[NoneView showNoneView] showInPoint:CGPointMake(screen_width / 2, screen_height / 2 - 200) title:@"登陆后可查看"]];
         
         self.tableView.tableFooterView=[[UIView alloc]init];
-    }
 
+    }
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

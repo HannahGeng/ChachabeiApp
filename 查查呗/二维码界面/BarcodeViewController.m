@@ -82,8 +82,8 @@
 
 -(void)initOpaqueView
 {
-    backView=[[UIView alloc]initWithFrame:CGRectMake(leftright, top, Size, Size)];
-    UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(leftright+5, 0, backView.frame.size.width-10, top)];
+    backView=[[UIView alloc]initWithFrame:CGRectMake(leftright, topH, Size, Size)];
+    UIView *topView=[[UIView alloc]initWithFrame:CGRectMake(leftright+5, 0, backView.frame.size.width-10, topH)];
     topView.backgroundColor=LIGHT_OPAQUE_BLACK_COLOR;
     [self.view addSubview:topView];
     

@@ -14,9 +14,9 @@
 
 @implementation CCBBaseViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-   
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)pushNewViewController:(UIViewController *)newViewController

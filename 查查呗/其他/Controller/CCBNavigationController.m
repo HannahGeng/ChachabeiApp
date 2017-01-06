@@ -25,8 +25,16 @@
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    AppShare;
+    
     if (self.childViewControllers.count > 0) {
     
+        [self.navigationBar setHidden:NO];
+        
+        if (![viewController isKindOfClass:[CCBLeftViewController class]] && ![viewController isKindOfClass:[MainViewController class]]) {
+            
+            [app.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+        }
         UIButton* leftBtn= [UIButton buttonWithType:UIButtonTypeCustom];
         leftBtn.frame = CGRectMake(0, 0, 20, 20);
         [leftBtn setImage:[UIImage imageNamed:@"app02"] forState:UIControlStateNormal];

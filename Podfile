@@ -11,5 +11,7 @@ pod "MBProgressHUD"
 pod "iOS-Echarts"
 pod "MMDrawerController"
 pod "YYKit"
+pod "Masonry"
+
 end
 

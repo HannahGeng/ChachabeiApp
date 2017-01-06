@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CCBLeftViewController">
             <connections>
+                <outlet property="exitButton" destination="Kqo-RD-NPo" id="rrh-05-ikn"/>
                 <outlet property="headView" destination="v3f-GN-AEm" id="H4F-WE-bWC"/>
                 <outlet property="leftTableView" destination="whb-DB-DjQ" id="hiu-cX-fjN"/>
+                <outlet property="loginButton" destination="GTo-r6-ru2" id="vL2-W1-haL"/>
                 <outlet property="nickName" destination="pjs-GX-vLB" id="lGV-Eh-bRB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,6 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="whb-DB-DjQ">
+                    <rect key="frame" x="0.0" y="160" width="375" height="250"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="250" id="Rdc-U3-AgW"/>
@@ -30,7 +36,8 @@
                         <outlet property="delegate" destination="-1" id="AB7-Lf-Lui"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqo-RD-NPo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kqo-RD-NPo" userLabel="退出登录">
+                    <rect key="frame" x="62.5" y="460" width="250" height="55"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="2SR-bc-K1w"/>
                         <constraint firstAttribute="height" constant="55" id="Vde-RU-IS4"/>
@@ -41,21 +48,31 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="uZQ-Sy-YtH">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="160" id="vVc-be-4j3"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="touxiang" translatesAutoresizingMaskIntoConstraints="NO" id="v3f-GN-AEm">
+                    <rect key="frame" x="155" y="25" width="65" height="65"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="65" id="bvy-jb-E96"/>
                         <constraint firstAttribute="height" constant="65" id="uWD-3E-dCd"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjs-GX-vLB">
+                    <rect key="frame" x="172" y="100" width="31" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTo-r6-ru2" userLabel="登录">
+                    <rect key="frame" x="62" y="460" width="250" height="55"/>
+                    <state key="normal" image="denglu"/>
+                    <connections>
+                        <action selector="loginClick" destination="-1" eventType="touchUpInside" id="FNM-NX-rKP"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -64,19 +81,24 @@
                 <constraint firstItem="pjs-GX-vLB" firstAttribute="centerX" secondItem="v3f-GN-AEm" secondAttribute="centerX" id="5cd-7v-bQW"/>
                 <constraint firstItem="Kqo-RD-NPo" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="960-3B-3tf"/>
                 <constraint firstItem="whb-DB-DjQ" firstAttribute="top" secondItem="uZQ-Sy-YtH" secondAttribute="bottom" id="Erg-ab-zFy"/>
+                <constraint firstItem="GTo-r6-ru2" firstAttribute="centerX" secondItem="Kqo-RD-NPo" secondAttribute="centerX" id="FNv-4d-wuT"/>
                 <constraint firstItem="uZQ-Sy-YtH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MG6-5r-lfa"/>
                 <constraint firstAttribute="trailing" secondItem="whb-DB-DjQ" secondAttribute="trailing" id="MGU-Px-gkH"/>
                 <constraint firstAttribute="trailing" secondItem="uZQ-Sy-YtH" secondAttribute="trailing" id="Nqb-KK-nGi"/>
                 <constraint firstItem="Kqo-RD-NPo" firstAttribute="top" secondItem="whb-DB-DjQ" secondAttribute="bottom" constant="50" id="Tao-52-nj2"/>
+                <constraint firstItem="GTo-r6-ru2" firstAttribute="centerY" secondItem="Kqo-RD-NPo" secondAttribute="centerY" id="Uic-ID-7ok"/>
                 <constraint firstItem="v3f-GN-AEm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="VGc-wK-9ta"/>
+                <constraint firstItem="GTo-r6-ru2" firstAttribute="width" secondItem="Kqo-RD-NPo" secondAttribute="width" id="ZHA-ol-mlv"/>
                 <constraint firstItem="whb-DB-DjQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rA8-ze-bDi"/>
                 <constraint firstItem="v3f-GN-AEm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="t3n-pK-6Ps"/>
+                <constraint firstItem="GTo-r6-ru2" firstAttribute="height" secondItem="Kqo-RD-NPo" secondAttribute="height" id="vB6-2R-AKl"/>
             </constraints>
             <point key="canvasLocation" x="-58" y="-101"/>
         </view>
     </objects>
     <resources>
         <image name="background1" width="375" height="129"/>
+        <image name="denglu" width="251" height="46"/>
         <image name="exit" width="321" height="46"/>
         <image name="touxiang" width="91" height="91"/>
     </resources>

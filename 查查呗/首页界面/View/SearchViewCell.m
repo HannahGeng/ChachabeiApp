@@ -32,4 +32,10 @@
     return cell;
 }
 
+- (IBAction)leftClick {
+    
+    AppShare;
+    [app.drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
 @end

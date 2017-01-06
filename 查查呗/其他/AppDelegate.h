@@ -36,7 +36,7 @@
 @property (nonatomic,strong) NSArray * hotCompanyArray;
 
 /** 关注企业数组 */
-@property (nonatomic,strong) NSMutableArray * attentionArray;
+@property (nonatomic,strong) NSArray * attentionArray;
 
 /** 登陆成功时获取到的keycode */
 @property (strong,nonatomic)NSString * loginKeycode;
@@ -152,6 +152,10 @@
 
 /** cityArray */
 @property (nonatomic,strong) NSArray * cityArray;
+
+@property (nonatomic,assign) BOOL isFocus;
+
+@property (nonatomic,strong) UIButton * focusButton;
 
 @end
 

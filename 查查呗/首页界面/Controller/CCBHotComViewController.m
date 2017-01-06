@@ -43,7 +43,7 @@
     
     [self.tableView reloadData];
         
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 110, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

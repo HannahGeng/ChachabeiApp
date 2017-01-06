@@ -46,6 +46,7 @@
 		3D46A96B1E1C99C900802E76 /* CCBHotComViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D46A96A1E1C99C900802E76 /* CCBHotComViewController.m */; };
 		3D46A96E1E1C99DE00802E76 /* CCBAttentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D46A96D1E1C99DE00802E76 /* CCBAttentViewController.m */; };
 		3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */; };
+		3D69F1CA1E1F2032002B3FEB /* CCBTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D69F1C91E1F2032002B3FEB /* CCBTabBarView.xib */; };
 		3D778CF71E090F5900052D11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778CF51E090F5900052D11 /* MainViewController.m */; };
 		3D778CF81E090F5900052D11 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D778CF61E090F5900052D11 /* MainViewController.xib */; };
 		3D778CFA1E0911A200052D11 /* MMDrawerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D778CF91E0911A200052D11 /* MMDrawerController.framework */; };
@@ -86,6 +87,8 @@
 		3D778D751E09228A00052D11 /* UIUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D741E09228A00052D11 /* UIUtils.m */; };
 		3D7ADDEA1DC835E100ADBE75 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE81DC835E100ADBE75 /* ContentView.m */; };
 		3D7ADDEB1DC835E100ADBE75 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE91DC835E100ADBE75 /* ContentView.xib */; };
+		3D8491FD1E1DFB0D0081676F /* CCBTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8491FC1E1DFB0D0081676F /* CCBTabBarView.m */; };
+		3D8492001E1E19F30081676F /* TabbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8491FF1E1E19F30081676F /* TabbarButton.m */; };
 		3D98AA7E1DC97C350063927C /* CopyRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D98AA7D1DC97C350063927C /* CopyRightViewController.m */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
@@ -296,6 +299,7 @@
 		3D46A96C1E1C99DE00802E76 /* CCBAttentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBAttentViewController.h; sourceTree = "<group>"; };
 		3D46A96D1E1C99DE00802E76 /* CCBAttentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBAttentViewController.m; sourceTree = "<group>"; };
 		3D63EB651DB6FEF000344B55 /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-fjgofrwzkzibzibhwiqxfpwcdopf/Build/Products/Release-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		3D69F1C91E1F2032002B3FEB /* CCBTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCBTabBarView.xib; sourceTree = "<group>"; };
 		3D778CF41E090F5900052D11 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3D778CF51E090F5900052D11 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3D778CF61E090F5900052D11 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -366,6 +370,10 @@
 		3D7ADDE71DC835E100ADBE75 /* ContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
 		3D7ADDE81DC835E100ADBE75 /* ContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		3D7ADDE91DC835E100ADBE75 /* ContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentView.xib; sourceTree = "<group>"; };
+		3D8491FB1E1DFB0D0081676F /* CCBTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBTabBarView.h; sourceTree = "<group>"; };
+		3D8491FC1E1DFB0D0081676F /* CCBTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBTabBarView.m; sourceTree = "<group>"; };
+		3D8491FE1E1E19F30081676F /* TabbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarButton.h; sourceTree = "<group>"; };
+		3D8491FF1E1E19F30081676F /* TabbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarButton.m; sourceTree = "<group>"; };
 		3D98AA7C1DC97C350063927C /* CopyRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyRightViewController.h; sourceTree = "<group>"; };
 		3D98AA7D1DC97C350063927C /* CopyRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyRightViewController.m; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
@@ -1165,6 +1173,11 @@
 		3DD663AE1D06742A006BCB3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3D8491FB1E1DFB0D0081676F /* CCBTabBarView.h */,
+				3D8491FC1E1DFB0D0081676F /* CCBTabBarView.m */,
+				3D69F1C91E1F2032002B3FEB /* CCBTabBarView.xib */,
+				3D8491FE1E1E19F30081676F /* TabbarButton.h */,
+				3D8491FF1E1E19F30081676F /* TabbarButton.m */,
 				3DD663AF1D06742A006BCB3D /* AddressVC.h */,
 				3DD663B01D06742A006BCB3D /* AddressVC.m */,
 				3DD663B11D06742A006BCB3D /* AddressVC.xib */,
@@ -1951,6 +1964,7 @@
 				89CA2D061D0912CC007115D4 /* expandableImage.png in Resources */,
 				89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */,
 				3DD664101D06760F006BCB3D /* ResultsViewController.xib in Resources */,
+				3D69F1CA1E1F2032002B3FEB /* CCBTabBarView.xib in Resources */,
 				3DD664FE1D06899C006BCB3D /* ChangeViewCell.xib in Resources */,
 				3DD664041D06757F006BCB3D /* SearVC.xib in Resources */,
 				3DD663A51D0672FE006BCB3D /* TopButtonViewCell.xib in Resources */,
@@ -2145,6 +2159,7 @@
 				3D778D061E091FF300052D11 /* CCBLeftViewCell.m in Sources */,
 				3DD664931D067D47006BCB3D /* NewViewCell.m in Sources */,
 				3DD6642F1D067882006BCB3D /* MessageViewCell.m in Sources */,
+				3D8491FD1E1DFB0D0081676F /* CCBTabBarView.m in Sources */,
 				3D778D6E1E0921C300052D11 /* NSString+Base64.m in Sources */,
 				3DD664F41D06899C006BCB3D /* memberModel.m in Sources */,
 				3DD6648B1D067D47006BCB3D /* AttentionViewController.m in Sources */,
@@ -2181,6 +2196,7 @@
 				3DD663C91D06742A006BCB3D /* HeardViewCell.m in Sources */,
 				3DD665001D06899C006BCB3D /* RegistViewController.m in Sources */,
 				3D778D581E09218200052D11 /* TitleScrollLabel.m in Sources */,
+				3D8492001E1E19F30081676F /* TabbarButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

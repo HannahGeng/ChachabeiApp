@@ -24,7 +24,6 @@
     NSString * _url;
     NSString * _province;
     NSString * _emailStr;
-    BOOL _isFocus;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 }
@@ -55,6 +54,11 @@
         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.resultArray[[app.companyIndex integerValue]]];
     }
     
+    //添加底部控件
+    CGFloat height = 45;
+    CCBTabBarView * tabView = [[CCBTabBarView alloc] initWithFrame:CGRectMake(0, screen_height - height, screen_width, height)];
+    [KWindow addSubview:tabView];
+
 }
 
 - (void)viewDidLoad {
@@ -71,9 +75,42 @@
     //设置导航栏
     [self setNavigationBar];
     
-    //添加内容视图
-    [self addContentView];
+    //接收底部工具栏按钮通知
+    [self resiveNoti];
     
+    //判断关注按钮点击状态
+    [self addContent];
+    
+}
+
+- (void)resiveNoti
+{
+    //接收通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentClick) name:@"comment" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareClick) name:@"share" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusClick:) name:@"attent" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendClick) name:@"send" object:nil];
+
+}
+
+- (void)addContent
+{
+    AppShare;
+    
+    //如果关注数组不为空
+    if ((![app.attentionArray isEqual:@"暂无关注企业"]) && (app.attentionArray.count != 0) && (app.isLogin == YES) && (![app.attentionArray isEqual:[NSNull null]])) {
+        
+        for (int i = 0; i < app.attentionArray.count; i++) {
+            
+            //如果所点击的公司id与关注公司的id相同，则证明该企业已被关注
+            if ([app.attentionArray[i][@"cid"] containsString:app.companyID]) {
+                
+                break;
+            }
+            
+        }
+    }
+
 }
 
 - (void)loadCompanyArray
@@ -292,8 +329,6 @@
 //设置导航栏
 -(void)setNavigationBar
 {
-    [self.navigationItem setHidesBackButton:YES];
-    
     //设置导航栏的颜色
     SetNavigationBar(nil);
     
@@ -321,95 +356,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 
-}
-
-//添加底部试图
--(void)addContentView
-{
-    AppShare;
-    
-    _ContentTableView.separatorStyle = UITableViewCellSelectionStyleGray;
-    _taberView=[[UIView alloc]initWithFrame:CGRectMake(0, [UIUtils getWindowHeight]-50, [UIUtils getWindowWidth], 50)];
-    _taberView.backgroundColor=LIGHT_BLUE_COLOR;
-    [[[UIApplication sharedApplication] keyWindow] addSubview: _taberView];
-
-    //评论按钮
-    _commentButton = [self buttonWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth]/4, 50) image:@"app33.png" imageEdgeInset:UIEdgeInsetsMake(10,10,25,_commentButton.titleLabel.bounds.size.width-7) titleEdgeInsets:UIEdgeInsetsMake(23, -_commentButton.titleLabel.bounds.size.width-25, 0, 0) action:@selector(commentClick) title:@"评论"];
-
-    //分享按钮
-    _shareButtn = [self buttonWithFrame:CGRectMake([UIUtils getWindowWidth]/4, 0, [UIUtils getWindowWidth]/4, 50) image:@"app34.png" imageEdgeInset:UIEdgeInsetsMake(10,10,25,_commentButton.titleLabel.bounds.size.width-7) titleEdgeInsets:UIEdgeInsetsMake(23, -_commentButton.titleLabel.bounds.size.width-25, 0, 0) action:@selector(shareClick) title:@"分享"];
-
-    //关注按钮
-    _focusButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    _focusButton.frame=CGRectMake([UIUtils getWindowWidth]/4*2, 0, [UIUtils getWindowWidth]/4, 50);
-    [_focusButton setImage:[UIImage imageNamed:@"app35"] forState:UIControlStateNormal];
-    [_focusButton setImage:[UIImage imageNamed:@"guanzhu"] forState:UIControlStateSelected];
-    
-    if ([UIUtils getWindowWidth] == 375) {//iphone6
-        
-         _focusButton.imageEdgeInsets = UIEdgeInsetsMake(10,[UIUtils getWindowWidth]/4-60,24,[UIUtils getWindowWidth]/4-55);
-        
-    }else if([UIUtils getWindowWidth] == 414){//plus
-        
-        _focusButton.imageEdgeInsets = UIEdgeInsetsMake(10,40,24,42);
-        
-    }else{//5s
-        
-        _focusButton.imageEdgeInsets = UIEdgeInsetsMake(10,30,24,32);
-    }
-    
-    [_focusButton setTitle:@"关注" forState:UIControlStateNormal];
-    
-    //设置button的title
-    _focusButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    
-    //title字体大小
-    _focusButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [_focusButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _focusButton.titleEdgeInsets = UIEdgeInsetsMake(25, -_commentButton.titleLabel.bounds.size.width-35, 0, 0);
-    
-    //设置title在button上的位置（上top，左left，下bottom，右right）
-    [_focusButton addTarget:self action:@selector(focusClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_taberView addSubview:_focusButton];
-    
-    //如果关注数组不为空
-    if ((![app.attentionArray isEqual:@"暂无关注企业"]) && (app.attentionArray.count != 0) && (app.isLogin == YES) && (![app.attentionArray isEqual:[NSNull null]])) {
-        
-        for (int i = 0; i < app.attentionArray.count; i++) {
-            
-            //如果所点击的公司id与关注公司的id相同，则证明该企业已被关注
-            if ([app.attentionArray[i][@"cid"] containsString:app.companyID]) {
-                
-                _focusButton.selected = YES;
-                _isFocus = YES;
-                
-                break;
-            }
-            
-        }
-        
-    }
-    
-    //发送按钮
-    _sendBtn = [self buttonWithFrame:CGRectMake([UIUtils getWindowWidth]/4*3, 0, [UIUtils getWindowWidth]/4, 50) image:@"app36.png" imageEdgeInset:UIEdgeInsetsMake(10,10,25,_commentButton.titleLabel.bounds.size.width-7) titleEdgeInsets:UIEdgeInsetsMake(23, -_commentButton.titleLabel.bounds.size.width-25, 0, 0) action:@selector(sendClick) title:@"发送"];
-}
-
-#pragma mark - 封装递底部工具条按钮
-- (UIButton *)buttonWithFrame:(CGRect)frame image:(NSString *)image imageEdgeInset:(UIEdgeInsets)imageInset titleEdgeInsets:(UIEdgeInsets)titleInset action:(SEL)action title:(NSString *)title
-{
-    UIButton * button =[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame= frame;
-    [button setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    button.imageEdgeInsets = imageInset;
-    [button setTitle:title forState:UIControlStateNormal];//设置button的title
-    button.titleLabel.font = [UIFont systemFontOfSize:14];//title字体大小
-    button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.titleEdgeInsets = titleInset;
-    [button addTarget:self action:action forControlEvents:UIControlEventTouchUpInside];
-    [_taberView addSubview:button];
-    
-    return button;
 }
 
 -(void)commentClick
@@ -453,11 +399,7 @@
     
     if (app.isLogin == YES) {//已登陆用户
         
-        UIButton * button = (UIButton *)sender;
-        button.selected = !button.selected;
-        _isFocus = button.selected;
-        
-        if (_isFocus == YES) {
+        if (app.isFocus) {
             //关注状态
             _focus_state = @"1";
             

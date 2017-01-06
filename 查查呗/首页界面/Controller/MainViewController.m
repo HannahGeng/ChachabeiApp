@@ -28,9 +28,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [[CCBTabBarView alloc] hideTabView];
+    
     //添加内容视图
     [self addContentView];
-    
+        
+    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (void)viewDidLoad {
@@ -43,9 +46,6 @@
     self.navigationController.navigationBar.translucent = NO;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    //设置导航栏
-    [self setNavigationBar];
     
     [self setPageViewController];
 
@@ -69,14 +69,6 @@
     }
     
     return _RCSegView;
-}
-
-#pragma mark - 设置导航栏
-- (void)setNavigationBar{
-    
-    SetNavigationBar(@"首页");
-    
-    leftButton;
 }
 
 #pragma mark - 添加内容视图
@@ -185,7 +177,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        return 80;
+        return 144;
     }
     if (indexPath.row==1){
         return 120;
