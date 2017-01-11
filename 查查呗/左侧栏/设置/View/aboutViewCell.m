@@ -28,13 +28,13 @@
     return cell;
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    
-    // 为了保证计算出来的数值 跟 真正显示出来的效果 一致
-    self.contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 20;
-}
+//- (void)awakeFromNib
+//{
+//    [super awakeFromNib];
+//    
+//    // 为了保证计算出来的数值 跟 真正显示出来的效果 一致
+//    self.contentLabel.preferredMaxLayoutWidth = [UIScreen mainScreen].bounds.size.width - 20;
+//}
 
 - (void)setAbout:(aboutModel *)about
 {
@@ -43,9 +43,9 @@
     self.contentLabel.text = about.content;
         
     // 强制布局
-    [self layoutIfNeeded];
+//    [self layoutIfNeeded];
     
-    about.cellHeight = CGRectGetMaxY(self.contentLabel.frame);
+//    about.cellHeight = CGRectGetMaxY(self.contentLabel.frame);
 }
 
 @end

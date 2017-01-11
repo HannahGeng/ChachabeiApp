@@ -12,6 +12,8 @@ pod "iOS-Echarts"
 pod "MMDrawerController"
 pod "YYKit"
 pod "Masonry"
+pod "RealReachability"
+pod "iVersion"
 
 end
 

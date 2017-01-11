@@ -128,6 +128,8 @@
 #import "CCBTabBarView.h"
 #import "Masonry.h"
 #import "TabbarButton.h"
+#import "RealReachability.h"
+#import "iVersion.h"
 
 /**
  *  颜色配置

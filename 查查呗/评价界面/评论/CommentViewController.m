@@ -52,6 +52,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    AppShare;
+    
+    app.tabView.hidden = YES;
+    
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
     //设置导航栏

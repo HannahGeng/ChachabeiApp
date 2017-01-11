@@ -28,7 +28,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [[CCBTabBarView alloc] hideTabView];
+    
+    AppShare;
+    
+    app.tabView.hidden = YES;
     
     //添加内容视图
     [self addContentView];

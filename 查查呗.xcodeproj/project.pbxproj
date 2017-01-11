@@ -89,6 +89,9 @@
 		3D7ADDEB1DC835E100ADBE75 /* ContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7ADDE91DC835E100ADBE75 /* ContentView.xib */; };
 		3D8491FD1E1DFB0D0081676F /* CCBTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8491FC1E1DFB0D0081676F /* CCBTabBarView.m */; };
 		3D8492001E1E19F30081676F /* TabbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D8491FF1E1E19F30081676F /* TabbarButton.m */; };
+		3D880A751E25DD2B00DEC79F /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D880A741E25DD2B00DEC79F /* Masonry.framework */; };
+		3D880A771E25DD3100DEC79F /* RealReachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D880A761E25DD3100DEC79F /* RealReachability.framework */; };
+		3D880A791E261CAE00DEC79F /* iVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D880A781E261CAE00DEC79F /* iVersion.framework */; };
 		3D98AA7E1DC97C350063927C /* CopyRightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D98AA7D1DC97C350063927C /* CopyRightViewController.m */; };
 		3DD20E081DAA13A900A94F3C /* SendCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E071DAA13A900A94F3C /* SendCover.m */; };
 		3DD20E0B1DAA14EE00A94F3C /* SendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD20E0A1DAA14EE00A94F3C /* SendView.m */; };
@@ -374,6 +377,9 @@
 		3D8491FC1E1DFB0D0081676F /* CCBTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBTabBarView.m; sourceTree = "<group>"; };
 		3D8491FE1E1E19F30081676F /* TabbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarButton.h; sourceTree = "<group>"; };
 		3D8491FF1E1E19F30081676F /* TabbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarButton.m; sourceTree = "<group>"; };
+		3D880A741E25DD2B00DEC79F /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-agasfsopziaurvgmdylcujbtbqtp/Build/Products/Debug-iphonesimulator/Masonry/Masonry.framework"; sourceTree = "<group>"; };
+		3D880A761E25DD3100DEC79F /* RealReachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealReachability.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-agasfsopziaurvgmdylcujbtbqtp/Build/Products/Debug-iphonesimulator/RealReachability/RealReachability.framework"; sourceTree = "<group>"; };
+		3D880A781E261CAE00DEC79F /* iVersion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iVersion.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-agasfsopziaurvgmdylcujbtbqtp/Build/Products/Debug-iphoneos/iVersion/iVersion.framework"; sourceTree = "<group>"; };
 		3D98AA7C1DC97C350063927C /* CopyRightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopyRightViewController.h; sourceTree = "<group>"; };
 		3D98AA7D1DC97C350063927C /* CopyRightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopyRightViewController.m; sourceTree = "<group>"; };
 		3DD20E061DAA13A900A94F3C /* SendCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCover.h; sourceTree = "<group>"; };
@@ -579,6 +585,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D880A791E261CAE00DEC79F /* iVersion.framework in Frameworks */,
+				3D880A771E25DD3100DEC79F /* RealReachability.framework in Frameworks */,
+				3D880A751E25DD2B00DEC79F /* Masonry.framework in Frameworks */,
 				3D778CFC1E0911A500052D11 /* YYKit.framework in Frameworks */,
 				3D778CFA1E0911A200052D11 /* MMDrawerController.framework in Frameworks */,
 				3D3F6A8E1DFE80FD00DDD04C /* iOS_Echarts.framework in Frameworks */,
@@ -637,6 +646,9 @@
 		218A45E393B6F36EC8CFAFC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D880A781E261CAE00DEC79F /* iVersion.framework */,
+				3D880A761E25DD3100DEC79F /* RealReachability.framework */,
+				3D880A741E25DD2B00DEC79F /* Masonry.framework */,
 				3D778CFB1E0911A500052D11 /* YYKit.framework */,
 				3D778CF91E0911A200052D11 /* MMDrawerController.framework */,
 				3D3F6A8D1DFE80FD00DDD04C /* iOS_Echarts.framework */,

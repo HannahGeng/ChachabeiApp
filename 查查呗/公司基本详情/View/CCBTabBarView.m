@@ -22,6 +22,7 @@
     CGFloat buttonY = 0;
     CGFloat buttonH = height;
     
+    
     for (NSInteger i = 0; i < 4; i++) {
         
         TabbarButton * button = [TabbarButton buttonWithType:UIButtonTypeCustom];
@@ -33,11 +34,13 @@
         button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
         
         [button setImage:arr[i][@"img"] forState:UIControlStateNormal];
+        
         [button setImage:arr[i][@"selimg"] forState:UIControlStateSelected];
+        
         [button setTitle:arr[i][@"title"] forState:UIControlStateNormal];
         
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-                
+        
         [self addSubview:button];
     }
     
@@ -77,18 +80,6 @@
         default:
             break;
     }
-}
-
-- (void)hideTabView
-{
-    [UIView animateWithDuration:0.4 animations:^{
-        
-        self.alpha = 0.0;
-        
-    } completion:^(BOOL finished) {
-        [self removeFromSuperview];
-    }];
-
 }
 
 @end

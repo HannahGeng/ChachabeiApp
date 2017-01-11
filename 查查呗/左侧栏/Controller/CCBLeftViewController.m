@@ -40,6 +40,13 @@
     
     [super viewWillAppear:animated];
     
+    NSData *data = [SaveTool objectForKey:@"image"];
+    if (!data) {
+        self.headView.image=[UIImage imageNamed:@"touxiang.png"];
+    }else{
+        self.headView.image=[UIImage imageWithData:data];
+    }
+    
     if (app.isLogin) {//登录状态
         
         self.loginButton.hidden = YES;
@@ -47,6 +54,16 @@
     }else{//为登录状态
         
         self.exitButton.hidden = YES;
+    }
+    
+    if (app.username == NULL) {
+        
+        self.nickName.text = @"昵称";
+        
+    }else{
+        
+        self.nickName.text = app.username;
+
     }
 }
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 #import "MMDrawerController.h"
+#import "CCBTabBarView.h"
 
 @class CompanyDetail;
 
@@ -156,6 +157,8 @@
 @property (nonatomic,assign) BOOL isFocus;
 
 @property (nonatomic,strong) UIButton * focusButton;
+
+@property (nonatomic,strong) CCBTabBarView * tabView;
 
 @end
 

@@ -8,17 +8,16 @@
 
 #import "AboutViewController.h"
 
-@interface AboutViewController ()<UITableViewDelegate,UITableViewDataSource>
-{
+@interface AboutViewController (){
     NSString * _uid;
     NSString * _request;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *aboutTableView;
-
 @property(nonatomic,weak) NSMutableArray * aboutArray;
+
+@property (strong, nonatomic) IBOutlet UILabel *aboutTextView;
 
 @end
 
@@ -76,25 +75,15 @@
             
             [[HTTPSessionManager sharedManager] POST:Home_Agreement_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
-                NSLog(@"用户协议:%@",responseObject[@"result"]);
+                NSLog(@"用户协议:%@",responseObject[@"result"][0][@"content"]);
                 
-                NSMutableArray * aboutArr = [NSMutableArray array];
-                
-                for (NSDictionary * dic in responseObject[@"result"]) {
+                if ([responseObject[@"status"] integerValue] == 1) {
                     
-                    aboutModel * about = [[aboutModel alloc] initWithDiat:dic];
-                    
-                    [aboutArr addObject:about];
+                    self.aboutTextView.text = responseObject[@"result"][0][@"content"];
+
                 }
-                
-                self.aboutArray = aboutArr;
-                
-                app.request = responseObject[@"response"];
-                
-                [self.aboutTableView reloadData];
-
             }];
-
+            
         }else{
             
             noWebhud;
@@ -112,31 +101,6 @@
 -(void)backButton
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.aboutArray.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    aboutViewCell * cell=[aboutViewCell cellWithTableView:tableView];
-
-    cell.about = self.aboutArray[indexPath.row];
-    
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    aboutModel * about = self.aboutArray[indexPath.row];
-    return about.cellHeight;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 600;
 }
 
 @end

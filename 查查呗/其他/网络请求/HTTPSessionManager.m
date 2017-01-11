@@ -21,6 +21,7 @@
     dispatch_once(&onceToken, ^{
         instance = [[HTTPSessionManager alloc] init];
     });
+    
     return instance;
 }
 
@@ -47,7 +48,7 @@
         if (result) {
             result(responseObject, nil);
         }
-
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         NSLog(@"%@",error);
@@ -67,6 +68,7 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
+
     [manager POST:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -87,7 +89,6 @@
         
     }];
     
-
 }
 
 @end

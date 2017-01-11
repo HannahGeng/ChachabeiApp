@@ -115,17 +115,20 @@
     AppShare;
     app.isLogin = NO;
     
-    if (buttonIndex == 1) {
-        
-        exit(0);
-    }
-    
     if (alertView.tag == 10) {
         
-        if (buttonIndex == 0) {
+        if (buttonIndex == 1) {
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
         }
+        
+    }else
+    {
+        if (buttonIndex == 1) {
+            
+            exit(0);
+        }
+
     }
 }
 
@@ -187,19 +190,19 @@
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:Check_version_URL parameters:pdic result:^(id responseObject, NSError *error) {
-                
+                                
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
                     _flag = responseObject[@"result"][@"flag"];
 
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.0.6）" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"升级", nil];
-                    
-                    alert.delegate = self;
-                    
-                    [alert show];
-                    
-                    alert.tag = 10;
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.0.6）" delegate:nil cancelButtonTitle:@"忽略" otherButtonTitles:@"升级", nil];
 
+                    alert.delegate = self;
+
+                    [alert show];
+
+                    alert.tag = 10;
+                    
                 }
                 
             }];
@@ -366,11 +369,11 @@
         AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
         [mgr startMonitoring];
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-           
+            
             if (status != 0) {
                 
                 [[HTTPSessionManager sharedManager] POST:Company_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                                        
+                    
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         app.isLogin = YES;

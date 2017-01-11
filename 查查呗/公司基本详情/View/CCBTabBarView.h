@@ -10,6 +10,4 @@
 
 @interface CCBTabBarView : UIView
 
-- (void)hideTabView;
-
 @end
