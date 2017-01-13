@@ -8,40 +8,49 @@
 
 #import "CCBTabBarView.h"
 
+@interface CCBTabBarView ()
+
+@property (nonatomic,strong) TabbarButton * button;
+
+@end
+
 @implementation CCBTabBarView
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.backgroundColor = LIGHT_BLUE_COLOR;
+    AppShare;
     
+    self.backgroundColor = LIGHT_BLUE_COLOR;
+        
     CGFloat width = self.width;
     CGFloat height = self.height;
     CGFloat buttonW = width / 4;
     CGFloat buttonY = 0;
     CGFloat buttonH = height;
-    
-    
+
     for (NSInteger i = 0; i < 4; i++) {
         
-        TabbarButton * button = [TabbarButton buttonWithType:UIButtonTypeCustom];
+        self.button = [TabbarButton buttonWithType:UIButtonTypeCustom];
+
+        self.button.tag = i + 1;
+
+        NSArray * arr = self.button.dicArray;
         
-        button.tag = i + 1;
-        NSArray * arr = button.dicArray;
         CGFloat buttonX = i * buttonW;
         
-        button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+        self.button.frame = CGRectMake(buttonX, buttonY, buttonW, buttonH);
+         
+        [self.button setImage:arr[i][@"img"] forState:UIControlStateNormal];
         
-        [button setImage:arr[i][@"img"] forState:UIControlStateNormal];
+        [self.button setImage:arr[i][@"selimg"] forState:UIControlStateSelected];
         
-        [button setImage:arr[i][@"selimg"] forState:UIControlStateSelected];
+        [self.button setTitle:arr[i][@"title"] forState:UIControlStateNormal];
         
-        [button setTitle:arr[i][@"title"] forState:UIControlStateNormal];
+        [self.button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [self addSubview:button];
+        [self addSubview:self.button];
     }
     
 }
@@ -64,11 +73,11 @@
             
         case 3:
             
+            app.isFocus = !sender.selected;
             sender.selected = !sender.selected;
-            app.isFocus = sender.selected;
-                        
+                    
             [[NSNotificationCenter defaultCenter] postNotificationName:@"attent" object:self];
-            
+                        
             break;
             
         case 4:

@@ -75,12 +75,8 @@
             
             [[HTTPSessionManager sharedManager] POST:Home_Agreement_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
-                NSLog(@"用户协议:%@",responseObject[@"result"][0][@"content"]);
-                
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
-                    self.aboutTextView.text = responseObject[@"result"][0][@"content"];
-
                 }
             }];
             

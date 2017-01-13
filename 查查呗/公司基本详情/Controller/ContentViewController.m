@@ -55,6 +55,7 @@
     }
     
     app.tabView.hidden = NO;
+
 }
 
 - (void)viewDidLoad {
@@ -83,7 +84,6 @@
     CGFloat height = 45;
     app.tabView = [[CCBTabBarView alloc] initWithFrame:CGRectMake(0, screen_height - height, screen_width, height)];
     [KWindow addSubview:app.tabView];
-
 }
 
 - (void)resiveNoti
@@ -356,7 +356,6 @@
 -(void)backButton
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 -(void)commentClick
@@ -394,10 +393,10 @@
 - (void)focusClick:(id)sender
 {
     AppShare;
-    
+        
     //cid
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
-        
+    
     if (app.isLogin == YES) {//已登陆用户
         
         if (app.isFocus) {

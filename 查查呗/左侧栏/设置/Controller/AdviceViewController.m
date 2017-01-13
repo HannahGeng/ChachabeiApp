@@ -107,6 +107,15 @@
             [[HTTPSessionManager sharedManager] POST:Home_Suggest_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 app.request = responseObject[@"response"];
+
+                if ([responseObject[@"status"] integerValue] == 1) {
+                    
+                    MBhud(responseObject[@"result"]);
+                    [self backButton];
+                    
+                }else{
+                    
+                }
                 
             }];
             

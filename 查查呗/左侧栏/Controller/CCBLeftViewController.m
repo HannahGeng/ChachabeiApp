@@ -130,12 +130,44 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CCBNavigationController * nav = [[CCBNavigationController alloc] initWithRootViewController:self.controArray[indexPath.row]];
+    AppShare;
     
-    [self.mm_drawerController
-     setCenterViewController:nav
-     withCloseAnimation:YES
-     completion:nil];
+    if (indexPath.row == 0 || indexPath.row == 4) {
+        
+        CCBNavigationController * nav = [[CCBNavigationController alloc] initWithRootViewController:self.controArray[indexPath.row]];
+        
+        [self.mm_drawerController
+         setCenterViewController:nav
+         withCloseAnimation:YES
+         completion:nil];
+        
+    }else{
+        
+        if (app.isLogin) {//登录状态
+            
+            CCBNavigationController * nav = [[CCBNavigationController alloc] initWithRootViewController:self.controArray[indexPath.row]];
+            
+            [self.mm_drawerController
+             setCenterViewController:nav
+             withCloseAnimation:YES
+             completion:nil];
+            
+        }else{//非登录状态
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"账号登录" message:@"如果想获取更多数据，请先登录" preferredStyle:UIAlertControllerStyleAlert];
+            [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+                UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+                [self presentViewController:naviController animated:YES completion:nil];
+            }]];
+            
+            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            }]];
+            [self presentViewController:alert animated:YES completion:^{
+            }];
+        }
+    }
 }
 
 //退出按钮

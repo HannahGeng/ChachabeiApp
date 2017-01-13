@@ -207,6 +207,10 @@
 		3DD6650D1D06899C006BCB3D /* ShareholdViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD664EF1D06899C006BCB3D /* ShareholdViewCell.m */; };
 		3DD6650E1D06899C006BCB3D /* ShareholdViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD664F01D06899C006BCB3D /* ShareholdViewCell.xib */; };
 		3DD665111D0689E7006BCB3D /* SegmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DD665101D0689E7006BCB3D /* SegmentViewController.m */; };
+		3DE9679E1E270E3500DC1CA7 /* CCBNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE9679D1E270E3500DC1CA7 /* CCBNewsViewController.m */; };
+		3DE967A21E27100200DC1CA7 /* HotNewsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE967A01E27100200DC1CA7 /* HotNewsViewCell.m */; };
+		3DE967A31E27100200DC1CA7 /* HotNewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DE967A11E27100200DC1CA7 /* HotNewsViewCell.xib */; };
+		3DE967A61E27113B00DC1CA7 /* HotNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DE967A51E27113B00DC1CA7 /* HotNewsModel.m */; };
 		89CA2D031D0912CC007115D4 /* reportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF61D0912CC007115D4 /* reportViewController.m */; };
 		89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CA2CF71D0912CC007115D4 /* reportViewController.xib */; };
 		89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF91D0912CC007115D4 /* YearViewController.m */; };
@@ -563,6 +567,13 @@
 		3DD664F01D06899C006BCB3D /* ShareholdViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareholdViewCell.xib; sourceTree = "<group>"; };
 		3DD6650F1D0689E7006BCB3D /* SegmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentViewController.h; sourceTree = "<group>"; };
 		3DD665101D0689E7006BCB3D /* SegmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentViewController.m; sourceTree = "<group>"; };
+		3DE9679C1E270E3500DC1CA7 /* CCBNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBNewsViewController.h; sourceTree = "<group>"; };
+		3DE9679D1E270E3500DC1CA7 /* CCBNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBNewsViewController.m; sourceTree = "<group>"; };
+		3DE9679F1E27100200DC1CA7 /* HotNewsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotNewsViewCell.h; sourceTree = "<group>"; };
+		3DE967A01E27100200DC1CA7 /* HotNewsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotNewsViewCell.m; sourceTree = "<group>"; };
+		3DE967A11E27100200DC1CA7 /* HotNewsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotNewsViewCell.xib; sourceTree = "<group>"; };
+		3DE967A41E27113B00DC1CA7 /* HotNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotNewsModel.h; sourceTree = "<group>"; };
+		3DE967A51E27113B00DC1CA7 /* HotNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotNewsModel.m; sourceTree = "<group>"; };
 		63A86EEC9FCCD16905C3F52B /* Pods-查查呗.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-查查呗.release.xcconfig"; path = "Pods/Target Support Files/Pods-查查呗/Pods-查查呗.release.xcconfig"; sourceTree = "<group>"; };
 		89CA2CF51D0912CC007115D4 /* reportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reportViewController.h; sourceTree = "<group>"; };
 		89CA2CF61D0912CC007115D4 /* reportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reportViewController.m; sourceTree = "<group>"; };
@@ -1110,6 +1121,8 @@
 				3D778CF41E090F5900052D11 /* MainViewController.h */,
 				3D778CF51E090F5900052D11 /* MainViewController.m */,
 				3D778CF61E090F5900052D11 /* MainViewController.xib */,
+				3DE9679C1E270E3500DC1CA7 /* CCBNewsViewController.h */,
+				3DE9679D1E270E3500DC1CA7 /* CCBNewsViewController.m */,
 				3D46A9691E1C99C900802E76 /* CCBHotComViewController.h */,
 				3D46A96A1E1C99C900802E76 /* CCBHotComViewController.m */,
 				3D46A96C1E1C99DE00802E76 /* CCBAttentViewController.h */,
@@ -1125,6 +1138,8 @@
 			children = (
 				3DD663821D0672FE006BCB3D /* attentionModel.h */,
 				3DD663831D0672FE006BCB3D /* attentionModel.m */,
+				3DE967A41E27113B00DC1CA7 /* HotNewsModel.h */,
+				3DE967A51E27113B00DC1CA7 /* HotNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1149,6 +1164,9 @@
 				3DD663961D0672FE006BCB3D /* TopButtonViewCell.xib */,
 				3D46A9661E1C92C500802E76 /* CCBSegmentView.h */,
 				3D46A9671E1C92C500802E76 /* CCBSegmentView.m */,
+				3DE9679F1E27100200DC1CA7 /* HotNewsViewCell.h */,
+				3DE967A01E27100200DC1CA7 /* HotNewsViewCell.m */,
+				3DE967A11E27100200DC1CA7 /* HotNewsViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1984,6 +2002,7 @@
 				3DD664FA1D06899C006BCB3D /* BranchViewCell.xib in Resources */,
 				3DD665041D06899C006BCB3D /* RegistViewCell2.xib in Resources */,
 				3DD663FC1D06757F006BCB3D /* SearViewController.xib in Resources */,
+				3DE967A31E27100200DC1CA7 /* HotNewsViewCell.xib in Resources */,
 				3DD664F61D06899C006BCB3D /* MemberViewCell.xib in Resources */,
 				3D15D0251C03F6B300AB19E5 /* LaunchScreen.storyboard in Resources */,
 				3DD663E31D0674D3006BCB3D /* DrawingViewController.xib in Resources */,
@@ -2134,6 +2153,7 @@
 				3DD663FD1D06757F006BCB3D /* CityViewCell.m in Sources */,
 				3DD665071D06899C006BCB3D /* RegistViewCell4.m in Sources */,
 				3DD665031D06899C006BCB3D /* RegistViewCell2.m in Sources */,
+				3DE967A21E27100200DC1CA7 /* HotNewsViewCell.m in Sources */,
 				3D778D561E09218200052D11 /* NoneView.m in Sources */,
 				3D778D721E09223B00052D11 /* CCBBaseViewController.m in Sources */,
 				3D778D551E09218200052D11 /* FDAlertView.m in Sources */,
@@ -2173,6 +2193,7 @@
 				3DD6642F1D067882006BCB3D /* MessageViewCell.m in Sources */,
 				3D8491FD1E1DFB0D0081676F /* CCBTabBarView.m in Sources */,
 				3D778D6E1E0921C300052D11 /* NSString+Base64.m in Sources */,
+				3DE967A61E27113B00DC1CA7 /* HotNewsModel.m in Sources */,
 				3DD664F41D06899C006BCB3D /* memberModel.m in Sources */,
 				3DD6648B1D067D47006BCB3D /* AttentionViewController.m in Sources */,
 				3DD6649F1D067D47006BCB3D /* SetViewController.m in Sources */,
@@ -2190,6 +2211,7 @@
 				3D98AA7E1DC97C350063927C /* CopyRightViewController.m in Sources */,
 				3DD663C61D06742A006BCB3D /* CompanyDetail.m in Sources */,
 				3DD664921D067D47006BCB3D /* newModel.m in Sources */,
+				3DE9679E1E270E3500DC1CA7 /* CCBNewsViewController.m in Sources */,
 				89CA2D081D0912CC007115D4 /* SKSTableView.m in Sources */,
 				3DD663A41D0672FE006BCB3D /* TopButtonViewCell.m in Sources */,
 				3D778D541E09218200052D11 /* CCBNavigationController.m in Sources */,

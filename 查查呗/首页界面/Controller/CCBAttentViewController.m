@@ -51,7 +51,7 @@
                     
                     app.request = responseObject[@"response"];
                     app.attentionArray = responseObject[@"result"];
-                    
+                                        
                     self.attentArray = [attentionModel mj_objectArrayWithKeyValuesArray:app.attentionArray];
                     
                     if ([app.attentionArray isEqual:@"暂无关注企业"]) {

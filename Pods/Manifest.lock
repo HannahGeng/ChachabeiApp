@@ -40,6 +40,9 @@ PODS:
     - RealReachability/Ping (= 1.1.8)
   - RealReachability/Connection (1.1.8)
   - RealReachability/Ping (1.1.8)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.1.2)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -56,6 +59,7 @@ DEPENDENCIES:
   - MMDrawerController
   - Reachability
   - RealReachability
+  - SDWebImage
   - SVProgressHUD
   - YYKit
 
@@ -70,9 +74,10 @@ SPEC CHECKSUMS:
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   RealReachability: e6c8a2bbffa316006e8c282efc1ee2567d61a920
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: e30ce9832ba5b457342656f912d0fcfdc937b846
+PODFILE CHECKSUM: 935b63caac1928c99bb8a9ec5ec1125c85f762a5
 
 COCOAPODS: 1.1.0.rc.3

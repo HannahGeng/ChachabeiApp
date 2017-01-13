@@ -130,6 +130,10 @@
 #import "TabbarButton.h"
 #import "RealReachability.h"
 #import "iVersion.h"
+#import "CCBNewsViewController.h"
+#import "HotNewsModel.h"
+#import "HotNewsViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 /**
  *  颜色配置
@@ -340,40 +344,36 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 #endif
 
 //请求头
-#define HEADURL @"http://ta.fqtty.com/ccbapi/"
+#define HEADURL @"http://ta.fqtty.com/person/"
 
 /**
  * 登录前获取加密登录参数的密钥(称为key1)
  */
-#define CANSHU_URL \
-[HEADURL stringByAppendingString:@"cryptkeywithoutuid/"]
+#define CANSHU_URL @"http://ta.fqtty.com/auth/cryptKeyWithoutUID"
 
 //登陆
 #define DENGLU_URL \
-[HEADURL stringByAppendingString:@"account_login/"]
+[HEADURL stringByAppendingString:@"account_login"]
 
 //注册URL
 #define ZHUCE_URL \
 [HEADURL stringByAppendingString:@"account_register"]
 
 //热门企业
-#define Company_URL \
-[HEADURL stringByAppendingString:@"home_hot"]
+#define Company_URL @"http://ta.fqtty.com/company/home_hot"
 
 #define Personal_attention_URL \
 [HEADURL stringByAppendingString:@"personal_attention"]
 
-#define Company_Search_URL \
-[HEADURL stringByAppendingString:@"home_search/"]
+#define Company_Search_URL @"http://ta.fqtty.com/company/home_search"
 
-#define Company_Vertify_URL \
-[HEADURL stringByAppendingString:@"home_fetchlist/"]
+#define Company_Vertify_URL @"http://ta.fqtty.com/company/home_fetchlist"
 
-#define Hot_Detail_URL \
-[HEADURL stringByAppendingString:@"hot_detail/"]
+#define NearMap @"http://ta.fqtty.com/company/home_nearmap"
 
-#define Company_Detail_URL \
-[HEADURL stringByAppendingString:@"company_detail"]
+#define Hot_Detail_URL @"http://ta.fqtty.com/company/hot_detail"
+
+#define Company_Detail_URL @"http://ta.fqtty.com/company/company_detail"
 
 #define Home_Message \
 [HEADURL stringByAppendingString:@"home_message"]
@@ -393,17 +393,14 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 #define Home_isUpdate_URL \
 [HEADURL stringByAppendingString:@"home_is_update"]
 
-#define Submitimei_URL \
-[HEADURL stringByAppendingString:@"account_submitimei"]
+#define Submitimei_URL @"http://ta.fqtty.com/app/account_submitimei"
 /**
  *  修改手机号时，返回验证码
  */
 #define GetMessageCode_URL \
 [HEADURL stringByAppendingString:@"account_getUpdateCode"]
 
-#define Check_version_URL \
-[HEADURL stringByAppendingString:@"account_version"]
-
+#define Check_version_URL @"http://ta.fqtty.com/app/account_version"
 /**
  *  输入验证码返回url
  */
@@ -436,7 +433,9 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 [HEADURL stringByAppendingString:@"cancel_attentions"]
 
 //企业年报接口
-#define YEAR_URL \
-[HEADURL stringByAppendingString:@"annual"]
+#define YEAR_URL @"http://ta.fqtty.com/company/annual"
+
+//发送企业信用报告
+#define SendReport @"http://ta.fqtty.com/company/company_sendcreditreport"
 
 #endif
