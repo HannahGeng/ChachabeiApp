@@ -40,8 +40,6 @@
 {
     AppShare;
     
-    _taberView.hidden=NO;
-    
     [self.ContentTableView reloadData];
     
     ResultsViewController * result = [[ResultsViewController alloc] init];
@@ -148,7 +146,7 @@
                 
                 //无验证码的企业详情
                 if (app.url == nil) {
-                    
+
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
                         
                         app.companyDetailContent = responseObject[@"result"][@"data"];
@@ -289,7 +287,7 @@
             [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
                 
                 if (status != 0) {
-                    
+
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
                         if ([responseObject[@"status"] integerValue] == 1){
@@ -355,7 +353,11 @@
 
 -(void)backButton
 {
+    AppShare;
+    
     [self.navigationController popViewControllerAnimated:YES];
+    
+    app.tabView.hidden = YES;
 }
 
 -(void)commentClick
@@ -393,7 +395,7 @@
 - (void)focusClick:(id)sender
 {
     AppShare;
-        
+    
     //cid
     _companyId = [AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]];
     
@@ -508,7 +510,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:sendEmail_URl parameters:pdic result:^(id responseObject, NSError *error) {
                                 
                 app.request = responseObject[@"response"];
@@ -620,7 +622,7 @@
 -(void)tapClick
 {
     AppShare;
-    
+
     if (app.dataArr.count == 0) {
         
         MBhud(@"暂无信息");
@@ -641,7 +643,7 @@
     NSArray * yearArr = app.companyDetailContent[@"annualYear"];
     
     if (yearArr.count == 0) {
-        
+
         MBhud(@"该企业暂无年报信息");
         
     }else{
@@ -663,7 +665,7 @@
         NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp",[AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]],@"registNo",year,@"year", nil];
         
         if (app.isLogin == YES) {
-            
+
             [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
                                 
                 app.request = responseObject[@"response"];
@@ -674,7 +676,7 @@
             [self.navigationController pushViewController:yearvc animated:YES];
             
         }else{
-            
+
             MBhud(@"登陆后方可查看");
         }
     }

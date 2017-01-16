@@ -704,7 +704,7 @@ static NSString * const cellIdentifier = @"attention";
                     if (status != 0) {
                         
                         mbHUDinit;
-                        
+
                         [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                             
                             if ([responseObject[@"status"] integerValue] == 1) {
@@ -909,7 +909,7 @@ static NSString * const cellIdentifier = @"attention";
             if (status != 0) {
                 
                 mbHUDinit;
-                
+
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     if ([responseObject[@"status"] integerValue] == 1) {
@@ -984,7 +984,7 @@ static NSString * const cellIdentifier = @"attention";
             if (status != 0) {
                 
                 mbHUDinit;
-                
+
                 [[HTTPSessionManager sharedManager] POST:Company_Search_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
@@ -1118,7 +1118,7 @@ static NSString * const cellIdentifier = @"attention";
             if (status != 0) {
                 
                 mbHUDinit;
-                
+
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
@@ -1206,7 +1206,7 @@ static NSString * const cellIdentifier = @"attention";
             if (status != 0) {
 
                 mbHUDinit;
-                
+
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
@@ -1297,7 +1297,7 @@ static NSString * const cellIdentifier = @"attention";
             
             if (status != 0) {
                 mbHUDinit;
-                
+
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     app.request = responseObject[@"response"];
@@ -1368,6 +1368,7 @@ static NSString * const cellIdentifier = @"attention";
             if (status != 0) {
                 
                 mbHUDinit;
+
                 [[HTTPSessionManager sharedManager] POST:Company_Vertify_URL parameters:pDic result:^(id responseObject, NSError *error) {
                                         
                     app.request = responseObject[@"response"];

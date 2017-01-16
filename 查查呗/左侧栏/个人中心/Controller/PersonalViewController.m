@@ -725,7 +725,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:ChangeNickName_URL parameters:pDic result:^(id responseObject, NSError *error) {
                                 
                 _hudStr = responseObject[@"result"];
@@ -780,7 +780,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:ChangeNickName_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 _hudStr = responseObject[@"result"];
@@ -824,7 +824,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:GetMessageCode_URL parameters:pdic result:^(id responseObject, NSError *error) {
                 
                 app.request = responseObject[@"response"];
@@ -865,7 +865,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:InputMessage_URL parameters:pdic result:^(id responseObject, NSError *error) {
                 
                 _hudStr = responseObject[@"result"];
@@ -901,7 +901,7 @@
     NSDictionary * pdic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_request,@"request",[AESCrypt encrypt:_confirmPass.text password:_keycode],@"newpass",[AESCrypt encrypt:_passTextField.text password:_keycode],@"oldpass", nil];
     
     if (_passTextField.text.length == 0 || _newPass.text.length == 0 || _confirmPass.text.length == 0) {
-        
+
         MBhud(@"信息不完整");
 
     }else{
@@ -912,13 +912,13 @@
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             
             if (status != 0) {
-                
+
                 if (![_confirmPass.text isEqualToString:_newPass.text]) {
                     
                     MBhud(@"密码输入不一致");
                     
                 }else{
-                    
+
                     [[HTTPSessionManager sharedManager] POST:changePass_URL parameters:pdic result:^(id responseObject, NSError *error) {
                         
                         app.request = responseObject[@"response"];

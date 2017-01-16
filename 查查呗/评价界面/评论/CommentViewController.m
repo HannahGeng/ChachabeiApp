@@ -300,7 +300,7 @@
     NSString * percent6 = [NSString stringWithFormat:@"%.f",_percent6];
 
     NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:_uid,@"uid",_cid,@"eid",_request,@"request",percent1,@"platform",percent2,@"environment",percent3,@"development",percent4,@"culture",percent5,@"honest",percent6,@"reputation", nil];
-    
+
     [[HTTPSessionManager sharedManager] POST:CompanyComment_URL parameters:pDic result:^(id responseObject, NSError *error) {
         
         NSLog(@"评论:%@",responseObject);

@@ -141,7 +141,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:MsgCode_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 _hudStr = responseObject[@"result"];
@@ -277,7 +277,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:ZHUCE_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 if ([responseObject[@"status"] integerValue] == 1) {

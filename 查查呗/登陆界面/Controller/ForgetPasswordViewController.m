@@ -87,7 +87,7 @@
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
-            
+
             [[HTTPSessionManager sharedManager] POST:MsgCode_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 _hudStr = responseObject[@"result"];
@@ -160,7 +160,7 @@
         dispatch_resume(_timer);
         
     }else if (_phoneNumLabel.text.length == 0){
-     
+
         MBhud(@"手机号为空");
         
     }
@@ -226,7 +226,7 @@
     NSDictionary * pDic = [NSDictionary dictionaryWithObjectsAndKeys:app.keycode,@"keycode",telePhone,@"telno",_messageStr,@"msgcode",_newPass,@"newpass", nil];
     
     if (![_setPassLabel.text isEqualToString:_confirmPassLabel.text]) {
-        
+
         MBhud(@"密码输入不一致");
 
     }else{
@@ -237,7 +237,7 @@
         [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
             
             if (status != 0) {
-                
+
                 [[HTTPSessionManager sharedManager] POST:forgetPass_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
                     _hudStr = responseObject[@"result"];

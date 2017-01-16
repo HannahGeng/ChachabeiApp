@@ -319,7 +319,7 @@
         if (status != 0) {
             
             mbHUDinit;
-
+            
             [[HTTPSessionManager sharedManager] POST:DENGLU_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
                 if ([responseObject[@"status"] intValue] == 1) {
@@ -374,6 +374,9 @@
                 
                 [[HTTPSessionManager sharedManager] POST:Company_URL parameters:pDic result:^(id responseObject, NSError *error) {
                     
+                    //保存request
+                    app.request = responseObject[@"response"];
+
                     if ([responseObject[@"status"] integerValue] == 1) {
                         
                         app.isLogin = YES;
@@ -388,9 +391,6 @@
                         hudHide;
                         MBhud(@"请求出错，请重试");
                     }
-                    
-                    //保存request
-                    app.request = responseObject[@"response"];
                     
                 }];
 

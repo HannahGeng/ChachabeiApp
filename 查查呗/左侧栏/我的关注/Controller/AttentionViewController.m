@@ -32,6 +32,11 @@
 
 static NSString * const CompanyId = @"company";
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -45,9 +50,6 @@ static NSString * const CompanyId = @"company";
     
     //设置导航栏
     [self setNavigationBar];
-    
-    //加载数据
-    [self loadData];
     
     //添加内容视图
     [self addContentView];
@@ -81,9 +83,10 @@ static NSString * const CompanyId = @"company";
 //加载数据
 -(void)loadData
 {
-
     AppShare;
     
+    NSLog(@"%@",app.attentionArray);
+
     _uid = app.uid;
 
     //封装POST参数
@@ -169,7 +172,7 @@ static NSString * const CompanyId = @"company";
     if (self.attentionTableView.isEditing == YES) {
 
         if (app.attentionArray.count == 0) {
-            
+
             MBhud(@"已全部删除");
             
         }else{
@@ -186,7 +189,7 @@ static NSString * const CompanyId = @"company";
         }
         
     }else{
-        
+
         MBhud(@"请点击编辑模式");
     }
 }

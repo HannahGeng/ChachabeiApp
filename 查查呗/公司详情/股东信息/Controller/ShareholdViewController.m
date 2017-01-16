@@ -102,7 +102,7 @@
         self.tableView.tableFooterView=[[UIView alloc]init];
 
     }else{
-        
+                
         NoneHide;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];

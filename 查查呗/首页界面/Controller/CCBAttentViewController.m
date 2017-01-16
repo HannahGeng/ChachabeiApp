@@ -126,7 +126,7 @@
     ContentViewController *contentVC=[[ContentViewController alloc]init];
     
     app.companyName = app.attentionArray[indexPath.row][@"cname"];
-    
+
     [self.navigationController pushViewController:contentVC animated:YES];
 
 }
