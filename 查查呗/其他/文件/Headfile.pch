@@ -89,13 +89,11 @@
 #import "BranchViewCell.h"
 #import "ChangeViewCell.h"
 #import "changeModel.h"
-#import "aboutModel.h"
 #import "SetViewCell.h"
 #import "WeViewController.h"
 #import "AdviceViewController.h"
 #import "AboutViewController.h"
 #import "ResultsViewCell.h"
-#import "aboutViewCell.h"
 #import "MJExtension.h"
 #import "YearViewController.h"
 #import "NoneView.h"
@@ -106,7 +104,6 @@
 #import "SendView.h"
 #import "GuideTool.h"
 #import "UILabel+LabelFontChange.h"
-#import "aboutViewCell.h"
 #import "FDAlertView.h"
 #import "ContentView.h"
 #import "TitleScrollLabel.h"
@@ -129,11 +126,11 @@
 #import "Masonry.h"
 #import "TabbarButton.h"
 #import "RealReachability.h"
-#import "iVersion.h"
 #import "CCBNewsViewController.h"
 #import "HotNewsModel.h"
 #import "HotNewsViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ZFChart.h"
 
 /**
  *  颜色配置

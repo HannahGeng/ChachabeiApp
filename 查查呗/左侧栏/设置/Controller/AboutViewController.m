@@ -15,9 +15,9 @@
     MBProgressHUD * mbHud;
 }
 
-@property(nonatomic,weak) NSMutableArray * aboutArray;
+@property(nonatomic,strong) NSArray * aboutArray;
 
-@property (strong, nonatomic) IBOutlet UILabel *aboutTextView;
+@property (nonatomic,strong) UITextView * textView;
 
 @end
 
@@ -33,6 +33,13 @@
     
     //设置导航栏
     [self setNavigationBar];
+    
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
+    
+    [self.view addSubview:self.textView];
+    
+    [self.textView setFont:[UIFont systemFontOfSize:15]];
     
     [self loadData];
 }
@@ -75,7 +82,11 @@
             
             [[HTTPSessionManager sharedManager] POST:Home_Agreement_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
+                app.request = responseObject[@"response"];
+
                 if ([responseObject[@"status"] integerValue] == 1) {
+                    
+                    self.textView.text = responseObject[@"result"][0][@"content"];
                     
                 }
             }];

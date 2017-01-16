@@ -233,6 +233,8 @@
             mbHUDinit;
             [[HTTPSessionManager sharedManager] POST:Submitimei_URL parameters:pDic result:^(id responseObject, NSError *error) {
                 
+                NSLog(@"%@",responseObject);
+                
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
                     app.noLoginKeycode = responseObject[@"result"][@"keycode"];
@@ -244,6 +246,7 @@
                 }else{
                     
                     MBhud(@"请求出错，请重试");
+
                 }
                 
             }];
@@ -254,7 +257,6 @@
         }
         
     }];
-    
     
 }
 

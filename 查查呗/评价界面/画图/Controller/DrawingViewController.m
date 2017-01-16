@@ -8,9 +8,8 @@
 
 #import "DrawingViewController.h"
 
-@interface DrawingViewController ()
+@interface DrawingViewController ()<ZFRadarChartDataSource,ZFRadarChartDelegate>
 {
-    CustomView *_customView;
     UILabel *_label1;
     UILabel *_label2;
     UILabel *_label3;
@@ -21,6 +20,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *companyName;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImage;
+@property (strong, nonatomic) ZFRadarChart *radarChart;
+@property (weak, nonatomic) IBOutlet UIView *titleView;
+@property (weak, nonatomic) IBOutlet UILabel *botLabel;
 
 @end
 
@@ -38,25 +40,9 @@
     //添加内容视图
     [self addContentView];
     
-    AppShare;
-    
-    NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-    NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
-    
-    NSDictionary *valueDictionary = @{@"企业诚信": commentResult[@"honesty"],
-                                      @"社会声誉": commentResult[@"reputation"],
-                                      @"企业文化" : commentResult[@"culture"],
-                                      @"前景趋势" : commentResult[@"development"],
-                                      @"发展平台": commentResult[@"platform"],
-                                      @"工作环境" : commentResult[@"environment"],
-                                      };
-    
-
-    _customView = [[CustomView alloc] initWithFrame:self.view.frame valueDictionary:valueDictionary];
-    [_customView setMaxValue:9];
-    [self.view addSubview:_customView];
-    
-    self.companyName.text = app.companyName;
+//    _customView = [[CustomView alloc] initWithFrame:self.view.frame valueDictionary:valueDictionary];
+//    [_customView setMaxValue:9];
+//    [self.view addSubview:_customView];
     
 }
 
@@ -87,23 +73,21 @@
 //添加内容视图
 -(void)addContentView
 {
-    if ([UIUtils getWindowWidth] < 350) {
-        
-        [self labelWithLabel:_label1 Frame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2 + 20, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"前景趋势" tag:1];
-    }else{
-        
-        [self labelWithLabel:_label1 Frame:CGRectMake((([UIUtils getWindowWidth] - 260)/ 2 - 55) / 2, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"前景趋势" tag:1];
-    }
+    AppShare;
     
-    [self labelWithLabel:_label2 Frame:CGRectMake([UIUtils getWindowWidth]-58, ([UIUtils getWindowHeight]-128)/2, 55, 20) text:@"企业诚信" tag:2];
+    self.radarChart = [[ZFRadarChart alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleView.frame), SCREEN_WIDTH, CGRectGetMaxY(self.botLabel.frame) - 2 * CGRectGetMaxY(self.titleView.frame) - 20)];
+    self.radarChart.dataSource = self;
+    self.radarChart.delegate = self;
+    self.radarChart.itemFont = [UIFont systemFontOfSize:12.f];
+    self.radarChart.valueFont = [UIFont systemFontOfSize:12.f];
+    self.radarChart.polygonLineWidth = 2.f;
+    self.radarChart.valueType = kValueTypeDecimal;
+    self.radarChart.valueTextColor = ZFOrange;
+    [self.view addSubview:self.radarChart];
     
-    [self labelWithLabel:_label3 Frame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4, 60, 20) text:@"发展平台" tag:3];
+    [self.radarChart strokePath];
     
-    [self labelWithLabel:_label4 Frame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4, 60, 20) text:@"工作环境" tag:4];
-    
-    [self labelWithLabel:_label5 Frame:CGRectMake([UIUtils getWindowWidth]/3-60, ([UIUtils getWindowHeight]-128)/4 * 3 - 20, 60, 20) text:@"企业文化" tag:5];
-    
-    [self labelWithLabel:_label6 Frame:CGRectMake([UIUtils getWindowWidth]/3*2, ([UIUtils getWindowHeight]-128)/4 * 3-20, 60, 20) text:@"社会声誉" tag:6];
+    self.companyName.text = app.companyName;
 }
 
 - (void)labelWithLabel:(UILabel *)label Frame:(CGRect)frame text:(NSString *)text tag:(int)tag
@@ -120,6 +104,30 @@
     label.font=[UIFont systemFontOfSize:13];
     
     [self.view addSubview:label];
+}
+
+//ZFRadarChartDataSource
+- (NSArray *)itemArrayInRadarChart:(ZFRadarChart *)radarChart
+{
+    return @[@"企业诚信",@"企业文化",@"前景趋势",@"发展平台", @"工作环境", @"社会声誉"];
+}
+
+- (NSArray *)valueArrayInRadarChart:(ZFRadarChart *)radarChart
+{
+    NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
+    NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
+
+    return @[commentResult[@"honesty"], commentResult[@"reputation"], commentResult[@"culture"], commentResult[@"development"], commentResult[@"platform"], commentResult[@"environment"]];
+}
+
+- (CGFloat)maxValueInRadarChart:(ZFRadarChart *)radarChart{
+    return 10.f;
+}
+
+//ZFRadarChartDelegate
+- (CGFloat)radiusForRadarChart:(ZFRadarChart *)radarChart
+{
+    return (SCREEN_WIDTH - 100) / 2;
 }
 
 - (IBAction)shareButton:(UIButton *)sender {

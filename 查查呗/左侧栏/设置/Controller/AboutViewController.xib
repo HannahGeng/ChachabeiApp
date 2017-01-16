@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
-                <outlet property="aboutTextView" destination="TzJ-0b-MXn" id="IDD-Bb-Jgm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,21 +18,7 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzJ-0b-MXn">
-                    <rect key="frame" x="5" y="5" width="365" height="657"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="TzJ-0b-MXn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="5" id="1tB-Cf-FyM"/>
-                <constraint firstAttribute="trailing" secondItem="TzJ-0b-MXn" secondAttribute="trailing" constant="5" id="SSf-ub-Elb"/>
-                <constraint firstAttribute="bottom" secondItem="TzJ-0b-MXn" secondAttribute="bottom" constant="5" id="WfR-zI-lNQ"/>
-                <constraint firstItem="TzJ-0b-MXn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="5" id="nuV-ZL-QLw"/>
-            </constraints>
             <point key="canvasLocation" x="304.5" y="367.5"/>
         </view>
     </objects>

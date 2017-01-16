@@ -13,7 +13,6 @@ pod "MMDrawerController"
 pod "YYKit"
 pod "Masonry"
 pod "RealReachability"
-pod "iVersion"
 pod "SDWebImage"
 
 end

@@ -13,7 +13,6 @@
     NSArray *_setInfoArray;
     
     UIView *_shareView;
-//    UIView *_contentView;
     UIButton *_minButton;
     UIButton *_maxButton;
     UILabel *_nameLabel;
