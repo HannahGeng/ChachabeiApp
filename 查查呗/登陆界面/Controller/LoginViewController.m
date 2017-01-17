@@ -343,6 +343,7 @@
                     
                 }else{
                     
+                    hudHide;
                     MBhud(responseObject[@"result"]);
 
                 }

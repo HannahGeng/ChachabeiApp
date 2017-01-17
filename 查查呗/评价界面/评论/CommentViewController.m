@@ -303,8 +303,6 @@
 
     [[HTTPSessionManager sharedManager] POST:CompanyComment_URL parameters:pDic result:^(id responseObject, NSError *error) {
         
-        NSLog(@"评论:%@",responseObject);
-        
         app.request = responseObject[@"response"];
         
         [SaveTool setObject:responseObject[@"result"] forKey:@"commentResult"];
@@ -315,9 +313,31 @@
             
         }else{
             
-            DrawingViewController *drawingVC=[[DrawingViewController alloc]init];
-            UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:drawingVC];
-            [self presentViewController:naviController animated:YES completion:nil];
+            if (app.isLogin) {
+                
+                DrawingViewController *drawingVC=[[DrawingViewController alloc]init];
+                UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:drawingVC];
+                [self presentViewController:naviController animated:YES completion:nil];
+                
+            }else{
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"账号登录" message:@"如果想获取更多数据，请先登录" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"立即登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    
+                    LoginViewController *loginVC=[[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+                    UINavigationController *naviController=[[UINavigationController alloc]initWithRootViewController:loginVC];
+                    [self presentViewController:naviController animated:YES completion:nil];
+                }]];
+                
+                [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                }]];
+                
+                [self presentViewController:alert animated:YES completion:^{
+                    
+                }];
+
+            }
+            
         }
 
     }];
