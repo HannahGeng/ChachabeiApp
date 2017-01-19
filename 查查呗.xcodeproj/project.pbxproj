@@ -2210,12 +2210,12 @@
 					};
 					3D15D02A1C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 8C6NG32TBS;
+						DevelopmentTeam = AK5T28Y6FV;
 						TestTargetID = 3D15D0111C03F6B300AB19E5;
 					};
 					3D15D0351C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 8C6NG32TBS;
+						DevelopmentTeam = AK5T28Y6FV;
 						TestTargetID = 3D15D0111C03F6B300AB19E5;
 					};
 				};
@@ -2603,11 +2603,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen ZhongDingZhiXin information technology Co.,Ltd (AK5T28Y6FV)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: Shenzhen ZhongDingZhiXin information technology Co.,Ltd (AK5T28Y6FV)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 8C6NG32TBS;
+				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2628,7 +2628,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7fe53035-4402-43a8-9d54-967647e5a21d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
@@ -2655,11 +2655,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shenzhen ZhongDingZhiXin information technology Co.,Ltd (AK5T28Y6FV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Shenzhen ZhongDingZhiXin information technology Co.,Ltd (AK5T28Y6FV)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 8C6NG32TBS;
+				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2674,7 +2674,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7fe53035-4402-43a8-9d54-967647e5a21d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2688,8 +2688,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: guodong liu (LA9923G8ES)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: guodong liu (LA9923G8ES)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = NO;
@@ -2721,7 +2721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: guodong liu (LA9923G8ES)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = AK5T28Y6FV;
 				ENABLE_BITCODE = NO;
