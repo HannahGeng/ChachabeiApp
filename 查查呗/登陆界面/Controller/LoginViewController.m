@@ -156,7 +156,7 @@
                     //解密
                     _pwd = [AESCrypt decrypt:app.keycode];
                     
-                    [self checkVersion];
+//                    [self checkVersion];
 
                 }else{//参数返回成功
                     

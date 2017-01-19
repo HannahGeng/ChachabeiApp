@@ -455,6 +455,7 @@
         
     }else{//未登录用户
         
+        app.tabView.hidden = YES;
         NoLoginWarn;
     }
 }
@@ -686,9 +687,11 @@
 
 - (void)mapClick
 {
-    ChartViewController * chart = [[ChartViewController alloc] init];
+//    ChartViewController * chart = [[ChartViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:chart animated:YES];
     
-    [self.navigationController pushViewController:chart animated:YES];
+    MBhud(@"该企业暂无图谱");
 }
 
 #pragma mark UITableViewDelegate
