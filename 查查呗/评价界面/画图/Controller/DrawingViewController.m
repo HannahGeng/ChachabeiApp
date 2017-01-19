@@ -117,7 +117,9 @@
     NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
     NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
 
-    return @[commentResult[@"honesty"], commentResult[@"reputation"], commentResult[@"culture"], commentResult[@"development"], commentResult[@"platform"], commentResult[@"environment"]];
+//    return @[commentResult[@"honesty"], commentResult[@"reputation"], commentResult[@"culture"], commentResult[@"development"], commentResult[@"platform"], commentResult[@"environment"]];
+    
+    return nil;
 }
 
 - (CGFloat)maxValueInRadarChart:(ZFRadarChart *)radarChart{

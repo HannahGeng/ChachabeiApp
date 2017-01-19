@@ -303,6 +303,8 @@
 
     [[HTTPSessionManager sharedManager] POST:CompanyComment_URL parameters:pDic result:^(id responseObject, NSError *error) {
         
+        NSLog(@"企业评价:%@",responseObject);
+        
         app.request = responseObject[@"response"];
         
         [SaveTool setObject:responseObject[@"result"] forKey:@"commentResult"];

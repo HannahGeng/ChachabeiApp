@@ -190,12 +190,14 @@
         if (status != 0) {
             
             [[HTTPSessionManager sharedManager] POST:Check_version_URL parameters:pdic result:^(id responseObject, NSError *error) {
-                                
+                
+                NSLog(@"版本提示:%@",responseObject);
+                
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
                     _flag = responseObject[@"result"][@"flag"];
 
-                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.0.6）" delegate:nil cancelButtonTitle:@"忽略" otherButtonTitles:@"升级", nil];
+                    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"检测更新：查查呗" message:@"发现新版本（1.1.0）" delegate:nil cancelButtonTitle:@"忽略" otherButtonTitles:@"升级", nil];
 
                     alert.delegate = self;
 

@@ -512,13 +512,15 @@
         if (status != 0) {
 
             [[HTTPSessionManager sharedManager] POST:sendEmail_URl parameters:pdic result:^(id responseObject, NSError *error) {
-                                
+                
+                NSLog(@"发送企业报告:%@",responseObject);
+                
                 app.request = responseObject[@"response"];
                 
                 MBhud(responseObject[@"result"])
                 
                 if ([responseObject[@"status"] integerValue] == 1) {
-                    
+                 
                     void(^completion)() = ^{
                         
                         [SendCover hide];

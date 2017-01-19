@@ -85,8 +85,8 @@
 -(void)loadData
 {
     _setInfoArray = @[
-                      @{@"image":[UIImage imageNamed:@"app12.png"],
-                        @"text":@"字体大小"},
+//                      @{@"image":[UIImage imageNamed:@"app12.png"],
+//                        @"text":@"字体大小"},
                        @{@"image":[UIImage imageNamed:@"app13.png"],
                          @"text":@"分享"},
                        @{@"image":[UIImage imageNamed:@"app15.png"],
@@ -121,22 +121,22 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     [cell setContentView:_setInfoArray[indexPath.row]];
 
-    if (indexPath.row==0) {
-        
-        if ([_textFont isEqualToString:@"b"]) {
-            _nameLabel.text=@"标准";
-            
-        }else{
-            if ([_textFont isEqualToString:@"d"]) {
-                _nameLabel.text=@"大号";
-            }else{
-                _nameLabel.text=@"标准";
-            }
-        }
-        _nameLabel.textAlignment=NSTextAlignmentCenter;
-//        _nameLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
-        [cell addSubview:_nameLabel];
-    }
+//    if (indexPath.row==0) {
+//        
+//        if ([_textFont isEqualToString:@"b"]) {
+//            _nameLabel.text=@"标准";
+//            
+//        }else{
+//            if ([_textFont isEqualToString:@"d"]) {
+//                _nameLabel.text=@"大号";
+//            }else{
+//                _nameLabel.text=@"标准";
+//            }
+//        }
+//        _nameLabel.textAlignment=NSTextAlignmentCenter;
+////        _nameLabel.font=[UIFont systemFontOfSize:17*[string floatValue]];
+//        [cell addSubview:_nameLabel];
+//    }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -156,16 +156,16 @@
     //点击后变成原色
     [self.setTableView deselectRowAtIndexPath:indexPath animated:YES];
     
+//    if (indexPath.row==0) {
+//    
+//        FDAlertView *alert = [[FDAlertView alloc] init];
+//        ContentView *contentView = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:nil options:nil].lastObject;
+//        contentView.frame = CGRectMake(0, 0, 270, 160);
+//        alert.contentView = contentView;
+//        [alert show];
+//        
+//    }
     if (indexPath.row==0) {
-    
-        FDAlertView *alert = [[FDAlertView alloc] init];
-        ContentView *contentView = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:nil options:nil].lastObject;
-        contentView.frame = CGRectMake(0, 0, 270, 160);
-        alert.contentView = contentView;
-        [alert show];
-        
-    }
-    if (indexPath.row==1) {
       
         NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
         NSArray *activityItem=@[shareUrl];
@@ -181,17 +181,17 @@
         
         [self.navigationController presentViewController:activityController animated:YES completion:nil];
     }
-    if (indexPath.row==2) {
+    if (indexPath.row==1) {
         
         AdviceViewController *adviceVC=[[AdviceViewController alloc]initWithNibName:@"AdviceViewController" bundle:nil];
         [self.navigationController pushViewController:adviceVC animated:YES];
     }
-    if (indexPath.row==3) {
+    if (indexPath.row==2) {
         
         AboutViewController *aboutVC=[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
-    if (indexPath.row==4) {
+    if (indexPath.row==3) {
         
         WeViewController *weVC=[[WeViewController alloc]initWithNibName:@"WeViewController" bundle:nil];
         [self.navigationController pushViewController:weVC animated:YES];

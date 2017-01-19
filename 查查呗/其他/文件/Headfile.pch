@@ -341,98 +341,106 @@ NSString * passnum = [defau stringForKey:@"passnum"];\
 #endif
 
 //请求头
-#define HEADURL @"http://ta.fqtty.com/person/"
+#define HEADURL @"http://ta.fqtty.com"
 
 /**
  * 登录前获取加密登录参数的密钥(称为key1)
  */
-#define CANSHU_URL @"http://ta.fqtty.com/auth/cryptKeyWithoutUID"
+#define CANSHU_URL \
+[HEADURL stringByAppendingString:@"/auth/cryptKeyWithoutUID"]
 
 //登陆
 #define DENGLU_URL \
-[HEADURL stringByAppendingString:@"account_login"]
+[HEADURL stringByAppendingString:@"/person/account_login"]
 
 //注册URL
 #define ZHUCE_URL \
-[HEADURL stringByAppendingString:@"account_register"]
+[HEADURL stringByAppendingString:@"/person/account_register"]
 
 //热门企业
-#define Company_URL @"http://ta.fqtty.com/company/home_hot"
+#define Company_URL \
+[HEADURL stringByAppendingString:@"/company/home_hot"]
 
 #define Personal_attention_URL \
-[HEADURL stringByAppendingString:@"personal_attention"]
+[HEADURL stringByAppendingString:@"/person/personal_attention"]
 
-#define Company_Search_URL @"http://ta.fqtty.com/company/home_search"
+#define Company_Search_URL \
+[HEADURL stringByAppendingString:@"/company/home_search"]
 
-#define Company_Vertify_URL @"http://ta.fqtty.com/company/home_fetchlist"
+#define Company_Vertify_URL \
+[HEADURL stringByAppendingString:@"/company/home_fetchlist"]
 
-#define NearMap @"http://ta.fqtty.com/company/home_nearmap"
+#define NearMap \
+[HEADURL stringByAppendingString:@"/company/home_nearmap"]
 
-#define Hot_Detail_URL @"http://ta.fqtty.com/company/hot_detail"
+#define Hot_Detail_URL \
+[HEADURL stringByAppendingString:@"/company/hot_detail"]
 
-#define Company_Detail_URL @"http://ta.fqtty.com/company/company_detail"
+#define Company_Detail_URL \
+[HEADURL stringByAppendingString:@"/company/company_detail"]
 
 #define Home_Message \
-[HEADURL stringByAppendingString:@"home_message"]
+[HEADURL stringByAppendingString:@"/person/home_message"]
 
 #define CompanyComment_URL \
-[HEADURL stringByAppendingString:@"company_comment"]
+[HEADURL stringByAppendingString:@"/person/company_comment"]
 
 #define Change_attention_URL \
-[HEADURL stringByAppendingString:@"changeattentionstate"]
+[HEADURL stringByAppendingString:@"/person/changeattentionstate"]
 
 #define Home_Suggest_URL \
-[HEADURL stringByAppendingString:@"home_suggest"]
+[HEADURL stringByAppendingString:@"/person/home_suggest"]
 
 #define Home_Agreement_URL \
-[HEADURL stringByAppendingString:@"home_agreement"]
+[HEADURL stringByAppendingString:@"/person/home_agreement"]
 
 #define Home_isUpdate_URL \
-[HEADURL stringByAppendingString:@"home_is_update"]
+[HEADURL stringByAppendingString:@"/person/home_is_update"]
 
-#define Submitimei_URL @"http://ta.fqtty.com/app/account_submitimei"
+#define Submitimei_URL \
+[HEADURL stringByAppendingString:@"/app/account_submitimei"]
+
 /**
  *  修改手机号时，返回验证码
  */
 #define GetMessageCode_URL \
-[HEADURL stringByAppendingString:@"account_getUpdateCode"]
+[HEADURL stringByAppendingString:@"/person/account_getUpdateCode"]
 
-#define Check_version_URL @"http://ta.fqtty.com/app/account_version"
+#define Check_version_URL \
+[HEADURL stringByAppendingString:@"/app/account_version"]
 /**
  *  输入验证码返回url
  */
 #define InputMessage_URL \
-[HEADURL stringByAppendingString:@"personal_tel"]
+[HEADURL stringByAppendingString:@"/person/personal_tel"]
 
 /**
  *  修改密码
  */
 #define changePass_URL \
-[HEADURL stringByAppendingString:@"personal_pass"]
+[HEADURL stringByAppendingString:@"/person/personal_pass"]
 
 /**
  *  修改昵称、邮箱
  */
 #define ChangeNickName_URL \
-[HEADURL stringByAppendingString:@"personal_basic"]
+[HEADURL stringByAppendingString:@"/person/personal_basic"]
 
 //验证码
 #define  MsgCode_URL \
-[HEADURL stringByAppendingString:@"account_getRegCode"]
+[HEADURL stringByAppendingString:@"/person/account_getRegCode"]
 
 #define forgetPass_URL \
-[HEADURL stringByAppendingString:@"account_password_update"]
+[HEADURL stringByAppendingString:@"/person/account_password_update"]
 
 #define sendEmail_URl \
-[HEADURL stringByAppendingString:@"company_sendcreditreport"]
+[HEADURL stringByAppendingString:@"/company/company_sendcreditreport"]
 
 #define cancel_attention \
-[HEADURL stringByAppendingString:@"cancel_attentions"]
+[HEADURL stringByAppendingString:@"/person/cancel_attentions"]
 
 //企业年报接口
-#define YEAR_URL @"http://ta.fqtty.com/company/annual"
-
-//发送企业信用报告
-#define SendReport @"http://ta.fqtty.com/company/company_sendcreditreport"
+#define YEAR_URL \
+[HEADURL stringByAppendingString:@"/company/annual"]
 
 #endif
