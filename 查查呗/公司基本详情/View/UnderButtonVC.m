@@ -32,7 +32,7 @@ static NSString *cellID=@"TopButtonViewCell";
     [cell.mapButton buttonWithImage:[UIImage imageNamed:@"app51.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.mapButton.titleLabel.bounds.size.width-7) title:@"企业图谱" titleEggeInsets:UIEdgeInsetsMake(45, -cell.mapButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
     [cell addSubview:cell.mapButton];
     
-    [cell.investorsButton buttonWithImage:[UIImage imageNamed:@"app52.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7) title:@"对外投资" titleEggeInsets:UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
+    [cell.investmentButton buttonWithImage:[UIImage imageNamed:@"app52.png"] imageEdgeInsets:UIEdgeInsetsMake(5,28,30,cell.investmentButton.titleLabel.bounds.size.width-7) title:@"对外投资" titleEggeInsets:UIEdgeInsetsMake(45, -cell.investmentButton.titleLabel.bounds.size.width-25, 0, 0) titleFont:15];
     [cell addSubview:cell.investmentButton];
     
     return cell;

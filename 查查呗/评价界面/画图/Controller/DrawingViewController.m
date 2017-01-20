@@ -114,12 +114,13 @@
 
 - (NSArray *)valueArrayInRadarChart:(ZFRadarChart *)radarChart
 {
-    NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
-    NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
+//    NSUserDefaults * defau = [NSUserDefaults standardUserDefaults];
+//    NSDictionary * commentResult = [defau dictionaryForKey:@"commentResult"];
 
 //    return @[commentResult[@"honesty"], commentResult[@"reputation"], commentResult[@"culture"], commentResult[@"development"], commentResult[@"platform"], commentResult[@"environment"]];
     
-    return nil;
+    return @[@"2.5",@"2",@"5",@"3",@"2.5",@"4"];
+    
 }
 
 - (CGFloat)maxValueInRadarChart:(ZFRadarChart *)radarChart{

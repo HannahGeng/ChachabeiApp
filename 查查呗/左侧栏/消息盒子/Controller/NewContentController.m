@@ -19,6 +19,17 @@
 
 @implementation NewContentController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //设置导航栏
+    [self setNavigationBar];
+    
+    //添加内容
+    [self addContentView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -30,13 +41,8 @@
     //设置导航栏不透明
     self.navigationController.navigationBar.translucent = NO;
     
-    //设置导航栏
-    [self setNavigationBar];
-    
-    //添加内容
-    [self addContentView];
-
 }
+
 //设置导航栏
 -(void)setNavigationBar
 {

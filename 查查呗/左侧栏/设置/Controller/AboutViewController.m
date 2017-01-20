@@ -8,7 +8,7 @@
 
 #import "AboutViewController.h"
 
-@interface AboutViewController (){
+@interface AboutViewController ()<NSXMLParserDelegate>{
     NSString * _uid;
     NSString * _request;
     AFNetworkReachabilityManager * mgr;

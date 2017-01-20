@@ -369,8 +369,6 @@
 
 -(void)shareClick
 {
-    _taberView.hidden=YES;
-    
     NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
     
     NSArray *activityItem=@[shareUrl];
@@ -387,7 +385,7 @@
     
     [self.navigationController presentViewController:activityController animated:YES completion:nil];
     
-    _taberView.hidden=NO;
+//    app.tabView.hidden = NO;
 
 }
 

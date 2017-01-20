@@ -75,6 +75,17 @@
 
 @implementation PersonalViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    //设置导航栏
+    [self setNavigationBar];
+    //添加内容视图
+    [self addContentView];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -83,10 +94,6 @@
     
     leftButton;
     
-    //设置导航栏
-    [self setNavigationBar];
-    //添加内容视图
-    [self addContentView];
     //添加昵称视图
     [self addPhotoView];
     //添加手机号视图

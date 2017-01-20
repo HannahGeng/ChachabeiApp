@@ -78,7 +78,7 @@
 
 -(void)backButton
 {
-    [self dismissViewControllerAnimated:NO completion:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //添加内容视图
@@ -86,30 +86,32 @@
 {
     //滑块图片
     UIImage *thumbImage = [UIImage imageNamed:@"app30.png"];
+    self.percent1 = 2.5;
     [_slider1 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider1 addTarget:self action:@selector(sliderValueChanged1:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider1];
     
+    self.percent2 = 2.5;
     [_slider2 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider2 addTarget:self action:@selector(sliderValueChanged2:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider2];
     
-    
+    self.percent3 = 2.5;
     [_slider3 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider3 addTarget:self action:@selector(sliderValueChanged3:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider3];
     
-    
+    self.percent4 = 2.5;
     [_slider4 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider4 addTarget:self action:@selector(sliderValueChanged4:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider4];
     
-    
+    self.percent5 = 2.5;
     [_slider5 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider5 addTarget:self action:@selector(sliderValueChanged5:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider5];
     
-    
+    self.percent6 = 2.5;
     [_slider6 setThumbImage:thumbImage forState:UIControlStateNormal];
     [_slider6 addTarget:self action:@selector(sliderValueChanged6:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:_slider6];

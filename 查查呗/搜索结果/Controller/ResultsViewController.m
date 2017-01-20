@@ -297,7 +297,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppShare;
-    [self.view endEditing:YES];
+    [_searchBar resignFirstResponder];
     
     //点击后变成原色
     [self.resultsTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -526,8 +526,10 @@
 -(void)contentButtonClick
 {
     [self.view endEditing:YES];
+    [_searchBar resignFirstResponder];
     
     AppShare;
+    
     if ([_cityLabel.text isEqualToString:@"全国"]) {
         
         MBhud(@"请选择城市");

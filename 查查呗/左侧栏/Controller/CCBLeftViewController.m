@@ -145,7 +145,7 @@
         
         if (app.isLogin) {//登录状态
             
-            CCBNavigationController * nav = [[CCBNavigationController alloc] initWithRootViewController:self.controArray[indexPath.row]];
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:self.controArray[indexPath.row]];
             
             [self.mm_drawerController
              setCenterViewController:nav

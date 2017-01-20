@@ -53,24 +53,31 @@
 {
     [super viewWillAppear:animated];
     
+    AppShare;
+    
+    app.tabView.hidden = NO;
+
     //设置导航栏
     [self setNavigationBar];
-
-    //添加子控制器
-    [self setupChildVc];
     
-    //添加标题栏
-    [self setupTitle];
-    
-    [self scrollViewDidEndScrollingAnimation:self.contentScrollView];
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    //添加子控制器
+    [self setupChildVc];
     
+    [self createScrollView];
+    
+}
+
+- (void)createScrollView
+{
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+
     //标题scrollView
     UIScrollView * titleScrollView = [[UIScrollView alloc] init];
     titleScrollView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 35);
@@ -86,7 +93,12 @@
     self.contentScrollView = contentScrollView;
     contentScrollView.pagingEnabled = YES;
     [self.view addSubview:contentScrollView];
-   
+
+    //添加标题栏
+    [self setupTitle];
+    
+    [self scrollViewDidEndScrollingAnimation:self.contentScrollView];
+
 }
 
 //设置导航栏

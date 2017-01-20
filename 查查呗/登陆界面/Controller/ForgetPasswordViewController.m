@@ -84,6 +84,7 @@
     //监控网络状态
     AFNetworkReachabilityManager * mgr = [AFNetworkReachabilityManager sharedManager];
     [mgr startMonitoring];
+    
     [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         
         if (status != 0) {
@@ -112,7 +113,6 @@
 
 - (void)startTime
 {
-    
     if (_messageLabel.text.length != 0) {
         [_messageLabel.text stringByReplacingOccurrencesOfString:_messageLabel.text withString:@""];
     }
@@ -178,12 +178,14 @@
             return NO;
         }
     }else if (textField.tag == 2 ){
-            NSString * passString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         
-            if (passString.length > 16 && range.length != 1) {
-                _setPassLabel.text = [passString substringToIndex:16];
-                return NO;
-            }
+        NSString * passString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+        if (passString.length > 16 && range.length != 1) {
+            _setPassLabel.text = [passString substringToIndex:16];
+            return NO;
+        }
+        
     }else if(textField.tag == 3){
         
         NSString * passString = [textField.text stringByReplacingCharactersInRange:range withString:string];
@@ -194,6 +196,7 @@
         }
     
     }else{
+        
         NSString * passString = [textField.text stringByReplacingCharactersInRange:range withString:string];
         
         if (passString.length > 6 && range.length != 1) {

@@ -34,6 +34,12 @@ static NSString * const CompanyId = @"company";
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    //设置导航栏
+    [self setNavigationBar];
+    
+    //添加内容视图
+    [self addContentView];
+
     [self loadData];
 }
 
@@ -47,12 +53,6 @@ static NSString * const CompanyId = @"company";
     self.navigationController.navigationBar.translucent = NO;
     
     leftButton;
-    
-    //设置导航栏
-    [self setNavigationBar];
-    
-    //添加内容视图
-    [self addContentView];
     
 }
 

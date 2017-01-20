@@ -86,6 +86,7 @@
         NoneMessage;
         
         UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIUtils getWindowWidth], 20)];
+        view.backgroundColor=LIGHT_GREY_COLOR;
         self.tableView.tableHeaderView=view;
         self.tableView.tableFooterView=[[UIView alloc]init];
         view.backgroundColor=LIGHT_GREY_COLOR;
@@ -132,13 +133,20 @@
 #pragma mark UITableViewDelegate
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 65;
+    memberModel * member = self.memberArray[indexPath.row];
+    return member.cellHeight;
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //点击后变成原色
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 65;
 }
 
 @end

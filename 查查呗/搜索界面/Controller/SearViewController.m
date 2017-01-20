@@ -421,7 +421,7 @@ static NSString * const cellIdentifier = @"attention";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.view endEditing:YES];
+    [_searchBar resignFirstResponder];
     
     AppShare;
     
@@ -585,6 +585,8 @@ static NSString * const cellIdentifier = @"attention";
 -(void)contentButtonClick
 {
     AppShare;
+    
+    [_searchBar resignFirstResponder];
     
     //省份代码
     //读取plist文件
@@ -861,6 +863,8 @@ static NSString * const cellIdentifier = @"attention";
 - (void)historyCellClick
 {
     AppShare;
+    
+    [self.view endEditing:YES];
     
     //省份编码
     NSArray * historyArr = [[DatabaseManager sharedManger] getAllCompanys];

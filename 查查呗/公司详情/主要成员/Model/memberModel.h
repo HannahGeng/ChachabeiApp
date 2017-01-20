@@ -19,6 +19,9 @@
 /** 编号 */
 @property (nonatomic,assign) int sequence;
 
+/** 高度 */
+@property (nonatomic,assign) CGFloat cellHeight;
+
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
 @end
