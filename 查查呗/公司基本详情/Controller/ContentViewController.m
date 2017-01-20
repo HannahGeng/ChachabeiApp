@@ -153,8 +153,6 @@
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
                         
-                        app.dataArr = app.basicInfo;
-                        
                         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                         
                         [self.ContentTableView reloadData];
@@ -230,18 +228,21 @@
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
                         
+                        
+                        NSLog(@"公司信息:%@",responseObject);
+                        
                         if ([responseObject[@"status"] integerValue] == 1) {
                             
                             app.request = responseObject[@"response"];
                             
                             //保存企业详细信息数组源
-                            app.basicInfo = responseObject[@"result"][@"data"];
+                            app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
                             
                             app.dataArr = app.basicInfo;
                             
-                            app.companyDetailContent = responseObject[@"result"][@"data"][@"basicInfo"];
+                            app.companyDetailContent = responseObject[@"result"][@"data"];
                             
-                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.companyDetailContent];
+                            app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                             
                             [self.ContentTableView reloadData];
                             
@@ -685,11 +686,10 @@
 
 - (void)mapClick
 {
-//    ChartViewController * chart = [[ChartViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:chart animated:YES];
+    ChartViewController * chart = [[ChartViewController alloc] init];
     
-    MBhud(@"该企业暂无图谱");
+    [self.navigationController pushViewController:chart animated:YES];
+    
 }
 
 #pragma mark UITableViewDelegate
