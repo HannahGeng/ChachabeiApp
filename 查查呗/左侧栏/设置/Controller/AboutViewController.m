@@ -13,11 +13,12 @@
     NSString * _request;
     AFNetworkReachabilityManager * mgr;
     MBProgressHUD * mbHud;
+    NSString * MidStrTitle;
 }
 
 @property(nonatomic,strong) NSArray * aboutArray;
 
-@property (nonatomic,strong) UITextView * textView;
+@property (weak, nonatomic) IBOutlet UIWebView *textView;
 
 @end
 
@@ -33,13 +34,6 @@
     
     //设置导航栏
     [self setNavigationBar];
-    
-    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    self.textView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
-    
-    [self.view addSubview:self.textView];
-    
-    [self.textView setFont:[UIFont systemFontOfSize:15]];
     
     [self loadData];
 }
@@ -86,7 +80,7 @@
 
                 if ([responseObject[@"status"] integerValue] == 1) {
                     
-                    self.textView.text = responseObject[@"result"][0][@"content"];
+                    [self.textView loadHTMLString:responseObject[@"result"][0][@"content"] baseURL:nil];
                     
                 }
             }];

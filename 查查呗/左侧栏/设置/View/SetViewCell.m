@@ -12,6 +12,7 @@
 {
     UIImageView *_pointImage;
     UILabel *_titleLabel;
+    NSString * _font;
 }
 
 @end
@@ -40,14 +41,20 @@
     [self addSubview:_pointImage];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
-    _titleLabel.font=[UIFont systemFontOfSize:17];
+    
+    _font = APP_Font;
+     _titleLabel.font=[UIFont systemFontOfSize:15*[_font floatValue]];
+    
     [self addSubview:_titleLabel];
 }
 
 -(void)setContentView:(NSDictionary *)dictionary{
     
+    _font = APP_Font;
+    
     _pointImage.image=dictionary[@"image"];
     _titleLabel.text=dictionary[@"text"];
+    _titleLabel.font=[UIFont systemFontOfSize:15 * [_font integerValue]];
 }
 
 @end

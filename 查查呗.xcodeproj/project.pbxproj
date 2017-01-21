@@ -13,11 +13,9 @@
 		3D15D0251C03F6B300AB19E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D15D0231C03F6B300AB19E5 /* LaunchScreen.storyboard */; };
 		3D15D0301C03F6B300AB19E5 /* ___Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D15D02F1C03F6B300AB19E5 /* ___Tests.m */; };
 		3D15D03B1C03F6B300AB19E5 /* ___UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D15D03A1C03F6B300AB19E5 /* ___UITests.m */; };
-		3D1B21B01DB7038A008B4AA5 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21AF1DB7038A008B4AA5 /* AFNetworking.framework */; };
 		3D1B21B21DB7038F008B4AA5 /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B11DB7038F008B4AA5 /* FMDB.framework */; };
 		3D1B21B41DB70392008B4AA5 /* MJExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B31DB70392008B4AA5 /* MJExtension.framework */; };
 		3D1B21B61DB70396008B4AA5 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B51DB70396008B4AA5 /* Reachability.framework */; };
-		3D1B21B81DB70399008B4AA5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1B21B71DB70399008B4AA5 /* SVProgressHUD.framework */; };
 		3D249E711D1229A8009C22BF /* BaiduMapAPI_Base.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4B1D1229A8009C22BF /* BaiduMapAPI_Base.framework */; };
 		3D249E721D1229A8009C22BF /* BaiduMapAPI_Cloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4C1D1229A8009C22BF /* BaiduMapAPI_Cloud.framework */; };
 		3D249E731D1229A8009C22BF /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249E4D1D1229A8009C22BF /* BaiduMapAPI_Location.framework */; };
@@ -50,7 +48,6 @@
 		3D778CF71E090F5900052D11 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778CF51E090F5900052D11 /* MainViewController.m */; };
 		3D778CF81E090F5900052D11 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D778CF61E090F5900052D11 /* MainViewController.xib */; };
 		3D778CFA1E0911A200052D11 /* MMDrawerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D778CF91E0911A200052D11 /* MMDrawerController.framework */; };
-		3D778CFC1E0911A500052D11 /* YYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D778CFB1E0911A500052D11 /* YYKit.framework */; };
 		3D778D041E091FF300052D11 /* CCBLeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778CFF1E091FF300052D11 /* CCBLeftViewController.m */; };
 		3D778D051E091FF300052D11 /* CCBLeftViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D778D001E091FF300052D11 /* CCBLeftViewController.xib */; };
 		3D778D061E091FF300052D11 /* CCBLeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D031E091FF300052D11 /* CCBLeftViewCell.m */; };
@@ -239,6 +236,12 @@
 		3DF88F371E2C6C1500082DAA /* ZFRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F141E2C6C1500082DAA /* ZFRadarChart.m */; };
 		3DF88F381E2C6C1500082DAA /* ZFWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F171E2C6C1500082DAA /* ZFWave.m */; };
 		3DF88F391E2C6C1500082DAA /* ZFWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F191E2C6C1500082DAA /* ZFWaveChart.m */; };
+		895872901E33236000570172 /* Ono.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8958728F1E33236000570172 /* Ono.framework */; };
+		895872921E33236500570172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872911E33236500570172 /* SDWebImage.framework */; };
+		895872961E3324FE00570172 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872951E3324FE00570172 /* AFNetworking.framework */; };
+		895872981E33250300570172 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872971E33250300570172 /* SVProgressHUD.framework */; };
+		8958729A1E33250700570172 /* YYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872991E33250700570172 /* YYKit.framework */; };
+		895872DC1E33328400570172 /* UIButton+ChangeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 895872DB1E33328400570172 /* UIButton+ChangeFont.m */; };
 		89CA2D031D0912CC007115D4 /* reportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF61D0912CC007115D4 /* reportViewController.m */; };
 		89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CA2CF71D0912CC007115D4 /* reportViewController.xib */; };
 		89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF91D0912CC007115D4 /* YearViewController.m */; };
@@ -664,6 +667,14 @@
 		3DF88F181E2C6C1500082DAA /* ZFWaveChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFWaveChart.h; sourceTree = "<group>"; };
 		3DF88F191E2C6C1500082DAA /* ZFWaveChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFWaveChart.m; sourceTree = "<group>"; };
 		63A86EEC9FCCD16905C3F52B /* Pods-查查呗.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-查查呗.release.xcconfig"; path = "Pods/Target Support Files/Pods-查查呗/Pods-查查呗.release.xcconfig"; sourceTree = "<group>"; };
+		8958728F1E33236000570172 /* Ono.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ono.framework; path = "Pods/../build/Debug-iphoneos/Ono.framework"; sourceTree = "<group>"; };
+		895872911E33236500570172 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "Pods/../build/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
+		895872931E33238600570172 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "Pods/../build/Debug-iphoneos/AFNetworking.framework"; sourceTree = "<group>"; };
+		895872951E3324FE00570172 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
+		895872971E33250300570172 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		895872991E33250700570172 /* YYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKit.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/YYKit/YYKit.framework"; sourceTree = "<group>"; };
+		895872DA1E33328400570172 /* UIButton+ChangeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ChangeFont.h"; sourceTree = "<group>"; };
+		895872DB1E33328400570172 /* UIButton+ChangeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ChangeFont.m"; sourceTree = "<group>"; };
 		89CA2CF51D0912CC007115D4 /* reportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reportViewController.h; sourceTree = "<group>"; };
 		89CA2CF61D0912CC007115D4 /* reportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reportViewController.m; sourceTree = "<group>"; };
 		89CA2CF71D0912CC007115D4 /* reportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reportViewController.xib; sourceTree = "<group>"; };
@@ -685,16 +696,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8958729A1E33250700570172 /* YYKit.framework in Frameworks */,
+				895872981E33250300570172 /* SVProgressHUD.framework in Frameworks */,
+				895872961E3324FE00570172 /* AFNetworking.framework in Frameworks */,
+				895872921E33236500570172 /* SDWebImage.framework in Frameworks */,
+				895872901E33236000570172 /* Ono.framework in Frameworks */,
 				3D880A771E25DD3100DEC79F /* RealReachability.framework in Frameworks */,
 				3D880A751E25DD2B00DEC79F /* Masonry.framework in Frameworks */,
-				3D778CFC1E0911A500052D11 /* YYKit.framework in Frameworks */,
 				3D778CFA1E0911A200052D11 /* MMDrawerController.framework in Frameworks */,
 				3D3F6A8E1DFE80FD00DDD04C /* iOS_Echarts.framework in Frameworks */,
-				3D1B21B81DB70399008B4AA5 /* SVProgressHUD.framework in Frameworks */,
 				3D1B21B61DB70396008B4AA5 /* Reachability.framework in Frameworks */,
 				3D1B21B41DB70392008B4AA5 /* MJExtension.framework in Frameworks */,
 				3D1B21B21DB7038F008B4AA5 /* FMDB.framework in Frameworks */,
-				3D1B21B01DB7038A008B4AA5 /* AFNetworking.framework in Frameworks */,
 				3D63EB661DB6FEF000344B55 /* MBProgressHUD.framework in Frameworks */,
 				3D249E741D1229A8009C22BF /* BaiduMapAPI_Map.framework in Frameworks */,
 				3D249E981D122BCD009C22BF /* libsqlite3.tbd in Frameworks */,
@@ -745,6 +758,12 @@
 		218A45E393B6F36EC8CFAFC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				895872991E33250700570172 /* YYKit.framework */,
+				895872971E33250300570172 /* SVProgressHUD.framework */,
+				895872951E3324FE00570172 /* AFNetworking.framework */,
+				895872931E33238600570172 /* AFNetworking.framework */,
+				895872911E33236500570172 /* SDWebImage.framework */,
+				8958728F1E33236000570172 /* Ono.framework */,
 				3D880A781E261CAE00DEC79F /* iVersion.framework */,
 				3D880A761E25DD3100DEC79F /* RealReachability.framework */,
 				3D880A741E25DD2B00DEC79F /* Masonry.framework */,
@@ -1037,6 +1056,8 @@
 				3D778D2B1E09218200052D11 /* UILabel+LabelFontChange.m */,
 				3D778D2C1E09218200052D11 /* UIView+XMGExtension.h */,
 				3D778D2D1E09218200052D11 /* UIView+XMGExtension.m */,
+				895872DA1E33328400570172 /* UIButton+ChangeFont.h */,
+				895872DB1E33328400570172 /* UIButton+ChangeFont.m */,
 			);
 			path = "Category类";
 			sourceTree = "<group>";
@@ -2206,7 +2227,7 @@
 					3D15D0111C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = AK5T28Y6FV;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					3D15D02A1C03F6B300AB19E5 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -2436,6 +2457,7 @@
 				3DD6649D1D067D47006BCB3D /* AdviceViewController.m in Sources */,
 				3D778D5B1E09218200052D11 /* TimerButton.m in Sources */,
 				3D778D5C1E09218200052D11 /* DatabaseManager.m in Sources */,
+				895872DC1E33328400570172 /* UIButton+ChangeFont.m in Sources */,
 				3DF88F351E2C6C1500082DAA /* ZFPolygon.m in Sources */,
 				3DD664F81D06899C006BCB3D /* BranchModel.m in Sources */,
 				3DD6648E1D067D47006BCB3D /* NewContentController.m in Sources */,
@@ -2691,15 +2713,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: guodong liu (LA9923G8ES)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: guodong liu (LA9923G8ES)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AK5T28Y6FV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/查查呗",
 					"$(SRCROOT)/查查呗/框架/baiduSDK",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/binghangeng/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2708,8 +2731,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
-				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};
@@ -2723,15 +2746,16 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: guodong liu (LA9923G8ES)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = AK5T28Y6FV;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/查查呗",
 					"$(SRCROOT)/查查呗/框架/baiduSDK",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/binghangeng/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2740,8 +2764,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zdzx.chachabei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d2c4c5d-46f9-42cd-8400-c823ca9be1ee";
-				PROVISIONING_PROFILE_SPECIFIER = ccbProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7";
 			};

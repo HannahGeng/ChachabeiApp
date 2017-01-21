@@ -149,6 +149,8 @@
 
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:Dic result:^(id responseObject, NSError *error) {
                         
+                        NSLog(@"企业详情:%@",responseObject);
+                        
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
@@ -387,7 +389,7 @@
     [self.navigationController presentViewController:activityController animated:YES completion:nil];
     
 //    app.tabView.hidden = NO;
-
+//中鼎职信
 }
 
 #pragma mark - 点击关注
@@ -669,7 +671,9 @@
         if (app.isLogin == YES) {
 
             [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
-                                
+                
+                NSLog(@"企业年报:%@",responseObject);
+                
                 app.request = responseObject[@"response"];
             }];
             

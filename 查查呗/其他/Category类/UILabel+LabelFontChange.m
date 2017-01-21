@@ -13,8 +13,27 @@
 +(UIFont *)changeFont
 {
     NSString * str = APP_Font;
-        
-    return [UIFont systemFontOfSize:17 * [str floatValue]];
+    
+    return [UIFont systemFontOfSize:15 * [str floatValue]];
+}
+
++ (void)load
+{
+    Method imp = class_getInstanceMethod([self class], @selector(initWithCoder:));
+    Method myImp = class_getInstanceMethod([self class], @selector(myInitWithCoder:));
+    method_exchangeImplementations(imp, myImp);
+}
+
+- (id)myInitWithCoder:(NSCoder*)aDecode
+{
+    NSString * str = APP_Font;
+    
+    [self myInitWithCoder:aDecode];
+    if (self) {
+
+        self.font = [UIFont systemFontOfSize:15 * [str floatValue]];
+    }
+    return self;
 }
 
 @end

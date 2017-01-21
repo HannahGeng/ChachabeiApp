@@ -6,63 +6,153 @@
 	<dict>
 		<key>AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MJExtension.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>MMDrawerController.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Ono.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-查查呗.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Reachability.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealReachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SVProgressHUD.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YYKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>iOS-Echarts-iOS-Echarts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>iOS-Echarts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7D92CD8B930DFFAEDAA7D15568809120</key>
+		<key>251BAD17812F7EBF6532EACF66F941C3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>928353533005A4198EBDA5B700D37B64</key>
+		<key>28F12DBEFFDAC55672346F13AF951142</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D468ACF2E843D41FED9DE551A3136A5</key>
+		<key>34984A97578D9326761DE63CD70A42A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EAB3E42EF957541E6C3C76D35FD008E</key>
+		<key>3C5D5CB6ED7A7ECE0FB2CDD0F39409FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
+		<key>3FAB96328AEA30CC8DF3AD33B6DA2F41</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B69F35534D66EC45E5159B184848BA02</key>
+		<key>41FA54D12162DAD51D02FC58A2CD5034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>52E33E013A5634FF6884BB7F3D5DEB1D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5AA17C95E926B760FD08E0B487DAEFA2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C74FACD6671CCE45B866599268B94B1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A8FAB4675B15F8258B6C19B71077B859</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B00F017B4F38F258C9F9EF403296AF2D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B2BD471BA0B04296ABD85A6261CEA4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BDCCBE26269968175ED6B6FECD1A041F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D52144DE9D7255DE912490FF5A806573</key>
 		<dict>
 			<key>primary</key>
 			<true/>

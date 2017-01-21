@@ -131,6 +131,7 @@
 #import "HotNewsViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ZFChart.h"
+#import "Ono.h"
 
 /**
  *  颜色配置
@@ -155,7 +156,7 @@
 
 #define LIGHT_OPAQUE_BLACK_COLOR [UIColor colorWithRed:1.0/255.0 green:1.0/255.0 blue:1.0/255.0 alpha:0.4f]
 
-#define APP_Font [[NSUserDefaults standardUserDefaults] objectForKey:@"change_font"];
+#define APP_Font [SaveTool objectForKey:@"change_font"];
 
 /**
  *  尺寸相关设置
