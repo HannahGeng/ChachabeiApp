@@ -35,7 +35,9 @@
     
     //添加内容视图
     [self addContentView];
-        
+    
+    [self setPageViewController];
+
     [self.navigationController.navigationBar setHidden:YES];
 }
 
@@ -50,8 +52,6 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [self setPageViewController];
-
 }
 
 - (UIView *)setPageViewController;

@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    mbHUDinit;
+    
     self.view.backgroundColor=[UIColor whiteColor];
     
     //设置导航栏不透明
@@ -82,12 +84,14 @@
                     
                     [self.textView loadHTMLString:responseObject[@"result"][0][@"content"] baseURL:nil];
                     
+                    hudHide;
                 }
             }];
             
         }else{
             
             noWebhud;
+            hudHide;
         }
     }];    
 }

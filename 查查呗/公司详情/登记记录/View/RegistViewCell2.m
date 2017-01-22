@@ -15,7 +15,7 @@
     _companyDetail = companyDetail;
     
     if ([companyDetail.address isEqualToString:@"null"]) {
-        self.addressLabel.text = @"---";
+        self.addressLabel.text = @"-";
     }else{
         self.addressLabel.text = companyDetail.address;
     }

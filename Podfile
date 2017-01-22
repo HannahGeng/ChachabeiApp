@@ -14,7 +14,6 @@ pod "YYKit"
 pod "Masonry"
 pod "RealReachability"
 pod "SDWebImage"
-pod "Ono"
 
 end
 

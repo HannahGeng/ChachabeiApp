@@ -10,48 +10,55 @@
 
 @interface SetViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *_setInfoArray;
-    
-    UIView *_shareView;
-    UIButton *_minButton;
-    UIButton *_maxButton;
-    UILabel *_nameLabel;
-    UILabel *_titleLabel;
-    
-    NSString *_string;
-    NSString *_maxStr;
-    
-    NSString *_textFont;
-    
+    UIView * _shareView;
+    UILabel * _nameLabel;
+    NSString * _string;
+    NSString * _textFont;
     NSString * _uid;
     NSString * _request;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *setTableView;
 
+@property (nonatomic,strong) NSArray * setInfoArray;
+
 @end
 
 @implementation SetViewController
+
+- (NSArray *)setInfoArray
+{
+    if (_setInfoArray == nil) {
+        
+        self.setInfoArray = @[
+                              @{@"image":[UIImage imageNamed:@"app12.png"],
+                                @"text":@"字体大小"},
+                              @{@"image":[UIImage imageNamed:@"app13.png"],
+                                @"text":@"分享"},
+                              @{@"image":[UIImage imageNamed:@"app15.png"],
+                                @"text":@"问题建议"},
+                              @{@"image":[UIImage imageNamed:@"app14.png"],
+                                @"text":@"用户协议"},
+                              @{@"image":[UIImage imageNamed:@"app16.png"],
+                                @"text":@"关于我们"},
+                              ];
+
+    }
+    
+    return _setInfoArray;
+}
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     
-    self.view.backgroundColor=[UIColor whiteColor];
-    
     leftButton;
-    
-    //设置导航栏不透明
-    self.navigationController.navigationBar.translucent = NO;
     
     //设置导航栏
     [self setNavigationBar];
     
     //添加内容视图
     [self addContentView];
-    
-    //加载数据
-    [self loadData];
     
     //标准
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(standard) name:@"standard" object:nil];
@@ -64,6 +71,9 @@
 //设置导航栏
 -(void)setNavigationBar
 {
+    //设置导航栏不透明
+    self.navigationController.navigationBar.translucent = NO;
+    
     [self.navigationItem setHidesBackButton:YES];
     
     //设置导航栏的颜色
@@ -73,65 +83,51 @@
 //添加内容视图
 -(void)addContentView
 {
-    _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake([UIUtils getWindowWidth]-90, 18, 70, 30)];
-    
-    self.setTableView.backgroundColor=[UIColor clearColor];
-    
-    self.setTableView.scrollEnabled =NO;
-    
-    self.setTableView.tableFooterView=[[UIView alloc]init];
-}
+    self.view.backgroundColor = [UIColor whiteColor];
 
-//加载数据
--(void)loadData
-{
-    _setInfoArray = @[
-                      @{@"image":[UIImage imageNamed:@"app12.png"],
-                        @"text":@"字体大小"},
-                       @{@"image":[UIImage imageNamed:@"app13.png"],
-                         @"text":@"分享"},
-                       @{@"image":[UIImage imageNamed:@"app15.png"],
-                         @"text":@"问题建议"},
-                       @{@"image":[UIImage imageNamed:@"app14.png"],
-                         @"text":@"用户协议"},
-                       @{@"image":[UIImage imageNamed:@"app16.png"],
-                         @"text":@"关于我们"},
-                    ];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIUtils getWindowWidth]-90, 18, 70, 30)];
+    
+    self.setTableView.backgroundColor = [UIColor clearColor];
+    
+    self.setTableView.scrollEnabled = NO;
+    
+    self.setTableView.tableFooterView = [[UIView alloc]init];
 }
 
 #pragma mark UITableViewDataSource
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _setInfoArray.count;
+    return self.setInfoArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *cellIdentifier=@"cellIdentifier";
+    static NSString * ID = @"cellIdentifier";
     
-    SetViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    SetViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
 
     if (!cell) {
-        cell=[[SetViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        
+        cell=[[SetViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
     [cell setContentView:_setInfoArray[indexPath.row]];
 
+    _string = APP_Font;
+    
     if (indexPath.row==0) {
         
         if ([_textFont isEqualToString:@"b"]) {
-            _nameLabel.text=@"标准";
+            
+            _nameLabel.text = @"标准";
             
         }else{
-            if ([_textFont isEqualToString:@"d"]) {
-                _nameLabel.text=@"大号";
-            }else{
-                _nameLabel.text=@"标准";
-            }
+            
+            _nameLabel.text = @"大号";
         }
-        _nameLabel.textAlignment=NSTextAlignmentCenter;
-
+        
         [cell addSubview:_nameLabel];
     }
     
@@ -209,11 +205,8 @@
 -(void)standard
 {
     [SaveTool setObject:@"1" forKey:@"change_font"];
-    [SaveTool setObject:@"YES" forKey:@"font_min"];
-    [SaveTool setObject:@"NO" forKey:@"font_max"];
 
     _textFont=@"b";
-    _string=APP_Font;
    
     [self.setTableView reloadData];
 }
@@ -222,11 +215,8 @@
 -(void)bigger
 {
     [SaveTool setObject:@"1.2" forKey:@"change_font"];
-    [SaveTool setObject:@"NO" forKey:@"font_min"];
-    [SaveTool setObject:@"YES" forKey:@"font_max"];
     
     _textFont=@"d";
-    _string=APP_Font;
     
     [self.setTableView reloadData];
 }

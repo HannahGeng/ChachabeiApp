@@ -15,19 +15,19 @@
     _companyDetail = companyDetail;
     
     if ([companyDetail.company_name isEqualToString:@"null"]) {
-        self.companyName.text = @"---";
+        self.companyName.text = @"-";
     }else{
         self.companyName.text = companyDetail.company_name;
     }
     
     if ([companyDetail.regist_no isEqualToString:@"null"]) {
-        self.IDLabel.text = @"---";
+        self.IDLabel.text = @"-";
     }else{
         self.IDLabel.text = companyDetail.regist_no;
     }
     
     if ([companyDetail.company_type isEqualToString:@"null"]) {
-        self.label.text = @"---";
+        self.label.text = @"-";
     }else{
         self.label.text = companyDetail.company_type;
     }

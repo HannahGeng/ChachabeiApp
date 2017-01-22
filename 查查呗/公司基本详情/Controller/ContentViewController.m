@@ -586,6 +586,7 @@
     if (indexPath.row==3) {
         
         WebVC *cell=[WebVC cellWithTableView:self.ContentTableView];
+        cell.companyDetail =  app.companyModel;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         return cell;
@@ -718,6 +719,16 @@
         return 80;
     }
         return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 3) {
+        
+        CodeController * code = [[CodeController alloc] init];
+        
+        [self.navigationController pushViewController:code animated:YES];
+    }
 }
 
 @end

@@ -17,37 +17,37 @@ static NSString *cellID=@"TableViewCell";
     _companyDetail = companyDetail;
     
     if ([companyDetail.corporation isEqualToString:@"null"]) {
-        self.nameLabel.text = @"---";
+        self.nameLabel.text = @"-";
     }else{
         self.nameLabel.text = companyDetail.legal_person;
     }
     
     if ([companyDetail.establish_data isEqualToString:@"null"]) {
-        self.SetupDate.text = @"---";
+        self.SetupDate.text = @"-";
     }else{
         self.SetupDate.text = companyDetail.establish_data;
     }
     
     if ([companyDetail.statu isEqualToString:@"null"]) {
-        self.SetupDate.text = @"---";
+        self.SetupDate.text = @"-";
     }else{
         self.registrationLabel.text = companyDetail.statu;
     }
     
     if ([companyDetail.capital isEqualToString:@"null"]) {
-        self.registeredCapital.text = @"---";
+        self.registeredCapital.text = @"-";
     }else{
         self.registeredCapital.text = companyDetail.capital;
     }
     
     if ([companyDetail.regist_no isEqualToString:@"null"]) {
-        self.registrationID.text = @"---";
+        self.registrationID.text = @"-";
     }else{
         self.registrationID.text = companyDetail.regist_no;
     }
     
     if ([companyDetail.company_type isEqualToString:@"null"]) {
-        self.companyType.text = @"---";
+        self.companyType.text = @"-";
     }else{
         self.companyType.text = companyDetail.company_type;
     }

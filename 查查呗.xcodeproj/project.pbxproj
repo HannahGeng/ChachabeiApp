@@ -236,7 +236,6 @@
 		3DF88F371E2C6C1500082DAA /* ZFRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F141E2C6C1500082DAA /* ZFRadarChart.m */; };
 		3DF88F381E2C6C1500082DAA /* ZFWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F171E2C6C1500082DAA /* ZFWave.m */; };
 		3DF88F391E2C6C1500082DAA /* ZFWaveChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF88F191E2C6C1500082DAA /* ZFWaveChart.m */; };
-		895872901E33236000570172 /* Ono.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8958728F1E33236000570172 /* Ono.framework */; };
 		895872921E33236500570172 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872911E33236500570172 /* SDWebImage.framework */; };
 		895872961E3324FE00570172 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872951E3324FE00570172 /* AFNetworking.framework */; };
 		895872981E33250300570172 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872971E33250300570172 /* SVProgressHUD.framework */; };
@@ -700,7 +699,6 @@
 				895872981E33250300570172 /* SVProgressHUD.framework in Frameworks */,
 				895872961E3324FE00570172 /* AFNetworking.framework in Frameworks */,
 				895872921E33236500570172 /* SDWebImage.framework in Frameworks */,
-				895872901E33236000570172 /* Ono.framework in Frameworks */,
 				3D880A771E25DD3100DEC79F /* RealReachability.framework in Frameworks */,
 				3D880A751E25DD2B00DEC79F /* Masonry.framework in Frameworks */,
 				3D778CFA1E0911A200052D11 /* MMDrawerController.framework in Frameworks */,
@@ -2722,7 +2720,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/binghangeng/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2755,7 +2753,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "/Users/binghangeng/Desktop/ChachabeiApp/查查呗/其他/文件/Headfile.pch";
+				GCC_PREFIX_HEADER = "/Users/zdzx-008/Desktop/查查呗/查查呗/其他/文件/Headfile.pch";
 				INFOPLIST_FILE = "查查呗/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class CompanyDetail;
+
 @interface WebVC : UITableViewCell
+
+@property (nonatomic,strong) CompanyDetail * companyDetail;
 
 +(instancetype)cellWithTableView:(UITableView *)tableView;
 

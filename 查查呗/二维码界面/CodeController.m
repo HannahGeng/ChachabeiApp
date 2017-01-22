@@ -12,6 +12,7 @@
 {
     UIWebView *_webView;
     AppDelegate * app;
+    MBProgressHUD * mbHud;
 }
 @end
 
@@ -20,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    mbHUDinit;
+    
     //设置导航栏的颜色
     SetNavigationBar(nil);
     
@@ -40,12 +43,15 @@
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
     
+    hudHide;
 }
 
 - (void)backButton
 {
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"homeView" object:nil];
+//    [[NSNotificationCenter defaultCenter]
+//     postNotificationName:@"homeView" object:nil];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

@@ -17,19 +17,19 @@
     AppShare;
     
     if ([companyDetail.company_name isEqualToString:@"null"]) {
-        self.company_name.text = @"---";
+        self.company_name.text = @"-";
     }else{
         self.company_name.text = companyDetail.company_name;
     }
     
     if ([[app.resultArray[0] allKeys] containsObject:@"url"]){
         
-        self.capital.text = @"---";
+        self.capital.text = @"-";
         
     }else{
      
         if ([companyDetail.capital isEqualToString:@"null"]) {
-            self.capital.text = @"---";
+            self.capital.text = @"-";
             
         }else{
             
@@ -38,7 +38,7 @@
     }
     
     if ([companyDetail.establish_data isEqualToString:@"unll"]) {
-        self.establishment_date.text = @"---";
+        self.establishment_date.text = @"-";
         
     }else{
         
@@ -53,7 +53,7 @@
     }
     
     if ([companyDetail.legal_person isEqualToString:@"null"]) {
-        self.corporation.text = @"---";
+        self.corporation.text = @"-";
         
     }else{
         

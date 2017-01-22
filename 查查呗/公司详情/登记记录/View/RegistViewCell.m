@@ -14,7 +14,7 @@
 {
     _companyDetail = companyDetail;
     if ([companyDetail.scope isEqualToString:@"null"]) {
-        self.businessRange.text = @"---";
+        self.businessRange.text = @"-";
     }else{
         self.businessRange.text = companyDetail.scope;
          self.businessRange.font = [UIFont systemFontOfSize:15];

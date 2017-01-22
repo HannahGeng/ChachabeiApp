@@ -35,6 +35,7 @@
         self.statu = dictionary[@"statu"];
         self.term = dictionary[@"term"];
         self.create_date = dictionary[@"create_date"];
+        self.website = dictionary[@"website"];
     }
     
     return self;

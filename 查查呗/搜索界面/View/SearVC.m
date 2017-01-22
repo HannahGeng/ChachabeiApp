@@ -20,7 +20,7 @@
     
     if (attention.cname == nil) {
         
-        self.attentionCompanyLabel.text = @"---";
+        self.attentionCompanyLabel.text = @"-";
         
     }else{
         self.attentionCompanyLabel.text = attention.cname;

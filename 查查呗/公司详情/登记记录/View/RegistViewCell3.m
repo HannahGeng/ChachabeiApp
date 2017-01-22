@@ -16,7 +16,7 @@
     
     if ([companyDetail.establish_data isEqualToString:@"null"]) {
     
-        self.issueDate.text = @"---";
+        self.issueDate.text = @"-";
         
     }else{
     
@@ -25,7 +25,7 @@
     
     if ([companyDetail.busniss_alloted_time_start isEqualToString:@"null"] || [companyDetail.busniss_alloted_time_later isEqualToString:@"null"]) {
         
-        self.businessTerm.text = [NSString stringWithFormat:@"---"];
+        self.businessTerm.text = [NSString stringWithFormat:@"-"];
     }else{
         
         self.businessTerm.text = companyDetail.term;

@@ -15,21 +15,21 @@
     _companyDetail = companyDetail;
     
     if ([companyDetail.corporation isEqualToString:@"null"]) {
-        self.comporsation.text = @"---";
+        self.comporsation.text = @"-";
         
     }else{
         self.comporsation.text = companyDetail.legal_person;
     }
     
     if ([companyDetail.capital isEqualToString:@"null"]) {
-        self.fund.text = @"---";
+        self.fund.text = @"-";
         
     }else{
         self.fund.text = companyDetail.capital;
     }
     
     if ([companyDetail.establish_data isEqualToString:@"null"]) {
-        self.estimatedTime.text = @"---";
+        self.estimatedTime.text = @"-";
     }else{
         self.estimatedTime.text = companyDetail.start_date;
     }

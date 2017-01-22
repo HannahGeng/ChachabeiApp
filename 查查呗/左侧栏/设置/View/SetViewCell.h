@@ -10,8 +10,6 @@
 
 @interface SetViewCell : UITableViewCell
 
-//@property (nonatomic,weak) UILabel *titleLabel;
-
 -(void)setContentView:(NSDictionary *)dictionary;
 
 @end

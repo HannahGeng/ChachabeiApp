@@ -81,6 +81,7 @@
     
     //设置导航栏
     [self setNavigationBar];
+    
     //添加内容视图
     [self addContentView];
 

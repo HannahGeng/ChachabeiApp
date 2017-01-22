@@ -14,7 +14,6 @@
 
 @implementation ContentView
 
-
 - (IBAction)standardType:(UIButton *)sender {
     
     //发送通知

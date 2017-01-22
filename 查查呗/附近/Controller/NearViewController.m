@@ -179,7 +179,7 @@
     [headView addSubview:label1];
     
     UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(240, 17, 30, 30)];
-    label2.text=@"---";
+    label2.text=@"-";
     label2.textColor=[UIColor orangeColor];
     label2.textAlignment=NSTextAlignmentCenter;
     label2.font=[UIFont systemFontOfSize:15];

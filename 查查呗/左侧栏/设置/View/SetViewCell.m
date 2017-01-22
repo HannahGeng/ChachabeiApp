@@ -10,10 +10,11 @@
 
 @interface SetViewCell ()
 {
-    UIImageView *_pointImage;
-    UILabel *_titleLabel;
-    NSString * _font;
+    NSString * _string;
 }
+@property (nonatomic,strong) UILabel * titleLabel;
+
+@property (nonatomic,strong) UIImageView * pointImage;
 
 @end
 
@@ -37,24 +38,22 @@
 //添加内容视图
 -(void)addContentView{
     
-    _pointImage =[[UIImageView alloc] initWithFrame:CGRectMake(20, 17, 30, 30)];
+    self.pointImage =[[UIImageView alloc] initWithFrame:CGRectMake(20, 17, 30, 30)];
     [self addSubview:_pointImage];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
     
-    _font = APP_Font;
-     _titleLabel.font=[UIFont systemFontOfSize:15*[_font floatValue]];
+    _string = APP_Font;
     
+    self.titleLabel.font = [UIFont systemFontOfSize:17 * [_string integerValue]];
+        
     [self addSubview:_titleLabel];
 }
 
 -(void)setContentView:(NSDictionary *)dictionary{
     
-    _font = APP_Font;
-    
-    _pointImage.image=dictionary[@"image"];
-    _titleLabel.text=dictionary[@"text"];
-    _titleLabel.font=[UIFont systemFontOfSize:15 * [_font integerValue]];
+    self.pointImage.image=dictionary[@"image"];
+    self.titleLabel.text=dictionary[@"text"];
 }
 
 @end

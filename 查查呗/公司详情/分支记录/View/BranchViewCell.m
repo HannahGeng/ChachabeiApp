@@ -15,7 +15,7 @@
     
     if ([branch.company_name isEqual:@"null"]) {
         
-        self.companyName.text = @"---";
+        self.companyName.text = @"-";
         
     }else{
         
@@ -25,7 +25,7 @@
     
     if ([branch.regist_no isEqual:@"null"]) {
         
-        self.LegalPerson.text = @"---";
+        self.LegalPerson.text = @"-";
         
     }else{
         

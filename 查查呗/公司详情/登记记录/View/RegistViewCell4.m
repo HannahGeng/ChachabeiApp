@@ -16,7 +16,7 @@
     
     if ([companyDetail.registdepartment isEqualToString:@"null"]) {
         
-        self.registAuthority.text = @"---";
+        self.registAuthority.text = @"-";
         
     }else{
         

@@ -252,6 +252,7 @@ CGFloat contentViewHeight;
 }
 
 - (void)show {
+    
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     NSArray *windowViews = [window subviews];
     if(windowViews && [windowViews count] > 0){

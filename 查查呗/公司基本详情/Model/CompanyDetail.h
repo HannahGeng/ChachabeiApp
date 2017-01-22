@@ -94,6 +94,9 @@
 /** create_date */
 @property (nonatomic,strong) NSString * create_date;
 
+/** website */
+@property (nonatomic,strong) NSString * website;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
