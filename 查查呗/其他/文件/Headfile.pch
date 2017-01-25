@@ -103,7 +103,6 @@
 #import "HeadView.h"
 #import "SendView.h"
 #import "GuideTool.h"
-#import "UILabel+LabelFontChange.h"
 #import "FDAlertView.h"
 #import "ContentView.h"
 #import "TitleScrollLabel.h"
@@ -131,6 +130,7 @@
 #import "HotNewsViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ZFChart.h"
+#import "XMGQuickLoginButton.h"
 
 /**
  *  颜色配置

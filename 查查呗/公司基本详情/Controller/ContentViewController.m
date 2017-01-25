@@ -154,6 +154,7 @@
                         app.companyDetailContent = responseObject[@"result"][@"data"];
                         app.request = responseObject[@"response"];
                         app.basicInfo = responseObject[@"result"][@"data"][@"basicInfo"];
+                        app.dataArr = app.basicInfo;
                         
                         app.companyModel = [[CompanyDetail alloc] initWithDictionary:app.basicInfo];
                         
@@ -229,7 +230,6 @@
                 if (status != 0) {
                     
                     [[HTTPSessionManager sharedManager] POST:Hot_Detail_URL parameters:pDic result:^(id responseObject, NSError *error) {
-                        
                         
                         NSLog(@"公司信息:%@",responseObject);
                         
@@ -562,7 +562,9 @@
         HeardViewCell *cell=[HeardViewCell cellWithTableView:self.ContentTableView];
         cell.backgroundColor = LIGHT_BACKGROUND_COLOR;
         cell.companyDetail =  app.companyModel;
-
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         return cell;
     }
     
@@ -647,36 +649,15 @@
     
     NSArray * yearArr = app.companyDetailContent[@"annualYear"];
     
+    app.yearArr = yearArr;
+    
     if (yearArr.count == 0) {
 
         MBhud(@"该企业暂无年报信息");
         
     }else{
         
-        //六位随机数
-        NSString * nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]];
-        
-        //时间戳
-        NSDate *  senddate=[NSDate date];
-        
-        NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
-        
-        [dateformatter setDateFormat:@"YYYYMMddmmss"];
-        
-        NSString * year = [AESCrypt encrypt:@"2014" password:[AESCrypt decrypt:app.loginKeycode]];
-        
-        _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
-        
-        NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp",[AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]],@"registNo",year,@"year", nil];
-        
         if (app.isLogin == YES) {
-
-            [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
-                
-                NSLog(@"企业年报:%@",responseObject);
-                
-                app.request = responseObject[@"response"];
-            }];
             
             YearViewController * yearvc = [[YearViewController alloc] init];
             
@@ -723,11 +704,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppShare;
+        
     if (indexPath.row == 3) {
         
-        CodeController * code = [[CodeController alloc] init];
-        
-        [self.navigationController pushViewController:code animated:YES];
+        if ([app.urlStr isEqualToString:@"-"]) {
+            
+            return;
+        }else
+        {
+            CodeController * code = [[CodeController alloc] init];
+            
+            [self.navigationController pushViewController:code animated:YES];
+        }
     }
 }
 

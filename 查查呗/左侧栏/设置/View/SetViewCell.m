@@ -42,11 +42,7 @@
     [self addSubview:_pointImage];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_pointImage.frame)+15, 7, [UIUtils getWindowWidth]-CGRectGetMaxX(_pointImage.frame)-50-10, 50)];
-    
-    _string = APP_Font;
-    
-    self.titleLabel.font = [UIFont systemFontOfSize:17 * [_string integerValue]];
-        
+            
     [self addSubview:_titleLabel];
 }
 

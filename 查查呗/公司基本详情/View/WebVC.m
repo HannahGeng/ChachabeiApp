@@ -24,13 +24,16 @@ static NSString *cellID=@"TopButtonViewCell";
     
     AppShare;
     
-    if ([companyDetail.website isEqualToString:@"null"]) {
-        self.webLabel.text = @"-";
-    }else{
-        self.webLabel.text = companyDetail.website;
+    if ([companyDetail.website isEqualToString:@""] || [companyDetail.website isEqualToString:@"null"]) {
         
-        app.urlStr = self.webLabel.text;
+        self.webLabel.text = @"-";
+        
+    }else{
+        
+        self.webLabel.text = companyDetail.website;
     }
+    
+    app.urlStr = self.webLabel.text;
     self.webLabel.font = [UIFont systemFontOfSize:14];
 }
 

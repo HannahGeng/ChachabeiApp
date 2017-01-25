@@ -31,8 +31,6 @@
     if (_setInfoArray == nil) {
         
         self.setInfoArray = @[
-                              @{@"image":[UIImage imageNamed:@"app12.png"],
-                                @"text":@"字体大小"},
                               @{@"image":[UIImage imageNamed:@"app13.png"],
                                 @"text":@"分享"},
                               @{@"image":[UIImage imageNamed:@"app15.png"],
@@ -48,24 +46,24 @@
     return _setInfoArray;
 }
 
-- (void)viewDidLoad {
-    
-    [super viewDidLoad];
-    
-    leftButton;
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
     //设置导航栏
     [self setNavigationBar];
     
-    //添加内容视图
+}
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
+    
+    //添加内容视图   
     [self addContentView];
     
-    //标准
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(standard) name:@"standard" object:nil];
-    
-    //变大
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bigger) name:@"bigger" object:nil];
-    
+    leftButton;
+     
 }
 
 //设置导航栏
@@ -110,26 +108,10 @@
         
         cell=[[SetViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
+    
+    [cell setContentView:self.setInfoArray[indexPath.row]];
 
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
-    [cell setContentView:_setInfoArray[indexPath.row]];
-
-    _string = APP_Font;
-    
-    if (indexPath.row==0) {
-        
-        if ([_textFont isEqualToString:@"b"]) {
-            
-            _nameLabel.text = @"标准";
-            
-        }else{
-            
-            _nameLabel.text = @"大号";
-        }
-        
-        [cell addSubview:_nameLabel];
-    }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -150,15 +132,6 @@
     [self.setTableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row==0) {
-    
-        FDAlertView *alert = [[FDAlertView alloc] init];
-        ContentView *contentView = [[NSBundle mainBundle] loadNibNamed:@"ContentView" owner:nil options:nil].lastObject;
-        contentView.frame = CGRectMake(0, 0, 270, 160);
-        alert.contentView = contentView;
-        [alert show];
-        
-    }
-    if (indexPath.row==1) {
       
         NSURL *shareUrl=[NSURL URLWithString:[NSString stringWithFormat:@"%@",@"https://itunes.apple.com/cn/app/cha-cha-bei/id1111485201?mt=8"]];
         NSArray *activityItem=@[shareUrl];
@@ -174,17 +147,17 @@
         
         [self.navigationController presentViewController:activityController animated:YES completion:nil];
     }
-    if (indexPath.row==2) {
+    if (indexPath.row==1) {
         
         AdviceViewController *adviceVC=[[AdviceViewController alloc]initWithNibName:@"AdviceViewController" bundle:nil];
         [self.navigationController pushViewController:adviceVC animated:YES];
     }
-    if (indexPath.row==3) {
+    if (indexPath.row==2) {
         
         AboutViewController *aboutVC=[[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
         [self.navigationController pushViewController:aboutVC animated:YES];
     }
-    if (indexPath.row==4) {
+    if (indexPath.row==3) {
         
         WeViewController *weVC=[[WeViewController alloc]initWithNibName:@"WeViewController" bundle:nil];
         [self.navigationController pushViewController:weVC animated:YES];
@@ -199,26 +172,6 @@
                      } completion:^(BOOL finished) {
                          [_shareView removeFromSuperview];
                      }];
-}
-
-//标准字体
--(void)standard
-{
-    [SaveTool setObject:@"1" forKey:@"change_font"];
-
-    _textFont=@"b";
-   
-    [self.setTableView reloadData];
-}
-
-//大号字体
--(void)bigger
-{
-    [SaveTool setObject:@"1.2" forKey:@"change_font"];
-    
-    _textFont=@"d";
-    
-    [self.setTableView reloadData];
 }
 
 @end

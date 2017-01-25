@@ -33,6 +33,7 @@
 		3D249EA41D122C47009C22BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA31D122C47009C22BF /* Security.framework */; };
 		3D249EA61D122C4E009C22BF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA51D122C4E009C22BF /* CoreTelephony.framework */; };
 		3D249EA81D122C5C009C22BF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D249EA71D122C5C009C22BF /* CoreLocation.framework */; };
+		3D250B091E387D4300AEBED0 /* XMGQuickLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D250B081E387D4300AEBED0 /* XMGQuickLoginButton.m */; };
 		3D3F6A7B1DFE7EBD00DDD04C /* NSObject+RMArchivable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F6A741DFE7EBD00DDD04C /* NSObject+RMArchivable.m */; };
 		3D3F6A7C1DFE7EBE00DDD04C /* NSObject+RMCopyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F6A761DFE7EBD00DDD04C /* NSObject+RMCopyable.m */; };
 		3D3F6A7D1DFE7EBE00DDD04C /* NSUserDefaults+RMSaveCustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3F6A781DFE7EBD00DDD04C /* NSUserDefaults+RMSaveCustomObject.m */; };
@@ -62,7 +63,6 @@
 		3D778D4F1E09218200052D11 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D251E09218200052D11 /* AppDelegate.mm */; };
 		3D778D501E09218200052D11 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D271E09218200052D11 /* Foundation+Log.m */; };
 		3D778D511E09218200052D11 /* UIButton+CCBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D291E09218200052D11 /* UIButton+CCBButton.m */; };
-		3D778D521E09218200052D11 /* UILabel+LabelFontChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D2B1E09218200052D11 /* UILabel+LabelFontChange.m */; };
 		3D778D531E09218200052D11 /* UIView+XMGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D2D1E09218200052D11 /* UIView+XMGExtension.m */; };
 		3D778D541E09218200052D11 /* CCBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D301E09218200052D11 /* CCBNavigationController.m */; };
 		3D778D551E09218200052D11 /* FDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D778D331E09218200052D11 /* FDAlertView.m */; };
@@ -240,7 +240,6 @@
 		895872961E3324FE00570172 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872951E3324FE00570172 /* AFNetworking.framework */; };
 		895872981E33250300570172 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872971E33250300570172 /* SVProgressHUD.framework */; };
 		8958729A1E33250700570172 /* YYKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 895872991E33250700570172 /* YYKit.framework */; };
-		895872DC1E33328400570172 /* UIButton+ChangeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 895872DB1E33328400570172 /* UIButton+ChangeFont.m */; };
 		89CA2D031D0912CC007115D4 /* reportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF61D0912CC007115D4 /* reportViewController.m */; };
 		89CA2D041D0912CC007115D4 /* reportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89CA2CF71D0912CC007115D4 /* reportViewController.xib */; };
 		89CA2D051D0912CC007115D4 /* YearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CA2CF91D0912CC007115D4 /* YearViewController.m */; };
@@ -314,6 +313,8 @@
 		3D249EA31D122C47009C22BF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3D249EA51D122C4E009C22BF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		3D249EA71D122C5C009C22BF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3D250B071E387D3B00AEBED0 /* XMGQuickLoginButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMGQuickLoginButton.h; sourceTree = "<group>"; };
+		3D250B081E387D4300AEBED0 /* XMGQuickLoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMGQuickLoginButton.m; sourceTree = "<group>"; };
 		3D2C28CA1D1139C700A52821 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		3D2C28CC1D1139D400A52821 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		3D2C28CE1D1139DE00A52821 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
@@ -365,8 +366,6 @@
 		3D778D271E09218200052D11 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		3D778D281E09218200052D11 /* UIButton+CCBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CCBButton.h"; sourceTree = "<group>"; };
 		3D778D291E09218200052D11 /* UIButton+CCBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CCBButton.m"; sourceTree = "<group>"; };
-		3D778D2A1E09218200052D11 /* UILabel+LabelFontChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelFontChange.h"; sourceTree = "<group>"; };
-		3D778D2B1E09218200052D11 /* UILabel+LabelFontChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelFontChange.m"; sourceTree = "<group>"; };
 		3D778D2C1E09218200052D11 /* UIView+XMGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XMGExtension.h"; sourceTree = "<group>"; };
 		3D778D2D1E09218200052D11 /* UIView+XMGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XMGExtension.m"; sourceTree = "<group>"; };
 		3D778D2F1E09218200052D11 /* CCBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBNavigationController.h; sourceTree = "<group>"; };
@@ -672,8 +671,6 @@
 		895872951E3324FE00570172 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		895872971E33250300570172 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
 		895872991E33250700570172 /* YYKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYKit.framework; path = "../../Library/Developer/Xcode/DerivedData/查查呗-hjhpyynyxstezyaoteizbrhrzhct/Build/Products/Debug-iphonesimulator/YYKit/YYKit.framework"; sourceTree = "<group>"; };
-		895872DA1E33328400570172 /* UIButton+ChangeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ChangeFont.h"; sourceTree = "<group>"; };
-		895872DB1E33328400570172 /* UIButton+ChangeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ChangeFont.m"; sourceTree = "<group>"; };
 		89CA2CF51D0912CC007115D4 /* reportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reportViewController.h; sourceTree = "<group>"; };
 		89CA2CF61D0912CC007115D4 /* reportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reportViewController.m; sourceTree = "<group>"; };
 		89CA2CF71D0912CC007115D4 /* reportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = reportViewController.xib; sourceTree = "<group>"; };
@@ -1050,12 +1047,8 @@
 				3D778D271E09218200052D11 /* Foundation+Log.m */,
 				3D778D281E09218200052D11 /* UIButton+CCBButton.h */,
 				3D778D291E09218200052D11 /* UIButton+CCBButton.m */,
-				3D778D2A1E09218200052D11 /* UILabel+LabelFontChange.h */,
-				3D778D2B1E09218200052D11 /* UILabel+LabelFontChange.m */,
 				3D778D2C1E09218200052D11 /* UIView+XMGExtension.h */,
 				3D778D2D1E09218200052D11 /* UIView+XMGExtension.m */,
-				895872DA1E33328400570172 /* UIButton+ChangeFont.h */,
-				895872DB1E33328400570172 /* UIButton+ChangeFont.m */,
 			);
 			path = "Category类";
 			sourceTree = "<group>";
@@ -1089,6 +1082,8 @@
 				3D778D371E09218200052D11 /* NoneView.xib */,
 				3D778D381E09218200052D11 /* TitleScrollLabel.h */,
 				3D778D391E09218200052D11 /* TitleScrollLabel.m */,
+				3D250B071E387D3B00AEBED0 /* XMGQuickLoginButton.h */,
+				3D250B081E387D4300AEBED0 /* XMGQuickLoginButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2411,10 +2406,10 @@
 				3D778D181E09200900052D11 /* RegisteredViewController.m in Sources */,
 				3D778D161E09200900052D11 /* LoginViewController.m in Sources */,
 				3D3F6A7B1DFE7EBD00DDD04C /* NSObject+RMArchivable.m in Sources */,
+				3D250B091E387D4300AEBED0 /* XMGQuickLoginButton.m in Sources */,
 				3DD664191D06765C006BCB3D /* HotNewsViewController.m in Sources */,
 				3DD664231D0676A4006BCB3D /* CodeController.m in Sources */,
 				3DF88F261E2C6C1500082DAA /* ZFBar.m in Sources */,
-				3D778D521E09218200052D11 /* UILabel+LabelFontChange.m in Sources */,
 				3D3F6A7E1DFE7EBE00DDD04C /* RMMapper.m in Sources */,
 				3DD663E21D0674D3006BCB3D /* DrawingViewController.m in Sources */,
 				3DF88F231E2C6C1500082DAA /* ZFWaveAttribute.m in Sources */,
@@ -2455,7 +2450,6 @@
 				3DD6649D1D067D47006BCB3D /* AdviceViewController.m in Sources */,
 				3D778D5B1E09218200052D11 /* TimerButton.m in Sources */,
 				3D778D5C1E09218200052D11 /* DatabaseManager.m in Sources */,
-				895872DC1E33328400570172 /* UIButton+ChangeFont.m in Sources */,
 				3DF88F351E2C6C1500082DAA /* ZFPolygon.m in Sources */,
 				3DD664F81D06899C006BCB3D /* BranchModel.m in Sources */,
 				3DD6648E1D067D47006BCB3D /* NewContentController.m in Sources */,

@@ -83,38 +83,46 @@
     AppShare;
     
     PYOption *option = [[PYOption alloc] init];
-    
+        
     option.title = [[PYTitle alloc] init];
-    
+    option.calculable = YES;
     option.tooltip = [[PYTooltip alloc] init];
     option.tooltip.trigger = PYTooltipTriggerItem;
     option.tooltip.formatter = @"(function (params) {if (params.indicator2) {return params.indicator2 + \' \' + params.name + \' \' + params.indicator;} else {return params.name}})";
+    
     option.toolbox = [[PYToolbox alloc] init];
     option.toolbox.show = YES;
     option.toolbox.feature = [[PYToolboxFeature alloc] init];
+    
+    //还原按钮
     option.toolbox.feature.restore = [[PYToolboxFeatureRestore alloc] init];
     option.toolbox.feature.restore.show = YES;
+    
+    //样式切换
     option.toolbox.feature.magicType = [[PYToolboxFeatureMagicType alloc] init];
     option.toolbox.feature.magicType.show = YES;
     option.toolbox.feature.magicType.type = @[PYSeriesTypeForce, PYSeriesTypeChord];
-    option.toolbox.feature.restore = [[PYToolboxFeatureRestore alloc] init];
-    option.toolbox.feature.restore.show = YES;
+
+    //区域缩放
+    option.toolbox.feature.dataZoom = [[PYToolboxFeatureDataZoom alloc] init];
+    option.toolbox.feature.dataZoom.show = YES;
     
     option.legend = [[PYLegend alloc] init];
     option.legend.x = @"left";
     option.legend.data = @[app.companyName];
     
     PYChordSeries *series = [[PYChordSeries alloc] init];
+    series.showScale = YES;
     series.type = PYSeriesTypeChord;
     series.sort = PYSortAscending;
     series.sortSub = PYSortDescending;
     series.ribbonType = NO;
-    series.radius = @"60%";
+    series.radius = @"45%";
     series.itemStyle = [[PYItemStyle alloc] init];
     series.itemStyle.normal = [[PYItemStyleProp alloc] init];
     series.itemStyle.normal.label = [[PYLabel alloc] init];
     series.itemStyle.normal.label.rotate = YES;
-    series.minRadius = @7;
+    series.minRadius = @5;
     series.maxRadius = @10;
     
     NSMutableArray * nameArr = [NSMutableArray array];
@@ -142,6 +150,7 @@
     option.series = [[NSMutableArray alloc] initWithArray:@[series]];
     
     [_echartsView setOption:option];
+    
 }
 
 @end

@@ -11,25 +11,17 @@
 @interface CodeController ()
 {
     UIWebView *_webView;
-    AppDelegate * app;
     MBProgressHUD * mbHud;
 }
 @end
 
 @implementation CodeController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    mbHUDinit;
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    //设置导航栏的颜色
-    SetNavigationBar(nil);
-    
-    //为导航栏添加左侧按钮
-    Backbutton;
-    
-    app = [AppDelegate sharedAppDelegate];
+    AppShare;
     
     CGRect bounds = [[UIScreen mainScreen] bounds];
     
@@ -42,16 +34,40 @@
     NSURL * url = [NSURL URLWithString:app.urlStr];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
+
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
     
-    hudHide;
+    AppShare;
+
+    //设置导航栏的颜色
+    SetNavigationBar(nil);
+    
+    //为导航栏添加左侧按钮
+    Backbutton;
+    
+    app.tabView.hidden = YES;
+    
 }
 
 - (void)backButton
 {
-//    [[NSNotificationCenter defaultCenter]
-//     postNotificationName:@"homeView" object:nil];
+    ContentViewController * content = [[ContentViewController alloc] init];
+    NSArray * vcArray = [self.navigationController viewControllers];
+    NSInteger vcCount = vcArray.count;
+    UIViewController * lastVc = vcArray[vcCount - 2];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([lastVc isKindOfClass:[content class]]) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+
+    }else{
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"homeView" object:nil];
+    }
+
 }
 
 @end

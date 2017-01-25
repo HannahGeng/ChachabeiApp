@@ -160,5 +160,7 @@
 
 @property (nonatomic,strong) CCBTabBarView * tabView;
 
+@property (nonatomic,strong) NSArray * yearArr;
+
 @end
 

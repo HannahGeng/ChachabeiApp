@@ -11,10 +11,12 @@
 
 @interface YearViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
-    AppDelegate * app;
     UIImageView * _imageView;
     UILabel * _label;
+    NSString * _timeString;
+    MBProgressHUD * mbHud;
 }
+
 @property (nonatomic,strong)NSArray * yearArray;
 
 @end
@@ -24,13 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    AppShare;
+    
     self.navigationItem.title = @"企业年报";
     
     [self getNav];
     
     [self createTableView];
     
-    _yearArray = [NSArray arrayWithObjects:@"2014",@"2013", nil];
+    _yearArray = app.yearArr;
 }
 
 - (void)getNav
@@ -43,8 +47,6 @@ backClick;
 
 - (void)createTableView
 {
-    app = [AppDelegate sharedAppDelegate];
-
     UITableView * yearTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStyleGrouped];
 
     yearTable.delegate = self;
@@ -66,9 +68,6 @@ backClick;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    app = [AppDelegate sharedAppDelegate];
-    
-    
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (cell == nil) {
@@ -84,9 +83,35 @@ backClick;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppShare;
+    
+    mbHUDinit;
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    //六位随机数
+    NSString * nonce = [AESCrypt encrypt:app.nonce password:[AESCrypt decrypt:app.loginKeycode]];
+    
+    //时间戳
+    NSDate *  senddate=[NSDate date];
+    
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    
+    [dateformatter setDateFormat:@"YYYYMMddmmss"];
+    
+    NSString * year = [AESCrypt encrypt:_yearArray[indexPath.row] password:[AESCrypt decrypt:app.loginKeycode]];
+    
+    _timeString = [AESCrypt encrypt:[dateformatter stringFromDate:senddate] password:[AESCrypt decrypt:app.loginKeycode]];
+    
+    NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:app.uid,@"uid",app.request,@"request",nonce,@"nonce",_timeString,@"timestamp",[AESCrypt encrypt:app.companyID password:[AESCrypt decrypt:app.loginKeycode]],@"registNo",year,@"year", nil];
+    
+    [[HTTPSessionManager sharedManager] POST:YEAR_URL parameters:dic result:^(id responseObject, NSError *error) {
+        
+        app.request = responseObject[@"response"];
+        
+        hudHide;
+    }];
+
     reportViewController  * vc = [[reportViewController alloc] init];
     
     [self.navigationController pushViewController:vc animated:YES];
